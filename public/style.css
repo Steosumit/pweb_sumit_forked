@@ -12,8 +12,8 @@ nav {
   padding: 0 !important;
   font-size: 1.4rem;
   color: white;
-  background-color: rgb(0, 0, 0, 01);
   background-color: #171717;
+  background-color: rgb(0, 0, 0, 01);
   box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 1);
 }
 
@@ -32,141 +32,6 @@ nav {
 .navbar-brand:hover {
   color: white;
   font-weight: 500;
-}
-
-@media screen and (max-width: 1470px) {
-  .container-info img {
-    transform: translateX(30rem);
-    opacity: 0;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .btns-connect {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .btns-connect button {
-    justify-content: center;
-    overflow: scroll;
-    position: relative;
-    right: 0.51rem;
-  }
-}
-@media screen and (max-width: 920px) {
-  .navbar {
-    height: fit-content;
-    padding-top: 5px;
-  }
-  .home-first {
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    padding-bottom: 4rem;
-  }
-
-  .navbar-brand p {
-    position: relative;
-    top: 9px;
-  }
-  .home-first .title-name {
-    font-size: clamp(0.5rem, 2rem, 3rem);
-    margin-left: 2rem;
-    margin-top: 10vh;
-    height: 40vh;
-    transform: translateX(100%);
-  }
-  .home-first img {
-    transform: translateX(0) scale(0.85);
-    border-radius: 0.5rem;
-  }
-}
-
-@media screen and (max-width: 990px) {
-  .social-feeds {
-    flex-direction: column;
-    align-items: center;
-  }
-  .twitter-card {
-    max-width: 30rem;
-    margin: 0;
-    margin-bottom: 3rem;
-  }
-  .insta-card {
-    margin: 0;
-  }
-}
-@media screen and (max-width: 983px) {
-  .footer-card {
-    height: 35rem;
-  }
-  .bottom-stuff {
-    margin-top: 10rem;
-  }
-}
-@media screen and (max-width: 900px) {
-  .container-info img {
-    transform: translateX(20rem);
-    opacity: 0;
-  }
-}
-
-@media screen and (max-width: 585px) {
-  .navbar-brand {
-    margin-left: 0;
-  }
-  .navbar-brand p {
-    display: none;
-  }
-  .nav-img {
-    transform: scale(0.7);
-  }
-}
-
-@media screen and (max-width: 566px) {
-  .btns-connect button {
-    width: 18rem;
-  }
-}
-
-@media screen and (min-width: 450px) and (max-width: 920px) {
-  .home-first .title-name {
-    margin-left: 4rem;
-  }
-}
-
-@media screen and (max-width: 593px) {
-  .container-info img {
-    transform: translateX(10rem);
-    opacity: 0;
-  }
-}
-
-@media screen and (max-width: 766px) {
-  .bottom-stuff {
-    width: 100%;
-    position: static;
-    justify-content: center;
-
-    margin-bottom: 5rem;
-  }
-  .bottom-stuff div {
-    margin-bottom: 2rem;
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 530px) {
-  .twitter-card {
-    max-width: 17rem;
-    max-height: 30rem;
-  }
-  .insta-card {
-    max-height: 30rem;
-    transform: scale(0.8);
-  }
 }
 
 .navbar-toggler-icon {
@@ -199,6 +64,17 @@ nav {
   border-radius: 1rem;
 }
 
+.pop-out {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1s, transform 1s;
+}
+
+.pop-out.pop-out-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
 /* index page  */
 
 .home-big-div {
@@ -227,21 +103,21 @@ nav {
 .home-first .title-name {
   font-size: 2.5rem;
   font-weight: 500;
-  margin-left: 3.5%;
+  margin-left: 5%;
   display: flex;
   width: 50%;
   flex-wrap: wrap;
   text-shadow: black 2px 2px;
 }
 .title-name span {
-  font-size: 1.1rem;
-  font-family: monospace;
-  color: dodgerblue;
+  font-size: 1rem;
+  font-weight: 400;
+  color: white;
 }
 
 .home-first img {
-  transform: scale(0.8) translateX(20%);
-  border-radius: 1.5rem;
+  transform: scale(0.8) translateX(15%);
+  border-radius: 2rem;
   width: 90%;
   height: 90%;
 }
@@ -267,42 +143,38 @@ nav {
   width: 90rem;
   display: flex;
   flex-wrap: wrap;
-
   justify-content: center;
   margin-bottom: 0rem;
 }
 .btns-connect button p {
-  font-family: monospace;
   font-size: 1.2rem;
 }
 .btns-connect button {
   color: white;
-  font-family: monospace;
 
   border: 3px rgba(72, 84, 244, 0.1) solid;
 
-  box-shadow: #4854f4 0px 20px 30px -10px;
-
-  background-color: #4854f4;
+  background-color: midnightblue;
   width: 35%;
   margin-left: 1.5rem;
 
   margin-top: 3rem;
   line-height: 2rem;
 
-  font-weight: 300;
+  font-weight: 500;
 
   border-radius: 1.5rem;
 
+  box-shadow: 6px 10px 20px 0rem rgba(15, 22, 108, 0.9);
   transition: box-shadow 0.2s, opacity 0.5s;
   transform: 1s;
 }
 
 .btns-connect button:hover {
+  box-shadow: #4854f4 0px 20px 30px -10px;
   background-color: #4854f4;
 
   color: white;
-  box-shadow: 0px 10px 2rem 0rem rgba(15, 22, 108, 0.9);
 }
 
 /*  */
@@ -310,7 +182,7 @@ nav {
 /* why recruit from nfsu? */
 
 #whytitle {
-  text-shadow: 3px 3px lightblue;
+  text-shadow: 2px 2px rgb(108, 199, 229);
 }
 
 #whytitle-nfsu {
@@ -339,6 +211,7 @@ nav {
 }
 .card-body .card-title {
   min-height: 3rem;
+  font-size: 1.5rem;
   font-weight: 700;
   display: flex;
   flex-direction: column;
@@ -356,12 +229,16 @@ nav {
 }
 .why-cards .card {
   width: 21rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   height: 29rem;
   margin: 3rem;
   border-color: rgb(255, 105, 180, 0.1);
   box-shadow: 0.2rem 0.2rem 2rem pink;
   border-radius: 2rem;
   overflow: hidden;
+  transition: opacity 1s, transform 0.5s;
 }
 
 .stat-poster {
@@ -398,7 +275,9 @@ nav {
   min-height: 100vh;
   color: white;
 }
-
+#carouselExampleAutoplaying {
+  height: 70vh;
+}
 .home-third h1 {
   padding-top: 5rem;
 }
@@ -430,6 +309,9 @@ nav {
 
 .two-cards-card {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding-right: 5rem;
 }
 .two-cards-card p {
@@ -543,87 +425,80 @@ h6 {
   text-decoration: underline;
 }
 
-/* */
+/*footer */
 
 .container-big-footer {
   background-color: #fff;
-
   color: black;
   width: 100%;
+
+  padding: 3rem;
 }
 .footer-div {
   display: flex;
-  margin-top: 3rem;
+  width: 100%;
   height: fit-content;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-  padding-bottom: 8rem;
+  justify-content: center;
+  padding: 2rem;
+  padding-left: 3rem;
 }
 
 .footer-card {
-  height: 30rem;
-  width: 20rem;
-  padding: 3rem 0rem 0rem 5rem;
-  color: rgb(0, 0, 0, 0.7);
-  font-size: 1rem;
-}
-.footer-card .card-title {
-  min-height: 6rem;
-  font-size: 1.8rem !important;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.footer-card .card-links {
-  cursor: pointer;
-  font-size: 1rem;
-}
+  height: fit-content;
+  color: rgb(0, 0, 0, 1);
 
+  line-height: 3rem;
+  font-size: 1rem;
+}
 .footer-card .card-title {
   color: black;
-  font-size: 2.3rem;
+  font-size: 2rem;
   font-weight: 500;
 }
 
 .footer-card a {
+  cursor: pointer;
   text-decoration: none;
-  line-height: 3rem;
   color: rgb(0, 0, 0, 0.7);
-
   font-size: 1.2rem;
 }
 .footer-card a:hover {
+  color: black;
   text-decoration: underline maroon;
 }
-
-.bottom-stuff {
+#map-div {
   display: flex;
-  position: relative;
-  bottom: 5rem;
+  flex-direction: column;
+}
+#map-div iframe {
+  height: 20rem;
+  border-radius: 10%;
+}
+
+.socials-div {
+  background-color: rgba(16, 16, 20, 255);
+  padding: 1rem;
+  border-radius: 1rem;
+
+  display: flex;
+  justify-content: center;
   align-items: center;
-  justify-content: space-between;
-  padding: 5rem 6rem 5rem 8rem;
-  flex-wrap: wrap;
 }
 .socials {
-  font-size: 3rem;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
 .socials a {
-  padding: 0 1rem;
-}
-
-.socials div {
-  margin-right: 2rem;
+  margin: 0.5rem;
+  font-size: 2rem;
 }
 
 .footer-login {
   display: none;
 }
 
-/* */
+/* socials*/
 .twitter-card,
 .insta-card {
   border: 1px solid #ccc;
@@ -918,8 +793,9 @@ h6 {
 /*  */
 /* for students */
 .banner {
+  padding-top: 1rem;
   width: 100%;
-  height: 20rem;
+  height: 23rem;
   background-color: darkblue;
   display: flex;
   flex-wrap: wrap;
@@ -1053,19 +929,149 @@ h6 {
   width: 40%;
 }
 
-iframe {
-  border-radius: 10%;
-}
-
 /* */
 
 img.no-style {
   all: initial;
 }
-
 .no-style {
   width: 50rem !important ;
 }
 #make-radius {
   border-radius: 2rem;
+}
+
+@media screen and (max-width: 1470px) {
+  .container-info img {
+    transform: translateX(30rem);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .btns-connect {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .btns-connect button {
+    justify-content: center;
+    overflow: scroll;
+    position: relative;
+    right: 0.51rem;
+  }
+}
+@media screen and (max-width: 920px) {
+  .navbar {
+    height: fit-content;
+    padding-top: 5px;
+  }
+  .home-first {
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    padding-bottom: 4rem;
+  }
+
+  .navbar-brand p {
+    position: relative;
+    top: 9px;
+  }
+  .home-first .title-name {
+    font-size: clamp(0.5rem, 2rem, 3rem);
+    margin-left: 2rem;
+    margin-top: 10vh;
+    height: 40vh;
+    transform: translateX(100%);
+  }
+  .home-first img {
+    transform: translateX(0) scale(0.85);
+    border-radius: 0.5rem;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .social-feeds {
+    flex-direction: column;
+    align-items: center;
+  }
+  .twitter-card {
+    max-width: 30rem;
+    margin: 0;
+    margin-bottom: 3rem;
+  }
+  .insta-card {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 983px) {
+  .footer-card {
+    height: 35rem;
+  }
+  .bottom-stuff {
+    margin-top: 10rem;
+  }
+}
+@media screen and (max-width: 900px) {
+  .container-info img {
+    transform: translateX(20rem);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .navbar-brand {
+    margin-left: 0;
+  }
+  .navbar-brand p {
+    display: none;
+  }
+  .nav-img {
+    transform: scale(0.7);
+  }
+}
+
+@media screen and (max-width: 566px) {
+  .btns-connect button {
+    width: 18rem;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 920px) {
+  .home-first .title-name {
+    margin-left: 4rem;
+  }
+}
+
+@media screen and (max-width: 593px) {
+  .container-info img {
+    transform: translateX(10rem);
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 766px) {
+  .bottom-stuff {
+    width: 100%;
+    position: static;
+    justify-content: center;
+
+    margin-bottom: 5rem;
+  }
+  .bottom-stuff div {
+    margin-bottom: 2rem;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .twitter-card {
+    max-width: 17rem;
+    max-height: 30rem;
+  }
+  .insta-card {
+    max-height: 30rem;
+    transform: scale(0.8);
+  }
 }
