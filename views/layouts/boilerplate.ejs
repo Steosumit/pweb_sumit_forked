@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Office of Placement & Internship, NFSU</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://upload.wikimedia.org/wikipedia/en/9/96/National_Forensic_Sciences_University_Logo.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <%-include("../includes/navbar.ejs")%> <%-include("../includes/flash.ejs")%>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var navbar = document.querySelector(".navbar");
+        let footer = document.querySelector(".container-big-footer");
+        if (
+          window.location.pathname === "/login-student" ||
+          window.location.pathname === "/login-recruiter" ||
+          window.location.pathname === "/register/rec" ||
+          window.location.pathname === "/register/stu"
+        ) {
+          navbar.classList.add("navbar-login");
+          footer.classList.add("footer-login");
+        } else {
+          navbar.classList.remove("navbar-login");
+          footer.classList.remove("footer-login");
+        }
+      });
+    </script>
+    <%-body%>
+    <div style="overflow: hidden"><%-include("../includes/footer.ejs")%></div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Function to check if an element is in the viewport
+      //   const isInViewport = (elem) => {
+      //     const bounding = elem.getBoundingClientRect();
+      //     return (
+      //       bounding.top >= 0 &&
+      //       bounding.left >= 0 &&
+      //       bounding.bottom <=
+      //         (window.innerHeight || document.documentElement.clientHeight) &&
+      //       bounding.right <=
+      //         (window.innerWidth || document.documentElement.clientWidth)
+      //     );
+      //   };
+
+      //   const isInViewport = (elem) => {
+      //     const bounding = elem.getBoundingClientRect();
+      //     return (
+      //       bounding.bottom > 0 &&
+      //       bounding.right > 0 &&
+      //       bounding.top <
+      //         (window.innerHeight || document.documentElement.clientHeight) &&
+      //       bounding.left <
+      //         (window.innerWidth || document.documentElement.clientWidth)
+      //     );
+      //   };
+
+      const isInViewport = (elem) => {
+        const bounding = elem.getBoundingClientRect();
+        const viewportHeight =
+          window.innerHeight || document.documentElement.clientHeight;
+        const viewportWidth =
+          window.innerWidth || document.documentElement.clientWidth;
+
+        // Calculate the vertical midpoint of the element
+        const elementMidY = bounding.top + bounding.height / 2;
+
+        // Calculate the horizontal midpoint of the element
+        const elementMidX = bounding.left + bounding.width / 2;
+
+        // Check if the midpoints are within the viewport
+        return (
+          elementMidY > 0 &&
+          elementMidY < viewportHeight &&
+          elementMidX > 0 &&
+          elementMidX < viewportWidth
+        );
+      };
+
+      // Function to handle scrolling
+      const handleScroll = () => {
+        const elements = document.querySelectorAll(".pop-out");
+        elements.forEach((element) => {
+          if (isInViewport(element)) {
+            element.classList.add("pop-out-active");
+          } else {
+            // element.classList.remove('pop-out-active');
+          }
+        });
+      };
+
+      // Event listener for scroll
+      window.addEventListener("scroll", handleScroll);
+
+      // Initial call to handleScroll to check for elements already in viewport
+      // handleScroll();
+
+      // Trigger animation on DOMContentLoaded
+      document.addEventListener("DOMContentLoaded", () => {
+        handleScroll();
+      });
+    </script>
+    <style>
+      .pop-out {
+        opacity: 0;
+        transform: scale(0.9);
+        transition: opacity 1s, transform 1s;
+      }
+
+      .pop-out.pop-out-active {
+        opacity: 1;
+        transform: scale(1);
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<%if(success && success.length){%>
+<br />
+<div
+  class="alert alert-success alert-dismissible fade show col-6 mb-0"
+  role="alert"
+  style="width: 100%; text-align: center"
+>
+  <%=success%>
+  <button
+    type="button"
+    class="btn-close"
+    id="cross-btn"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+
+<%}%> <%if(error && error.length){%>
+<br />
+<div
+  class="alert alert-danger alert-dismissible fade show col-6 mb-0"
+  role="alert"
+  style="width: 100%; text-align: center"
+>
+  <%=error%>
+  <button
+    type="button"
+    class="btn-close"
+    id="cross-btn"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  ></button>
+</div>
+<%}%>
+
+<script>
+  setTimeout(() => {
+    document.getElementById("cross-btn").click();
+  }, 1000);
+</script>
