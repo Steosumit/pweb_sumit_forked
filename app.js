@@ -12,7 +12,8 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const dbUrl = process.env.ATLASDB_URL;
 const MongoStore = require("connect-mongo");
-
+const { studentSchema } = require("./schema");
+const Student = require("./models/student");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
@@ -58,6 +59,7 @@ main()
 async function main() {
   await mongoose.connect(dbUrl);
 }
+
 app.listen(9090, () => {
   console.log("server is listening to port 9090");
 });
@@ -99,4 +101,60 @@ app.get("/student", (req, res) => {
 
 app.get("/resrec", (req, res) => {
   res.render("resrecru.ejs");
+});
+app.post("/register/:user", async (req, res) => {
+  let { user } = req.params;
+
+  if (user == "rec") {
+    res.send("recruiter registered ");
+  } else if (user == "stu") {
+    try {
+      const { error } = studentSchema.validate(req.body);
+      if (error) {
+        // If validation fails, respond with the validation error
+        return res.status(400).send(error.details[0].message);
+      } else {
+        console.log("validated");
+      }
+
+      // Create a new instance of the Student model with data from req.body
+      const newStudent = new Student({
+        firstname: req.body.firstname,
+        surname: req.body.surname,
+        fathername: req.body.fathername,
+        birthdate: req.body.birthdate,
+        maritalstatus: req.body.maritalstatus,
+        mobileno: req.body.mobileno,
+        altmobileno: req.body.altmobileno,
+        email: req.body.email,
+        altemail: req.body.altemail,
+        category: req.body.category,
+        nationality: req.body.nationality,
+        presentcountry: req.body.presentcountry,
+        presentstate: req.body.presentstate,
+        presentdistrict: req.body.presentdistrict,
+        landmark: req.body.landmark,
+        presentaddress: req.body.presentaddress,
+        pincode: req.body.pincode,
+        tenth: req.body.tenth,
+        twelth: req.body.twelth,
+        lastsemcgpa: req.body.lastsemcgpa,
+        // Add other fields here as needed
+      });
+
+      // Save the new student to the database
+      await newStudent.save();
+
+      // Respond with a success message
+      res.send("Student registered successfully");
+    } catch (error) {
+      // If an error occurs during saving, respond with an error message
+      console.error(error);
+      res
+        .status(500)
+        .send("An error occurred while registering the student:" + error);
+    }
+  } else {
+    res.send("Invalid URL");
+  }
 });

@@ -501,10 +501,10 @@ h6 {
 /* socials*/
 .twitter-card,
 .insta-card {
-  border: 1px solid #ccc;
+  border: 1px solid #000;
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  /* padding: 20px; */
   margin: 0 auto; /*Center the card */
   background-color: #f9f9f9;
   max-height: 40rem;
@@ -516,7 +516,7 @@ h6 {
 }
 
 .insta-card {
-  min-width: fit-content;
+  width: fit-content;
 }
 .social-feeds {
   display: flex;
@@ -737,10 +737,16 @@ h6 {
 
   background-color: powderblue;
 }
-.regis-logo img {
-  transform: scale(0.11);
-  position: absolute;
+.regis-logo-img {
+  width: 28rem;
+  height: 10rem;
+  background: url("https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png");
+  background-size: cover;
+  background-position: center;
 }
+/* .regis-logo-img img {
+  object-fit: contain;
+} */
 
 .input-fields {
   display: flex;
@@ -773,9 +779,6 @@ h6 {
 .submit-btn {
   display: flex;
   justify-content: center;
-}
-#gender-div {
-  display: flex;
 }
 
 .card-body {
@@ -829,18 +832,19 @@ h6 {
 }
 
 /*  */
-
+.down-regis {
+  width: 100%;
+}
+.resources-student-big-div {
+  width: 100%;
+}
 .content-div {
   background-color: powderblue;
-  min-height: fit-content;
+  height: fit-content;
   padding: 6rem;
+  width: 100vw;
   padding-top: 8rem;
   padding-bottom: 0;
-}
-
-.regis-content-div {
-  padding-top: 2rem;
-  padding-left: 8rem;
 }
 
 .content-title h2 {
@@ -940,7 +944,7 @@ img.no-style {
 #make-radius {
   border-radius: 2rem;
 }
-
+/*
 @media screen and (max-width: 1470px) {
   .container-info img {
     transform: translateX(30rem);
@@ -1073,5 +1077,124 @@ img.no-style {
   .insta-card {
     max-height: 30rem;
     transform: scale(0.8);
+  }
+} */
+
+@media (max-width: 500px) {
+  .navbar-brand img {
+    width: 15%;
+
+    margin-left: 1rem;
+    height: auto;
+  }
+  .navbar-brand,
+  .nav-right {
+    all: initial;
+  }
+  .navbar-brand p {
+    display: none;
+  }
+  .home-first {
+    display: flex;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 2rem;
+    flex-direction: column;
+    align-items: start;
+    flex-wrap: wrap;
+  }
+  .home-first p {
+    font-size: 2rem !important;
+  }
+  .home-first img {
+    transform: translateX(0);
+    width: 100%;
+  }
+  .div-firstimg {
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  .home-second h1 {
+    font-size: 1.5rem;
+  }
+  .btns-connect {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50rem;
+  }
+  #con-btn {
+    margin-left: 0;
+  }
+  #emailp {
+    font-size: 1rem;
+  }
+  .home-fourth h1 {
+    font-size: 2rem;
+  }
+
+  .slidi img {
+    padding-left: 4rem;
+  }
+  .stat-poster {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .stat-poster h4 {
+    font-size: 1.3rem;
+    color: rgb(50, 96, 97) !important;
+  }
+  .container-info {
+    padding: 3rem;
+  }
+  .container-info h1 {
+    text-align: start;
+
+    padding-bottom: 2rem;
+  }
+  #carouselExampleAutoplaying {
+    width: 100% !important;
+    height: fit-content;
+  }
+  .carousel-item {
+    width: 100%;
+    height: 15rem;
+  }
+  #carouselExampleAutoplaying img {
+    height: 15rem;
+    width: 20rem !important;
+  }
+  .two-cards-card {
+    width: 100%;
+    padding: 0;
+  }
+  .beyond-placement img {
+    width: auto !important;
+    height: 15rem !important;
+    transform: translate(0);
+  }
+  .social-feeds {
+    flex-wrap: wrap;
+  }
+  .twitter-card {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+  .insta-card {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+  }
+  .footer-div {
+    padding: 0;
+  }
+  .footer-card {
+    margin-bottom: 2rem;
+    padding: 0 0;
+    width: 100%;
   }
 }
