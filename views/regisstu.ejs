@@ -1,15 +1,14 @@
 <%layout("/layouts/boilerplate.ejs")%>
 <link rel="stylesheet" href="/style.css" />
 <div class="regis-big-div">
-  <div class="regis-logo">
-    <a href="/">
-      <div class="regis-logo-img">
-        <!-- <img
-        src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
-        alt=""
-      /> -->
-      </div>
-    </a>
+   <div class="left-login">
+    <div class="pop-out">
+      <a href="/"
+        ><img
+          src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
+          alt=""
+      /></a>
+    </div>
   </div>
   <form
     novalidate
@@ -378,7 +377,7 @@
 
                 <div class="form-group">
                   <label for="presentaddress">Present Address</label>
-                  <input
+                  <textarea
                     type="text"
                     value=""
                     class="form-control"
@@ -387,6 +386,8 @@
                     name="presentaddress"
                     placeholder="Present Address"
                   />
+</textarea>
+
                 </div>
 
                 <div class="form-group">
@@ -459,13 +460,13 @@
 
                 <div class="form-group">
                   <label for="presentaddressp">Permanent Address</label>
-                  <input
+                  <textarea
                     type="text"
                     class="form-control"
                     required
                     id="presentaddressp"
                     placeholder="Permanent Address"
-                  />
+                  /></textarea>
                 </div>
 
                 <div class="form-group">

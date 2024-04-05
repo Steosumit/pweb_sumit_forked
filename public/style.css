@@ -527,10 +527,15 @@ h6 {
 .news-title {
   text-align: center;
 }
+/* team page */
 
 /*  */
+
+.big-div-team {
+  background-color: seashell;
+}
 .team-banner {
-  background-color: black;
+  background-color: #00539c;
   min-height: 50vh;
 
   color: white;
@@ -546,6 +551,7 @@ h6 {
   font-size: 3.5rem;
 
   font-weight: 800;
+  text-shadow: dodgerblue 2px 2px;
   text-align: center;
 }
 
@@ -553,25 +559,42 @@ h6 {
   font-weight: 300;
   text-align: center;
 }
+.team-a {
+  background-color: powderblue;
+  padding-bottom: 5rem;
+}
+.team-b {
+  padding-bottom: 5rem;
+  background-color: seashell;
+}
+.team-a h1,
+.team-b h1 {
+  background-color: blanchedalmond;
 
+  padding: 1rem;
+}
 .team-cards {
-  min-height: 70vh;
+  height: fit-content;
   display: flex;
 
   padding-top: 1rem;
-  padding-bottom: 6rem;
+  /* padding-bottom: 6rem; */
   justify-content: center;
 }
 .team-title {
   font-size: 2rem;
-  color: black;
+  color: #00539c;
+  text-shadow: dodgerblue 1px 1px;
   font-weight: 800;
   text-align: center;
 }
 
 .person img {
-  width: 25rem;
-  border-radius: 40%;
+  width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 30%;
+  border: blanchedalmond thick solid;
 }
 .person {
   width: 50rem;
@@ -579,6 +602,41 @@ h6 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* connect us page  */
+
+/*  */
+.contactus {
+  background-color: #242424;
+  height: fit-content;
+
+  padding: 0rem;
+  padding-bottom: 5rem;
+  color: white;
+}
+.team-banner {
+  width: 100%;
+  background-color: black;
+}
+
+.contactus h1 {
+  text-align: center;
+  padding-top: 5rem;
+}
+
+.map-div {
+  display: flex;
+  padding-top: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+iframe {
+  border-radius: 2rem;
+  width: 80%;
+  height: 30rem;
+  margin-bottom: 3rem;
 }
 
 /* moving logos */
@@ -842,9 +900,12 @@ h6 {
   background-color: powderblue;
   height: fit-content;
   padding: 6rem;
-  width: 100vw;
+  width: 100%;
   padding-top: 8rem;
   padding-bottom: 0;
+}
+#policy-lines {
+  margin-top: 2rem;
 }
 
 .content-title h2 {
@@ -911,29 +972,6 @@ h6 {
   line-height: 2rem;
   margin-bottom: 0;
 }
-
-/*  */
-.contactus {
-  background-color: #242424;
-  height: 130vh;
-
-  padding: 0rem;
-  color: white;
-}
-
-.contactus h1 {
-  text-align: center;
-  padding-top: 5rem;
-}
-.contact-cont {
-  display: flex;
-}
-.contact-cont img {
-  height: 60%;
-  width: 40%;
-}
-
-/* */
 
 img.no-style {
   all: initial;
@@ -1105,6 +1143,7 @@ img.no-style {
   }
   .home-first p {
     font-size: 2rem !important;
+    padding-top: 5rem;
   }
   .home-first img {
     transform: translateX(0);
@@ -1196,5 +1235,106 @@ img.no-style {
     margin-bottom: 2rem;
     padding: 0 0;
     width: 100%;
+  }
+  .login-big-div {
+    all: initial;
+  }
+  .left-login {
+    width: 100%;
+  }
+  .left-login div {
+    all: initial;
+    height: 10rem;
+    display: flex;
+    align-items: center;
+  }
+  .left-login img {
+    transform: scale(1);
+    width: 20rem;
+  }
+  .right-login {
+    width: 100%;
+    padding: 2rem;
+  }
+  .right-login h2 {
+    text-align: center;
+  }
+  .regis-content-div {
+    padding: 0;
+    padding-top: 2rem;
+  }
+  .banner {
+    height: fit-content;
+  }
+  .banner h1 {
+    padding: 2rem;
+  }
+  .btns-container {
+    flex-wrap: wrap;
+  }
+  .btns-container a {
+    margin: 1rem;
+  }
+  .resources-student-big-div .banner h1 {
+    font-size: 3.3rem;
+    width: 100%;
+  }
+  .resources-student-big-div .banner h4 {
+    text-align: center;
+  }
+  .content-div {
+    padding: 0;
+  }
+  .content-div h2 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0;
+    text-align: center;
+  }
+  .content-div .content-cards {
+    all: initial;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+  }
+  .content-div .card {
+    width: 100%;
+  }
+  .content-div-faq .content-title {
+    padding-bottom: 2rem;
+  }
+
+  .team-banner h2 {
+    font-size: 1.3rem;
+    width: 100%;
+  }
+  .big-div-team img {
+    width: 10rem;
+    object-fit: cover;
+    height: 10rem;
+  }
+  .person {
+    text-align: center;
+  }
+  .person p {
+    font-size: 0.8rem;
+  }
+  .person .socials {
+    margin-top: auto;
+    padding-top: 1rem;
+  }
+  .person .socials a {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  .person h2 {
+    width: 90%;
+  }
+  .team-cards {
+    flex-wrap: wrap;
+  }
+  .contactus .person {
+    margin-bottom: 3rem;
   }
 }
