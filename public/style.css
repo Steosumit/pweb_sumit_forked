@@ -105,20 +105,27 @@ nav {
 }
 
 .home-first .title-name {
-  font-size: 2.5rem;
+  font-size: 3.2rem;
   font-weight: 600;
   margin-left: 5%;
   display: flex;
   width: 50%;
   flex-wrap: wrap;
+  font-style: italic;
+    font-family: "Lobster Two", "Poppins", sans-serif;
+  text-shadow: 3px 3px lavender;
+  text-shadow: 2px 2px darkgray;
   /* text-shadow: white 2px 1px; */
 }
-.title-name span {
+#greet {
   font-size: 2.5rem;
-  font-weight: 300;
+  font-weight: 100;
+  text-shadow: 1px 1px lightskyblue;
+  text-shadow: 2px 2px darkgray;
+
+  font-style: italic;
   color: black;
-  font-family: cursive;
-  /* text-shadow: 1px 1px darkgrey; */
+  font-family: "Lobster Two", "Poppins", sans-serif;
 }
 
 .home-first img {
@@ -126,7 +133,9 @@ nav {
   border-radius: 2rem;
   width: 90%;
   height: 90%;
-  box-shadow: rgb(255, 184, 157) 0px 0px 100px, grey 0px 0px 50px;
+  box-shadow: rgb(10, 215, 238) 0px 0px 60px, grey 0px 0px 100px;
+  box-shadow: rgb(10, 215, 238, 0.6) 0px 0px 80px, grey 0px 10px 50px;
+  box-shadow: rgb(255, 184, 157, 0.9) 0px 0px 100px, lightgray 0px 0px 00px;
 }
 
 /*  */
@@ -141,9 +150,11 @@ nav {
 
 .home-second h1 {
   text-align: center;
+
   margin-top: 1rem;
-  font-size: 2.5rem;
+  font-size: 2.5rem ;
   margin-bottom: 0rem;
+
 }
 
 .btns-connect {
@@ -159,7 +170,7 @@ nav {
 .btns-connect button {
   color: white;
 
-  border: 3px rgba(72, 84, 244, 0.1) solid;
+  /* border: thick rgb(255, 255, 255) solid; */
 
   background-color: midnightblue;
   width: 35%;
@@ -173,15 +184,16 @@ nav {
   border-radius: 1.5rem;
 
   box-shadow: 6px 10px 20px 0rem rgba(15, 22, 108, 0.9);
-  transition: box-shadow 0.2s, opacity 0.5s;
+  transition: box-shadow 0.2s, opacity 0.5s, background-color 0.3s;
   transform: 1s;
 }
 
 .btns-connect button:hover {
-  box-shadow: #4854f4 0px 20px 30px -10px;
-  background-color: #4854f4;
+  box-shadow: rgb(181, 181, 181) 0px 15px 30px -10px;
+  background-color: #fff;
 
-  color: white;
+  color: #4854f4;
+  color: midnightblue;
 }
 
 /*  */
@@ -220,11 +232,14 @@ nav {
   min-height: 3rem;
   font-size: 1.5rem;
   font-weight: 700;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
+.why-cards .card .card-title{
+  color:midnightblue;
+}
 #rdtitle {
   font-size: 1.3rem;
 }
@@ -233,20 +248,23 @@ nav {
   padding-left: 1rem;
   padding-right: 1rem;
   text-align: center;
-  font-size: 0.7rem;
+  font-size: 1rem;
+  color: rgb(112, 37, 60);
 }
 .why-cards .card {
   width: 21rem;
+  cursor: pointer;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 29rem;
+  min-height: 32rem;
   margin: 3rem;
-  border-color: rgb(255, 105, 180, 0.1);
+  border-color: rgb(255, 105, 180, 0.2);
   box-shadow: 0.2rem 0.2rem 2rem pink;
   border-radius: 2rem;
   overflow: hidden;
-  transition: opacity 1s, transform 0.5s;
+  transition: opacity 1s, transform 0.4s;
 }
 
 .stat-poster {
@@ -358,17 +376,17 @@ nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+
+  background-image: url("https://res.cloudinary.com/ddxv0iwcs/image/upload/v1711016540/NFSU_8_Ballistics_Research_and_Testing_Range_lblcxj.jpg");
+  background-size: cover;
+  background-position: center;
 }
-.login-stu {
-  height: 100vh;
-}
-.login-rec {
-  height: 100vh;
-}
+
 .left-login {
   width: 100%;
-  background-color: #ffe3ca;
-  max-height: 10rem;
+  background-color: #433a32;
+  background-color: transparent;
+  max-height: 8rem;
   display: flex;
   justify-content: center;
   overflow: hidden;
@@ -376,7 +394,7 @@ nav {
 }
 
 .left-login img {
-  transform: scale(0.11);
+  transform: scale(0.09);
 }
 
 .right-login {
@@ -387,28 +405,42 @@ nav {
   justify-content: center;
   align-items: center;
 }
+.login-card {
+  background-color: rgb(255, 255, 255, 0.6);
+  color: #0c359e !important;
+  padding: 2rem;
+
+  padding-top: 0;
+  border-radius: 1rem;
+}
+.login-card img {
+  padding: 0.5rem;
+}
 
 .login-card h5,
 h6 {
   text-align: center;
   width: 40%;
   margin-left: auto;
+  color: #0c359e;
   margin-right: auto;
 }
 
 .login-identity {
   border-bottom: #0c359e thick solid;
 }
+/*
 
 .login-card h6 {
   color: #0c359e;
-}
+} */
 
 .login-card button {
   text-align: center;
   margin-left: auto;
   width: 100%;
   background-color: #0c359e;
+  border: none;
   margin-right: auto;
 }
 
@@ -421,13 +453,14 @@ h6 {
   text-align: left;
   padding-left: 10px;
   height: 3rem;
-  border-bottom: #0c359e thin solid;
+  /* border-bottom: #0c359e thin solid; */
 }
 
 .login-card a {
   text-decoration: none;
   width: 100%;
   text-align: center;
+  color: #000;
   color: #0c359e;
   margin-left: auto;
   margin-right: auto;
@@ -437,6 +470,15 @@ h6 {
   text-decoration: underline;
 }
 
+/* new login page  */
+
+#logincard {
+  height: 100vh;
+  background-image: url("https://res.cloudinary.com/ddxv0iwcs/image/upload/v1711016540/NFSU_8_Ballistics_Research_and_Testing_Range_lblcxj.jpg");
+  background-size: cover;
+  background-position: center;
+  padding-top: 3rem;
+}
 /*footer */
 
 .container-big-footer {
@@ -465,6 +507,7 @@ h6 {
 .footer-card .card-title {
   color: black;
   font-size: 2rem;
+  min-height: 6rem !important;
   font-weight: 500;
 }
 
@@ -497,7 +540,7 @@ h6 {
   justify-content: center;
   align-items: center;
 }
-.socials-div p{
+.socials-div p {
   margin-bottom: 0;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
@@ -1164,8 +1207,14 @@ img.no-style {
   }
   .home-first p {
     font-size: 2rem !important;
-    padding-top: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    width: 100% !important;
   }
+  #greet{
+    font-size: 1.5rem;
+  }
+
   .home-first img {
     transform: translateX(0);
     width: 100%;
