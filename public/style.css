@@ -89,9 +89,9 @@ nav {
 .home-first {
   width: 100% !important;
   background-color: #171717;
-  background-color: transparent;
   min-height: 90vh;
   color: black;
+  background-color: transparent;
   background-color: white;
   display: flex;
   align-items: center;
@@ -105,14 +105,15 @@ nav {
 }
 
 .home-first .title-name {
-  font-size: 3.2rem;
+  font-size: 2.5rem;
+  /* font-size: 3.2rem; */
   font-weight: 600;
   margin-left: 5%;
   display: flex;
   width: 50%;
   flex-wrap: wrap;
-  font-style: italic;
-    font-family: "Lobster Two", "Poppins", sans-serif;
+  /* font-style: italic; */
+  /* font-family: "Lobster Two", "Poppins", sans-serif; */
   text-shadow: 3px 3px lavender;
   text-shadow: 2px 2px darkgray;
   /* text-shadow: white 2px 1px; */
@@ -152,9 +153,8 @@ nav {
   text-align: center;
 
   margin-top: 1rem;
-  font-size: 2.5rem ;
+  font-size: 2.5rem;
   margin-bottom: 0rem;
-
 }
 
 .btns-connect {
@@ -189,7 +189,7 @@ nav {
 }
 
 .btns-connect button:hover {
-  box-shadow: rgb(181, 181, 181) 0px 15px 30px -10px;
+  box-shadow: rgb(181, 181, 181) 0px 0px 30px -10px;
   background-color: #fff;
 
   color: #4854f4;
@@ -201,6 +201,7 @@ nav {
 /* why recruit from nfsu? */
 
 #whytitle {
+  text-shadow: 2px 2px lightskyblue;
   text-shadow: 2px 2px rgb(108, 199, 229);
 }
 
@@ -237,8 +238,8 @@ nav {
   flex-direction: column;
   justify-content: center;
 }
-.why-cards .card .card-title{
-  color:midnightblue;
+.why-cards .card .card-title {
+  color: midnightblue;
 }
 #rdtitle {
   font-size: 1.3rem;
@@ -1211,7 +1212,7 @@ img.no-style {
     padding-bottom: 3rem;
     width: 100% !important;
   }
-  #greet{
+  #greet {
     font-size: 1.5rem;
   }
 
