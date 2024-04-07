@@ -407,7 +407,7 @@ nav {
   align-items: center;
 }
 .login-card {
-  background-color: rgb(255, 255, 255, 0.6);
+  background-color: rgb(255, 255, 255, 0.9);
   color: #0c359e !important;
   padding: 2rem;
 
@@ -1309,6 +1309,9 @@ img.no-style {
   }
   .login-big-div {
     all: initial;
+    background-image: url("https://res.cloudinary.com/ddxv0iwcs/image/upload/v1711016540/NFSU_8_Ballistics_Research_and_Testing_Range_lblcxj.jpg");
+    background-size: cover;
+    background-position: center;
   }
   .left-login {
     width: 100%;
@@ -1327,7 +1330,7 @@ img.no-style {
     width: 100%;
     padding: 2rem;
   }
-  .right-login h2 {
+  .right-login h2, .right-login h3 {
     text-align: center;
   }
   .regis-content-div {
