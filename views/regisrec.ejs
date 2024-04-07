@@ -1,11 +1,15 @@
 <%layout("/layouts/boilerplate.ejs")%>
 <link rel="stylesheet" href="/style.css" />
 <div class="regis-big-div">
-  <div class="regis-logo">
-    <img
-      src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
-      alt=""
-    />
+  <div class="left-login">
+    <div class="pop-out">
+      <a href="/"
+        ><img
+          loading="lazy"
+          src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
+          alt=""
+      /></a>
+    </div>
   </div>
   <form
     novalidate
@@ -15,21 +19,46 @@
   >
     <div class="down-regis">
       <div class="resources-student-big-div">
-        <div class="content-div regis-content-div" id="procedure">
+        <div class="content-div regis-content-div">
           <div class="content-title container">
-            <h2 style="text-align: center">Registration : Student</h2>
+            <h2 style="text-align: center">Registration : Recruiter</h2>
             <hr />
             <h2>Personal Details</h2>
             <br />
 
             <div class="input-fields">
               <div class="form-group">
+                <label for="Enrollment">Enrollment No.</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="enrollmentNo"
+                  id="Enrollment"
+                  placeholder="Enrollment No."
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <div class="form-group">
                 <label for="firstname">First Name</label>
                 <input
                   type="text"
                   class="form-control"
+                  name="firstname"
                   id="firstname"
                   placeholder="First Name"
+                  required
+                  value="hehe"
                 />
               </div>
               <div class="form-group">
@@ -37,39 +66,49 @@
                 <input
                   type="text"
                   class="form-control"
+                  name="surname"
                   id="surname"
                   placeholder="Surname"
+                  required
+                  value="hehe"
                 />
               </div>
               <div class="form-group">
-                <label for="surname">Father's Name</label>
+                <label for="fathername">Father's Name</label>
                 <input
                   type="text"
+                  name="fathername"
                   class="form-control"
-                  id="surname"
-                  placeholder="Surname"
+                  id="fathername"
+                  placeholder="Father's Name"
+                  required
+                  value="hehe"
                 />
               </div>
               <div class="form-group">
-                <label for="surname">Mother's Name</label>
+                <label for="mothername">Mother's Name</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="surname"
-                  placeholder="Surname"
+                  id="mothername"
+                  placeholder="Mother's Name"
+                  required
+                  value="eehe"
                 />
               </div>
 
               <div class="card">
                 <div class="card-body">
-                  <p class="regis-card-title">Gender*</p>
-                  <div class="card-text" id="gender-div">
+                  <p class="regis-card-title">Gender</p>
+                  <div class="card-text">
                     <div class="form-check">
                       <input
                         class="form-check-input"
                         type="radio"
                         name="gender"
+                        value="female"
                         id="gender"
+                        required
                       />
                       <label class="form-check-label" for="gender">
                         Female
@@ -79,7 +118,9 @@
                       <input
                         class="form-check-input"
                         type="radio"
+                        value="male"
                         name="gender"
+                        required
                         id="gender2"
                       />
                       <label class="form-check-label" for="gender2">
@@ -90,6 +131,8 @@
                       <input
                         class="form-check-input"
                         type="radio"
+                        value="other"
+                        required
                         name="gender"
                         id="gender3"
                       />
@@ -101,37 +144,44 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="surname">Birth Date</label>
+                <label for="birthdate">Birth Date (DD/MM/YYYY)</label>
                 <input
-                  type="text"
+                  type="date"
                   class="form-control"
-                  id="surname"
-                  placeholder="Surname"
+                  id="birthdate"
+                  name="birthdate"
+                  required
+                  placeholder="DD/MM/YYYY"
+                  value="hehe"
                 />
               </div>
               <div class="card">
                 <div class="card-body">
                   <p class="regis-card-title">Marital Status</p>
-                  <div class="card-text" id="gender-div">
+                  <div class="card-text">
                     <div class="form-check">
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="gender"
-                        id="gender"
+                        id="married"
+                        required
+                        name="maritalstatus"
+                        value="married"
                       />
-                      <label class="form-check-label" for="gender">
+                      <label class="form-check-label" for="married">
                         Married
                       </label>
                     </div>
                     <div class="form-check">
                       <input
                         class="form-check-input"
+                        required
                         type="radio"
-                        name="gender"
-                        id="gender2"
+                        id="unmarried"
+                        value="unmarried"
+                        name="maritalstatus"
                       />
-                      <label class="form-check-label" for="gender2">
+                      <label class="form-check-label" for="unmarried">
                         Unmarried
                       </label>
                     </div>
@@ -139,10 +189,12 @@
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="gender"
-                        id="gender3"
+                        id="separated"
+                        value="separated"
+                        required
+                        name="maritalstatus"
                       />
-                      <label class="form-check-label" for="gender3">
+                      <label class="form-check-label" for="separated">
                         Separated
                       </label>
                     </div>
@@ -154,86 +206,117 @@
                   <p class="regis-card-title">
                     Are you a person with a disability?
                   </p>
-                  <div class="card-text" id="gender-div">
+                  <div class="card-text">
                     <div class="form-check">
                       <input
                         class="form-check-input"
                         type="radio"
-                        name="gender"
-                        id="gender"
+                        value="yes"
+                        name="disability"
+                        id="disableyes"
+                        required
                       />
-                      <label class="form-check-label" for="gender"> YES </label>
+                      <label class="form-check-label" for="disableyes">
+                        YES
+                      </label>
                     </div>
                     <div class="form-check">
                       <input
                         class="form-check-input"
+                        name="disability"
+                        value="no"
+                        required
                         type="radio"
-                        name="gender"
-                        id="gender2"
+                        id="disableno"
                       />
-                      <label class="form-check-label" for="gender2"> NO </label>
+                      <label class="form-check-label" for="disableno">
+                        NO
+                      </label>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="form-group">
-                <label for="surname">Mobile Number</label>
+                <label for="mobno">Mobile Number</label>
                 <input
-                  type="text"
+                  type="tel"
                   class="form-control"
-                  id="surname"
-                  placeholder="Surname"
+                  required
+                  id="mobno"
+                  name="mobileno"
+                  placeholder="Mobile Number"
+                  value="1234554321"
                 />
               </div>
               <div class="form-group">
-                <label for="surname">Confirm Mobile No</label>
+                <label for="altmob">Alternate Mobile No</label>
                 <input
-                  type="text"
+                  type="tel"
                   class="form-control"
-                  id="surname"
-                  placeholder="Surname"
+                  id="altmob"
+                  required
+                  placeholder="Alternate Mobile No"
+                  name="altmobileno"
+                  value="1234554321"
                 />
               </div>
               <div class="form-group">
-                <label for="surname">Email</label>
+                <label for="email">Email</label>
                 <input
-                  type="text"
+                  type="email"
                   class="form-control"
-                  id="surname"
-                  placeholder="Surname"
+                  id="email"
+                  required
+                  name="email"
+                  placeholder="Email"
+                  value="abccba@gmail.com"
                 />
               </div>
               <div class="form-group">
-                <label for="surname">Confirm Email</label>
+                <label for="altemail">Alternate Email </label>
                 <input
-                  type="text"
+                  type="email"
                   class="form-control"
-                  id="surname"
-                  placeholder="Surname"
+                  id="altemail"
+                  placeholder="Alternate  Email "
+                  required
+                  name="altemail"
+                  value="abccba@gmail.com"
                 />
               </div>
               <div class="form-group">
-                <label for="surname">Category Name</label>
-                <input
+                <label for="category">Category Name</label>
+                <select
                   type="text"
+                  required
                   class="form-control"
-                  id="surname"
-                  placeholder="Surname"
-                />
+                  id="category"
+                  name="category"
+                  placeholder="Category Name"
+                >
+                  <option value="ST">ST</option>
+                  <option value="SC">SC</option>
+                  <option value="OBC">OBC</option>
+                  <option value="EWS">EWS</option>
+                  <option value="GENERAL">GENERAL</option>
+                </select>
               </div>
               <div class="form-group">
-                <label for="surname">Nationality</label>
+                <label for="nationality">Nationality</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="surname"
-                  placeholder="Surname"
+                  id="nationality"
+                  required
+                  name="nationality"
+                  placeholder="Nationality"
+                  value="india"
                 />
               </div>
             </div>
           </div>
         </div>
-        <div class="content-div regis-content-div" id="procedure">
+        <div class="content-div regis-content-div">
           <div class="content-title container">
             <hr />
             <h2>Communication Details</h2>
@@ -241,118 +324,197 @@
             <div class="comm-fields">
               <div class="input-fields">
                 <div class="form-group">
-                  <label for="firstname">Present Country</label>
+                  <label for="presentcountry">Present Country</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="firstname"
-                    placeholder="First Name"
+                    required
+                    id="presentcountry"
+                    name="presentcountry"
+                    placeholder="Present Country"
+                    value="hehe"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="surname">Present State</label>
+                  <label for="presentstate">Present State</label>
+
+                  <select
+                    type="text"
+                    value=""
+                    name="presentstate"
+                    required
+                    id="presentstate"
+                    class="form-control"
+                    placeholder="Present State"
+                  >
+                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                    <option value="Andaman and Nicobar Islands">
+                      Andaman and Nicobar Islands
+                    </option>
+                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                    <option value="Assam">Assam</option>
+                    <option value="Bihar">Bihar</option>
+                    <option value="Chandigarh">Chandigarh</option>
+                    <option value="Chhattisgarh">Chhattisgarh</option>
+                    <option value="Dadar and Nagar Haveli">
+                      Dadar and Nagar Haveli
+                    </option>
+                    <option value="Daman and Diu">Daman and Diu</option>
+                    <option value="Delhi">Delhi</option>
+                    <option value="Lakshadweep">Lakshadweep</option>
+                    <option value="Puducherry">Puducherry</option>
+                    <option value="Goa">Goa</option>
+                    <option value="Gujarat">Gujarat</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                    <option value="Jharkhand">Jharkhand</option>
+                    <option value="Karnataka">Karnataka</option>
+                    <option value="Kerala">Kerala</option>
+                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Manipur">Manipur</option>
+                    <option value="Meghalaya">Meghalaya</option>
+                    <option value="Mizoram">Mizoram</option>
+                    <option value="Nagaland">Nagaland</option>
+                    <option value="Odisha">Odisha</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Rajasthan">Rajasthan</option>
+                    <option value="Sikkim">Sikkim</option>
+                    <option value="Tamil Nadu">Tamil Nadu</option>
+                    <option value="Telangana">Telangana</option>
+                    <option value="Tripura">Tripura</option>
+                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                    <option value="Uttarakhand">Uttarakhand</option>
+                    <option value="West Bengal">West Bengal</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="presentdistrict">Present District</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="surname"
-                    placeholder="Surname"
+                    id="presentdistrict"
+                    name="presentdistrict"
+                    value="hehe"
+                    required
+                    placeholder="Present District"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="surname">Present District</label>
+                  <label for="Landmark">Landmark</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="surname"
-                    placeholder="Surname"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="surname">City/Village/Landmark</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="surname"
-                    placeholder="Surname"
+                    id="Landmark"
+                    name="landmark"
+                    required
+                    value="jeje"
+                    placeholder="Landmark"
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="surname">Present Address</label>
-                  <input
+                  <label for="presentaddress">Present Address</label>
+                  <textarea
                     type="text"
+                    value="hehe"
                     class="form-control"
-                    id="surname"
-                    placeholder="Surname"
-                  />
+                    id="presentaddress"
+                    required
+                    name="presentaddress"
+                    placeholder="Present Address"
+                  >
+                  </textarea>
                 </div>
 
                 <div class="form-group">
-                  <label for="surname">Pincode/Zipcode</label>
+                  <label for="Pincode">Pincode/Zipcode</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
-                    id="surname"
-                    placeholder="Surname"
+                    value="123322"
+                    id="Pincode"
+                    required
+                    name="pincode"
+                    placeholder="Pincode"
                   />
                 </div>
               </div>
-              insert same as present here
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="addcheck"
+                />
+                <label class="form-check-label" for="addcheck">
+                  Same As Present Address
+                </label>
+              </div>
+
               <div class="input-fields">
                 <div class="form-group">
-                  <label for="firstname">Permanent Country</label>
+                  <label for="presentcountryp">Permanent Country</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="firstname"
-                    placeholder="First Name"
+                    required
+                    id="presentcountryp"
+                    placeholder="Permanent Country"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="surname">Permanent State</label>
+                  <label for="presentstatep">Permanent State</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="surname"
-                    placeholder="Surname"
+                    required
+                    id="presentstatep"
+                    placeholder="Permanent State"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="surname">Permanent District</label>
+                  <label for="presentdistrictp">Permanent District</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="surname"
-                    placeholder="Surname"
+                    id="presentdistrictp"
+                    required
+                    placeholder="Permanent District"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="surname">City/Village/Landmark</label>
+                  <label for="Landmarkp">Landmark</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="surname"
-                    placeholder="Surname"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="surname">Permanent Address</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="surname"
-                    placeholder="Surname"
+                    id="Landmarkp"
+                    placeholder="Landmark"
+                    required
                   />
                 </div>
 
                 <div class="form-group">
-                  <label for="surname">Pincode/Zipcode</label>
-                  <input
+                  <label for="presentaddressp">Permanent Address</label>
+                  <textarea
                     type="text"
                     class="form-control"
-                    id="surname"
-                    placeholder="Surname"
+                    required
+                    id="presentaddressp"
+                    placeholder="Permanent Address"
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="Pincodep">Pincode/Zipcode</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="Pincodep"
+                    placeholder="Pincode"
+                    required
                   />
                 </div>
               </div>
@@ -367,118 +529,39 @@
             <div class="comm-fields">
               <div class="input-fields">
                 <div class="form-group">
-                  <label for="firstname">Present Country</label>
+                  <label for="10th">10th Result</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
-                    id="firstname"
-                    placeholder="First Name"
+                    required
+                    id="10th"
+                    name="tenth"
+                    placeholder="Percentage"
+                    value="12"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="surname">Present State</label>
+                  <label for="12th">12th Result</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
-                    id="surname"
-                    placeholder="Surname"
+                    id="12th"
+                    name="twelth"
+                    required
+                    placeholder="Percentage"
+                    value="12"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="surname">Present District</label>
+                  <label for="lastsemcgpa">Last Sem CGPA</label>
                   <input
-                    type="text"
+                    type="number"
                     class="form-control"
-                    id="surname"
-                    placeholder="Surname"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="surname">City/Village/Landmark</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="surname"
-                    placeholder="Surname"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="surname">Present Address</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="surname"
-                    placeholder="Surname"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="surname">Pincode/Zipcode</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="surname"
-                    placeholder="Surname"
-                  />
-                </div>
-              </div>
-              insert same as present here
-              <div class="input-fields">
-                <div class="form-group">
-                  <label for="firstname">Permanent Country</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="firstname"
-                    placeholder="First Name"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="surname">Permanent State</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="surname"
-                    placeholder="Surname"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="surname">Permanent District</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="surname"
-                    placeholder="Surname"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="surname">City/Village/Landmark</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="surname"
-                    placeholder="Surname"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="surname">Permanent Address</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="surname"
-                    placeholder="Surname"
-                  />
-                </div>
-
-                <div class="form-group">
-                  <label for="surname">Pincode/Zipcode</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="surname"
-                    placeholder="Surname"
+                    id="lastsemcgpa"
+                    name="lastsemcgpa"
+                    placeholder="CGPA"
+                    required
+                    value="82"
                   />
                 </div>
               </div>
@@ -507,15 +590,16 @@
             confirmation on this website.
             <br /><br />
             <div class="form-check">
+              <label class="form-check-label" for="flexCheckDefault">
+                I Agree
+              </label>
               <input
                 class="form-check-input"
+                required
                 type="checkbox"
                 value=""
                 id="flexCheckDefault"
               />
-              <label class="form-check-label" for="flexCheckDefault">
-                Agree
-              </label>
             </div>
             <br />
             <div class="submit-btn">
@@ -527,3 +611,55 @@
     </div>
   </form>
 </div>
+
+<script>
+  // JavaScript for form validation
+  (function () {
+    "use strict";
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll(".needs-validation");
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
+
+<script>
+  function copyPresentAddress() {
+    var presentcountry = document.getElementById("presentcountry").value;
+    var presentstate = document.getElementById("presentstate").value;
+    var presentdistrict = document.getElementById("presentdistrict").value;
+    var Landmark = document.getElementById("Landmark").value;
+    var presentaddress = document.getElementById("presentaddress").value;
+    var Pincode = document.getElementById("Pincode").value;
+    document.getElementById("presentcountryp").value = presentcountry;
+    document.getElementById("presentstatep").value = presentstate;
+    document.getElementById("presentdistrictp").value = presentdistrict;
+    document.getElementById("Landmarkp").value = Landmark;
+    document.getElementById("presentaddressp").value = presentaddress;
+    document.getElementById("Pincodep").value = Pincode;
+  }
+  document.getElementById("addcheck").addEventListener("change", function () {
+    if (this.checked) {
+      copyPresentAddress();
+    } else {
+      document.getElementById("presentcountryp").value = "";
+      document.getElementById("presentstatep").value = "";
+      document.getElementById("presentdistrictp").value = "";
+      document.getElementById("Landmarkp").value = "";
+      document.getElementById("presentaddressp").value = "";
+      document.getElementById("Pincodep").value = "";
+    }
+  });
+</script>

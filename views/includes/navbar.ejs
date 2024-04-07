@@ -5,12 +5,16 @@
         src="https://upload.wikimedia.org/wikipedia/en/9/96/National_Forensic_Sciences_University_Logo.png"
         alt="Logo"
         id="logo"
+        loading="lazy"
         width="65"
         height="80"
         class="d-inline-block align-text-top nav-img"
       />
-      <p>National Forensic Sciences University</p></a
-    >
+      <p>
+        School of Cyber Security & Digital Forensics <br />
+        Placement Cell
+      </p>
+    </a>
     <div class="nav-right">
       <button
         class="navbar-toggler"
@@ -34,12 +38,43 @@
           </h5>
           <button
             type="button"
+            id="offset-close-btn"
             class="btn-close btn-close-white"
             data-bs-dismiss="offcanvas"
             aria-label="Close"
           ></button>
         </div>
         <div class="offcanvas-body">
+          <%if(isAuthenticated == true){%>
+          <div class="dropdown profile-icon-div">
+            <div
+              data-bs-toggle="dropdown"
+              style="
+                background-image: url(https://cdn-icons-png.flaticon.com/512/2919/2919906.png);
+                background-size: cover;
+                width: 3rem;
+                height: 3rem;
+                margin-right: 2rem;
+              "
+            >
+              <!-- <img src="" width="40" alt="" /> -->
+            </div>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="/account" style="color: brown"
+                  >Your Account</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="/logout" style="color: brown"
+                  >Sign Out</a
+                >
+              </li>
+            </ul>
+          </div>
+          <%}%>
           <a href="/" id="home-link">Home</a>
           <br /><br />
           <div class="nav-item dropdown">
@@ -55,12 +90,12 @@
             <ul class="dropdown-menu dropdown-menu-light">
               <li>
                 <a class="dropdown-item" href="/login-student"
-                  >Students Login</a
+                  >Students Registration/Login</a
                 >
               </li>
               <hr />
               <li>
-                <a class="dropdown-item" href="/student">Prep Resources</a>
+                <a class="dropdown-item" href="/student">Placement Guide</a>
               </li>
               <hr />
               <li>
@@ -98,7 +133,7 @@
               </li>
               <hr />
               <li>
-                <a class="dropdown-item" href="/resrec">Resources</a>
+                <a class="dropdown-item" href="/resrec">Placement Guide</a>
               </li>
               <hr />
               <li>
@@ -109,10 +144,23 @@
                 >
               </li>
               <hr />
-              <li><a class="dropdown-item" href="#">Brochures</a></li>
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  target="_blanck"
+                  href="https://drive.google.com/file/d/1YvE0lrTKEuKmyUXaOqCv6M1b6NhdvwKU/view?usp=drive_link"
+                  >Placement Brochures</a
+                >
+              </li>
               <hr />
               <li>
-                <a class="dropdown-item" href="#">Departmental Brochures</a>
+                <a
+                  class="dropdown-item"
+                  target="_blanck"
+                  href="https://drive.google.com/file/d/1e_QMXMciDL3Aww2l9zxzcqHvz9DMKlAL/view?usp=drive_link"
+                  >Departmental Brochures</a
+                >
               </li>
               <hr />
               <li><a class="dropdown-item" href="/resrec#faq">FAQs</a></li>
@@ -123,3 +171,13 @@
     </div>
   </div>
 </nav>
+
+<script>
+  let offsetCloseBtn = document.getElementById("offset-close-btn");
+  let dropdownItems = document.querySelectorAll(".dropdown-item");
+  dropdownItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      offsetCloseBtn.click();
+    });
+  });
+</script>

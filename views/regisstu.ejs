@@ -1,10 +1,10 @@
 <%layout("/layouts/boilerplate.ejs")%>
 <link rel="stylesheet" href="/style.css" />
 <div class="regis-big-div">
-   <div class="left-login">
+  <div class="left-login">
     <div class="pop-out">
       <a href="/"
-        ><img
+        ><img      loading="lazy"
           src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
           alt=""
       /></a>
@@ -27,6 +27,28 @@
 
             <div class="input-fields">
               <div class="form-group">
+                <label for="Enrollment">Enrollment No.</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="enrollmentNo"
+                  id="Enrollment"
+                  placeholder="Enrollment No."
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="password"
+                  id="password"
+                  placeholder="Password"
+                  required
+                />
+              </div>
+              <div class="form-group">
                 <label for="firstname">First Name</label>
                 <input
                   type="text"
@@ -35,6 +57,7 @@
                   id="firstname"
                   placeholder="First Name"
                   required
+                  value="hehe"
                 />
               </div>
               <div class="form-group">
@@ -46,6 +69,7 @@
                   id="surname"
                   placeholder="Surname"
                   required
+                  value="hehe"
                 />
               </div>
               <div class="form-group">
@@ -57,6 +81,7 @@
                   id="fathername"
                   placeholder="Father's Name"
                   required
+                  value="hehe"
                 />
               </div>
               <div class="form-group">
@@ -67,6 +92,7 @@
                   id="mothername"
                   placeholder="Mother's Name"
                   required
+                  value="eehe"
                 />
               </div>
 
@@ -79,6 +105,7 @@
                         class="form-check-input"
                         type="radio"
                         name="gender"
+                        value="female"
                         id="gender"
                         required
                       />
@@ -90,6 +117,7 @@
                       <input
                         class="form-check-input"
                         type="radio"
+                        value="male"
                         name="gender"
                         required
                         id="gender2"
@@ -102,6 +130,7 @@
                       <input
                         class="form-check-input"
                         type="radio"
+                        value="other"
                         required
                         name="gender"
                         id="gender3"
@@ -122,6 +151,7 @@
                   name="birthdate"
                   required
                   placeholder="DD/MM/YYYY"
+                  value="hehe"
                 />
               </div>
               <div class="card">
@@ -180,6 +210,7 @@
                       <input
                         class="form-check-input"
                         type="radio"
+                        value="yes"
                         name="disability"
                         id="disableyes"
                         required
@@ -192,6 +223,7 @@
                       <input
                         class="form-check-input"
                         name="disability"
+                        value="no"
                         required
                         type="radio"
                         id="disableno"
@@ -212,6 +244,7 @@
                   id="mobno"
                   name="mobileno"
                   placeholder="Mobile Number"
+                  value="1234554321"
                 />
               </div>
               <div class="form-group">
@@ -223,6 +256,7 @@
                   required
                   placeholder="Alternate Mobile No"
                   name="altmobileno"
+                  value="1234554321"
                 />
               </div>
               <div class="form-group">
@@ -234,6 +268,7 @@
                   required
                   name="email"
                   placeholder="Email"
+                  value="abccba@gmail.com"
                 />
               </div>
               <div class="form-group">
@@ -245,6 +280,7 @@
                   placeholder="Alternate  Email "
                   required
                   name="altemail"
+                  value="abccba@gmail.com"
                 />
               </div>
               <div class="form-group">
@@ -273,6 +309,7 @@
                   required
                   name="nationality"
                   placeholder="Nationality"
+                  value="india"
                 />
               </div>
             </div>
@@ -294,6 +331,7 @@
                     id="presentcountry"
                     name="presentcountry"
                     placeholder="Present Country"
+                    value="hehe"
                   />
                 </div>
                 <div class="form-group">
@@ -357,7 +395,7 @@
                     class="form-control"
                     id="presentdistrict"
                     name="presentdistrict"
-                    value=""
+                    value="hehe"
                     required
                     placeholder="Present District"
                   />
@@ -370,7 +408,7 @@
                     id="Landmark"
                     name="landmark"
                     required
-                    value=""
+                    value="jeje"
                     placeholder="Landmark"
                   />
                 </div>
@@ -379,15 +417,14 @@
                   <label for="presentaddress">Present Address</label>
                   <textarea
                     type="text"
-                    value=""
+                    value="hehe"
                     class="form-control"
                     id="presentaddress"
                     required
                     name="presentaddress"
                     placeholder="Present Address"
-                  />
-</textarea>
-
+                  >
+                  </textarea>
                 </div>
 
                 <div class="form-group">
@@ -395,7 +432,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    value=""
+                    value="123322"
                     id="Pincode"
                     required
                     name="pincode"
@@ -466,7 +503,7 @@
                     required
                     id="presentaddressp"
                     placeholder="Permanent Address"
-                  /></textarea>
+                  ></textarea>
                 </div>
 
                 <div class="form-group">
@@ -499,6 +536,7 @@
                     id="10th"
                     name="tenth"
                     placeholder="Percentage"
+                    value="12"
                   />
                 </div>
                 <div class="form-group">
@@ -510,6 +548,7 @@
                     name="twelth"
                     required
                     placeholder="Percentage"
+                    value="12"
                   />
                 </div>
                 <div class="form-group">
@@ -521,6 +560,7 @@
                     name="lastsemcgpa"
                     placeholder="CGPA"
                     required
+                    value="82"
                   />
                 </div>
               </div>

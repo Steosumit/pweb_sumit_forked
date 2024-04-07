@@ -17,6 +17,9 @@ nav {
   box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 1);
 }
 
+.navbar .dropdown-item {
+  font-weight: 500;
+}
 .navbar-brand {
   margin-left: 2rem;
   display: flex;
@@ -88,7 +91,8 @@ nav {
   background-color: #171717;
   background-color: transparent;
   min-height: 90vh;
-  color: white;
+  color: black;
+  background-color: white;
   display: flex;
   align-items: center;
   padding-bottom: 3rem;
@@ -102,17 +106,19 @@ nav {
 
 .home-first .title-name {
   font-size: 2.5rem;
-  font-weight: 500;
+  font-weight: 600;
   margin-left: 5%;
   display: flex;
   width: 50%;
   flex-wrap: wrap;
-  text-shadow: black 2px 2px;
+  /* text-shadow: white 2px 1px; */
 }
 .title-name span {
-  font-size: 1rem;
-  font-weight: 400;
-  color: white;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: black;
+  font-family: cursive;
+  /* text-shadow: 1px 1px darkgrey; */
 }
 
 .home-first img {
@@ -120,6 +126,7 @@ nav {
   border-radius: 2rem;
   width: 90%;
   height: 90%;
+  box-shadow: rgb(255, 184, 157) 0px 0px 100px, grey 0px 0px 50px;
 }
 
 /*  */
@@ -223,8 +230,9 @@ nav {
 }
 
 .why-cards .card .card-text {
-  margin-left: 1rem;
-  margin-right: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  text-align: center;
   font-size: 0.7rem;
 }
 .why-cards .card {
@@ -294,9 +302,9 @@ nav {
 .container-info img {
   border-radius: 2rem;
   width: 80%;
-  transform: translateX(50rem);
+  /* transform: translateX(50rem); */
   opacity: 0;
-  transition: transform 1s, opacity 1s;
+  transition: opacity 1s;
 }
 
 .two-cards {
@@ -314,8 +322,13 @@ nav {
   justify-content: space-between;
   padding-right: 5rem;
 }
+.two-cards-card a {
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
 .two-cards-card p {
   font-size: 1rem;
+  text-align: justify;
 
   font-weight: 400;
   letter-spacing: 0.1rem;
@@ -328,8 +341,8 @@ nav {
   text-shadow: 3px 3px orangered;
 }
 .two-cards-card img {
-  width: 95%;
-  border-radius: 2rem;
+  width: 100%;
+  border-radius: 1.5rem;
   transform: translate(0, 0) !important;
 }
 
@@ -343,6 +356,7 @@ nav {
 
 .login-big-div {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
 }
 .login-stu {
@@ -352,14 +366,12 @@ nav {
   height: 100vh;
 }
 .left-login {
-  width: 30%;
-  height: 100%;
+  width: 100%;
   background-color: #ffe3ca;
-
+  max-height: 10rem;
   display: flex;
   justify-content: center;
   overflow: hidden;
-
   align-items: center;
 }
 
@@ -368,7 +380,7 @@ nav {
 }
 
 .right-login {
-  width: 70%;
+  width: 100%;
   height: 100vh;
 
   display: flex;
@@ -460,7 +472,8 @@ h6 {
   cursor: pointer;
   text-decoration: none;
   color: rgb(0, 0, 0, 0.7);
-  font-size: 1.2rem;
+  color: rgb(140, 28, 28);
+  font-size: 1.1rem;
 }
 .footer-card a:hover {
   color: black;
@@ -483,6 +496,11 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.socials-div p{
+  margin-bottom: 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .socials {
   display: flex;
@@ -769,12 +787,12 @@ iframe {
 /* regis page  */
 
 .regis-big-div {
-  display: flex;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+
   align-items: center;
   overflow: hidden;
-  flex-direction: column;
-  flex-direction: column;
 }
 
 .regis-big-div form {
@@ -1131,6 +1149,9 @@ img.no-style {
   }
   .navbar-brand p {
     display: none;
+  }
+  .profile-icon-div {
+    margin-bottom: 2rem;
   }
   .home-first {
     display: flex;

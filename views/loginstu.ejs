@@ -5,6 +5,7 @@
       <a href="/"
         ><img
           src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
+               loading="lazy"
           alt=""
       /></a>
     </div>
@@ -15,10 +16,10 @@
       <br /><br />
       <h5 class="login-identity"><p>Student</p></h5>
       <br /><br /><br />
-      <form action="#">
-        <input type="text" placeholder="Enrollment No." />
+      <form action="/login-student" method="post">
+        <input type="text" name="username" placeholder="Enrollment No." />
         <br /><br />
-        <input type="password" placeholder="Password" />
+        <input type="password" name="password" placeholder="Password" />
         <br /><br /><br />
         <h6>Forgot Password?</h6>
         <br /><br />

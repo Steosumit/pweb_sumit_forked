@@ -1,7 +1,7 @@
 const { string } = require("joi");
 const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose = require("mongoose");
-const studentSchema = new mongoose.Schema({
+const recruiterSchema = new mongoose.Schema({
   firstname: {
     type: String,
     required: true,
@@ -113,7 +113,7 @@ const studentSchema = new mongoose.Schema({
     maxlength: 3,
   },
 });
-studentSchema.plugin(passportLocalMongoose); //above the below line
-const Student = mongoose.model("Student", studentSchema);
+recruiterSchema.plugin(passportLocalMongoose); //above the below line
+const Recruiter = mongoose.model("Recruiter", recruiterSchema);
 
-module.exports = Student;
+module.exports = Recruiter;

@@ -1,9 +1,8 @@
 <%if(success && success.length){%>
-<br />
 <div
   class="alert alert-success alert-dismissible fade show col-6 mb-0"
   role="alert"
-  style="width: 100%; text-align: center"
+  style="width: 100%; text-align: center;"
 >
   <%=success%>
   <button
@@ -16,11 +15,10 @@
 </div>
 
 <%}%> <%if(error && error.length){%>
-<br />
 <div
   class="alert alert-danger alert-dismissible fade show col-6 mb-0"
   role="alert"
-  style="width: 100%; text-align: center"
+  style="width: 100%; text-align: center;"
 >
   <%=error%>
   <button
@@ -32,9 +30,3 @@
   ></button>
 </div>
 <%}%>
-
-<script>
-  setTimeout(() => {
-    document.getElementById("cross-btn").click();
-  }, 1000);
-</script>
