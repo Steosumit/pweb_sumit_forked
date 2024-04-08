@@ -138,7 +138,6 @@ nav {
   box-shadow: rgb(10, 215, 238, 0.6) 0px 0px 80px, grey 0px 10px 50px;
   box-shadow: rgb(255, 184, 157, 0.9) 0px 0px 100px, lightgray 0px 0px 00px;
 }
-
 /*  */
 .home-second {
   min-height: 60vh;
@@ -410,7 +409,6 @@ nav {
   background-color: rgb(255, 255, 255, 0.9);
   color: #0c359e !important;
   padding: 2rem;
-
   padding-top: 0;
   border-radius: 1rem;
 }
@@ -963,7 +961,7 @@ iframe {
   height: fit-content;
   padding: 6rem;
   width: 100%;
-  padding-top: 8rem;
+  padding-top: 4rem;
   padding-bottom: 0;
 }
 #policy-lines {
@@ -1330,9 +1328,11 @@ img.no-style {
     width: 100%;
     padding: 2rem;
   }
-  .right-login h2, .right-login h3 {
+  .right-login h2,
+  .right-login h3 {
     text-align: center;
   }
+
   .regis-content-div {
     padding: 0;
     padding-top: 2rem;
@@ -1412,3 +1412,6 @@ img.no-style {
     margin-bottom: 3rem;
   }
 }
+
+
+

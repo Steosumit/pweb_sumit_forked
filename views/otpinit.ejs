@@ -1,4 +1,5 @@
 <%layout("/layouts/boilerplate.ejs")%>
+<link rel="stylesheet" href="/style.css" />
 <div class="login-big-div login-stu">
   <!-- <div class="left-login">
     <div class="pop-out">
@@ -22,24 +23,23 @@
         /></a>
       </div>
       <br />
-      <h3>Sign-in to NFSU Placement Portal</h3>
+      <h3 style="text-align: center">
+        Please Verify Your Email for Registration
+      </h3>
       <br /><br />
-      <h5 class="login-identity"><p>Recruiter</p></h5>
-      <br /><br /><br />
-      <form action="/login-student" method="post">
-        <input type="text" name="username" placeholder="Email" />
+      <h5 class="login-identity"><p><%=username%></p></h5>
+      <br /><br />
+      <form action="/sendotp" method="post">
+        <input type="email" name="email" placeholder="Enter Your Email" />
         <br /><br />
-        <input type="password" name="password" placeholder="Password" />
-        <br /><br /><br />
-        <h6>Forgot Password?</h6>
         <br />
-        <button class="btn btn-lg btn-primary" type="submit">Sign-In</button>
+        <button class="btn btn-lg btn-primary" type="submit">Send OTP</button>
       </form>
 
       <br /><br />
-      <div class="register-here">
-        <a href="/otp-initialize/?username=Recruiter">Don't have an account? Register Here</a>
-      </div>
+      <!-- <div class="register-here">
+        <a href="/register/stu">Don't have an account? Register Here</a>
+      </div> -->
     </div>
   </div>
 </div>
