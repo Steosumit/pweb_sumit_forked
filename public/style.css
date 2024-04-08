@@ -376,7 +376,7 @@ nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-
+  height: fit-content;
   background-image: url("https://res.cloudinary.com/ddxv0iwcs/image/upload/v1711016540/NFSU_8_Ballistics_Research_and_Testing_Range_lblcxj.jpg");
   background-size: cover;
   background-position: center;
@@ -394,7 +394,7 @@ nav {
 }
 
 .left-login img {
-  transform: scale(0.09);
+  transform: scale(0.06);
 }
 
 .right-login {
@@ -1412,6 +1412,3 @@ img.no-style {
     margin-bottom: 3rem;
   }
 }
-
-
-
