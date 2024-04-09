@@ -23,14 +23,19 @@
         /></a>
       </div>
       <br />
-      <h3 style="text-align: center">
-        Please Verify Your Email for Registration
-      </h3>
+      <h4 style="text-align: center">
+        Please Verify your Email For Registration
+      </h4>
       <br /><br />
       <h5 class="login-identity"><p><%=username%></p></h5>
       <br /><br />
       <form action="/sendotp" method="post">
-        <input type="email" name="email" placeholder="Enter Your Email" />
+        <input
+          type="email"
+          name="email"
+          style="text-align: center"
+          placeholder="Enter Your Email"
+        />
         <br /><br />
         <br />
         <button class="btn btn-lg btn-primary" type="submit">Send OTP</button>

@@ -6,6 +6,12 @@
 body {
   width: 100%;
 }
+::-webkit-scrollbar {
+  width: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+}
 nav {
   height: 7rem;
   background-color: transparent;
@@ -106,31 +112,25 @@ nav {
 
 .home-first .title-name {
   font-size: 2.5rem;
-  /* font-size: 3.2rem; */
   font-weight: 600;
   margin-left: 5%;
   display: flex;
   width: 50%;
   flex-wrap: wrap;
-  /* font-style: italic; */
-  /* font-family: "Lobster Two", "Poppins", sans-serif; */
-  text-shadow: 3px 3px lavender;
   text-shadow: 2px 2px darkgray;
-  /* text-shadow: white 2px 1px; */
 }
 #greet {
   font-size: 2.5rem;
   font-weight: 100;
   text-shadow: 1px 1px lightskyblue;
   text-shadow: 2px 2px darkgray;
-
   font-style: italic;
   color: black;
   font-family: "Lobster Two", "Poppins", sans-serif;
 }
 
 .home-first img {
-  transform: scale(0.8) translateX(15%);
+  transform: scale(0.82) translateX(15%);
   border-radius: 2rem;
   width: 90%;
   height: 90%;
@@ -250,6 +250,7 @@ nav {
   text-align: center;
   font-size: 1rem;
   color: rgb(112, 37, 60);
+  font-weight: 500;
 }
 .why-cards .card {
   width: 21rem;
@@ -293,7 +294,19 @@ nav {
   font-size: 3rem;
 }
 
-/*  */
+/* gc calendar  */
+#gcoriginal {
+  height: 80vh;
+}
+.gc-calendar iframe {
+  all: initial;
+  width: 100%;
+}
+/* #calendarTitle{
+  font-size: 2rem;
+  padding: 2rem !important;
+  font-family: "Poppins", sans-serif !important;
+} */
 
 /*  */
 .home-third {
@@ -328,6 +341,7 @@ nav {
 .two-cards {
   display: flex;
   width: 100%;
+  padding-top: 2rem;
   background-color: black;
   color: white;
   flex-wrap: wrap;
@@ -521,13 +535,13 @@ h6 {
   color: black;
   text-decoration: underline maroon;
 }
-#map-div {
+#map-div-footer {
   display: flex;
   flex-direction: column;
 }
-#map-div iframe {
+#map-div-footer iframe {
   height: 20rem;
-  border-radius: 10%;
+  border-radius: 5%;
 }
 
 .socials-div {
@@ -559,33 +573,41 @@ h6 {
 }
 
 /* socials*/
+.news {
+  padding-right: 5rem;
+  padding-left: 5rem;
+  /* padding-bottom: 3rem; */
+}
 .twitter-card,
 .insta-card {
-  border: 1px solid #000;
   border-radius: 1rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   /* padding: 20px; */
-  margin: 0 auto; /*Center the card */
-  background-color: #f9f9f9;
+  /*Center the card */
+  /* background-color: #f9f9f9; */
   max-height: 40rem;
   overflow: scroll;
-  margin-right: 2rem;
 }
+/* .linkedin-card {
+  min-width: 40%;
+}
+.linkedin-card iframe {
+  width: 100%;
+  height: 100%;
+} */
 .twitter-card {
   min-width: 50%;
 }
 
-.insta-card {
-  width: fit-content;
-}
 .social-feeds {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .news-title {
   text-align: center;
+  padding-bottom: 5rem;
 }
 /* team page */
 
@@ -611,11 +633,12 @@ h6 {
   font-size: 3.5rem;
 
   font-weight: 800;
-  text-shadow: dodgerblue 2px 2px;
+  /* text-shadow: dodgerblue 2px 2px; */
   text-align: center;
 }
 
 .team-banner h2 {
+  font-size: 1.5rem;
   font-weight: 300;
   text-align: center;
 }
@@ -644,7 +667,7 @@ h6 {
 .team-title {
   font-size: 2rem;
   color: #00539c;
-  text-shadow: dodgerblue 1px 1px;
+  /* text-shadow: dodgerblue 1px 1px; */
   font-weight: 800;
   text-align: center;
 }
@@ -685,19 +708,25 @@ h6 {
   padding-top: 5rem;
 }
 
-.map-div {
+.map-div-contact {
+  width: 100% !important;
   display: flex;
   padding-top: 2rem;
   justify-content: center;
   align-items: center;
 }
-
-iframe {
-  border-radius: 2rem;
+.map-div-contact iframe {
   width: 80%;
   height: 30rem;
   margin-bottom: 3rem;
 }
+
+/* iframe { */
+/* border-radius: 2rem; */
+/* width: 80%;
+  height: 30rem;
+  margin-bottom: 3rem; */
+/* } */
 
 /* moving logos */
 
@@ -1009,6 +1038,10 @@ iframe {
   text-align: center;
 }
 
+.beyond-placement {
+  padding-bottom: 6rem;
+}
+
 /* faq */
 
 .content-cards .cardfaq {
@@ -1204,10 +1237,13 @@ img.no-style {
     align-items: start;
     flex-wrap: wrap;
   }
+  .home-first .row {
+    width: 100%;
+  }
   .home-first p {
     font-size: 2rem !important;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding-top: 2rem !important;
+    padding-bottom: 4rem !important;
     width: 100% !important;
   }
   #greet {
@@ -1278,25 +1314,34 @@ img.no-style {
     width: 100%;
     padding: 0;
   }
+
   .beyond-placement img {
     width: auto !important;
     height: 15rem !important;
+
     transform: translate(0);
+  }
+  .news {
+    padding: 2.5rem;
+    padding-top: 0rem;
   }
   .social-feeds {
     flex-wrap: wrap;
   }
+
+  .insta-card,
+  .linkedin-card,
   .twitter-card {
     margin: 0;
     width: 100%;
     padding: 0;
     margin-bottom: 2rem;
+    overflow: scroll;
   }
-  .insta-card {
-    margin: 0;
-    width: 100%;
-    padding: 0;
+  .linkedin-card {
+    height: 30rem;
   }
+
   .footer-div {
     padding: 0;
   }

@@ -24,20 +24,20 @@
         /></a>
       </div>
       <br />
-      <h3 style="text-align: center">Please Enter the OTP for Registration</h3>
+      <h4 style="text-align: center">Please Enter the OTP For Registration</h4>
       <br /><br />
       <h5 class="login-identity"><p><%=username%></p></h5>
-      <br /><br />
+
       <form action="/otp-verify" method="post">
-        <br />
+
         <input
           type="email"
-          style="display: none"
+          style="display: none;"
           name="email"
           value="<%=email%>"
         />
         <br /><br />
-        <input type="tel" name="otp" placeholder="Enter the OTP" />
+        <input type="tel" name="otp" style="text-align: center;" placeholder="Enter the OTP" />
         <br /><br />
         <br />
         <button class="btn btn-lg btn-primary" type="submit">Verify</button>

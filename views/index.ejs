@@ -2,13 +2,20 @@
 <div class="home-big-div">
   <div class="back-photo">
     <div class="home-first">
-      <p class="title-name pop-out">
-        <span id="greet"> Greetings from,</span>
-        The School of <br />
-        Cyber Security and <br />
-        Digital Forensics
-        <br />
-      </p>
+      <div class="row g-0 title-name">
+        <div class="col-12 pop-out">
+          <span id="greet"> Greetings from,</span>
+        </div>
+
+        <div class="col-12">
+          <p class="pop-out">
+            The School of <br />
+            Cyber Security and <br />
+            Digital Forensics
+            <br />
+          </p>
+        </div>
+      </div>
 
       <div class="pop-out">
         <!-- <img
@@ -27,6 +34,7 @@
       </div>
     </div>
   </div>
+
   <div class="home-second">
     <div>
       <h1 class="pop-out connect-h1">Connect us Through</h1>
@@ -155,7 +163,7 @@
           <p class="card-text">
             NFSU Gandhinagar is home to the Brightest individuals in India who
             have been Accepted through a rigorous screening procedure like Jee
-            Mains, Clat etc.
+            Mains, GATE etc.
           </p>
           <br />
         </div>
@@ -168,6 +176,7 @@
       <div class="card pop-out">
         <img
           loading="lazy"
+          src="https://media.licdn.com/dms/image/D4D22AQHvwrxiScJ8lw/feedshare-shrink_1280/0/1698143264358?e=1715817600&v=beta&t=ffKiSyp0Yd53XUWhroSVhMxk4LFNHX7LhDhhJtKeDh0"
           src="https://static.pib.gov.in/WriteReadData/userfiles/image/image0025AAX.jpg"
           class="card-img-top"
           height="250"
@@ -311,6 +320,27 @@
       <h4 class="pop-out">Students Successfully Recruited</h4>
     </div>
   </div>
+  <div class="gc-calendar">
+    <!-- <iframe
+      src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&bgcolor=%23ffffff&hl=en_GB&title=THE%20PLACEMENT%20CELL'S%20SCHEDULE&src=c21pbGUuaXRzYWRpbEBnbWFpbC5jb20&src=Y19jbGFzc3Jvb21kY2NiZmMxOUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb201OTE3OTA4ZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb200MTM4NGJlNEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y2xhc3Nyb29tMTA3MTAxNjg1MzY2NzcxNTAzNzQxQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb21iNzE4NDAxMkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb200MGQ5Y2ExMUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4uaW5kaWFuI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb21iZGViOGRlOEBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb200YWQwZTEwMkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y19jbGFzc3Jvb202ZTZiMzgyMUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5&color=%230047a8&color=%230047a8&color=%230047a8&color=%230047a8&color=%2333B679&color=%23137333&color=%23007b83&color=%230B8043&color=%230047a8&color=%230047a8&color=%230047a8"
+      style="border-width: 0"
+      frameborder="0"
+      id="gcoriginal"
+      scrolling="no"
+    ></iframe> -->
+    <iframe
+      src="https://embed.styledcalendar.com/#oE33p70wdpD5w82hNY6A"
+      title="Styled Calendar"
+      class="styled-calendar-container"
+      style="width: 100%; border: none"
+      data-cy="calendar-embed-iframe"
+    ></iframe>
+    <script
+      async
+      type="module"
+      src="https://embed.styledcalendar.com/assets/parent-window.js"
+    ></script>
+  </div>
   <div class="home-third">
     <div class="container container-info">
       <h1>The World's First Forensic Sciences University.</h1>
@@ -427,7 +457,6 @@
 
       <br /><br /><br /><br /><br /><br />
       <hr />
-      <br />
 
       <!-- <h1>Center of Excellence in Cybersecurity & Digital Forensics</h1>
       <p>
@@ -443,7 +472,7 @@
       "
         alt=""
       /> -->
-      <div class="two-cards container">
+      <div class="two-cards container" id="two-cards-container">
         <div class="two-cards-card">
           <div>
             <h1>
@@ -547,42 +576,61 @@
           alt="NFSU Poster..."
         />
       </div>
-      <br /><br /><br /><br /><br /><br />
-      <br />
-
-      <h2 class="news-title pop-out">News@NFSU</h2>
-      <br /><br /><br /><br /><br /><br />
-
-      <div class="social-feeds">
-        <div class="twitter-card pop-out">
-          <!-- Paste the Twitter embed code here -->
-          <a class="twitter-timeline" href="https://twitter.com/NFSU_Official"
-            >Please Wait...</a
-          >
-          <script
-            async
-            src="https://platform.twitter.com/widgets.js"
-            charset="utf-8"
-          ></script>
-        </div>
-        <div class="insta-card pop-out">
-          <!-- Paste the Instagram embed code here -->
-          <blockquote
-            class="instagram-media"
-            data-instgrm-permalink="https://www.instagram.com/p/C4Aa2klMjQl/?igsh=YzljYTk1ODg3Zg=="
-            data-instgrm-version="13"
-          ></blockquote>
-          <blockquote
-            class="instagram-media"
-            data-instgrm-permalink="https://www.instagram.com/p/C3u1HwvsMOU/?igsh=YzljYTk1ODg3Zg=="
-            data-instgrm-version="13"
-          ></blockquote>
-          <script async src="//www.instagram.com/embed.js"></script>
-        </div>
-      </div>
-      <br /><br /><br /><br /><br />
     </div>
   </div>
+</div>
+<div class="news">
+  <br /><br /><br />
+  <br />
+
+  <h2 class="news-title pop-out">News@NFSU</h2>
+
+  <div class="social-feeds">
+    <div class="twitter-card pop-out">
+      <!-- Paste the Twitter embed code here -->
+      <a
+        class="twitter-timeline"
+        href="https://twitter.com/NFSU_Official?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+        >Please Wait...</a
+      >
+      <script
+        async
+        src="https://platform.twitter.com/widgets.js"
+        charset="utf-8"
+      ></script>
+    </div>
+    <!-- <div class="linkedin-card pop-out">
+      <iframe
+        src="https://www.linkedin.com/embed/feed/update/urn:li:share:7183402634341462016"
+        frameborder="0"
+        allowfullscreen=""
+        title="Embedded post"
+      ></iframe>
+
+    </div> -->
+
+    <div class="insta-card pop-out">
+      <!-- Paste the Instagram embed code here -->
+      <blockquote
+        class="instagram-media"
+        data-instgrm-permalink="https://instagram.com/p/C4ib2PyvN28/?img_index=1"
+        data-instgrm-version="13"
+      ></blockquote>
+      <blockquote
+        class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/C4dSJ42twiY/?img_index=1"
+        data-instgrm-version="13"
+      ></blockquote>
+      <blockquote
+        class="instagram-media"
+        data-instgrm-permalink="https://www.instagram.com/p/C3u1HwvsMOU/?igsh=YzljYTk1ODg3Zg=="
+        data-instgrm-version="13"
+      ></blockquote>
+
+      <script async src="//www.instagram.com/embed.js"></script>
+    </div>
+  </div>
+  <br /><br /><br /><br /><br />
 </div>
 
 <script>
