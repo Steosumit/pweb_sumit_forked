@@ -8,9 +8,7 @@ body {
 }
 ::-webkit-scrollbar {
   width: 0;
-  /* Remove scrollbar space */
   background: transparent;
-  /* Optional: just make scrollbar invisible */
 }
 nav {
   height: 7rem;
@@ -20,6 +18,7 @@ nav {
   color: white;
   background-color: #171717;
   background-color: rgb(0, 0, 0, 01);
+  background-color: #000000;
   box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 1);
 }
 

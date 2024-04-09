@@ -1,0 +1,598 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student portal</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <style>
+      /* body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffffff;
+        } */
+      .swiper {
+        width: 100%;
+      }
+      .swiper-wrapper {
+        width: 100%;
+        height: 20em;
+        display: flex;
+        align-items: center;
+      }
+      .card {
+        width: 20em;
+        height: 80%;
+        background-color: #ffffff;
+        border-radius: 2em;
+        box-shadow: 0 0 2em rgba(0, 0, 0, 0.2);
+        padding: 2em 1em;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin: 0 2em;
+      }
+      .swiper-slide:not(.swiper-slide-active) {
+        filter: blur(1px);
+      }
+      .card_image {
+        width: 5em;
+        height: 5em;
+        border-radius: 50%;
+        border: 5px solid #9176ff;
+        padding: 3px;
+        margin-bottom: 2em;
+      }
+      .card_image img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+      .card_content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+      .card_title {
+        font-size: 1.5em;
+        font-weight: 500;
+        position: relative;
+        top: 0.2em;
+      }
+      .card_name {
+        color: #9176ff;
+      }
+      .card_text {
+        text-align: center;
+        font-size: 1.2em;
+        margin: 1em 0;
+      }
+      .card_btn {
+        background-color: #9176ff;
+        color: #ffffff;
+        font-size: 1rem;
+        text-transform: uppercase;
+        border: none;
+        padding: 0.5em;
+        border-radius: 0.5em;
+        margin-top: 0.5em;
+        cursor: pointer;
+      }
+      .nav-item {
+        text-align: center;
+      }
+      sup {
+        vertical-align: super;
+        font-size: 16px;
+      }
+
+      #scrollabletable {
+        border-radius: 24px;
+
+        box-shadow: 9px 9px 28px #808080, -9px -9px 28px #ffffff;
+      }
+
+      th,
+      td {
+        padding: 0.7rem;
+        text-align: center;
+      }
+
+      #tablesection {
+        overflow-x: scroll;
+
+        padding-bottom: 20px;
+      }
+
+      /* @media screen and (max-width:484px) {
+            #tablesection {
+                           overflow-x: auto;
+                          }
+
+
+        }   */
+
+      nav {
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(1px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .dashboard {
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(1px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      .dashboard-img ul li {
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.05);
+        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(1px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+      /* .dashboardSearch{
+            padding: 10px;
+            background: rgba( 255, 255, 255, 0.05 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 1px );
+-webkit-backdrop-filter: blur( 1px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+        } */
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container">
+        <a class="navbar-brand" href="/"
+          ><img
+            src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712682857/nfsu_vrolyh.png"
+            alt=""
+            width="180"
+        /></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav nav-underline ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#"
+                >Dashboard</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Any Query</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Manage</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary" aria-current="page" href="#"
+                >Resources</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="dashboard d-flex">
+      <div class="container">
+        <div class="row mt-4">
+          <div class="col">
+            <div class="col-auto me-auto">
+              <h4 style="font-weight: bolder">
+                <span style="color: orangered">Dash</span
+                ><span style="color: darkblue">board</span>
+              </h4>
+            </div>
+          </div>
+          <div
+            class="dashboard-img col-auto ms-auto"
+            style="
+              padding-top: 1rem;
+              display: flex;
+              justify-content: space-evenly;
+            "
+          >
+            <ul class="list-inline">
+              <li class="list-inline-item mb-2">
+                <img
+                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712682857/progress_rwj0rk.png"
+                  alt="progress"
+                  width="25px"
+                  height="25px"
+                /><sup>0</sup><span>Application in-progress</span>
+              </li>
+              <li class="list-inline-item mb-2">
+                <img
+                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712682856/verify_ywwrwf.png"
+                  alt="verify"
+                  width="25px"
+                  height="25px"
+                /><sup>0</sup><span>Application Completed</span>
+              </li>
+              <li class="list-inline-item mb-2">
+                <img
+                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712682857/query_kjrbxl.png"
+                  alt="query"
+                  width="25px"
+                  height="25px"
+                /><sup>0</sup><span></span> Query Raised
+              </li>
+            </ul>
+          </div>
+          <hr />
+        </div>
+        <div class="row">
+          <div class="dashboardSearch col mb-2">
+            <label for="search"><h5 style="color: orangered">Search</h5></label>
+            <input
+              type="text"
+              id="search"
+              class="mx-3"
+              placeholder="Search..."
+            />
+          </div>
+          <hr />
+        </div>
+      </div>
+    </section>
+    <section
+      class="swiper mySwiper swiper-coverflow swiper-3d swiper-initialized swiper-horizontal swiper-watch-progress"
+    >
+      <div
+        class="swiper-wrapper"
+        id="swiper-wrapper-356fbf21038b9710c7"
+        aria-live="off"
+        style="
+          cursor: grab;
+          transition-duration: 0ms;
+          transform: translate3d(-1022px, 0px, 0px);
+          transition-delay: 0ms;
+        "
+      >
+        <div
+          class="card swiper-slide"
+          role="group"
+          aria-label="5 / 6"
+          data-swiper-slide-index="4"
+          style="
+            transition-duration: 0ms;
+            transform: translate3d(0px, 0px, -875px) rotateX(0deg) rotateY(0deg)
+              scale(1);
+            z-index: -2;
+          "
+        >
+          <div class="card_image">
+            <img
+              src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712682857/WhatsApp_Image_2024-04-09_at_22.29.45_pnueg3.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="card_content">
+            <span class="card_title">Google</span>
+            <span class="card_name">vapt</span>
+          </div>
+        </div>
+        <div
+          class="card swiper-slide"
+          role="group"
+          aria-label="6 / 6"
+          data-swiper-slide-index="5"
+          style="
+            transition-duration: 0ms;
+            transform: translate3d(0px, 0px, -575px) rotateX(0deg) rotateY(0deg)
+              scale(1);
+            z-index: -1;
+          "
+        >
+          <div class="card_image">
+            <img
+              src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712682857/WhatsApp_Image_2024-04-09_at_22.29.45_1_iusfbf.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="card_content">
+            <span class="card_title">Apssple</span>
+            <span class="card_name">vapt</span>
+          </div>
+        </div>
+        <div
+          class="card swiper-slide swiper-slide-prev swiper-slide-visible"
+          role="group"
+          aria-label="1 / 6"
+          data-swiper-slide-index="0"
+          style="
+            transition-duration: 0ms;
+            transform: translate3d(0px, 0px, -275px) rotateX(0deg) rotateY(0deg)
+              scale(1);
+            z-index: 0;
+          "
+        >
+          <div class="card_image">
+            <img
+              src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712682857/WhatsApp_Image_2024-04-09_at_22.29.45_pnueg3.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="card_content">
+            <span class="card_title">Google</span>
+            <span class="card_name">vapt</span>
+          </div>
+        </div>
+        <div
+          class="card swiper-slide swiper-slide-active swiper-slide-visible swiper-slide-fully-visible"
+          role="group"
+          aria-label="2 / 6"
+          data-swiper-slide-index="1"
+          style="
+            transition-duration: 0ms;
+            transform: translate3d(0px, 0px, -25px) rotateX(0deg) rotateY(0deg)
+              scale(1);
+            z-index: 1;
+          "
+        >
+          <div class="card_image">
+            <img
+              src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712682857/WhatsApp_Image_2024-04-09_at_22.29.45_1_iusfbf.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="card_content">
+            <span class="card_title">Apple</span>
+            <span class="card_name">vapt</span>
+          </div>
+        </div>
+        <div
+          class="card swiper-slide swiper-slide-next swiper-slide-visible"
+          role="group"
+          aria-label="3 / 6"
+          data-swiper-slide-index="2"
+          style="
+            transition-duration: 0ms;
+            transform: translate3d(0px, 0px, -325px) rotateX(0deg) rotateY(0deg)
+              scale(1);
+            z-index: 0;
+          "
+        >
+          <div class="card_image">
+            <img
+              src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712682857/WhatsApp_Image_2024-04-09_at_22.29.45_pnueg3.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="card_content">
+            <span class="card_title">Google</span>
+            <span class="card_name">vapt</span>
+          </div>
+        </div>
+
+        <div
+          class="card swiper-slide"
+          role="group"
+          aria-label="4 / 6"
+          data-swiper-slide-index="3"
+          style="
+            transition-duration: 0ms;
+            transform: translate3d(0px, 0px, -625px) rotateX(0deg) rotateY(0deg)
+              scale(1);
+            z-index: -1;
+          "
+        >
+          <div class="card_image">
+            <img
+              src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712682857/WhatsApp_Image_2024-04-09_at_22.29.45_1_iusfbf.jpg"
+              alt=""
+            />
+          </div>
+
+          <div class="card_content">
+            <span class="card_title">Apple</span>
+            <span class="card_name">vapt</span>
+          </div>
+        </div>
+      </div>
+      <span
+        class="swiper-notification"
+        aria-live="assertive"
+        aria-atomic="true"
+      ></span>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+    <script type="module">
+      import Swiper from "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs";
+      var swiper = new Swiper(".mySwiper", {
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 1000,
+        autoplayHoverPause: true,
+
+        effect: "coverflow",
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto",
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 0,
+          depth: 300,
+          modifier: 1,
+          slideShadows: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+        },
+      });
+    </script>
+    <section class="d-flex" id="tablesection">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <table
+              class="table table-hover table-responsive"
+              id="scrollabletable"
+            >
+              <thead>
+                <tr>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Company Name
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Offered Campus
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Job Location
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Job Type
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Job Title
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Job Description
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    CTC/Stipend
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Last Date To Apply
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Application Status
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td scope="row">Meta</td>
+                  <td scope="row">Gandhi Nagar</td>
+                  <td scope="row">job location</td>
+                  <td scope="row">Internship (I)</td>
+                  <td scope="row">Vapt</td>
+                  <td scope="row">pdf</td>
+                  <td scope="row">50LPA</td>
+                  <td scope="row">13/05/2024</td>
+                  <td scope="row">
+                    <a href="#" class="btn btn-outline-primary">Apply</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td scope="row">Meta</td>
+                  <td scope="row">Gandhi Nagar</td>
+                  <td scope="row">job location</td>
+                  <td scope="row">Internship (I)</td>
+                  <td scope="row">Vapt</td>
+                  <td scope="row">pdf</td>
+                  <td scope="row">50LPA</td>
+                  <td scope="row">13/05/2024</td>
+                  <td scope="row">
+                    <a href="#" class="btn btn-outline-primary">Apply</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td scope="row">Meta</td>
+                  <td scope="row">Gandhi Nagar</td>
+                  <td scope="row">job location</td>
+                  <td scope="row">Internship (I)</td>
+                  <td scope="row">Vapt</td>
+                  <td scope="row">pdf</td>
+                  <td scope="row">50LPA</td>
+                  <td scope="row">13/05/2024</td>
+                  <td scope="row">
+                    <a href="#" class="btn btn-outline-primary">Apply</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td scope="row">Meta</td>
+                  <td scope="row">Gandhi Nagar</td>
+                  <td scope="row">job location</td>
+                  <td scope="row">Internship (I)</td>
+                  <td scope="row">Vapt</td>
+                  <td scope="row">pdf</td>
+                  <td scope="row">50LPA</td>
+                  <td scope="row">13/05/2024</td>
+                  <td scope="row">
+                    <a href="#" class="btn btn-outline-primary">Apply</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td scope="row">Meta</td>
+                  <td scope="row">Gandhi Nagar</td>
+                  <td scope="row">job location</td>
+                  <td scope="row">Internship (I)</td>
+                  <td scope="row">Vapt</td>
+                  <td scope="row">pdf</td>
+                  <td scope="row">50LPA</td>
+                  <td scope="row">13/05/2024</td>
+                  <td scope="row">
+                    <a href="#" class="btn btn-outline-primary">Apply</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

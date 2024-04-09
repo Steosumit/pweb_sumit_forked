@@ -146,7 +146,7 @@ app.get("/login-recruiter", shallNotAuthenticated, (req, res) => {
 });
 
 app.get("/account", isLoggedIn, (req, res) => {
-  res.send("in preparation");
+  res.render("youraccountstu.ejs");
 });
 app.get("/placement-team", (req, res) => {
   res.render("placementTeam.ejs");
