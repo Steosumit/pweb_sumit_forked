@@ -685,6 +685,9 @@ h6 {
   flex-direction: column;
   align-items: center;
 }
+.person p{
+  margin-bottom: 0;
+}
 
 /* connect us page  */
 

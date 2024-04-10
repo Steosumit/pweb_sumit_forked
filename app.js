@@ -116,7 +116,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/login-student", shallNotAuthenticated, (req, res) => {
-  res.render("loginstu.ejs");
+  res.render("auth/loginstu.ejs");
 });
 app.post(
   "/login-student",
@@ -142,25 +142,25 @@ app.get("/error", (req, res) => {
   res.redirect("/");
 });
 app.get("/login-recruiter", shallNotAuthenticated, (req, res) => {
-  res.render("loginrec.ejs");
+  res.render("auth/loginrec.ejs");
 });
 
 app.get("/account", isLoggedIn, (req, res) => {
-  res.render("youraccountstu.ejs");
+  res.render("users/youraccountstu.ejs");
 });
 app.get("/placement-team", (req, res) => {
-  res.render("placementTeam.ejs");
+  res.render("team/placementTeam.ejs");
 });
 
 app.get("/placement-team-contact", (req, res) => {
-  res.render("contactus.ejs");
+  res.render("team/contactus.ejs");
 });
 app.get("/student", (req, res) => {
-  res.render("resourcesstudent.ejs");
+  res.render("resources/resourcesstudent.ejs");
 });
 
 app.get("/resrec", (req, res) => {
-  res.render("resrecru.ejs");
+  res.render("resources/resrecru.ejs");
 });
 let isVerified = wrapAsync(async (req, res, next) => {
   let result = await VerifiedUser.findOne({ email: req.session.email });
@@ -175,9 +175,9 @@ app.get("/register/:user", shallNotAuthenticated, isVerified, (req, res) => {
   let { user } = req.params;
 
   if (user == "rec") {
-    res.render("regisrec.ejs");
+    res.render("auth/regisrec.ejs");
   } else if (user == "stu") {
-    res.render("regisstu.ejs");
+    res.render("auth/regisstu.ejs");
   } else {
     res.send("invalid url");
   }
@@ -251,7 +251,7 @@ app.get(
   shallNotAuthenticated,
   wrapAsync(async (req, res) => {
     req.session.username = req.query.username;
-    res.render("otpinit.ejs", { username: req.session.username });
+    res.render("auth/otpinit.ejs", { username: req.session.username });
   })
 );
 app.post(
@@ -345,7 +345,7 @@ You can paste the above OTP in the <strong>Following Link</strong>:
 );
 
 app.get("/otp-verify-page", (req, res) => {
-  res.render("otpverify.ejs", {
+  res.render("auth/otpverify.ejs", {
     email: req.session.email,
     username: req.session.username,
   });
