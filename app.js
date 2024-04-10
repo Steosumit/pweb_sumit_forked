@@ -167,7 +167,7 @@ let isVerified = wrapAsync(async (req, res, next) => {
   if (result) {
     return next();
   } else {
-    req.flash("error", "Please Complete OTP Verification !");
+    req.flash("error", "Please wait untill Admin Verifies your account !");
     res.redirect("/");
   }
 });
@@ -368,10 +368,10 @@ app.post(
           await OTP.deleteMany({ email: email });
 
           // OTP verification successful
-          await VerifiedUser.insertMany({
-            email: email,
-            username: req.session.username,
-          });
+          // await VerifiedUser.insertMany({
+          //   email: email,
+          //   username: req.session.username,
+          // });
           if (req.session.username == "Student") {
             res.redirect("/register/stu");
           } else {

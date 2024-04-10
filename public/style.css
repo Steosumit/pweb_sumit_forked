@@ -249,7 +249,7 @@ nav {
   text-align: center;
   font-size: 1rem;
   color: rgb(112, 37, 60);
-  font-weight: 500;
+  font-weight: 300;
 }
 .why-cards .card {
   width: 21rem;
@@ -267,30 +267,72 @@ nav {
   transition: opacity 1s, transform 0.4s;
 }
 
-.stat-poster {
-  width: 100%;
-  background-color: powderblue;
-  min-height: 25rem;
-  display: flex;
-}
-
 .why-cards .card:hover {
   transform: scale(1.1) !important;
 }
 
-.poster-span {
-  width: 100%;
+.stat-poster {
+  width: 100% !important;
+  background-color: powderblue;
+  min-height: 25rem;
   display: flex;
-  color: mediumslateblue;
-  color: midnightblue;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   flex-direction: column;
-  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.poster-span {
+  color: midnightblue;
+  width: 100% !important;
+  padding: 3rem;
+  text-align: center;
 }
 .poster-span h1 {
-  font-size: 3rem;
+  font-size: 2.5rem;
+}
+.stat-row {
+  width: 100% !important;
+  display: flex;
+  justify-content: space-between;
+}
+.stat-col {
+  width: 100%;
+  padding-top: 3rem;
+}
+
+.stat-table {
+  table {
+    min-width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  }
+
+  th,
+  td {
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-weight: 500;
+    text-align: center !important;
+    color: midnightblue;
+  }
+
+  th {
+    color: white;
+  }
+
+  thead {
+    th {
+      background-color: #55608f;
+    }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.4) !important;
+      }
+    }
+  }
 }
 
 /* gc calendar  */
@@ -335,6 +377,55 @@ nav {
   /* transform: translateX(50rem); */
   opacity: 0;
   transition: opacity 1s;
+}
+
+.course-table {
+  table {
+    min-width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    margin: 3rem;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+  }
+
+  th,
+  td {
+    padding: 15px;
+
+    font-weight: 500;
+    text-align: center !important;
+  }
+
+  th {
+    color: white;
+  }
+
+  thead {
+    th {
+      background: linear-gradient(to right, darkblue, red);
+      color: white;
+    }
+  }
+
+  tbody {
+    tr {
+      &:hover {
+        background-color: rgb(168, 183, 244) !important;
+        color: black;
+      }
+    }
+  }
+  tr:nth-child(even) {
+    background-color: blanchedalmond;
+    color: #000;
+  }
+  tr:nth-child(odd) {
+    background-color: #000;
+    color: white;
+  }
 }
 
 .two-cards {
@@ -635,10 +726,35 @@ h6 {
   /* text-shadow: dodgerblue 2px 2px; */
   text-align: center;
 }
-
+.team-cards .for-mob {
+  display: none;
+}
+.team-cards .non-mob {
+  width: 100%;
+  padding: 5rem;
+}
+.team-cards .non-mob .col-md-4,
+.team-cards .non-mob .col-md-8 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.team-cards .non-mob .col-md-4 img {
+  width: 20rem;
+  height: 20rem;
+  object-fit: cover;
+  border-radius: 30%;
+  border: blanchedalmond thick solid;
+}
+.team-cards .non-mob .col-md-8 {
+  flex-direction: column;
+}
 .team-banner h2 {
   font-size: 1.5rem;
   font-weight: 300;
+  text-align: center;
+}
+.team-banner h4 {
   text-align: center;
 }
 .team-a {
@@ -685,7 +801,7 @@ h6 {
   flex-direction: column;
   align-items: center;
 }
-.person p{
+.person p {
   margin-bottom: 0;
 }
 
@@ -1286,12 +1402,16 @@ img.no-style {
   .stat-poster {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: center;
   }
-  .stat-poster h4 {
-    font-size: 1.3rem;
-    color: rgb(50, 96, 97) !important;
+  .stat-row {
+    padding: 0;
+    flex-direction: column;
   }
+  .stat-col {
+    padding: 3rem;
+  }
+
   .container-info {
     padding: 3rem;
   }
@@ -1428,12 +1548,19 @@ img.no-style {
 
   .team-banner h2 {
     font-size: 1.3rem;
+
     width: 100%;
   }
   .big-div-team img {
     width: 10rem;
     object-fit: cover;
     height: 10rem;
+  }
+  .non-mob {
+    display: none;
+  }
+  .for-mob {
+    display: block !important;
   }
   .person {
     text-align: center;
