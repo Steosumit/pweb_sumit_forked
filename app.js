@@ -324,7 +324,7 @@ app.get("/register/:user", shallNotAuthenticated, isVerified, (req, res) => {
   } else if (user == "stu") {
     req.flash(
       "success",
-      "Email Verification Successfull ! \n We will send Your Credentials on the Provided Email. \n  Please wait for further Email Updates on approval of the Admin."
+      "Email Verification Successfull ! \n\n We will send Your Credentials on the Provided Email. \n\n  Please wait for further Email Updates on approval of the Admin."
     );
     res.redirect("/");
   } else {
@@ -351,7 +351,6 @@ app.post(
               error.details[0].message
             );
         }
-        console.log(req.body);
 
         const newRecruiter = new Recruiter({
           firstname: req.body.firstname,
@@ -373,6 +372,7 @@ app.post(
           presentdistrict: req.body.presentdistrict,
           landmark: req.body.landmark,
           presentaddress: req.body.presentaddress,
+          username: req.body.enrollmentNo,
           pincode: req.body.pincode,
           tenth: req.body.tenth,
           twelth: req.body.twelth,
@@ -385,12 +385,13 @@ app.post(
           // If save operation is successful, continue with redirection or other operations
           req.flash(
             "success",
-            "Welcome to the NFSU Placement Cell ! \n\n Please Contact the Administration for Further Recruitment Steps. \n\n We'll Keep You Informed on the Provided Email."
+            `Welcome to the NFSU Placement Cell ! \n\n Please Contact the Administration for Further Recruitment Steps.\n\n We'll Keep You Informed on the Provided Email.`
           );
           res.redirect("/");
         } catch (error) {
           // If an error occurs during save operation, catch it here
           req.flash("error", "Error saving Recruiter's data:" + error.message);
+          console.log(error);
           res.redirect("/register/rec"); // Redirect to an error page
         }
       } catch (error) {

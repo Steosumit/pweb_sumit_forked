@@ -86,7 +86,7 @@ const recruiterSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required:true,
+    required: true,
   },
   maritalstatus: {
     type: String,
@@ -116,8 +116,11 @@ const recruiterSchema = new mongoose.Schema({
     required: true,
     maxlength: 3,
   },
+  username: {
+    type: String,
+    required: true,
+  },
 });
-// studentSchema.plugin(passportLocalMongoose); //above the below line
 const Recruiter = mongoose.model("Recruiter", recruiterSchema);
 
 module.exports = Recruiter;

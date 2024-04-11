@@ -19,7 +19,10 @@ nav {
   background-color: #171717;
   background-color: rgb(0, 0, 0, 01);
   background-color: #000000;
-  box-shadow: 0px 1px 7px 0px rgba(0, 0, 0, 1);
+  background: linear-gradient(to right, white, rgba(206, 247, 255, 0.6));
+  /* background-color: rgba(206, 247, 255, 0.5); */
+  box-shadow: 0px 1px 7px 0px rgba(206, 247, 255, 0.5);
+  box-shadow: 0px 0px 20px 0px rgba(206, 247, 255, 0.5);
 }
 
 .navbar .dropdown-item {
@@ -56,7 +59,7 @@ nav {
   margin-right: 3rem;
   font-size: 1.1rem;
   margin-top: 0.5rem;
-  color: white;
+  color: black;
   text-decoration: none;
 }
 
@@ -133,8 +136,6 @@ nav {
   border-radius: 2rem;
   width: 90%;
   height: 90%;
-  box-shadow: rgb(10, 215, 238) 0px 0px 60px, grey 0px 0px 100px;
-  box-shadow: rgb(10, 215, 238, 0.6) 0px 0px 80px, grey 0px 10px 50px;
   box-shadow: rgb(255, 184, 157, 0.9) 0px 0px 100px, lightgray 0px 0px 00px;
 }
 /*  */
@@ -351,15 +352,20 @@ nav {
 
 /*  */
 .home-third {
-  background-color: black;
+  background: linear-gradient(to left, white, rgba(233, 179, 255, 0.4));
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 200rem;
   min-height: 100vh;
-  color: white;
+  color: black;
+  border-bottom-left-radius: 3rem;
+  border-bottom-right-radius: 3rem;
 }
 #carouselExampleAutoplaying {
   height: 70vh;
 }
 .home-third h1 {
   padding-top: 5rem;
+  text-shadow: rgba(233, 179, 255, 0.4) 2px 2px;
 }
 .home-third p {
   padding-top: 2rem;
@@ -432,8 +438,8 @@ nav {
   display: flex;
   width: 100%;
   padding-top: 2rem;
-  background-color: black;
-  color: white;
+  background-color: transparent;
+  color: black;
   flex-wrap: wrap;
 }
 
@@ -452,15 +458,17 @@ nav {
   font-size: 1rem;
   text-align: justify;
 
-  font-weight: 400;
+  font-weight: 500;
   letter-spacing: 0.1rem;
   min-height: 22rem;
 }
 #tags-twocards-cyber {
-  text-shadow: 3px 3px blue;
+  color: blue;
+  text-shadow: 2px 1px teal;
 }
 #tags-twocards-digital {
-  text-shadow: 3px 3px orangered;
+  color: orangered;
+  text-shadow: 2px 1px rgb(198, 30, 114);
 }
 .two-cards-card img {
   width: 100%;
