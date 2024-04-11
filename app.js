@@ -471,3 +471,7 @@ app.get("/student", (req, res) => {
 app.get("/resrec", (req, res) => {
   res.render("resources/resrecru.ejs");
 });
+
+app.get("/studentcommunity", (req, res) => {
+  res.render("resources/stucommunity.ejs");
+});
