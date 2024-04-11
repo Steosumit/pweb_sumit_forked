@@ -363,6 +363,7 @@ nav {
 #carouselExampleAutoplaying {
   height: 70vh;
 }
+
 .home-third h1 {
   padding-top: 5rem;
   text-shadow: rgba(233, 179, 255, 0.4) 2px 2px;
@@ -394,7 +395,7 @@ nav {
     margin-left: 0;
     margin-right: 0;
     border-radius: 1.5rem;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
   }
 
   th,
@@ -473,6 +474,7 @@ nav {
 .two-cards-card img {
   width: 100%;
   border-radius: 1.5rem;
+  box-shadow: 0 0 20px rgba(107, 35, 163, 0.3);
   transform: translate(0, 0) !important;
 }
 
@@ -646,7 +648,7 @@ h6 {
   background-color: rgba(16, 16, 20, 255);
   padding: 1rem;
   border-radius: 1rem;
-
+  box-shadow: 0 0 20px rgb(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1166,6 +1168,9 @@ h6 {
 
 .beyond-placement {
   padding-bottom: 6rem;
+}
+.beyond-placement img {
+  box-shadow: 0 0 20px rgba(107, 35, 163, 0.3);
 }
 
 /* faq */
