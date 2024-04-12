@@ -395,7 +395,7 @@ nav {
     margin-left: 0;
     margin-right: 0;
     border-radius: 1.5rem;
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
   }
 
   th,
@@ -422,6 +422,7 @@ nav {
       &:hover {
         background-color: rgb(168, 183, 244) !important;
         color: black;
+        cursor: pointer;
       }
     }
   }
@@ -454,7 +455,9 @@ nav {
 .two-cards-card a {
   margin-bottom: 1.5rem;
   width: 100%;
+  color: white;
 }
+
 .two-cards-card p {
   font-size: 1rem;
   text-align: justify;
@@ -490,44 +493,26 @@ nav {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  height: fit-content;
+  justify-content: center;
+  height: 100vh;
   background-image: url("https://res.cloudinary.com/ddxv0iwcs/image/upload/v1711016540/NFSU_8_Ballistics_Research_and_Testing_Range_lblcxj.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.left-login {
-  width: 100%;
-  background-color: #433a32;
-  background-color: transparent;
-  max-height: 8rem;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  align-items: center;
-}
-
-.left-login img {
-  transform: scale(0.06);
-}
-
-.right-login {
-  width: 100%;
-  height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .login-card {
   background-color: rgb(255, 255, 255, 0.9);
   color: #0c359e !important;
   padding: 2rem;
-  padding-top: 0;
   border-radius: 1rem;
+  width: 80rem;
 }
-.login-card img {
-  padding: 0.5rem;
+.login-img-div {
+  width: 100%;
+  max-width: 15rem;
+}
+.login-img-div img {
+  width: inherit;
 }
 
 .login-card h5,
@@ -556,15 +541,24 @@ h6 {
   border: none;
   margin-right: auto;
 }
-
-.signin-linkedin {
-  background-color: #0077b5;
+.login-card .col-md-8 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-card form {
+  width: 100%;
+  /* display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between; */
 }
 .login-card input {
   width: 100%;
   border: none;
+  border-radius: 0.5rem;
   text-align: left;
-  padding-left: 10px;
   height: 3rem;
   /* border-bottom: #0c359e thin solid; */
 }
@@ -1121,14 +1115,18 @@ h6 {
   padding-top: 4rem;
   padding-bottom: 0;
 }
+
+.regis-content-div {
+  padding-top: 0;
+  background-color: transparent;
+}
+
 #policy-lines {
   margin-top: 2rem;
 }
 
 .content-title h2 {
   font-weight: 700;
-
-  text-shadow: 3px 3px rgb(115, 180, 183);
 }
 
 .content-cards {
@@ -1359,6 +1357,9 @@ img.no-style {
   .profile-icon-div {
     margin-bottom: 2rem;
   }
+  #home-link {
+    color: white;
+  }
   .home-first {
     display: flex;
     padding-left: 1rem;
@@ -1485,32 +1486,24 @@ img.no-style {
     padding: 0 0;
     width: 100%;
   }
+  #aofwebteam {
+    display: block;
+  }
   .login-big-div {
     all: initial;
     background-image: url("https://res.cloudinary.com/ddxv0iwcs/image/upload/v1711016540/NFSU_8_Ballistics_Research_and_Testing_Range_lblcxj.jpg");
+    display: flex;
+    justify-content: center;
     background-size: cover;
     background-position: center;
   }
-  .left-login {
+  .login-card {
     width: 100%;
+    border-radius: 0;
+    padding-bottom: 4rem;
   }
-  .left-login div {
-    all: initial;
-    height: 10rem;
-    display: flex;
-    align-items: center;
-  }
-  .left-login img {
-    transform: scale(1);
-    width: 20rem;
-  }
-  .right-login {
-    width: 100%;
-    padding: 2rem;
-  }
-  .right-login h2,
-  .right-login h3 {
-    text-align: center;
+  .login-img-div {
+    max-width: 100%;
   }
 
   .regis-content-div {

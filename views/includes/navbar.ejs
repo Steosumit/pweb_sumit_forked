@@ -21,8 +21,6 @@
         type="button"
         data-bs-toggle="offcanvas"
         data-bs-target="#offcanvasDarkNavbar"
-        aria-controls="offcanvasDarkNavbar"
-        aria-label="Toggle navigation"
       >
         <i class="fa-solid fa-bars navbar-toggler-icon"></i>
       </button>
@@ -45,7 +43,37 @@
           ></button>
         </div>
         <div class="offcanvas-body">
-          <%if(isAuthenticated == true){%>
+          <%if(isAdmin == true){%>
+          <div class="dropdown profile-icon-div">
+            <div
+              data-bs-toggle="dropdown"
+              style="
+                background-image: url(https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712834949/admin_rsgkmd.png);
+                background-size: cover;
+                width: 3rem;
+                height: 3rem;
+                margin-right: 2rem;
+              "
+            >
+              <!-- <img src="" width="40" alt="" /> -->
+            </div>
+
+            <ul class="dropdown-menu">
+              <li>
+                <a class="dropdown-item" href="/admin" style="color: black"
+                  >Admin Dashboard</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="/logout" style="color: brown"
+                  >Sign Out</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <%}else if(isAuthenticated == true){%>
           <div class="dropdown profile-icon-div">
             <div
               data-bs-toggle="dropdown"

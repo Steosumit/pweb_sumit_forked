@@ -1,50 +1,24 @@
-const { string } = require("joi");
+const { string, bool } = require("joi");
 const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose = require("mongoose");
 const recruiterSchema = new mongoose.Schema({
-  firstname: {
+  isAudited: {
+    type: Boolean,
+    required: true,
+  },
+  companyname: {
     type: String,
     required: true,
   },
-  surname: {
-    type: String,
-
-    required: true,
-  },
-  fathername: {
+  natureofbusiness: {
     type: String,
     required: true,
   },
-  birthdate: {
-    type: Date,
-
-    required: true,
-  },
-  mobileno: {
-    type: Number,
-    unique: true,
-    required: true,
-    minlength: 10,
-    maxlength: 10,
-    validate: {
-      validator: function (v) {
-        // Validate that the mobile number consists of exactly 10 digits
-        return /^\d{10}$/.test(v);
-      },
-      message: (props) =>
-        `${props.value} is not a valid mobile number! Please enter exactly 10 digits.`,
-    },
-  },
-  altmobileno: {
-    type: Number,
-    required: true,
-  },
-  email: {
+  websitelink: {
     type: String,
-    unique: true,
     required: true,
   },
-  altemail: {
+  postaladdress: {
     type: String,
     required: true,
   },
@@ -52,71 +26,102 @@ const recruiterSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  nationality: {
+  hrname: {
     type: String,
     required: true,
   },
-  presentcountry: {
+  hrdesignation: {
     type: String,
     required: true,
   },
-  presentstate: {
+  hrofficeaddress: {
     type: String,
     required: true,
   },
-  presentdistrict: {
-    type: String,
-    required: true,
-  },
-  landmark: {
-    type: String,
-    required: true,
-  },
-  presentaddress: {
-    type: String,
-    required: true,
-  },
-  gender: {
-    type: String,
-    required: true,
-  },
-  disability: {
-    type: String,
-    required: true,
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-  maritalstatus: {
-    type: String,
-    required: true,
-  },
-  enrollmentNo: {
+  hrmobileno: {
     type: Number,
     required: true,
   },
-  pincode: {
+  althrmobileno: {
+    type: Number,
+
+    required: true,
+  },
+  hremail: {
+    type: String,
+    required: true,
+  },
+  pocname: {
+    type: String,
+    required: true,
+  },
+  pocdesignation: {
+    type: String,
+    required: true,
+  },
+  pocofficeaddress: {
+    type: String,
+    required: true,
+  },
+  pocmobileno: {
     type: Number,
     required: true,
-    maxlength: 6,
   },
-  tenth: {
+  altpocmobileno: {
     type: Number,
+
     required: true,
-    maxlength: 3,
   },
-  twelth: {
+  pocemail: {
+    type: String,
+    required: true,
+  },
+  jobtype: {
+    type: String,
+    required: true,
+  },
+  jobdesignation: {
+    type: String,
+    required: true,
+  },
+  sector: {
+    type: String,
+    required: true,
+  },
+  tentativenoofhires: {
     type: Number,
+
     required: true,
-    maxlength: 3,
   },
-  lastsemcgpa: {
-    type: Number,
+  tentativejoblocation: {
+    type: String,
     required: true,
-    maxlength: 3,
   },
-  username: {
+  JobDescription: {
+    type: String,
+    required: true,
+  },
+  MTechCS: {
+    type: String,
+    required: true,
+  },
+  MScCS: {
+    type: String,
+    required: true,
+  },
+  MScDFIS: {
+    type: String,
+    required: true,
+  },
+  MTechADSAI: {
+    type: String,
+    required: true,
+  },
+  categorycompensation: {
+    type: String,
+    required: true,
+  },
+  isvirtual: {
     type: String,
     required: true,
   },

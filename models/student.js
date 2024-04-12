@@ -22,9 +22,9 @@ const studentSchema = new mongoose.Schema({
   },
   mobileno: {
     type: Number,
-    unique: true,
     required: true,
     minlength: 10,
+    unique: true,
     maxlength: 10,
     validate: {
       validator: function (v) {

@@ -1,46 +1,43 @@
 <%layout("/layouts/boilerplate.ejs")%>
 <link rel="stylesheet" href="/style.css" />
 <div class="login-big-div login-stu">
-  <!-- <div class="left-login">
-    <div class="pop-out">
-      <a href="/"
-        ><img
-          src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
-          loading="lazy"
-          alt=""
-      /></a>
-    </div>
-  </div> -->
-  <div class="right-login">
-    <div class="login-card pop-out">
-      <div style="text-align: center">
+  <div class="login-card pop-out row">
+    <div class="col-md-4">
+      <div class="login-img-div">
         <a href="/"
           ><img
             src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
             loading="lazy"
-            width="300"
             alt=""
         /></a>
       </div>
       <br />
+      <br />
+      <h5 class="login-identity"><p><%=username%></p></h5>
       <h4 style="text-align: center">
-        <%if(username == "Student"){%> Student Registration <br />
         <br />
-        NFSU Gandhinagar Campus Placement <%}else{%> Recruiter Regitstration
+        Registration
         <br />
         <br />
-        NFSU Gandhinagar Campus Placement <%}%>
+        NFSU Gandhinagar Campus Placement
       </h4>
       <br /><br />
-      <h5 class="login-identity"><p><%=username%></p></h5>
       <br /><br />
+    </div>
+    <div class="col-md-8">
+      <%if(username == "Recruiter"){%>
       <form action="/sendotp" method="post">
-        <input
-          type="email"
-          name="email"
-          style="text-align: center"
-          placeholder="Enter Your Email"
-        />
+        <label style="width: 100%"
+          ><h6>Email ID</h6>
+          <br />
+          <input
+            type="email"
+            name="email"
+            required
+            style="text-align: center"
+            placeholder="Enter Your Email"
+          />
+        </label>
         <input
           type="text"
           name="username"
@@ -53,11 +50,72 @@
           Verify Your Email
         </button>
       </form>
+      <%}else{%>
+      <form action="/sendotp" method="post">
+        <input
+          type="text"
+          name="username"
+          style="display: none"
+          value="<%=username%>"
+        />
+        <label style="width: 100%"
+          ><h6>Your Good Name</h6>
+          <input
+            required
+            type="text"
+            name="stuname"
+            placeholder="Enter Your Name"
+            style="text-align: center"
+          />
+        </label>
+        <br />
+        <br />
+        <label style="width: 100%"
+          ><h6>Enrollment No.</h6>
+          <input
+            type="number"
+            placeholder="Enter Your Enrollment No."
+            required
+            style="text-align: center"
+            name="enrollnostu"
+          />
+        </label>
+        <br />
+        <br />
+        <label style="width: 100%"
+          ><h6>Email ID</h6>
+          <input
+            required
+            type="email"
+            name="email"
+            style="text-align: center"
+            placeholder="Enter Your Email"
+          />
+        </label>
+        <br />
+        <br />
+        <label style="width: 100%"
+          ><h6>Mobile Number</h6>
+          <input
+            type="tel"
+            required
+            name="stumobno"
+            style="text-align: center"
+            placeholder="Enter Your Mobile No."
+        /></label>
+
+        <br /><br />
+        <br />
+        <button class="btn btn-lg btn-primary" type="submit">
+          Verify Your Email
+        </button>
+      </form>
+      <%}%>
 
       <br /><br />
-      <!-- <div class="register-here">
+    </div>
+    <!-- <div class="register-here">
         <a href="/register/stu">Don't have an account? Register Here</a>
       </div> -->
-    </div>
   </div>
 </div>

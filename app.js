@@ -11,7 +11,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const dbUrl = process.env.ATLASDB_URL;
 const MongoStore = require("connect-mongo");
-const wrapAsync = require("./utils/wrapasync");
+const wrapAsync = require("./utils/wrapAsync");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const nodemailer = require("nodemailer");
@@ -77,9 +77,15 @@ async function main() {
 //middlewares
 let isAuthenticated = wrapAsync(async (req, res, next) => {
   if (req.isAuthenticated()) {
-    res.locals.isAuthenticated = true; // Set a variable indicating the user
+    res.locals.isAuthenticated = true;
+    if (req.user.username == process.env.ADMIN_USERNAME) {
+      res.locals.isAdmin = true;
+    } else {
+      res.locals.isAdmin = false;
+    }
   } else {
     res.locals.isAuthenticated = false;
+    res.locals.isAdmin = false;
   }
   return next();
 });
@@ -103,7 +109,7 @@ let shallNotAuthenticated = wrapAsync(async (req, res, next) => {
 });
 
 let isVerified = wrapAsync(async (req, res, next) => {
-  let result = await VerifiedUser.findOne({ email: req.session.email });
+  let result = await VerifiedUser.findOne({ bodyData: req.session.bodyData });
   if (result) {
     return next();
   } else {
@@ -111,6 +117,14 @@ let isVerified = wrapAsync(async (req, res, next) => {
     res.redirect("/");
   }
 });
+let isThisAdmin = (req, res) => {
+  if (res.locals.isAdmin == true) {
+    return next();
+  } else {
+    req.flash("error", "You Must be Admin to access Admin Page !");
+    res.redirect("/");
+  }
+};
 
 app.use(isAuthenticated);
 
@@ -119,7 +133,10 @@ app.listen(9090, () => {
 });
 
 app.get("/", (req, res) => {
-  res.render("index.ejs", { isAuthenticated: res.locals.isAuthenticated });
+  res.render("index.ejs", {
+    isAuthenticated: res.locals.isAuthenticated,
+    isAdmin: res.locals.isAdmin,
+  });
 });
 
 // login
@@ -136,6 +153,12 @@ app.post(
   }),
   wrapAsync(async (req, res) => {
     req.flash("success", "Welcome to The Placement Cell !");
+    if (
+      req.body.username == process.env.ADMIN_USERNAME &&
+      req.body.password == process.env.ADMIN_PASS
+    ) {
+      res.locals.isAdmin = true;
+    }
     res.redirect("/");
   })
 );
@@ -178,7 +201,7 @@ app.post(
     }
     if (existingOTP) {
       req.flash("success", "OTP is already Sent");
-      req.session.email = email;
+      req.session.bodyData = req.body;
       res.redirect(`/otp-verify-page`);
     } else {
       await OTP.insertMany({
@@ -196,7 +219,7 @@ app.post(
         message +
         `
 <br/>
-We received a request to OTP Verification associated with your account. If you did not make this request, you can safely ignore this email.
+We have received a request to OTP Verification associated with your account. If you did not make this request, you can safely ignore this email.
 <br/><br/>
 To Verify your Email, please Insert the <strong>Following OTP</strong>:
 <br/><br/>
@@ -239,7 +262,7 @@ You can paste the above OTP in the <strong>Following Link</strong>:
           res.status(500).send("Failed to send OTP");
         } else {
           req.flash("success", "OTP sent successfully");
-          req.session.email = email;
+          req.session.bodyData = req.body;
           res.redirect(`/otp-verify-page`);
         }
       });
@@ -249,8 +272,8 @@ You can paste the above OTP in the <strong>Following Link</strong>:
 
 app.get("/otp-verify-page", (req, res) => {
   res.render("auth/otpverify.ejs", {
-    email: req.session.email,
-    username: req.session.username,
+    email: req.session.bodyData.email,
+    username: req.session.bodyData.username,
   });
 });
 
@@ -285,10 +308,9 @@ app.post(
 
           // OTP verification successful
           await VerifiedUser.insertMany({
-            email: email,
-            username: req.session.username,
+            bodyData: req.session.bodyData,
           });
-          if (req.session.username == "Student") {
+          if (req.session.bodyData.username == "Student") {
             res.redirect("/register/stu");
           } else {
             res.redirect("/register/rec");
@@ -320,11 +342,11 @@ app.get("/register/:user", shallNotAuthenticated, isVerified, (req, res) => {
   let { user } = req.params;
 
   if (user == "rec") {
-    res.render("auth/regisrec.ejs");
+    res.render("auth/regisrec.ejs", { email: req.session.bodyData.email });
   } else if (user == "stu") {
     req.flash(
       "success",
-      "Email Verification Successfull ! \n\n We will send Your Credentials on the Provided Email. \n\n  Please wait for further Email Updates on approval of the Admin."
+      `Email Verification Successfull ! <br> We will send Your Credentials on the Provided Email. <br> Please wait for further Email Updates on approval of the Admin.`
     );
     res.redirect("/");
   } else {
@@ -342,51 +364,126 @@ app.post(
 
     if (user == "rec") {
       try {
+        //check if the email isnt the verified one
+
+        let verifiedBodyData = await VerifiedUser.findOne({
+          bodyData: req.session.bodyData,
+        });
+        if (req.body.hremail != verifiedBodyData.bodyData.email) {
+          req.flash("error", "Please Provide a Verified Email Address !");
+          res.redirect("/register/rec");
+        }
+        //validate the rec's regis form using joi on server side
         const { error } = recruiterSchema.validate(req.body);
         if (error) {
-          return res
-            .status(400)
-            .send(
-              "error validating recruiter's details",
-              error.details[0].message
-            );
+          req.flash("error", "error validating recruiter's details" + error);
+          res.redirect("/register/rec");
         }
 
         const newRecruiter = new Recruiter({
-          firstname: req.body.firstname,
-          disability: req.body.disability,
-          surname: req.body.surname,
-          fathername: req.body.fathername,
-          birthdate: req.body.birthdate,
-          maritalstatus: req.body.maritalstatus,
-          gender: req.body.gender,
-          mobileno: req.body.mobileno,
-          altmobileno: req.body.altmobileno,
-          enrollmentNo: req.body.enrollmentNo,
-          email: req.body.email,
-          altemail: req.body.altemail,
+          isAudited: false,
+          _id: new mongoose.Types.ObjectId(),
+          companyname: req.body.companyname,
+          natureofbusiness: req.body.natureofbusiness,
+          websitelink: req.body.websitelink,
+          postaladdress: req.body.postaladdress,
           category: req.body.category,
-          nationality: req.body.nationality,
-          presentcountry: req.body.presentcountry,
-          presentstate: req.body.presentstate,
-          presentdistrict: req.body.presentdistrict,
-          landmark: req.body.landmark,
-          presentaddress: req.body.presentaddress,
-          username: req.body.enrollmentNo,
-          pincode: req.body.pincode,
-          tenth: req.body.tenth,
-          twelth: req.body.twelth,
-          lastsemcgpa: req.body.lastsemcgpa,
-          password: req.body.password,
+          hrname: req.body.hrname,
+          hrdesignation: req.body.hrdesignation,
+          hrofficeaddress: req.body.hrofficeaddress,
+          hrmobileno: req.body.hrmobileno,
+          althrmobileno: req.body.althrmobileno,
+          hremail: req.body.hremail,
+          pocname: req.body.pocname,
+          pocdesignation: req.body.pocdesignation,
+          pocofficeaddress: req.body.pocofficeaddress,
+          pocmobileno: req.body.pocmobileno,
+          altpocmobileno: req.body.altpocmobileno,
+          pocemail: req.body.pocemail,
+          jobtype: req.body.jobtype,
+          jobdesignation: req.body.jobdesignation,
+          sector: req.body.sector,
+          tentativenoofhires: req.body.tentativenoofhires,
+          tentativejoblocation: req.body.tentativejoblocation,
+          JobDescription: req.body.JobDescription,
+          MTechCS: req.body.MTechCS || "no",
+          MScCS: req.body.MScCS || "no",
+          MScDFIS: req.body.MScDFIS || "no",
+          MTechADSAI: req.body.MTechADSAI || "no",
+          categorycompensation: req.body.categorycompensation,
+          isvirtual: req.body.isvirtual,
         });
 
         try {
           await newRecruiter.save();
+
+          await VerifiedUser.deleteMany({
+            "bodyData.email": newRecruiter.hremail,
+          });
           // If save operation is successful, continue with redirection or other operations
           req.flash(
             "success",
-            `Welcome to the NFSU Placement Cell ! \n\n Please Contact the Administration for Further Recruitment Steps.\n\n We'll Keep You Informed on the Provided Email.`
+            `Welcome to the NFSU Placement Cell ! <br>  Please Contact the Administration for Further Recruitment Steps. <br> We'll Keep You Informed on the Provided Email.`
           );
+
+          //sending thanking email
+          message = `<p style="color: red;">Dear Respected Recruiter,</p><br/>
+          <strong>
+Thank you for registering with the Placement Cell of National Forensic Science University! We are thrilled to have you join our network of esteemed recruiters.
+<br/><br/>
+At The School of Cyber Security and Digital Forensics, We are committed to providing our students with exceptional opportunities to embark on rewarding career paths in the field of Computer Science and Cyber Security. Your participation in our placement activities is invaluable in helping our students achieve their professional aspirations.
+
+
+<br/><br/>
+We look forward to collaborating with you and your organization to identify talented individuals who will make meaningful contributions to your team. Together, we can nurture the next generation of leaders and innovators in the field of Cyber Security.
+<br/><br/>
+Once again, thank you for choosing to partner with us. We are excited about the possibilities that lie ahead and are confident that our partnership will be mutually beneficial.
+
+<br/><br/>
+<p style="color: red;">Warm regards,</p>
+
+ <br/><br/>
+Dr. Ahlad Kumar,
+<br>
+Placement Cell Coordinator,
+<br>
+
+School of Cyber Security and Digital Forensics,
+<br>
+
+National Forensic Science University.
+<br>
+
+</strong>
+<br/>
+<div>
+<img
+      src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
+      style="border-radius:2rem;width:60%;"
+      alt="..."
+    />
+</div>`;
+          const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+              user: "smile.itsadil@gmail.com",
+              pass: process.env.APP_PASSWORD,
+            },
+          });
+          const mailOptions = {
+            from: "ThePlacementCell@NFSU<smile.itsadil@gmail.com>",
+            to: newRecruiter.hremail,
+            subject:
+              "Welcome to National Forensic Science University's Placement Cell.",
+            html: message,
+          };
+          transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+              console.log("error in sending thanking email : " + error);
+            } else {
+            }
+          });
+          //now i have the req.session.bodyData and bodyData inside every object in VerifiedUser with bodyData.email and bodyData.username(Recruiter);
           res.redirect("/");
         } catch (error) {
           // If an error occurs during save operation, catch it here
@@ -395,7 +492,7 @@ app.post(
           res.redirect("/register/rec"); // Redirect to an error page
         }
       } catch (error) {
-        req.flash("error", "error saving recruiter's data :", error);
+        req.flash("error", "error saving recruiter's data :" + error);
         res.redirect("/register/rec");
       }
     } else if (user == "stu") {
@@ -456,6 +553,17 @@ app.post(
 app.get("/account", isLoggedIn, (req, res) => {
   res.render("users/youraccountstu.ejs");
 });
+
+app.get(
+  "/admin",
+  isThisAdmin,
+  wrapAsync(async (req, res) => {
+    let allRecruitersPending = await Recruiter.find({ isAudited: false });
+    console.log(allRecruitersPending);
+    //now send isaudited pendign recs to admin to approve
+    res.render("admin.ejs");
+  })
+);
 
 app.get("/placement-team", (req, res) => {
   res.render("team/placementTeam.ejs");

@@ -1,12 +1,17 @@
 <%layout("/layouts/boilerplate.ejs")%>
 <link rel="stylesheet" href="/style.css" />
 <div class="regis-big-div">
-  <div class="left-login">
+  <div
+    class="left-login"
+    style="width: 100%; display: flex; justify-content: center"
+  >
     <div class="pop-out">
       <a href="/"
         ><img
           loading="lazy"
           src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
+          width="250"
+          style="padding: 1rem"
           alt=""
       /></a>
     </div>
@@ -21,7 +26,16 @@
       <div class="resources-student-big-div">
         <div class="content-div regis-content-div">
           <div class="content-title container">
-            <h2 style="text-align: center">Registration : Recruiter</h2>
+            <h2
+              style="
+                text-align: center;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+                margin-bottom: 0;
+              "
+            >
+              Registration : Recruiter
+            </h2>
             <hr />
             <h2>Company's Information</h2>
             <br />
@@ -33,6 +47,7 @@
                   type="text"
                   class="form-control"
                   name="companyname"
+                  value="aa"
                   id="CompanyName"
                   placeholder="Company Name"
                   required
@@ -44,6 +59,7 @@
                   type="text"
                   class="form-control"
                   name="natureofbusiness"
+                  value="aa"
                   id="NatureofBusiness"
                   placeholder="Nature of Business"
                   required
@@ -94,7 +110,8 @@
             <h2>Communication Details</h2>
             <br />
             <div class="comm-fields">
-              <h4>HEAD HR</h4>
+              <h2 style="padding-top: 1rem; padding-bottom: 2rem">HEAD HR</h2>
+
               <div class="input-fields">
                 <div class="form-group">
                   <label for="hrname">HR-Name</label>
@@ -140,6 +157,7 @@
                     class="form-control"
                     id="MobileNumber"
                     required
+                    value="9"
                     name="hrmobileno"
                     placeholder="Mobile Number"
                   />
@@ -149,6 +167,7 @@
                   <input
                     type="tel"
                     class="form-control"
+                    value="9"
                     id="TelephoneNumber"
                     required
                     name="althrmobileno"
@@ -162,13 +181,19 @@
                     type="email"
                     class="form-control"
                     name="hremail"
+                    readonly
+                    value="<%=email%>"
                     required
                     id="EmailId"
                     placeholder="Email Id"
                   />
                 </div>
               </div>
-              <h4>HEAD POC-1</h4>
+
+              <h2 style="padding-top: 1rem; padding-bottom: 2rem">
+                HEAD POC-1
+              </h2>
+
               <div class="input-fields">
                 <div class="form-group">
                   <label for="pocname">POC-Name</label>
@@ -213,6 +238,7 @@
                     type="tel"
                     class="form-control"
                     id="pocMobileNumber"
+                    value="9"
                     required
                     name="pocmobileno"
                     placeholder="Mobile Number"
@@ -224,6 +250,7 @@
                   >
                   <input
                     type="tel"
+                    value="8"
                     class="form-control"
                     id="pocTelephoneNumber"
                     required
@@ -239,6 +266,7 @@
                     class="form-control"
                     name="pocemail"
                     required
+                    value="<%=email%>"
                     id="pocEmailId"
                     placeholder="Email Id"
                   />
@@ -259,6 +287,7 @@
                   <input
                     type="text"
                     class="form-control"
+                    value="a"
                     required
                     name="jobtype"
                     id="JobType"
@@ -271,6 +300,7 @@
                     type="text"
                     class="form-control"
                     required
+                    value="a"
                     name="jobdesignation"
                     id="JobDesignation"
                     placeholder=" Job Designation"
@@ -300,6 +330,7 @@
                   <input
                     type="number"
                     class="form-control"
+                    value="1"
                     id="TentativenoofHires"
                     name="tentativenoofhires"
                     required
@@ -314,6 +345,7 @@
                     type="text"
                     class="form-control"
                     required
+                    value="a"
                     name="tentativejoblocation"
                     id="TentativeJobLocation"
                     placeholder=" Tentative Job Location"
@@ -329,198 +361,156 @@
                     name="JobDescription"
                     placeholder="Job Description"
                   >
+a
                   </textarea>
                 </div>
-                <div class="form-group">
-                  <label for="AttachFile"> Attach File </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-div regis-content-div" id="procedure">
+          <div class="content-title container">
+            <hr />
+            <h2>Eligibility Matrix</h2>
+            <br />
+
+            <p>Cyber Security</p>
+            <div class="form-check">
+              <label class="form-check-label" for="MTechCS"> MTech </label>
+              <input
+                class="form-check-input mx-3"
+                name="MTechCS"
+                type="checkbox"
+                checked
+                value="yes"
+                id="MTechCS"
+              />
+            </div>
+            <div class="form-check">
+              <label class="form-check-label" for="MScCS"> MSc </label>
+              <input
+                class="form-check-input mx-3"
+                name="MScCS"
+                type="checkbox"
+                value="yes"
+                id="MScCS"
+              />
+            </div>
+            <br />
+
+            <p>Digital Forensics and Information Security</p>
+
+            <div class="form-check">
+              <label class="form-check-label" for="MScDFIS"> MSc </label>
+              <input
+                class="form-check-input mx-3"
+                name="MScDFIS"
+                type="checkbox"
+                value="yes"
+                id="MScDFIS"
+              />
+            </div>
+
+            <p>Applied Data Science & Artificial Intelligence</p>
+            <div class="form-check">
+              <label class="form-check-label" for="MTechADSAI"> MTech </label>
+              <input
+                class="form-check-input mx-3"
+                value="yes"
+                checked
+                name="MTechADSAI"
+                type="checkbox"
+                id="MTechADSAI"
+              />
+            </div>
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="Categorycomp">Category Compensation</label>
+            <input
+              type="text"
+              class="form-control"
+              value="a"
+              name="categorycompensation"
+              id="Categorycomp"
+              placeholder="Category"
+              required
+            />
+          </div>
+        </div>
+        <div class="content-div regis-content-div" id="procedure">
+          <div class="content-title container">
+            <hr />
+            <h2>Campus Process Mode</h2>
+            <br />
+            <div class="comm-fields">
+              <div class="input-fields">
+                <div class="form-check">
                   <input
-                    type="file"
-                    class="form-control"
+                    class="form-check-input"
+                    type="radio"
+                    value="yes"
+                    checked
+                    name="isvirtual"
+                    id="CampusProcessMode"
                     required
-                    name="attachedfile"
-                    id="AttachFile"
                   />
+                  <label class="form-check-label" for="CampusProcessMode">
+                    Virtual – All processes are conducted online
+                  </label>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="content-title container">
-          <hr />
-          <h2>Eligibility Matrix</h2>
-          <br />
-          <div class="comm-fields">
-            <div class="input-fields">
-              <div class="form-group">
-                <label> Cyber Security </label>
-              </div>
-
-              <div class="form-check">
-                <label class="form-check-cs" for="MTechCS"> MTech </label>
-                <input
-                  class="form-check-input mx-3"
-                  required
-                  name="cybersecuritycourse"
-                  type="checkbox"
-                  value="MTechCS"
-                  id="MTechCS"
-                />
-              </div>
-              <div class="form-check">
-                <label class="form-check-cs" for="MScCS"> MSc </label>
-                <input
-                  class="form-check-input mx-3"
-                  required
-                  name="cybersecuritycourse"
-                  type="checkbox"
-                  value="MScCS"
-                  id="MScCS"
-                />
+            <div class="comm-fields">
+              <div class="input-fields">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    value="yes"
+                    name="isvirtual"
+                    id="CampusProcessMode2"
+                    required
+                  />
+                  <label class="form-check-label" for="CampusProcessMode2">
+                    In-campus – All processes are conducted in campus
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="comm-fields">
-            <div class="input-fields">
-              <div class="form-group">
-                <label> Digital Forensics and Information Security </label>
-              </div>
-
-              <div class="form-check">
-                <label class="form-check-label" for="MTechDFIS"> MTech </label>
-                <input
-                  class="form-check-input mx-3"
-                  required
-                  name="dfiscourse"
-                  type="checkbox"
-                  value="MTechDFIS"
-                  id="MTechDFIS"
-                />
-              </div>
-              <div class="form-check">
-                <label class="form-check-label" for="MScDFIS"> MSc </label>
-                <input
-                  class="form-check-input mx-3"
-                  required
-                  name="dfiscourse"
-                  type="checkbox"
-                  value="MScDFIS"
-                  id="MScDFIS"
-                />
+            <div class="comm-fields">
+              <div class="input-fields">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    value="hybrid"
+                    name="isvirtual"
+                    id="CampusProcessMode3"
+                    required=""
+                  />
+                  <label class="form-check-label" for="CampusProcessMode3">
+                    Hybrid – Some processes are conducted online while some in
+                    campus
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="comm-fields">
-            <div class="input-fields">
-              <div class="form-group">
-                <label> Artificial Intelligence and Data Science </label>
-              </div>
-
-              <div class="form-check">
-                <label class="form-check-label" for="MTechAIML"> MTech </label>
-                <input
-                  class="form-check-input mx-3"
-                  required
-                  name="aidscourse"
-                  type="checkbox"
-                  value="MTechAIML"
-                  id="MTechAIML"
-                />
-              </div>
-              <div class="form-check">
-                <label class="form-check-label" for="MscAIML"> MSc </label>
-                <input
-                  class="form-check-input mx-3"
-                  required
-                  name="aidscourse"
-                  type="checkbox"
-                  value="MTechAIML"
-                  id="MscAIML"
-                />
-              </div>
-              <div class="form-group">
-                <label for="Categorycomp">Category Compensation</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="categorycompensation"
-                  id="Categorycomp"
-                  placeholder="Category"
-                  required
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="content-title container">
-          <hr />
-          <h2>Campus Process Mode</h2>
-          <br />
-          <div class="comm-fields">
-            <div class="input-fields">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  value="no"
-                  name="isvirtual"
-                  id="CampusProcessMode"
-                  required
-                />
-                <label class="form-check-label" for="CampusProcessMode">
-                  Virtual – All processes are conducted online
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="comm-fields">
-            <div class="input-fields">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  value="yes"
-                  name="isvirtual"
-                  id="CampusProcessMode2"
-                  required
-                />
-                <label class="form-check-label" for="CampusProcessMode2">
-                  In-campus – All processes are conducted in campus
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="comm-fields">
-            <div class="input-fields">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  value="hybrid"
-                  name="isvirtual"
-                  id="CampusProcessMode3"
-                  required=""
-                />
-                <label class="form-check-label" for="CampusProcessMode3">
-                  Hybrid – Some processes are conducted online while some in
-                  campus
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="comm-fields">
-            <div class="input-fields">
-              <div class="form-check">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  value="notdecided"
-                  name="isvirtual"
-                  id="CampusProcessMode4"
-                  required
-                />
-                <label class="form-check-label" for="CampusProcessMode4">
-                  Undecided
-                </label>
+            <div class="comm-fields">
+              <div class="input-fields">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    value="notdecided"
+                    name="isvirtual"
+                    id="CampusProcessMode4"
+                    required
+                  />
+                  <label class="form-check-label" for="CampusProcessMode4">
+                    Undecided
+                  </label>
+                </div>
               </div>
             </div>
           </div>
@@ -554,13 +544,17 @@
                 class="form-check-input"
                 required
                 type="checkbox"
+                checked
+                value="yes"
                 value=""
                 id="flexCheckDefault11"
               />
             </div>
             <br />
             <div class="submit-btn">
-              <button class="btn btn-lg btn-success">SUBMIT</button>
+              <button class="btn btn-lg btn-success" id="form-btn-regisrec">
+                SUBMIT
+              </button>
             </div>
           </div>
         </div>
@@ -591,3 +585,15 @@
     });
   })();
 </script>
+<!-- <script>
+  document
+    .querySelectorAll('input[type="checkbox"]')
+    .addEventListener("change", function () {
+      var checkbox = this;
+      if (checkbox.checked) {
+        checkbox.value = "yes";
+      } else {
+        checkbox.value = "no";
+      }
+    });
+</script> -->

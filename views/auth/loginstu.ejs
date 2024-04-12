@@ -1,15 +1,5 @@
 <%layout("/layouts/boilerplate.ejs")%>
 <div class="login-big-div login-stu">
-  <!-- <div class="left-login">
-    <div class="pop-out">
-      <a href="/"
-        ><img
-          src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
-          loading="lazy"
-          alt=""
-      /></a>
-    </div>
-  </div> -->
   <div class="right-login">
     <div class="login-card pop-out">
       <div style="text-align: center">
@@ -22,14 +12,26 @@
         /></a>
       </div>
       <br />
-      <h3 style="font-size: 1.5rem">Sign-in to NFSU Placement Portal</h3>
+      <h3 style="font-size: 1.5rem; text-align: center">
+        Sign-in to NFSU Placement Portal
+      </h3>
       <br />
       <h5 class="login-identity"><p>Student</p></h5>
       <br />
       <form action="/login-student" method="post">
-        <input type="text" name="username" placeholder="Placement ID" />
+        <input
+          type="text"
+          name="username"
+          style="text-align: center"
+          placeholder="Placement ID"
+        />
         <br /><br />
-        <input type="password" name="password" placeholder="Password" />
+        <input
+          type="password"
+          style="text-align: center"
+          name="password"
+          placeholder="Password"
+        />
         <br /><br /><br />
         <h6>Forgot Password?</h6>
         <br />
