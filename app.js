@@ -169,15 +169,16 @@ app.post(
     failureFlash: true,
   }),
   wrapAsync(async (req, res) => {
-    req.flash("success", "Welcome to The Placement Cell !");
     if (
       req.body.username == process.env.ADMIN_USERNAME &&
       req.body.password == process.env.ADMIN_PASS
     ) {
       res.locals.isAdmin = true;
+      req.flash("success", "Welcome to the Admin Dashboard !");
       res.redirect("/admin");
     } else {
-      res.redirect("/");
+      req.flash("success", "Welcome to The Placement Cell !");
+      res.redirect("/account");
     }
   })
 );
