@@ -62,7 +62,7 @@
       class="dropdown-menu"
       style="border: 3px dashed blanchedalmond; font-weight: bolder"
     >
-      <a
+      <!-- <a
         class="dropdown-item"
         href=""
         style="font-size: 1.2rem; font-weight: 400"
@@ -70,7 +70,7 @@
       >
       <a class="dropdown-item" href="" style="font-size: 1rem; font-weight: 400"
         >School Of Cyber Security and Digital Forensics&nbsp;&nbsp;&nbsp;</a
-      >
+      > -->
     </div>
     <%-body%> <%-include("../includes/footer.ejs")%>
     <script
@@ -81,16 +81,16 @@
     <script>
       document.addEventListener("contextmenu", function (event) {
         event.preventDefault();
-        var customMenu = document.getElementById("custom-menu");
-        customMenu.style.left = event.pageX + "px";
-        customMenu.style.top = event.pageY + "px";
-        customMenu.classList.add("show"); // Bootstrap class to show the menu
+        // var customMenu = document.getElementById("custom-menu");
+        // customMenu.style.left = event.pageX + "px";
+        // customMenu.style.top = event.pageY + "px";
+        // customMenu.classList.add("show"); // Bootstrap class to show the menu
       });
 
-      document.addEventListener("click", function (event) {
-        var customMenu = document.getElementById("custom-menu");
-        customMenu.classList.remove("show"); // Bootstrap class to hide the menu
-      });
+      // document.addEventListener("click", function (event) {
+      //   var customMenu = document.getElementById("custom-menu");
+      //   customMenu.classList.remove("show"); // Bootstrap class to hide the menu
+      // });
     </script>
     <script>
       // Function to check if an element is in the viewport

@@ -1,8 +1,2315 @@
-<%layout("/layouts/boilerplate.ejs")%>
+<html lang="en" class="hydrated">
+  <head>
+    <meta charset="UTF-8" />
+    <style data-styles="">
+      ion-icon {
+        visibility: hidden;
+      }
+      .hydrated {
+        visibility: inherit;
+      }
+    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Admin Dashboard</title>
+    <!-- ======= Styles ====== -->
+    <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <style>
+      /* =========== Google Fonts ============ */
+      @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
 
-<div class="admin-big-div">
-  <h1>here are pending recs.</h1>
-  <div class="rec-pending"><%-allRecruitersPending%></div>
-  <h1>here are pending Students.</h1>
-  <div class="stu-pending"><%-allStudentsPending%></div>
-</div>
+      /* =============== Globals ============== */
+      * {
+        font-family: "Ubuntu", sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --blue: #2a2185;
+        --white: #fff;
+        --gray: #f5f5f5;
+        --black1: #222;
+        --black2: #999;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      /* ::-webkit-scrollbar {
+  width:10px;
+} */
+
+      /*track*/
+      /* ::-webkit-scrollbar-track {
+  background:transparent;
+} */
+
+      /*thumb*/
+      /* ::-webkit-scrollbar-thumb {
+  background:transparent;
+} */
+      /* section{
+  display: none;
+} */
+
+      .onetype {
+        position: relative;
+        width: 100%;
+      }
+
+      /* =============== Navigation ================ */
+      .navigation {
+        position: fixed;
+        width: 200px;
+        height: 100%;
+        background: var(--blue);
+        border-left: 10px solid var(--blue);
+        transition: 0.5s;
+        overflow: hidden;
+      }
+      .navigation.active {
+        width: 80px;
+      }
+
+      .navigation ul {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .navigation ul li {
+        position: relative;
+        width: 100%;
+        list-style: none;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+      }
+
+      .navigation ul li:hover,
+      .navigation ul li.hovered {
+        background-color: var(--white);
+      }
+
+      .navigation ul li:nth-child(1) {
+        margin-bottom: 40px;
+        pointer-events: none;
+      }
+
+      .navigation ul li a {
+        position: relative;
+        display: block;
+        width: 100%;
+        display: flex;
+        text-decoration: none;
+        color: var(--white);
+      }
+      .navigation ul li:hover a,
+      .navigation ul li.hovered a {
+        color: var(--blue);
+      }
+
+      .navigation ul li a .icon {
+        position: relative;
+        display: block;
+        min-width: 60px;
+        height: 60px;
+        line-height: 75px;
+        text-align: center;
+      }
+      .navigation ul li a .icon ion-icon {
+        font-size: 1.75rem;
+      }
+
+      .navigation ul li a .title {
+        position: relative;
+        display: block;
+        padding: 0 10px;
+        height: 60px;
+        line-height: 60px;
+        text-align: start;
+        white-space: nowrap;
+      }
+
+      /* --------- curve outside ---------- */
+      .navigation ul li:hover a::before,
+      .navigation ul li.hovered a::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: -50px;
+        width: 50px;
+        height: 50px;
+        background-color: transparent;
+        border-radius: 50%;
+        box-shadow: 35px 35px 0 10px var(--white);
+        pointer-events: none;
+      }
+      .navigation ul li:hover a::after,
+      .navigation ul li.hovered a::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: -50px;
+        width: 50px;
+        height: 50px;
+        background-color: transparent;
+        border-radius: 50%;
+        box-shadow: 35px -35px 0 10px var(--white);
+        pointer-events: none;
+      }
+
+      /* ===================== Main ===================== */
+      .main {
+        position: absolute;
+        width: 85%;
+        left: 200px;
+        min-height: 100vh;
+        background: var(--white);
+        transition: 0.5s;
+      }
+      .main.active {
+        width: calc(100% - 80px);
+        left: 80px;
+      }
+
+      .topbar {
+        width: 100%;
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 10px;
+      }
+
+      .toggle {
+        position: relative;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.5rem;
+        cursor: pointer;
+      }
+
+      .search {
+        position: relative;
+        width: 400px;
+        margin: 0 10px;
+      }
+
+      .search label {
+        position: relative;
+        width: 100%;
+      }
+
+      .search label input {
+        width: 100%;
+        height: 40px;
+        border-radius: 40px;
+        padding: 5px 20px;
+        padding-left: 35px;
+        font-size: 18px;
+        outline: none;
+        border: 1px solid var(--black2);
+      }
+
+      .search label ion-icon {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        font-size: 1.2rem;
+      }
+
+      .user {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .user img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ======================= Cards ====================== */
+      .cardBox {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 30px;
+      }
+
+      .cardBox .card {
+        position: relative;
+        background: var(--white);
+        padding: 30px;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .cardBox .card .numbers {
+        position: relative;
+        font-weight: 500;
+        font-size: 2.5rem;
+        color: var(--blue);
+      }
+
+      .cardBox .card .cardName {
+        color: var(--black2);
+        font-size: 1.1rem;
+        margin-top: 5px;
+      }
+
+      .cardBox .card .iconBx {
+        /* font-size: 2.5rem;  */
+        color: var(--black2);
+      }
+
+      .cardBox .card:hover {
+        background: var(--blue);
+      }
+      .cardBox .card:hover .numbers,
+      .cardBox .card:hover .cardName,
+      .cardBox .card:hover .iconBx {
+        color: var(--white);
+      }
+
+      /* ================== Order Details List ============== */
+      .details {
+        position: relative;
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        /* grid-template-columns: 2fr 1fr;
+  grid-gap: 30px; */
+        /* margin-top: 10px; */
+      }
+
+      .details .recentOrders {
+        position: relative;
+        display: grid;
+        min-height: 500px;
+        background: var(--white);
+        padding: 20px;
+        box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+      }
+
+      .details .cardHeader {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+      .cardHeader h2 {
+        font-weight: 600;
+        color: var(--blue);
+      }
+      .cardHeader .btn {
+        position: relative;
+        padding: 5px 10px;
+        background: var(--blue);
+        text-decoration: none;
+        color: var(--white);
+        border-radius: 6px;
+      }
+      .graphbox {
+        position: relative;
+
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 30px;
+        background: var(--white);
+        /* box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08); */
+      }
+      .graphbox .box {
+        position: relative;
+
+        padding: 20px;
+        width: 100%;
+        box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+      }
+
+      .details table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      .details table thead td {
+        font-weight: 600;
+      }
+      .details .recentOrders table tr {
+        color: var(--black1);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+      .details .recentOrders table tr:last-child {
+        border-bottom: none;
+      }
+      .details .recentOrders table tbody tr:hover {
+        background: var(--blue);
+        color: var(--white);
+      }
+      .details .recentOrders table tr td {
+        padding: 10px;
+      }
+      .details .recentOrders table tr td:last-child {
+        text-align: end;
+      }
+      .details .recentOrders table tr td:nth-child(2) {
+        text-align: end;
+      }
+      .details .recentOrders table tr td:nth-child(3) {
+        text-align: center;
+      }
+      .status.delivered {
+        padding: 2px 4px;
+        background: #8de02c;
+        color: var(--white);
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .status.pending {
+        padding: 2px 4px;
+        background: #e9b10a;
+        color: var(--white);
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .status.return {
+        padding: 2px 4px;
+        background: #f00;
+        color: var(--white);
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      .status.inProgress {
+        padding: 2px 4px;
+        background: #1795ce;
+        color: var(--white);
+        border-radius: 4px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+      /*  input add listings */
+      .addlistings {
+        position: relative;
+        box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+        width: 100%;
+        padding: 20px;
+        display: grid;
+
+        background: var(--white);
+      }
+      form div {
+        /* display: grid;
+   */
+        display: flex;
+        margin: 10px;
+        justify-content: space-between;
+      }
+
+      form .css-input {
+        width: 50%;
+        height: 40px;
+        border-radius: 40px;
+        padding: 5px 20px;
+        padding-left: 35px;
+        font-size: 18px;
+        outline: none;
+        border: 1px solid var(--black2);
+      }
+      form .css-input:focus {
+        outline: none;
+      }
+      form label {
+        padding: 7px;
+        font-size: 18px;
+      }
+
+      .recentStudents {
+        position: relative;
+
+        width: 100%;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        grid-gap: 30px;
+        background: var(--white);
+      }
+
+      .recentCustomers {
+        position: relative;
+        width: 100%;
+        display: grid;
+        /* grid-gap: 30px; */
+        min-height: 500px;
+        padding: 20px;
+        background: var(--white);
+        box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+      }
+      .recentCustomers .imgBx {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        overflow: hidden;
+      }
+      .recentCustomers .imgBx img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .recentCustomers table tr td {
+        padding: 12px 10px;
+      }
+      .recentCustomers table tr td h4 {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.2rem;
+      }
+      .recentCustomers table tr td h4 span {
+        font-size: 14px;
+        color: var(--black2);
+      }
+      .recentCustomers table tr:hover {
+        background: var(--blue);
+        color: var(--white);
+      }
+      .recentCustomers table tr:hover td h4 span {
+        color: var(--white);
+      }
+
+      /* ====================== Responsive Design ========================== */
+      @media (max-width: 991px) {
+        .recentStudents {
+          grid-template-columns: 1fr;
+        }
+        .graphbox {
+          grid-template-columns: 1fr;
+          height: auto;
+        }
+        .navigation {
+          left: -300px;
+        }
+        .navigation.active {
+          width: 200px;
+          left: 0;
+        }
+        .main {
+          width: 100%;
+          left: 0;
+        }
+        .main.active {
+          left: 300px;
+        }
+        .cardBox {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .details {
+          grid-template-columns: 1fr;
+        }
+        .recentOrders {
+          overflow-x: auto;
+        }
+        .status.inProgress {
+          white-space: nowrap;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .cardBox {
+          grid-template-columns: repeat(1, 1fr);
+        }
+        .cardHeader h2 {
+          font-size: 20px;
+        }
+        .user {
+          min-width: 40px;
+        }
+        .navigation {
+          width: 100%;
+          left: -100%;
+          z-index: 1000;
+        }
+        .navigation.active {
+          width: 100%;
+          left: 0;
+        }
+        .toggle {
+          z-index: 10001;
+        }
+        .main.active .toggle {
+          color: #fff;
+          position: fixed;
+          right: 0;
+          left: initial;
+        }
+      }
+
+      button {
+        font-size: 18px;
+        padding: 7px;
+        background-color: orangered;
+        color: white;
+        border-style: none;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+      button:hover {
+        transform: scale(1.05);
+      }
+      .queriesRaised {
+        position: relative;
+
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        /* grid-template-columns:1fr 2fr ;
+  grid-gap: 30px; */
+        background: var(--white);
+      }
+      .queriesRaised .box {
+        overflow-y: scroll;
+
+        position: relative;
+        min-height: 100vh;
+        padding: 20px;
+        width: 100%;
+        box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+        border-radius: 20px;
+      }
+      .queriesRaised .imgBx {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 50px;
+        overflow: hidden;
+      }
+      .queriesRaised .imgBx img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .queriesRaised table tr td {
+        padding: 12px 10px;
+      }
+      .queriesRaised table tr td h4 {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.2rem;
+      }
+      .queriesRaised table tr td h4 span {
+        font-size: 14px;
+        color: var(--black2);
+      }
+      .queriesRaised table tr:hover {
+        background: var(--blue);
+        color: var(--white);
+      }
+      .queriesRaised table tr:hover td h4 span {
+        color: var(--white);
+      }
+      /* animated admin greeting section */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .animated-text {
+        opacity: 0;
+        animation: fadeIn 1s ease forwards;
+      }
+      .welcome-container {
+        position: relative;
+        display: flex;
+        width: 100%;
+        padding: 20px;
+        justify-content: center;
+      }
+
+      /* infinity lopps logs */
+      @keyframes slide {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-100%);
+        }
+      }
+
+      .logos {
+        overflow: hidden;
+        padding: 30px 0;
+        background: white;
+        white-space: nowrap;
+        position: fixed;
+        bottom: 0;
+      }
+
+      .logos:before,
+      .logos:after {
+        position: absolute;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        content: "";
+        z-index: 2;
+      }
+
+      .logos:before {
+        left: 0;
+        background: linear-gradient(to left, rgba(255, 255, 255, 0), white);
+      }
+
+      .logos:after {
+        right: 0;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), white);
+      }
+
+      .logos:hover .logos-slide {
+        animation-play-state: paused;
+      }
+
+      .logos-slide {
+        display: inline-block;
+        animation: 35s slide infinite linear;
+      }
+
+      .logos-slide img {
+        height: 30px;
+        margin: 0 40px;
+      }
+    </style>
+    <style type="text/css">
+      /* Chart.js */
+      /*
+ * DOM element rendering detection
+ * https://davidwalsh.name/detect-node-insertion
+ */
+      @keyframes chartjs-render-animation {
+        from {
+          opacity: 0.99;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .chartjs-render-monitor {
+        animation: chartjs-render-animation 0.001s;
+      }
+
+      /*
+ * DOM element resizing detection
+ * https://github.com/marcj/css-element-queries
+ */
+      .chartjs-size-monitor,
+      .chartjs-size-monitor-expand,
+      .chartjs-size-monitor-shrink {
+        position: absolute;
+        direction: ltr;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        pointer-events: none;
+        visibility: hidden;
+        z-index: -1;
+      }
+
+      .chartjs-size-monitor-expand > div {
+        position: absolute;
+        width: 1000000px;
+        height: 1000000px;
+        left: 0;
+        top: 0;
+      }
+
+      .chartjs-size-monitor-shrink > div {
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =============== Navigation ================ -->
+    <div class="onetype" id="allofyou">
+      <div class="navigation">
+        <ul>
+          <li>
+            <a href="#">
+              <span class="icon">
+                <img
+                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/nfsu1_w88qok.png"
+                  alt=""
+                  width="80px"
+                  height="100px"
+                  style="padding-top: 7px"
+                />
+              </span>
+              <span class="title">NFSU</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#chartSection">
+              <span class="icon">
+                <ion-icon
+                  name="home-outline"
+                  data-target="companyData"
+                  role="img"
+                  class="md hydrated"
+                  aria-label="home outline"
+                ></ion-icon>
+              </span>
+
+              <span class="title">
+                <!-- <button data-target="companyData">Dashboard </button> -->
+                Dashboard
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#companyData">
+              <span class="icon">
+                <ion-icon
+                  name="business-outline"
+                  role="img"
+                  class="md hydrated"
+                  aria-label="business outline"
+                ></ion-icon>
+              </span>
+
+              <span class="title">
+                <!-- <button data-target="companyData">Dashboard </button> -->
+                Company
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#jobseekers">
+              <span class="icon">
+                <ion-icon
+                  name="briefcase-outline"
+                  role="img"
+                  class="md hydrated"
+                  aria-label="briefcase outline"
+                ></ion-icon>
+              </span>
+              <span class="title">Job Seekers</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#companydata">
+              <span class="icon">
+                <ion-icon
+                  name="people-outline"
+                  role="img"
+                  class="md hydrated"
+                  aria-label="people outline"
+                ></ion-icon>
+              </span>
+              <span class="title">
+                <!-- <button data-target="companydata">Accounts </button> -->
+                Accounts
+              </span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#queriesRaisedSection">
+              <span class="icon">
+                <ion-icon
+                  name="chatbubble-outline"
+                  role="img"
+                  class="md hydrated"
+                  aria-label="chatbubble outline"
+                ></ion-icon>
+              </span>
+              <span class="title">Queries</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon
+                  name="settings-outline"
+                  role="img"
+                  class="md hydrated"
+                  aria-label="settings outline"
+                ></ion-icon>
+              </span>
+              <span class="title">Settings</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <span class="icon">
+                <ion-icon
+                  name="log-out-outline"
+                  role="img"
+                  class="md hydrated"
+                  aria-label="log out outline"
+                ></ion-icon>
+              </span>
+              <span class="title">Sign Out</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- ========================= Main ==================== -->
+      <div class="main">
+        <div class="topbar">
+          <div class="toggle">
+            <ion-icon
+              name="menu-outline"
+              role="img"
+              class="md hydrated"
+              aria-label="menu outline"
+            ></ion-icon>
+          </div>
+
+          <div class="search">
+            <label>
+              <input type="text" placeholder="Search here" />
+              <ion-icon
+                name="search-outline"
+                role="img"
+                class="md hydrated"
+                aria-label="search outline"
+              ></ion-icon>
+            </label>
+          </div>
+
+          <div class="user">
+            <img
+              src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/administrator_quwadq.png"
+              alt=""
+            />
+          </div>
+        </div>
+
+        <!-- Add Charts -->
+        <section id="chartSection" style="display: block">
+          <div class="welcome-container">
+            <h1 id="welcome-message" class="animated-text">
+              Welcome back, Admin! Glad to have you here.
+            </h1>
+          </div>
+          <div class="graphbox">
+            <div class="box">
+              <div class="chartjs-size-monitor">
+                <div class="chartjs-size-monitor-expand">
+                  <div class=""></div>
+                </div>
+                <div class="chartjs-size-monitor-shrink">
+                  <div class=""></div>
+                </div>
+              </div>
+              <canvas
+                id="myChart"
+                style="height: 355px; display: block; width: 710px"
+                width="1420"
+                height="710"
+                class="chartjs-render-monitor"
+              ></canvas>
+            </div>
+            <div class="box">
+              <div class="cardHeader">
+                <h2>Updates</h2>
+              </div>
+            </div>
+          </div>
+
+          <div class="logos">
+            <div class="logos-slide">
+              <img src="google-1-1.svg" />
+              <img src="meta-1.svg" />
+              <img src="ibm.svg" />
+              <img src="deloitte-2.svg" />
+              <img src="microsoft-5.svg" />
+              <img src="fortinet-logo.svg" />
+              <img src="darktrace-3.svg" />
+
+              <img src="crowdstrike-2.svg" />
+              <img src="sophos-logo.svg" alt="" />
+            </div>
+            <div class="logos-slide">
+              <img src="google-1-1.svg" />
+              <img src="meta-1.svg" />
+              <img src="ibm.svg" />
+              <img src="deloitte-2.svg" />
+              <img src="microsoft-5.svg" />
+              <img src="fortinet-logo.svg" />
+              <img src="darktrace-3.svg" />
+
+              <img src="crowdstrike-2.svg" />
+              <img src="sophos-logo.svg" alt="" />
+            </div>
+          </div>
+        </section>
+        <!-- queries  -->
+        <section id="queriesRaisedSection" style="display: none">
+          <div class="queriesRaised">
+            <div class="box">
+              <div class="cardHeader">
+                <h2>Queries Raised Students</h2>
+              </div>
+              <table>
+                <tbody>
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="box">
+              <div class="cardHeader">
+                <h2>Queries Raised Companies</h2>
+              </div>
+              <table>
+                <tbody>
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+
+                  <tr>
+                    <td width="40px">
+                      <div class="imgBx">
+                        <img src="assets/imgs/customer02.jpg" alt="" />
+                      </div>
+                    </td>
+                    <td>
+                      <h4>
+                        David <br />
+                        <span>Company ID:</span>
+                      </h4>
+                    </td>
+                    <td>Company Name</td>
+                    <td>Details</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+        <!-- job seekers requests -->
+        <section id="jobseekers" style="display: none">
+          <div class="cardBox">
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Total Applicants Registered</div>
+              </div>
+
+              <div class="iconBx">
+                <!-- <ion-icon name="eye-outline"></ion-icon> -->
+                <span class="material-symbols-sharp"> app_registration </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Total Applicants Requested</div>
+              </div>
+
+              <div class="iconBx">
+                <span class="material-symbols-sharp"> check_circle </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Total Application Disapproved</div>
+              </div>
+
+              <div class="iconBx">
+                <span class="material-symbols-sharp"> unpublished </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Export Data</div>
+              </div>
+
+              <div class="iconBx">
+                <span class="material-symbols-sharp"> download </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================ Order Details List ================= -->
+          <div class="details">
+            <div class="recentOrders">
+              <div class="cardHeader">
+                <h2>Job Seekers Approved</h2>
+                <a href="#" class="btn"
+                  ><input
+                    type="text"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                </a>
+              </div>
+              <div style="height: 500px; overflow-y: scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Placement ID</td>
+
+                      <td>Students Name</td>
+                      <td>Company Applied To</td>
+                      <td>Job Role</td>
+                      <td>Course Name</td>
+
+                      <td>Enable Registration</td>
+                      <td>Disable Registration</td>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- job seekers request -->
+
+          <div class="details">
+            <div class="recentOrders">
+              <div class="cardHeader">
+                <h2>Job Seekers Requests</h2>
+                <a href="#" class="btn"
+                  ><input
+                    type="text"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                </a>
+              </div>
+              <div style="height: 500px; overflow-y: scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Placement ID</td>
+
+                      <td>Students Name</td>
+                      <td>Company Applied To</td>
+                      <td>Job Role</td>
+                      <td>Course Name</td>
+
+                      <td>Approve Registration</td>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Verify</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Verify</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Verify</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Verify</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Verify</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Verify</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Verify</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td>Piyus Sahu</td>
+                      <td>Cisco</td>
+                      <td>Vapt</td>
+                      <td>MTech CS</td>
+                      <td><button>Verify</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ======================= Cards ================== -->
+        <section id="companyData" style="display: none">
+          <div class="cardBox">
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Total Companies Registered</div>
+              </div>
+
+              <div class="iconBx">
+                <!-- <ion-icon name="eye-outline"></ion-icon> -->
+                <span class="material-symbols-sharp"> app_registration </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Total Requests Recieved</div>
+              </div>
+
+              <div class="iconBx">
+                <span class="material-symbols-sharp"> view_list </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Queries Raised</div>
+              </div>
+
+              <div class="iconBx">
+                <span class="material-symbols-sharp"> query_stats </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Export Data</div>
+              </div>
+
+              <div class="iconBx">
+                <span class="material-symbols-sharp"> download </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================ COMPANY Details List ================= -->
+          <div class="details">
+            <div class="recentOrders">
+              <div class="cardHeader">
+                <h2>Company Registrations</h2>
+                <a href="#" class="btn"
+                  ><input
+                    type="text"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                </a>
+              </div>
+              <div style="height: 500px; overflow-y: scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Company Name</td>
+                      <td>Prefered Campus</td>
+                      <td>Job Location</td>
+                      <td>Job Type</td>
+                      <td>Job Title</td>
+                      <td>Job Description</td>
+                      <td>CTC/Stipend</td>
+                      <td>Last Date To Apply</td>
+                      <td>Applied Students</td>
+                      <td>Edit Details</td>
+                      <td>Delete</td>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>Meta</td>
+                      <td>Gandhi Nagar</td>
+                      <td>job location</td>
+                      <td>Internship (I)</td>
+                      <td>Vapt</td>
+                      <td>pdf</td>
+                      <td>50LPA</td>
+                      <td>13/05/2024</td>
+                      <td>20</td>
+                      <td><button class="btn btn-primary">Edit</button></td>
+                      <td><button class="btn btn-primary">Delete</button></td>
+                      <!-- <td><span class="status delivered">Delivered</span></td> -->
+                    </tr>
+
+                    <tr>
+                      <td>Meta</td>
+                      <td>Gandhi Nagar</td>
+                      <td>job location</td>
+                      <td>Internship (I)</td>
+                      <td>Vapt</td>
+                      <td>pdf</td>
+                      <td>50LPA</td>
+                      <td>13/05/2024</td>
+                      <td>20</td>
+                      <td><button class="btn btn-primary">Edit</button></td>
+                      <td><button class="btn btn-primary">Delete</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>Meta</td>
+                      <td>Gandhi Nagar</td>
+                      <td>job location</td>
+                      <td>Internship (I)</td>
+                      <td>Vapt</td>
+                      <td>pdf</td>
+                      <td>50LPA</td>
+                      <td>13/05/2024</td>
+                      <td>20</td>
+                      <td><button class="btn btn-primary">Edit</button></td>
+                      <td><button class="btn btn-primary">Delete</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>Meta</td>
+                      <td>Gandhi Nagar</td>
+                      <td>job location</td>
+                      <td>Internship (I)</td>
+                      <td>Vapt</td>
+                      <td>pdf</td>
+                      <td>50LPA</td>
+                      <td>13/05/2024</td>
+                      <td>20</td>
+                      <td><button class="btn btn-primary">Edit</button></td>
+                      <td><button class="btn btn-primary">Delete</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>Meta</td>
+                      <td>Gandhi Nagar</td>
+                      <td>job location</td>
+                      <td>Internship (I)</td>
+                      <td>Vapt</td>
+                      <td>pdf</td>
+                      <td>50LPA</td>
+                      <td>13/05/2024</td>
+                      <td>20</td>
+                      <td><button class="btn btn-primary">Edit</button></td>
+                      <td><button class="btn btn-primary">Delete</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>Meta</td>
+                      <td>Gandhi Nagar</td>
+                      <td>job location</td>
+                      <td>Internship (I)</td>
+                      <td>Vapt</td>
+                      <td>pdf</td>
+                      <td>50LPA</td>
+                      <td>13/05/2024</td>
+                      <td>20</td>
+                      <td><button class="btn btn-primary">Edit</button></td>
+                      <td><button class="btn btn-primary">Delete</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>Meta</td>
+                      <td>Gandhi Nagar</td>
+                      <td>job location</td>
+                      <td>Internship (I)</td>
+                      <td>Vapt</td>
+                      <td>pdf</td>
+                      <td>50LPA</td>
+                      <td>13/05/2024</td>
+                      <td>20</td>
+                      <td><button class="btn btn-primary">Edit</button></td>
+                      <td><button class="btn btn-primary">Delete</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>Meta</td>
+                      <td>Gandhi Nagar</td>
+                      <td>job location</td>
+                      <td>Internship (I)</td>
+                      <td>Vapt</td>
+                      <td>pdf</td>
+                      <td>50LPA</td>
+                      <td>13/05/2024</td>
+                      <td>20</td>
+                      <td><button class="btn btn-primary">Edit</button></td>
+                      <td><button class="btn btn-primary">Delete</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- ================= New Customers ================ -->
+          </div>
+          <div class="recentStudents">
+            <div class="recentCustomers">
+              <div class="cardHeader">
+                <h2>Company Listing Requests</h2>
+              </div>
+              <div style="height: 500px; overflow-y: scroll">
+                <table>
+                  <tbody>
+                    <tr>
+                      <td width="40px">
+                        <div class="imgBx">
+                          <img src="assets/imgs/customer02.jpg" alt="" />
+                        </div>
+                      </td>
+                      <td>
+                        <h4><span>Job Role ID:</span></h4>
+                      </td>
+                      <td>Company Name</td>
+                      <td>
+                        <button>Verify</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td width="40px">
+                        <div class="imgBx">
+                          <img src="assets/imgs/customer02.jpg" alt="" />
+                        </div>
+                      </td>
+                      <td>
+                        <h4><span>Company ID:</span></h4>
+                      </td>
+                      <td>Company Name</td>
+                      <td>
+                        <button>Verify</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td width="40px">
+                        <div class="imgBx">
+                          <img src="assets/imgs/customer02.jpg" alt="" />
+                        </div>
+                      </td>
+                      <td>
+                        <h4><span>Company ID:</span></h4>
+                      </td>
+                      <td>Company Name</td>
+                      <td>
+                        <button>Verify</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td width="40px">
+                        <div class="imgBx">
+                          <img src="assets/imgs/customer02.jpg" alt="" />
+                        </div>
+                      </td>
+                      <td>
+                        <h4><span>Company ID:</span></h4>
+                      </td>
+                      <td>Company Name</td>
+                      <td>
+                        <button>Verify</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td width="40px">
+                        <div class="imgBx">
+                          <img src="assets/imgs/customer02.jpg" alt="" />
+                        </div>
+                      </td>
+                      <td>
+                        <h4><span>Company ID:</span></h4>
+                      </td>
+                      <td>Company Name</td>
+                      <td>
+                        <button>Verify</button>
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td width="40px">
+                        <div class="imgBx">
+                          <img src="assets/imgs/customer02.jpg" alt="" />
+                        </div>
+                      </td>
+                      <td>
+                        <h4><span>Company ID:</span></h4>
+                      </td>
+                      <td>Company Name</td>
+                      <td>
+                        <button>Verify</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- add listings -->
+            <div class="addlistings">
+              <div class="cardHeader">
+                <h2>Add Listings</h2>
+              </div>
+              <div class="companyDetails" style="margin-top: 20px">
+                <form class="row g-3 needs-validation" validate="">
+                  <div class="col-md-5">
+                    <label for="companyName" class="form-label"
+                      >Official Company Name *</label
+                    >
+                    <input
+                      type="text"
+                      id="companyName"
+                      class="css-input"
+                      required=""
+                    />
+                  </div>
+
+                  <div class="col-md-3">
+                    <label for="offeredCampus" class="form-label"
+                      >Campus Prefered</label
+                    >
+                    <select
+                      name="offeredCampus"
+                      id="offeredCampus"
+                      class="css-input"
+                      required=""
+                    >
+                      <option value="gandhiNagar">Gandhi Nagar</option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="jobLocation" class="form-label"
+                      >Job Location *</label
+                    >
+                    <input
+                      type="text"
+                      id="jobLocation"
+                      class="css-input"
+                      required=""
+                    />
+                  </div>
+                  <div class="col-md-3">
+                    <label for="joType" class="form-label"
+                      >Campus Prefered</label
+                    >
+                    <select
+                      name="joType"
+                      id="joType"
+                      class="css-input"
+                      required=""
+                    >
+                      <option value="Internship">Internship (I)</option>
+                      <option value="Intern FTE">Intern FTE (I+F)</option>
+                      <option value="FTE">FTE (F)</option>
+                      <option value="Internship PPO">
+                        Internship PPO (I+P)
+                      </option>
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="jobTitle" class="form-label">Job Title *</label>
+                    <input
+                      type="text"
+                      id="jobTitle"
+                      class="css-input"
+                      required=""
+                    />
+                  </div>
+                  <div
+                    class="col-md-4"
+                    style="
+                      border-style: groove;
+                      border-radius: 30px;
+                      padding: 5px;
+                    "
+                  >
+                    <label for="MTechCS">MTech CS</label>
+                    <input
+                      type="checkbox"
+                      class="css-input"
+                      name="MtechCS"
+                      id="MTechCS"
+                      style="height: 20px"
+                    />
+                    <label for="MScCS">MSc CS</label>
+                    <input
+                      type="checkbox"
+                      class="css-input"
+                      name="MScCS"
+                      id="MScCS"
+                      style="height: 20px"
+                    />
+                    <label for="MScDFIS">MSc DF&amp;IS</label>
+                    <input
+                      type="checkbox"
+                      class="css-input"
+                      name="MScDFIS"
+                      id="MScDFIS"
+                      style="height: 20px"
+                    />
+                    <label for="MScAIDS"> MSc AI&amp;DS</label>
+                    <input
+                      type="checkbox"
+                      class="css-input"
+                      name="MScAIDS"
+                      id="MScAIDS"
+                      style="height: 20px"
+                    />
+                    <label for="All"> All</label>
+                    <input
+                      type="checkbox"
+                      class="css-input"
+                      name="All"
+                      id="All"
+                      style="height: 20px"
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="jobdescriptionFile" class="form-label"
+                      >Job Description *</label
+                    >
+                    <input
+                      type="file"
+                      id="jobdescriptionFile"
+                      name="jobdescriptionFile"
+                      class="css-input"
+                    />
+                  </div>
+                  <div class="col-md-4">
+                    <label for="ctc" class="form-label">CTC/Stipend</label>
+                    <input type="text" id="ctc" class="css-input" />
+                  </div>
+                  <div class="col-md-4">
+                    <label for="lastDate" class="form-label">
+                      Last Date To Apply *</label
+                    >
+                    <input
+                      type="date"
+                      id="lastDate"
+                      class="css-input"
+                      required=""
+                    />
+                  </div>
+
+                  <div class="row my-3">
+                    <div class="col" style="text-align: center">
+                      <button type="submit" class="btn btn-success">
+                        Approve
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="companydata" style="display: none">
+          <div class="cardBox">
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Total Students Registered</div>
+              </div>
+
+              <div class="iconBx">
+                <!-- <ion-icon name="eye-outline"></ion-icon> -->
+                <span class="material-symbols-sharp"> app_registration </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Active Accounts</div>
+              </div>
+
+              <div class="iconBx">
+                <span class="material-symbols-sharp"> check_circle </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Inactive Accounts</div>
+              </div>
+
+              <div class="iconBx">
+                <span class="material-symbols-sharp"> unpublished </span>
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">Export Data</div>
+              </div>
+
+              <div class="iconBx">
+                <span class="material-symbols-sharp"> download </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================ Order Details List ================= -->
+          <div class="details">
+            <div class="recentOrders">
+              <div class="cardHeader">
+                <h2>Students List</h2>
+                <a href="#" class="btn"
+                  ><input
+                    type="text"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                </a>
+              </div>
+              <div style="height: 500px; overflow-y: scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Placement ID</td>
+                      <td>Photo</td>
+                      <td>Students Name</td>
+
+                      <td>Course Name</td>
+                      <td>Email ID</td>
+                      <td>Enable Account</td>
+                      <td>Disable Account</td>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td><img src="" alt="image1" /></td>
+                      <td>Piyus Sahu</td>
+                      <td>MTech CS</td>
+                      <td>piyussahu@gmail.com</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td><img src="" alt="image1" /></td>
+                      <td>Piyus Sahu</td>
+                      <td>MTech CS</td>
+                      <td>piyussahu@gmail.com</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td><img src="" alt="image1" /></td>
+                      <td>Piyus Sahu</td>
+                      <td>MTech CS</td>
+                      <td>piyussahu@gmail.com</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td><img src="" alt="image1" /></td>
+                      <td>Piyus Sahu</td>
+                      <td>MTech CS</td>
+                      <td>piyussahu@gmail.com</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td><img src="" alt="image1" /></td>
+                      <td>Piyus Sahu</td>
+                      <td>MTech CS</td>
+                      <td>piyussahu@gmail.com</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td><img src="" alt="image1" /></td>
+                      <td>Piyus Sahu</td>
+                      <td>MTech CS</td>
+                      <td>piyussahu@gmail.com</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td><img src="" alt="image1" /></td>
+                      <td>Piyus Sahu</td>
+                      <td>MTech CS</td>
+                      <td>piyussahu@gmail.com</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+
+                    <tr>
+                      <td>19300300008004444</td>
+                      <td><img src="" alt="image1" /></td>
+                      <td>Piyus Sahu</td>
+                      <td>MTech CS</td>
+                      <td>piyussahu@gmail.com</td>
+                      <td><button>Enable</button></td>
+                      <td><button>Disable</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="cardBox">
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">MTech Cyber Security</div>
+              </div>
+
+              <div class="iconBx">
+                <img
+                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/hacker_yj3m7r.png"
+                  alt=""
+                  width="40px"
+                  height="40px"
+                />
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">MSc Cyber Security</div>
+              </div>
+
+              <div class="iconBx">
+                <img
+                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/hacker_yj3m7r.png"
+                  alt=""
+                  width="40px"
+                  height="40px"
+                />
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">
+                  MSc Digital Forensics &amp; Information Security
+                </div>
+              </div>
+
+              <div class="iconBx">
+                <img
+                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/security_zr4hiw.png"
+                  alt=""
+                  width="40px"
+                  height="40px"
+                />
+              </div>
+            </div>
+
+            <div class="card">
+              <div>
+                <div class="numbers">0</div>
+                <div class="cardName">
+                  MTech Applied Data Science &amp; Artificial Intelligence
+                </div>
+              </div>
+
+              <div class="iconBx">
+                <img
+                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/ai_zrqwrk.png"
+                  alt=""
+                  width="40px"
+                  height="40px"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- =========== Scripts =========  -->
+
+    <!-- ====== ionicons ======= -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule=""
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
+    <!-- This Section of Code is When Clicked on button change the Content -->
+    <!-- <script >
+        const buttons = document.querySelectorAll('ul button');
+
+        const contentContainer = document.getElementById('allofyou');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.dataset.target;
+        const targetSection = contentContainer.querySelector(`#${targetId}`);
+
+        // Hide all sections
+        contentContainer.querySelectorAll('section').forEach(section => section.style.display = 'none');
+
+        // Show the clicked section
+        targetSection.style.display = 'block';
+      });
+    }); </script> -->
+
+    <!-- This Part Of Script Is When clicked On The Anchor Tag The content Should Change -->
+    <script>
+      const anchors = document.querySelectorAll("ul a");
+      const sectioncontent = document.getElementById("allofyou");
+
+      anchors.forEach((anchor) => {
+        anchor.addEventListener("click", (event) => {
+          event.preventDefault(); // Prevent default anchor tag behavior (page jump)
+
+          const targetId = anchor.getAttribute("href").slice(1); // Extract target ID from href attribute
+          const targetSection = sectioncontent.querySelector(`#${targetId}`);
+
+          // Hide all sections
+          sectioncontent
+            .querySelectorAll("section")
+            .forEach((section) => (section.style.display = "none"));
+
+          // Show the clicked section
+          targetSection.style.display = "block";
+        });
+      });
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <script>
+      var xValues = ["Students", "Companies", "Queries Raised"];
+      var yValues = [55, 49, 44];
+      var barColors = ["red", "green", "blue"];
+      new Chart("myChart", {
+        type: "pie",
+        data: {
+          labels: xValues,
+          datasets: [
+            {
+              backgroundColor: barColors,
+              data: yValues,
+            },
+          ],
+        },
+        options: {
+          title: {
+            display: true,
+            text: "STATICS",
+          },
+        },
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var adminName = "Admin"; // Replace with actual admin name
+        var welcomeMessage = document.getElementById("welcome-message");
+
+        function displayLetters(text) {
+          var index = 0;
+          var interval = setInterval(function () {
+            if (index < text.length) {
+              welcomeMessage.innerHTML += text.charAt(index);
+              index++;
+            } else {
+              clearInterval(interval);
+            }
+          }, 100); // Change the interval duration as needed
+        }
+
+        displayLetters(
+          "Welcome back, " + adminName + "! Glad to have you here."
+        );
+      });
+    </script>
+    <!-- for infinity logos slide -->
+    <script>
+      var copy = document.querySelector(".logos-slide").cloneNode(true);
+      document.querySelector(".logos").appendChild(copy);
+    </script>
+  </body>
+</html>

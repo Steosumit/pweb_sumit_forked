@@ -359,7 +359,7 @@ nav {
   color: black;
   border-bottom-left-radius: 3rem;
   border-bottom-right-radius: 3rem;
-  margin-top: 5rem ;
+  margin-top: 5rem;
 }
 #carouselExampleAutoplaying {
   height: 70vh;
@@ -413,7 +413,7 @@ nav {
 
   thead {
     th {
-      background: linear-gradient(to right, darkblue, red);
+      background: linear-gradient(to right, purple, rgb(70, 102, 228));
       color: white;
     }
   }
@@ -421,19 +421,19 @@ nav {
   tbody {
     tr {
       &:hover {
-        background-color: rgb(168, 183, 244) !important;
-        color: black;
+        background-color: rgb(70, 102, 228) !important;
+        color: white;
         cursor: pointer;
       }
     }
   }
   tr:nth-child(even) {
     background-color: blanchedalmond;
-    color: #000;
+    color: darkblue;
   }
   tr:nth-child(odd) {
-    background-color: #000;
-    color: white;
+    background-color: rgb(168, 183, 244) !important;
+    color: darkblue;
   }
 }
 
@@ -473,7 +473,7 @@ nav {
 }
 #tags-twocards-digital {
   color: orangered;
-  text-shadow: 2px 1px rgb(198, 30, 114);
+  text-shadow: 1px 1px #199dcd;
 }
 .two-cards-card img {
   width: 100%;
@@ -713,6 +713,7 @@ h6 {
 }
 .team-banner {
   background-color: #00539c;
+  background: linear-gradient(to right, midnightblue, rgb(123, 111, 249));
   min-height: 50vh;
 
   color: white;
@@ -736,7 +737,7 @@ h6 {
 }
 .team-cards .non-mob {
   width: 100%;
-  padding: 5rem;
+  padding: 4rem;
 }
 .team-cards .non-mob .col-md-4,
 .team-cards .non-mob .col-md-8 {
@@ -745,8 +746,8 @@ h6 {
   justify-content: center;
 }
 .team-cards .non-mob .col-md-4 img {
-  width: 20rem;
-  height: 20rem;
+  width: 19rem;
+  height: 19rem;
   object-fit: cover;
   border-radius: 30%;
   border: blanchedalmond thick solid;
@@ -823,7 +824,6 @@ h6 {
 }
 .team-banner {
   width: 100%;
-  background-color: black;
 }
 
 .contactus h1 {
