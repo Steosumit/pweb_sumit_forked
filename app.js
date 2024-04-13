@@ -75,20 +75,16 @@ async function main() {
 }
 
 //middlewares
-let isAuthenticated = wrapAsync(async (req, res, next) => {
+let isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
     res.locals.isAuthenticated = true;
-    if (req.user.username == process.env.ADMIN_USERNAME) {
-      res.locals.isAdmin = true;
-    } else {
-      res.locals.isAdmin = false;
-    }
+    res.locals.isAdmin = req.user.username == process.env.ADMIN_USERNAME;
   } else {
     res.locals.isAuthenticated = false;
     res.locals.isAdmin = false;
   }
-  return next();
-});
+  next();
+};
 
 let isLoggedIn = wrapAsync(async (req, res, next) => {
   if (!req.isAuthenticated()) {
@@ -117,12 +113,33 @@ let isVerified = wrapAsync(async (req, res, next) => {
     res.redirect("/");
   }
 });
-let isThisAdmin = (req, res) => {
+let isThisAdmin = (req, res, next) => {
   if (res.locals.isAdmin == true) {
     return next();
   } else {
     req.flash("error", "You Must be Admin to access Admin Page !");
     res.redirect("/");
+  }
+};
+let isLoginFieldsFilled = (req, res, next) => {
+  if (req.session.bodyData.username == "Student") {
+    if (
+      req.session.bodyData.stuname &&
+      req.session.bodyData.enrollnostu &&
+      req.session.bodyData.email &&
+      req.session.bodyData.stumobno &&
+      req.session.bodyData.coursename
+    ) {
+      return next();
+    } else {
+      req.flash("error", "Please Provide all Login Details !");
+      res.redirect("/otp-verify-page");
+    }
+  } else if (req.session.bodyData.email) {
+    return next();
+  } else {
+    req.flash("error", "Please Provide all Login Details !");
+    res.redirect("/otp-verify-page");
   }
 };
 
@@ -158,8 +175,10 @@ app.post(
       req.body.password == process.env.ADMIN_PASS
     ) {
       res.locals.isAdmin = true;
+      res.redirect("/admin");
+    } else {
+      res.redirect("/");
     }
-    res.redirect("/");
   })
 );
 
@@ -292,6 +311,7 @@ app.get(
 
 app.post(
   "/otp-verify",
+  isLoginFieldsFilled,
   wrapAsync(async (req, res) => {
     const { email, otp } = req.body;
     const otpDocument = await OTP.findOne({ email: email });
@@ -559,9 +579,14 @@ app.get(
   isThisAdmin,
   wrapAsync(async (req, res) => {
     let allRecruitersPending = await Recruiter.find({ isAudited: false });
-    console.log(allRecruitersPending);
-    //now send isaudited pendign recs to admin to approve
-    res.render("admin.ejs");
+    let allStudentsPending = await VerifiedUser.find({
+      "bodyData.username": "Student",
+    });
+
+    res.render("users/admin.ejs", {
+      allRecruitersPending: allRecruitersPending,
+      allStudentsPending: allStudentsPending,
+    });
   })
 );
 

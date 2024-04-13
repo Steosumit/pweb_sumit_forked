@@ -353,12 +353,13 @@ nav {
 /*  */
 .home-third {
   background: linear-gradient(to left, white, rgba(233, 179, 255, 0.4));
-  border-top-left-radius: 2rem;
+  border-top-left-radius: 0rem;
   border-top-right-radius: 200rem;
   min-height: 100vh;
   color: black;
   border-bottom-left-radius: 3rem;
   border-bottom-right-radius: 3rem;
+  margin-top: 5rem ;
 }
 #carouselExampleAutoplaying {
   height: 70vh;

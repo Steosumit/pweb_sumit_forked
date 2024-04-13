@@ -59,12 +59,12 @@
           value="<%=username%>"
         />
         <label style="width: 100%"
-          ><h6>Your Good Name</h6>
+          ><h6>Full Name</h6>
           <input
             required
             type="text"
             name="stuname"
-            placeholder="Enter Your Name"
+            placeholder="Enter Your Full Name"
             style="text-align: center"
           />
         </label>
@@ -105,7 +105,23 @@
         /></label>
 
         <br /><br />
+        <label style="width: 100%"
+          ><h6>Course Name</h6>
+
+          <select
+            required
+            style="text-align: center"
+            name="coursename"
+            class="form-control"
+          >
+            <option selected value="MscCs">MSc. Cyber Security</option>
+            <option value="MscDfis">MSc. DFIS</option>
+            <option value="MtechCs">MTech. Cyber Security</option>
+            <option value="MtechAdsai">MTech. ADSAI</option>
+          </select>
+        </label>
         <br />
+        <br>
         <button class="btn btn-lg btn-primary" type="submit">
           Verify Your Email
         </button>

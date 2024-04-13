@@ -33,7 +33,31 @@
           placeholder="Password"
         />
         <br /><br /><br />
-        <h6>Forgot Password?</h6>
+        <h6
+          data-bs-toggle="collapse"
+          data-bs-target="#message55"
+          style="cursor: pointer"
+        >
+          Forgot Password?
+        </h6>
+
+        <div
+          class="collapse"
+          id="message55"
+          style="background-color: transparent"
+        >
+          <div
+            class="card card-body"
+            style="
+              background-color: transparent;
+              border: dashed thin midnightblue;
+              padding: 0.5rem;
+            "
+          >
+            Please Contact the Admin For Password Change Request.
+          </div>
+        </div>
+
         <br />
         <button class="btn btn-lg btn-primary" type="submit">Sign-In</button>
       </form>
