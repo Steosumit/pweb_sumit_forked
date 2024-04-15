@@ -225,7 +225,7 @@ app.post(
     let existingOTP = await OTP.findOne({ email: email });
     let newOtp = Math.floor(Math.random() * 900000) + 100000;
     if (username == "Student") {
-      if (!email.trim().endsWith("@nfsu.ac.in" )) {
+      if (!email.trim().endsWith("@nfsu.ac.in")) {
         req.flash("error", "Please Enter a valid College Student Email.");
         res.redirect("/otp-initialize/?username=Student");
       }
@@ -254,8 +254,9 @@ We have received a request to OTP Verification associated with your account. If 
 <br/><br/>
 To Verify your Email, please Insert the <strong>Following OTP</strong>:
 <br/><br/>
-<strong>${newOtp}</strong>
-<br/><br/>
+<h1>
+<strong>${newOtp}</strong></h1>
+<br/>
 You can paste the above OTP in the <strong>Following Link</strong>:
 <br/><br/>
 <a href="https://placementcellnfsu.onrender.com/otp-verify-page" >https://placementcellnfsu.onrender.com/otp-verify-page</a>
@@ -317,7 +318,7 @@ app.get(
     } catch (e) {
       req.flash("error", e.message);
     }
-    res.redirect(`/otp-initialize?username=${username}`);
+    res.redirect(`/otp-initialize/?username=${username}`);
   })
 );
 
@@ -373,7 +374,14 @@ app.post(
 app.get("/register/:user", shallNotAuthenticated, isVerified, (req, res) => {
   try {
     let { user } = req.params;
+    //3 things stored
+    //1.req.session.username = "Student"/ "Recruiter"
+    //2.req.session.bodyData = {email:"smi..", username:"Student"/"Recruiter"}
+    //3.Inside VerifiedUser= {
+    //  bodydata = Object =={ email, username}
+    // }
 
+    //recruiter is successfully stored in db with isAudited == false but student is just stored in VerifiedUser model with 5 UserFields and will shown in admin dash from that model only , its not saved in Student model as of yet
     if (user == "rec") {
       res.render("auth/regisrec.ejs", { email: req.session.bodyData.email });
     } else if (user == "stu") {
@@ -401,66 +409,174 @@ app.post(
 
     if (user == "rec") {
       try {
+        // Iterate over the keys of req.body
+        // for (const key in req.body) {
+        //   // Generate the code to store each field in the database
+        //   console.log(`${key}:{ type:String},`);
+        // }
+
         //check if the email isnt the verified one
 
         let verifiedBodyData = await VerifiedUser.findOne({
           bodyData: req.session.bodyData,
         });
-        if (req.body.hremail != verifiedBodyData.bodyData.email) {
+        if (req.body.headhremail != verifiedBodyData.bodyData.email) {
           req.flash("error", "Please Provide a Verified Email Address !");
+          console.log("Error finding user in Verified User ! ");
           res.redirect("/register/rec");
         }
         //validate the rec's regis form using joi on server side
-        const { error } = recruiterSchema.validate(req.body);
-        if (error) {
-          req.flash("error", "error validating recruiter's details" + error);
-          res.redirect("/register/rec");
-        }
+        // const { error } = recruiterSchema.validate(req.body);
+        // if (error) {
+        //   req.flash("error", "error validating recruiter's details" + error);
+        //   res.redirect("/register/rec");
+        // }
 
         const newRecruiter = new Recruiter({
           isAudited: false,
+          //with the isAudited field
           _id: new mongoose.Types.ObjectId(),
           companyname: req.body.companyname,
           natureofbusiness: req.body.natureofbusiness,
           websitelink: req.body.websitelink,
           postaladdress: req.body.postaladdress,
           category: req.body.category,
-          hrname: req.body.hrname,
-          hrdesignation: req.body.hrdesignation,
-          hrofficeaddress: req.body.hrofficeaddress,
-          hrmobileno: req.body.hrmobileno,
-          althrmobileno: req.body.althrmobileno,
-          hremail: req.body.hremail,
-          pocname: req.body.pocname,
-          pocdesignation: req.body.pocdesignation,
-          pocofficeaddress: req.body.pocofficeaddress,
-          pocmobileno: req.body.pocmobileno,
-          altpocmobileno: req.body.altpocmobileno,
-          pocemail: req.body.pocemail,
+          headhrname: req.body.headhname || "",
+          headhrdesignation: req.body.headhdesignation || "",
+          headhraltmobno: req.body.headhaltmobno || "",
+          headhrmobno: req.body.headhmobno || "",
+          headhremail: req.body.headhemail || "",
+          headhraddress: req.body.headhaddress || "",
+          poc1name: req.body.poc1name || "",
+          poc1designation: req.body.poc1designation || "",
+          poc1altmobno: req.body.poc1altmobno || "",
+          poc1mobno: req.body.poc1mobno || "",
+          poc1email: req.body.poc1email || "",
+          poc1address: req.body.poc1address || "",
+          poc2name: req.body.poc2name || "",
+          poc2designation: req.body.poc2designation || "",
+          poc2altmobno: req.body.poc2altmobno || "",
+          poc2mobno: req.body.poc2mobno || "",
+          poc2email: req.body.poc2email || "",
+          poc2address: req.body.poc2address || "",
+
+          jobtitle: req.body.jobtitle,
           jobtype: req.body.jobtype,
           jobdesignation: req.body.jobdesignation,
           sector: req.body.sector,
           tentativenoofhires: req.body.tentativenoofhires,
           tentativejoblocation: req.body.tentativejoblocation,
           JobDescription: req.body.JobDescription,
-          MTechCS: req.body.MTechCS || "no",
-          MScCS: req.body.MScCS || "no",
-          MScDFIS: req.body.MScDFIS || "no",
-          MTechADSAI: req.body.MTechADSAI || "no",
-          categorycompensation: req.body.categorycompensation,
+
+          basicmtechcs: req.body.basicmtechcs,
+          pfmtechcs: req.body.pfmtechcs,
+          hramtechcs: req.body.hramtechcs,
+          joiningbonusmtechcs: req.body.joiningbonusmtechcs,
+          relocationbonusmtechcs: req.body.relocationbonusmtechcs,
+          stocksmtechcs: req.body.stocksmtechcs,
+          takehomemtechcs: req.body.takehomemtechcs,
+          ctcmtechcs: req.body.ctcmtechcs,
+          othersmtechcs: req.body.othersmtechcs,
+          basicmtechadsai: req.body.basicmtechadsai,
+          pfmtechadsai: req.body.pfmtechadsai,
+          hramtechadsai: req.body.hramtechadsai,
+          joiningbonusmtechadsai: req.body.joiningbonusmtechadsai,
+          relocationbonusmtechadsai: req.body.relocationbonusmtechadsai,
+          stocksmtechadsai: req.body.stocksmtechadsai,
+          takehomemtechadsai: req.body.takehomemtechadsai,
+          ctcmtechadsai: req.body.ctcmtechadsai,
+          othersmtechadsai: req.body.othersmtechadsai,
+          basicmsccs: req.body.basicmsccs,
+          pfmsccs: req.body.pfmsccs,
+          hramsccs: req.body.hramsccs,
+          joiningbonusmsccs: req.body.joiningbonusmsccs,
+          relocationbonusmsccs: req.body.relocationbonusmsccs,
+          stocksmsccs: req.body.stocksmsccs,
+          takehomemsccs: req.body.takehomemsccs,
+          ctcmsccs: req.body.ctcmsccs,
+          othersmsccs: req.body.othersmsccs,
+          basicmscdfis: req.body.basicmscdfis,
+          pfmscdfis: req.body.pfmscdfis,
+          hramscdfis: req.body.hramscdfis,
+          joiningbonusmscdfis: req.body.joiningbonusmscdfis,
+          relocationbonusmscdfis: req.body.relocationbonusmscdfis,
+          stocksmscdfis: req.body.stocksmscdfis,
+          takehomemscdfis: req.body.takehomemscdfis,
+          ctcmscdfis: req.body.ctcmscdfis,
+          othersmscdfis: req.body.othersmscdfis,
+          CGPAmtechcs: req.body.CGPAmtechcs,
+          Graduationmtechcs: req.body.Graduationmtechcs,
+          twelthmtechcs: req.body.twelthmtechcs,
+          tenthmtechcs: req.body.tenthmtechcs,
+          agelimitmtechcs: req.body.agelimitmtechcs,
+          CGPAmtechadsai: req.body.CGPAmtechadsai,
+          Graduationmtechadsai: req.body.Graduationmtechadsai,
+          mtechadsai12th: req.body.mtechadsai12th,
+          mtechadsai10th: req.body.mtechadsai10th,
+          agelimitmtechadsai: req.body.agelimitmtechadsai,
+          CGPAmsccs: req.body.CGPAmsccs,
+          Graduationmsccs: req.body.Graduationmsccs,
+          msccs12th: req.body.msccs12th,
+          msccs10th: req.body.msccs10th,
+          agelimitmsccs: req.body.agelimitmsccs,
+          CGPAmscdfis: req.body.CGPAmscdfis,
+          Graduationmscdfis: req.body.Graduationmscdfis,
+          mscdfis12th: req.body.mscdfis12th,
+          mscdfis10th: req.body.mscdfis10th,
+          agelimitmscdfis: req.body.agelimitmscdfis,
+          internmtechcsduration: req.body.internmtechcsduration,
+          internmtechcsstipend: req.body.internmtechcsstipend,
+          internmtechcsctc: req.body.internmtechcsctc,
+          internmsccsduration: req.body.internmsccsduration,
+          internmsccsstipend: req.body.internmsccsstipend,
+          internmsccsctc: req.body.internmsccsctc,
+          internmscdfisduration: req.body.internmscdfisduration,
+          internmscdfisstipend: req.body.internmscdfisstipend,
+          internmscdfisctc: req.body.internmscdfisctc,
+          internmtechadsaiduration: req.body.internmtechadsaiduration,
+          internmtechadsaistipend: req.body.internmtechadsaistipend,
+          internmtechadsaictc: req.body.internmtechadsaictc,
           isvirtual: req.body.isvirtual,
+          servicebonddetails: req.body.servicebonddetails,
+          MedicalRequirements: req.body.MedicalRequirements,
+          selectioncriteriadetails: req.body.selectioncriteriadetails,
+          stagename1: req.body.stagename1,
+          stageduration1: req.body.stageduration1,
+          noofrounds1: req.body.noofrounds1,
+          modeofstage1: req.body.modeofstage1,
+          otherdetails1: req.body.otherdetails1,
+          stagename2: req.body.stagename2,
+          stageduration2: req.body.stageduration2,
+          noofrounds2: req.body.noofrounds2,
+          modeofstage2: req.body.modeofstage2,
+          otherdetails2: req.body.otherdetails2,
+          stagename3: req.body.stagename3,
+          stageduration3: req.body.stageduration3,
+          noofrounds3: req.body.noofrounds3,
+          modeofstage3: req.body.modeofstage3,
+          otherdetails3: req.body.otherdetails3,
+          stagename4: req.body.stagename4,
+          stageduration4: req.body.stageduration4,
+          noofrounds4: req.body.noofrounds4,
+          modeofstage4: req.body.modeofstage4,
+          otherdetails4: req.body.otherdetails4,
+          stagename5: req.body.stagename5,
+          stageduration5: req.body.stageduration5,
+          noofrounds5: req.body.noofrounds5,
+          modeofstage5: req.body.modeofstage5,
+          otherdetails5: req.body.otherdetails5,
         });
 
         try {
           await newRecruiter.save();
 
           await VerifiedUser.deleteMany({
-            "bodyData.email": newRecruiter.hremail,
+            "bodyData.email": newRecruiter.headhremail,
           });
           // If save operation is successful, continue with redirection or other operations
           req.flash(
             "success",
-            `Welcome to the NFSU Placement Cell ! <br>  Please Contact the Administration for Further Recruitment Steps. <br> We'll Keep You Informed on the Provided Email.`
+            `Welcome to the NFSU Placement Cell ! <br>  Please Contact the Administration for Further Recruitment Steps. <br> We'll Keep You Informed on the Provided HR Email.`
           );
 
           //sending thanking email
@@ -509,7 +625,7 @@ National Forensic Science University.
           });
           const mailOptions = {
             from: "ThePlacementCell@NFSU<smile.itsadil@gmail.com>",
-            to: newRecruiter.hremail,
+            to: req.session.bodyData.email,
             subject:
               "Welcome to National Forensic Science University's Placement Cell.",
             html: message,
@@ -517,11 +633,12 @@ National Forensic Science University.
           transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
               console.log("error in sending thanking email : " + error);
+              res.redirect("/");
             } else {
+              res.redirect("/");
             }
           });
           //now i have the req.session.bodyData and bodyData inside every object in VerifiedUser with bodyData.email and bodyData.username(Recruiter);
-          res.redirect("/");
         } catch (error) {
           // If an error occurs during save operation, catch it here
           req.flash("error", "Error saving Recruiter's data:" + error.message);

@@ -145,7 +145,7 @@
                       value="aa"
                       id="CompanyName"
                       placeholder="Company Name"
-                      required=""
+                      required
                     />
                   </div>
                   <div class="form-group">
@@ -157,7 +157,7 @@
                       value="aa"
                       id="NatureofBusiness"
                       placeholder="Nature of Business"
-                      required=""
+                      required
                     />
                   </div>
                   <div class="form-group">
@@ -168,7 +168,7 @@
                       name="websitelink"
                       id="Website"
                       placeholder="Website Link"
-                      required=""
+                      required
                       value="hehe"
                     />
                   </div>
@@ -180,7 +180,7 @@
                       name="postaladdress"
                       id="PostalAddress"
                       placeholder="Postal Address"
-                      required=""
+                      required
                       value="hehe"
                     />
                   </div>
@@ -192,7 +192,7 @@
                       class="form-control"
                       id="Category"
                       placeholder="Category of Business"
-                      required=""
+                      required
                       value="hehe"
                     />
                   </div>
@@ -212,7 +212,7 @@
                       <thead>
                         <tr>
                           <th style="background-color: #163269; color: white">
-                            Select Position
+                            Position
                           </th>
                           <th style="background-color: #163269; color: white">
                             Name
@@ -239,90 +239,185 @@
                       </thead>
 
                       <tbody>
-                        <tr id="row-0">
-                          <td id="parentSelectPosition">
-                            <select
-                              name="selectposition"
-                              class="form-select"
-                              id="selectposition"
-                              required=""
-                            >
-                              <option value="poc1">POC 1</option>
-                              <option value="headhr">Head HR</option>
-                              <option value="poc2">POC 2</option>
-                            </select>
+                        <tr>
+                          <td>
+                            <h5 style="text-align: center">Head HR</h5>
                           </td>
-                          <td id="positionname">
-                            <!-- <input
+                          <td>
+                            <input
                               type="text"
                               class="form-control"
-                              name="name"
-                              id="name"
+                              name="headhrname"
+                              value="3"
                               placeholder="Name"
-                              required=""
-                            /> -->
+                              required
+                            />
                           </td>
-                          <td id="positiondesignation">
-                            <!-- <input
+                          <td>
+                            <input
                               type="text"
                               class="form-control"
-                              name="designation"
-                              id="designation"
+                              value="3"
+                              name="headhrdesignation"
                               placeholder="Designation"
-                              required=""
-                            /> -->
+                              required
+                            />
                           </td>
 
-                          <td id="positionmobno">
-                            <!-- <input
+                          <td>
+                            <input
                               type="tel"
                               class="form-control"
-                              name="mobilenumber"
-                              id="mobilenumber"
-                              placeholder="Mobile No."
-                              required=""
-                            /> -->
+                              value="3"
+                              name="headhrmobno"
+                              placeholder="Mobile no"
+                              required
+                            />
                           </td>
-                          <td id="positionaltmob">
-                            <!-- <input
+
+                          <td>
+                            <input
                               type="tel"
                               class="form-control"
-                              name="altmobno"
-                              id="telephonenumber"
-                              placeholder="Telephone No."
-                              required=""
-                            /> -->
+                              value="3"
+                              name="headhraltmobno"
+                              placeholder="Alternate Mobile no"
+                              required
+                            />
                           </td>
-                          <td id="positionemail">
-                            <!-- <input
+                          <td>
+                            <input
                               type="email"
                               class="form-control"
-                              name="email"
-                              id="email"
-                              placeholder="Email"
-                              required=""
-                            /> -->
+                              name="headhremail"
+                              value="<%=email%>"
+                              placeholder="Email Id"
+                              required
+                            />
                           </td>
-                          <td id="positionaddress">
-                            <!-- <textarea
+                          <td>
+                            <textarea
                               type="text"
+
                               class="form-control"
-                              id="officialaddress"
-                              name="officialaddress"
-                              required=""
-                              placeholder="Official Address"
-                            >
-                            </textarea> -->
-                          </td>
-                          <td id="positionadd">
-                            <!-- <button type="button" class="btn btn-primary">
-                              Add
-                            </button> -->
+                              name="headhraddress"
+                              placeholder="Address"
+                              required
+                            >dasdf</textarea>
                           </td>
                         </tr>
-                        <div id="row-1"></div>
-                        <div id="row-2"></div>
-                        <div id="row-3"></div>
+                        <tr>
+                          <td>
+                            <h5 style="text-align: center">POC 1</h5>
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="poc1name"
+                              value="a"
+                              placeholder="Name"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="poc1designation"
+                              placeholder="Designation"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="tel"
+                              class="form-control"
+                              name="poc1mobno"
+                              placeholder="Mobile no"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="tel"
+                              class="form-control"
+                              name="poc1altmobno"
+                              placeholder="Alternate Mobile no"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="email"
+                              class="form-control"
+                              name="poc1email"
+                              placeholder="Email Id"
+                            />
+                          </td>
+                          <td>
+                            <textarea
+                              type="text"
+                              class="form-control"
+                              name="poc1address"
+                              placeholder="Address"
+                            ></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h5 style="text-align: center">POC 2</h5>
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="poc2name"
+                              value="a"
+                              placeholder="Name"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              name="poc2designation"
+                              placeholder="Designation"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="tel"
+                              class="form-control"
+                              name="poc2mobno"
+                              placeholder="Mobile no"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="tel"
+                              class="form-control"
+                              name="poc2altmobno"
+                              placeholder="Alternate Mobile no"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="email"
+                              class="form-control"
+                              name="poc2email"
+                              placeholder="Email Id"
+                            />
+                          </td>
+                          <td>
+                            <textarea
+                              type="text"
+                              class="form-control"
+                              name="poc2address"
+                              placeholder="Address"
+                            ></textarea>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
@@ -344,7 +439,7 @@
                         type="text"
                         class="form-control"
                         value="a"
-                        required=""
+                        required
                         name="jobtitle"
                         id="JobTitle"
                         placeholder="Job Title"
@@ -356,7 +451,7 @@
                         type="text"
                         class="form-control"
                         value="a"
-                        required=""
+                        required
                         name="jobtype"
                         id="JobType"
                         placeholder="Job Type"
@@ -367,7 +462,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        required=""
+                        required
                         value="a"
                         name="jobdesignation"
                         id="JobDesignation"
@@ -377,7 +472,7 @@
                     <div class="form-group">
                       <label for="Sector">Sector</label>
                       <select
-                        required=""
+                        required
                         name="sector"
                         class="form-check"
                         id="Sector"
@@ -411,7 +506,7 @@
                         value="1"
                         id="TentativenoofHires"
                         name="tentativenoofhires"
-                        required=""
+                        required
                         placeholder="Tentative no. of Hires"
                       />
                     </div>
@@ -422,7 +517,7 @@
                       <input
                         type="text"
                         class="form-control"
-                        required=""
+                        required
                         value="a"
                         name="tentativejoblocation"
                         id="TentativeJobLocation"
@@ -435,7 +530,7 @@
                         type="text"
                         class="form-control"
                         id="JobDescription"
-                        required=""
+                        required
                         name="JobDescription"
                         placeholder="Job Description"
                       >
@@ -443,12 +538,7 @@
                         </textarea
                       >
                       <label for="AttachFile"> Attach File </label>
-                      <input
-                        type="file"
-                        class="form-control"
-                        required=""
-                        id="AttachFile"
-                      />
+                      <input type="file" class="form-control" id="AttachFile" />
                     </div>
                   </div>
                 </div>
@@ -482,22 +572,20 @@
                           <td>Cyber Security</td>
                           <td>
                             <input
-                              class="form-check-input"
+                              class="form-check-input courseInputCheck"
                               type="checkbox"
-                              value="MTechCS"
-                              name="mtechcs"
-                              id="mtechcs"
-                              required=""
+                              value="yes"
+                              name="checkmtechcs"
+                              id="checkmtechcs"
                             />
                           </td>
                           <td>
                             <input
-                              class="form-check-input"
+                              class="form-check-input courseInputCheck"
                               type="checkbox"
-                              value="MscCS"
-                              name="msccs"
-                              id="MscCS"
-                              required=""
+                              value="yes"
+                              name="checkmsccs"
+                              id="checkmsccs"
                             />
                           </td>
                         </tr>
@@ -505,22 +593,20 @@
                           <td>Digital Forensics &amp; Infromation Security</td>
                           <td>
                             <input
-                              class="form-check-input"
+                              class="form-check-input courseInputCheck"
                               type="checkbox"
+                              style="display: none"
                               value="MTechDFIS"
-                              id="MTechDFIS"
-                              required=""
                               disabled
                             />
                           </td>
                           <td>
                             <input
-                              class="form-check-input"
+                              class="form-check-input courseInputCheck"
                               type="checkbox"
-                              value="MscDFIS"
-                              name="mscdfis"
-                              id="MscDFIS"
-                              required=""
+                              value="yes"
+                              name="checkmscdfis"
+                              id="checkmscdfis"
                             />
                           </td>
                         </tr>
@@ -528,21 +614,19 @@
                           <td>Applied Data Science &amp; Digital Forensics</td>
                           <td>
                             <input
-                              class="form-check-input"
+                              class="form-check-input courseInputCheck"
                               type="checkbox"
-                              value="MTechAIDS"
-                              name="mtechaids"
-                              id="MTechAIDS"
-                              required=""
+                              value="yes"
+                              name="checkmtechadsai"
+                              id="checkmtechadsai"
                             />
                           </td>
                           <td>
                             <input
-                              class="form-check-input"
+                              class="form-check-input courseInputCheck"
                               type="checkbox"
-                              value="MscAIDS"
+                              style="display: none"
                               id="MTechAIDS"
-                              required=""
                               disabled
                             />
                           </td>
@@ -602,7 +686,7 @@
                       </thead>
 
                       <tbody>
-                        <tr>
+                        <tr class="forcheckmtechcs forcheck">
                           <td>Mtech Cybersecurity</td>
                           <td>
                             <input
@@ -686,8 +770,8 @@
                             />
                           </td>
                         </tr>
-                        <tr>
-                          <td>Mtech ADSDF</td>
+                        <tr class="forcheckmtechadsai forcheck">
+                          <td>Mtech ADSAI</td>
                           <td>
                             <input
                               type="number"
@@ -770,7 +854,7 @@
                             />
                           </td>
                         </tr>
-                        <tr>
+                        <tr class="forcheckmsccs forcheck">
                           <td>MSc Cybersecurity</td>
                           <td>
                             <input
@@ -854,7 +938,7 @@
                             />
                           </td>
                         </tr>
-                        <tr>
+                        <tr class="forcheckmscdfis forcheck">
                           <td>MSc DFIS</td>
                           <td>
                             <input
@@ -945,7 +1029,7 @@
               </div>
             </div>
             <!-- eligibility cretiria -->
-          
+
             <div class="content-div regis-content-div">
               <div class="content-title container">
                 <hr />
@@ -981,7 +1065,7 @@
                       </thead>
 
                       <tbody>
-                        <tr>
+                        <tr class="forcheckmtechcs forcheck">
                           <td>Mtech Cybersecurity</td>
                           <td>
                             <input
@@ -1005,7 +1089,7 @@
                             <input
                               type="number"
                               class="form-control"
-                              name="12thmtechcs"
+                              name="twelthmtechcs"
                               placeholder="Percentage"
                               required
                             />
@@ -1014,7 +1098,7 @@
                             <input
                               type="number"
                               class="form-control"
-                              name="10thmtechcs"
+                              name="tenthmtechcs"
                               placeholder="Percentage"
                               required
                             />
@@ -1029,8 +1113,8 @@
                             />
                           </td>
                         </tr>
-                        <tr>
-                          <td>Mtech ADSDF</td>
+                        <tr class="forcheckmtechadsai forcheck">
+                          <td>Mtech ADSAI</td>
                           <td>
                             <input
                               type="number"
@@ -1053,7 +1137,7 @@
                             <input
                               type="number"
                               class="form-control"
-                              name="12thmtechadsai"
+                              name="mtechadsai12th"
                               placeholder="Percentage"
                               required
                             />
@@ -1062,7 +1146,7 @@
                             <input
                               type="number"
                               class="form-control"
-                              name="10thmtechadsai"
+                              name="mtechadsai10th"
                               placeholder="Percentage"
                               required
                             />
@@ -1077,7 +1161,7 @@
                             />
                           </td>
                         </tr>
-                        <tr>
+                        <tr class="forcheckmsccs forcheck">
                           <td>MSc Cybersecurity</td>
                           <td>
                             <input
@@ -1101,7 +1185,7 @@
                             <input
                               type="number"
                               class="form-control"
-                              name="12thmsccs"
+                              name="msccs12th"
                               placeholder="Percentage"
                               required
                             />
@@ -1110,7 +1194,7 @@
                             <input
                               type="number"
                               class="form-control"
-                              name="10thmsccs"
+                              name="msccs10th"
                               placeholder="Percentage"
                               required
                             />
@@ -1125,7 +1209,7 @@
                             />
                           </td>
                         </tr>
-                        <tr>
+                        <tr class="forcheckmscdfis forcheck">
                           <td>MSc DFIS</td>
                           <td>
                             <input
@@ -1149,7 +1233,7 @@
                             <input
                               type="number"
                               class="form-control"
-                              name="12thmscdfis"
+                              name="mscdfis12th"
                               placeholder="Percentage"
                               required
                             />
@@ -1158,7 +1242,7 @@
                             <input
                               type="number"
                               class="form-control"
-                              name="10thmscdfis"
+                              name="mscdfis10th"
                               placeholder="Percentage"
                               required
                             />
@@ -1214,8 +1298,8 @@
                             <input
                               type="text"
                               class="form-control"
-                              id="mtechcsduration"
-                              name="mtechcsduration"
+                              id="internmtechduration"
+                              name="internmtechcsduration"
                               placeholder="Duration"
                             />
                           </td>
@@ -1224,7 +1308,7 @@
                               type="text"
                               class="form-control"
                               id="mtechcsstipendamount"
-                              name="mtechcsstipendamount"
+                              name="internmtechcsstipend"
                               placeholder="Stipend Amount"
                             />
                           </td>
@@ -1234,7 +1318,7 @@
                               type="text"
                               class="form-control"
                               id="mtechcsctcaftercompletion"
-                              name="mtechcsctcaftercompletion"
+                              name="internmtechcsctc"
                               placeholder="CTC After Completion"
                             />
                           </td>
@@ -1246,7 +1330,7 @@
                               type="text"
                               class="form-control"
                               id="msccsprogramduration"
-                              name="msccsprogramduration"
+                              name="internmsccsduration"
                               placeholder="Duration"
                             />
                           </td>
@@ -1255,7 +1339,7 @@
                               type="text"
                               class="form-control"
                               id="msccsstipendamount"
-                              name="msccsstipendamount"
+                              name="internmsccsstipend"
                               placeholder="Stipend Amount"
                             />
                           </td>
@@ -1265,7 +1349,7 @@
                               type="text"
                               class="form-control"
                               id="msccsctcaftercompletion"
-                              name="msccsctcaftercompletion"
+                              name="internmsccsctc"
                               placeholder="CTC After Completion"
                             />
                           </td>
@@ -1279,7 +1363,7 @@
                               type="text"
                               class="form-control"
                               id="mscdfisprogramduration"
-                              name="mscdfisprogramduration"
+                              name="internmscdfisduration"
                               placeholder="Duration"
                             />
                           </td>
@@ -1288,7 +1372,7 @@
                               type="text"
                               class="form-control"
                               id="mscdfisstipendamount"
-                              name="mscdfisstipendamount"
+                              name="internmscdfisstipend"
                               placeholder="Stipend Amount"
                             />
                           </td>
@@ -1298,7 +1382,7 @@
                               type="text"
                               class="form-control"
                               id="mscdfisctcaftercompletion"
-                              name="mscdfisctcaftercompletion"
+                              name="internmscdfisctc"
                               placeholder="CTC After Completion"
                             />
                           </td>
@@ -1313,7 +1397,7 @@
                               type="text"
                               class="form-control"
                               id="mtechdsaiprogramduration"
-                              name="mtechdsaiprogramduration"
+                              name="internmtechadsaiduration"
                               placeholder="Duration"
                             />
                           </td>
@@ -1322,7 +1406,7 @@
                               type="text"
                               class="form-control"
                               id="mtechdsaistipendamount"
-                              name="mtechdsaistipendamount"
+                              name="internmtechadsaistipend"
                               placeholder="Stipend Amount"
                             />
                           </td>
@@ -1332,7 +1416,7 @@
                               type="text"
                               class="form-control"
                               id="mtechdsaictcaftercompletion"
-                              name="mtechdsaictcaftercompletion"
+                              name="internmtechadsaictc"
                               placeholder="CTC After Completion"
                             />
                           </td>
@@ -1359,10 +1443,10 @@
                         class="form-check-input"
                         type="radio"
                         value="yes"
-                        checked=""
+                        checked
                         name="isvirtual"
                         id="CampusProcessMode"
-                        required=""
+                        required
                       />
                       <label class="form-check-label" for="CampusProcessMode">
                         Virtual – All processes are conducted online
@@ -1379,7 +1463,7 @@
                         value="yes"
                         name="isvirtual"
                         id="CampusProcessMode2"
-                        required=""
+                        required
                       />
                       <label class="form-check-label" for="CampusProcessMode2">
                         In-campus – All processes are conducted in campus
@@ -1396,7 +1480,7 @@
                         value="hybrid"
                         name="isvirtual"
                         id="CampusProcessMode3"
-                        required=""
+                        required
                       />
                       <label class="form-check-label" for="CampusProcessMode3">
                         Hybrid – Some processes are conducted online while some
@@ -1414,7 +1498,7 @@
                         value="notdecided"
                         name="isvirtual"
                         id="CampusProcessMode4"
-                        required=""
+                        required
                       />
                       <label class="form-check-label" for="CampusProcessMode4">
                         Undecided
@@ -1437,20 +1521,17 @@
                   <div class="col-6">
                     <h6>
                       1. Is there a service bond/contract?
-
-                      <label class="form-check-label" for="YES"> YES </label>
+                      <br />
+                      <label class="form-check-label"> YES </label>
                       <input
                         class="form-check-input"
-                        required=""
                         type="checkbox"
-                        value=""
-                        id="YES"
+                        name="isServiceBond"
+                        value="yes"
                       />
                     </h6>
 
                     <div class="input-fields">
-                      <div class="form-group"></div>
-
                       <label for="servicebond"
                         >If applicable, what will be the duration, amount, and
                         stipulated conditions?</label
@@ -1458,10 +1539,9 @@
                       <input
                         type="text"
                         class="form-control"
-                        name="servicebond"
+                        name="servicebonddetails"
                         id="servicebond"
-                        placeholder="... "
-                        required=""
+                        placeholder="Enter Details"
                       />
                     </div>
                   </div>
@@ -1476,9 +1556,10 @@
                         type="text"
                         class="form-control"
                         name="MedicalRequirements"
+                        value="a"
                         id="MedicalRequirements"
-                        placeholder="... "
-                        required=""
+                        placeholder="Enter Details"
+                        required
                       />
                     </div>
                   </div>
@@ -1505,9 +1586,9 @@
                       </label>
                       <input
                         class="form-check-input"
-                        required=""
                         type="checkbox"
-                        value=""
+                        name="shortlistfromresume"
+                        value="yes"
                         id="yesselection"
                       />
                     </h6>
@@ -1519,7 +1600,7 @@
                       type="text"
                       class="form-control"
                       id="selectionbond"
-                      name="selectionbond"
+                      name="selectioncriteriadetails"
                       placeholder="..."
                     >
                     </textarea>
@@ -1533,7 +1614,10 @@
               <div class="content-title container">
                 <div class="comm-fields mt-3">
                   <!-- <h2 style="padding-top: 1rem; padding-bottom: 2rem">HEAD HR</h2> -->
-                  <h6>2. Futher Rounds for the shortlisted students:</h6>
+                  <h6>
+                    2. Further Rounds for the shortlisted students ( As
+                    Applicable ):
+                  </h6>
                   <div class="input-fields" style="overflow-x: scroll">
                     <table class="table table-striped">
                       <thead>
@@ -1545,16 +1629,16 @@
                             Stage Name
                           </th>
                           <th style="background-color: #163269; color: white">
-                            Duration(in mins)
+                            Duration( in mins )
                           </th>
                           <th style="background-color: #163269; color: white">
                             No. of Rounds
                           </th>
                           <th style="background-color: #163269; color: white">
-                            Mode(online/offline)
+                            Mode( Online/Offline )
                           </th>
                           <th style="background-color: #163269; color: white">
-                            Other Details(if any)
+                            Other Details( if any )
                           </th>
 
                           <th
@@ -1566,20 +1650,14 @@
                       <tbody>
                         <tr>
                           <td>
-                            <input
-                              type="number"
-                              class="form-control"
-                              id="serialno"
-                              name="serialno"
-                              placeholder="Serial No."
-                            />
+                            <h3 style="text-align: center">1</h3>
                           </td>
                           <td>
                             <input
                               type="text"
                               class="form-control"
                               id="stagename"
-                              name="stagename"
+                              name="stagename1"
                               placeholder="Stage Name"
                             />
                           </td>
@@ -1589,7 +1667,7 @@
                               type="number"
                               class="form-control"
                               id="duration"
-                              name="duration"
+                              name="stageduration1"
                               placeholder="Duration (in min)"
                             />
                           </td>
@@ -1598,43 +1676,257 @@
                               type="number"
                               class="form-control"
                               id="roundsno"
+                              name="noofrounds1"
                               placeholder=" No. of rounds"
                             />
                           </td>
                           <td>
-                            <input
+                            <select
                               type="text"
                               class="form-control"
                               id="mode"
-                              name="mode"
+                              name="modeofstage1"
                               placeholder="Mode"
-                            />
+                            >
+                              <option value="Offline">Offline</option>
+                              <option value="Online">Online</option>
+                            </select>
+                          </td>
+                          <td>
+                            <textarea
+                              type="text"
+                              class="form-control"
+                              id="otherdetails"
+                              name="otherdetails1"
+                              placeholder="Other Details"
+                            ></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h3 style="text-align: center">2</h3>
                           </td>
                           <td>
                             <input
                               type="text"
                               class="form-control"
-                              id="otherdetails"
-                              name="otherdetails"
-                              placeholder="Other Details"
+                              id="stagename"
+                              name="stagename2"
+                              placeholder="Stage Name"
                             />
                           </td>
 
                           <td>
-                            <button
-                              type="button"
-                              class="btn btn-primary"
-                              style="background-color: green"
-                              id="futherroundsbtn"
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="duration"
+                              name="stageduration2"
+                              placeholder="Duration (in min)"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="roundsno"
+                              name="noofrounds2"
+                              placeholder=" No. of rounds"
+                            />
+                          </td>
+                          <td>
+                            <select
+                              type="text"
+                              class="form-control"
+                              id="mode"
+                              name="modeofstage2"
+                              placeholder="Mode"
                             >
-                              Add
-                            </button>
+                              <option value="Offline">Offline</option>
+                              <option value="Online">Online</option>
+                            </select>
+                          </td>
+                          <td>
+                            <textarea
+                              type="text"
+                              class="form-control"
+                              id="otherdetails"
+                              name="otherdetails2"
+                              placeholder="Other Details"
+                            ></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h3 style="text-align: center">3</h3>
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="stagename"
+                              name="stagename3"
+                              placeholder="Stage Name"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="duration"
+                              name="stageduration3"
+                              placeholder="Duration (in min)"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="roundsno"
+                              name="noofrounds3"
+                              placeholder=" No. of rounds"
+                            />
+                          </td>
+                          <td>
+                            <select
+                              type="text"
+                              class="form-control"
+                              id="mode"
+                              name="modeofstage3"
+                              placeholder="Mode"
+                            >
+                              <option value="Offline">Offline</option>
+                              <option value="Online">Online</option>
+                            </select>
+                          </td>
+                          <td>
+                            <textarea
+                              type="text"
+                              class="form-control"
+                              id="otherdetails"
+                              name="otherdetails3"
+                              placeholder="Other Details"
+                            ></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h3 style="text-align: center">4</h3>
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="stagename"
+                              name="stagename4"
+                              placeholder="Stage Name"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="duration"
+                              name="stageduration4"
+                              placeholder="Duration (in min)"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="roundsno"
+                              name="noofrounds4"
+                              placeholder=" No. of rounds"
+                            />
+                          </td>
+                          <td>
+                            <select
+                              type="text"
+                              class="form-control"
+                              id="mode"
+                              name="modeofstage4"
+                              placeholder="Mode"
+                            >
+                              <option value="Offline">Offline</option>
+                              <option value="Online">Online</option>
+                            </select>
+                          </td>
+                          <td>
+                            <textarea
+                              type="text"
+                              class="form-control"
+                              id="otherdetails"
+                              name="otherdetails4"
+                              placeholder="Other Details"
+                            ></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <h3 style="text-align: center">5</h3>
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="stagename"
+                              name="stagename5"
+                              placeholder="Stage Name"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="duration"
+                              name="stageduration5"
+                              placeholder="Duration (in min)"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="roundsno"
+                              name="noofrounds5"
+                              placeholder=" No. of rounds"
+                            />
+                          </td>
+                          <td>
+                            <select
+                              type="text"
+                              class="form-control"
+                              id="mode"
+                              name="modeofstage5"
+                              placeholder="Mode"
+                            >
+                              <option value="Offline">Offline</option>
+                              <option value="Online">Online</option>
+                            </select>
+                          </td>
+                          <td>
+                            <textarea
+                              type="text"
+                              class="form-control"
+                              id="otherdetails"
+                              name="otherdetails5"
+                              placeholder="Other Details"
+                            ></textarea>
                           </td>
                         </tr>
                       </tbody>
                     </table>
 
-                    <h6>For queries please contact:........</h6>
+                    <h6>
+                      For queries Please Click:
+                      <a href="/placement-team-contact" target="_blank"
+                        >Contact Here</a
+                      >
+                    </h6>
                   </div>
                 </div>
               </div>
@@ -1682,16 +1974,19 @@
                   </label>
                   <input
                     class="form-check-input"
-                    required=""
+                    required
                     type="checkbox"
-                    checked=""
-                    value="yes"
+                    checked
                     id="flexCheckDefault11"
                   />
                 </div>
                 <br />
                 <div class="submit-btn">
-                  <button class="btn btn-lg btn-success" id="form-btn-regisrec">
+                  <button
+                    class="btn btn-lg btn-success"
+                    id="form-btn-regisrec"
+                    style="margin-bottom: 5rem"
+                  >
                     SUBMIT
                   </button>
                 </div>
@@ -1726,165 +2021,54 @@
     </script>
 
     <script>
-      let positionname = document.getElementById("positionname");
-      let positiondesignation = document.getElementById("positiondesignation");
-      let positionmobno = document.getElementById("positionmobno");
-      let positionaltmob = document.getElementById("positionaltmob");
-      let positionemail = document.getElementById("positionemail");
-      let positionaddress = document.getElementById("positionaddress");
-      let positionadd = document.getElementById("positionadd");
-
-      let divhr = document.getElementById("row-1");
-      let divpoc1 = document.getElementById("row-2");
-      let divpoc2 = document.getElementById("row-3");
-      let currentRow = document.getElementById("row-0");
-
-      let clearInputs = () => {
-        positionname.innerHTML = "";
-        positiondesignation.innerHTML = "";
-        positionmobno.innerHTML = "";
-        positionaltmob.innerHTML = "";
-        positionemail.innerHTML = "";
-        positionaddress.innerHTML = "";
-        positionadd.innerHTML = "";
+      // Function to disable all input fields
+      let disableAllCourseInputs = () => {
+        let allInputs = document.querySelectorAll(".forcheck input");
+        allInputs.forEach((input) => {
+          input.required = false;
+          input.style.display = "none";
+        });
       };
-      function insertCommunicationFields() {
-        // Clear previous inputs
-        let selectposition = document.getElementById("selectposition").value;
-        if (positionname.innerHTML != "") clearInputs();
 
-        let inputPosiName = document.createElement("input");
-        let inputPosiDesignation = document.createElement("input");
-        let inputPosiMobNo = document.createElement("input");
-        let inputPosiAltMobNo = document.createElement("input");
-        let inputPosiEmail = document.createElement("input");
-        let inputPosiAddress = document.createElement("textarea");
-        let inputPosiButton = document.createElement("button");
+      // Call disableAllCourseInputs when the DOM is loaded
+      document.addEventListener("DOMContentLoaded", disableAllCourseInputs);
 
-        inputPosiName.type = "text";
-        inputPosiName.classList.add("form-control");
-        inputPosiName.placeholder = "Name";
-        inputPosiName.required = true;
+      // Function to set required attribute based on checkbox state
+      let setRequired = (classname) => {
+        let rowInputs = document.querySelectorAll(".for" + classname);
+        rowInputs.forEach((inputRow) => {
+          let inputs = inputRow.querySelectorAll("input");
+          inputs.forEach((input) => {
+            if (input.required == false) {
+              input.required = true;
+              input.style.display = "inline";
+            } else {
+              input.required = false;
+              input.style.display = "none";
+            }
+          });
+        });
+      };
 
-        inputPosiDesignation.type = "text";
-        inputPosiDesignation.classList.add("form-control");
-        inputPosiDesignation.placeholder = "Designation";
-        inputPosiDesignation.required = true;
+      // Get all checkboxes with class "courseInputCheck"
+      let checks = document.querySelectorAll(".courseInputCheck");
 
-        inputPosiMobNo.type = "number";
-        inputPosiMobNo.classList.add("form-control");
-        inputPosiMobNo.placeholder = "Mobile No.";
-        inputPosiMobNo.required = true;
-
-        inputPosiAltMobNo.type = "number";
-        inputPosiAltMobNo.classList.add("form-control");
-        inputPosiAltMobNo.placeholder = "Alternate Mobile No.";
-        inputPosiAltMobNo.required = true;
-
-        inputPosiEmail.type = "email";
-        inputPosiEmail.classList.add("form-control");
-        inputPosiEmail.placeholder = "Email";
-        inputPosiEmail.required = true;
-
-        inputPosiAddress.type = "text";
-        inputPosiAddress.classList.add("form-control");
-        inputPosiAddress.placeholder = "Address";
-        inputPosiAddress.required = true;
-
-        inputPosiButton.type = "button";
-        inputPosiButton.classList.add("btn");
-        inputPosiButton.classList.add("btn-primary");
-        inputPosiButton.innerHTML = "Add";
-
-        if (selectposition === "headhr") {
-          inputPosiName.name = "headhrname";
-          positionname.appendChild(inputPosiName);
-
-          inputPosiDesignation.name = "headhrdesignation";
-          positiondesignation.appendChild(inputPosiDesignation);
-
-          inputPosiMobNo.name = "headhrmobno";
-          positionmobno.appendChild(inputPosiMobNo);
-
-          inputPosiAltMobNo.name = "headhraltmobno";
-          positionaltmob.appendChild(inputPosiAltMobNo);
-
-          inputPosiEmail.name = "headhremail";
-          positionemail.appendChild(inputPosiEmail);
-
-          inputPosiAddress.name = "headhraddress";
-          positionaddress.appendChild(inputPosiAddress);
-
-          inputPosiButton.id = "btn-headhr";
-          positionadd.appendChild(inputPosiButton);
-        } else if (selectposition === "poc1") {
-          inputPosiName.name = "poc1name";
-          positionname.appendChild(inputPosiName);
-          inputPosiDesignation.name = "poc1designation";
-          positiondesignation.appendChild(inputPosiDesignation);
-          inputPosiMobNo.name = "poc1mobno";
-          positionmobno.appendChild(inputPosiMobNo);
-          inputPosiAltMobNo.name = "poc1altmobno";
-          positionaltmob.appendChild(inputPosiAltMobNo);
-          inputPosiEmail.name = "poc1email";
-          positionemail.appendChild(inputPosiEmail);
-          inputPosiAddress.name = "poc1address";
-          positionaddress.appendChild(inputPosiAddress);
-          inputPosiButton.id = "btn-poc1";
-          positionadd.appendChild(inputPosiButton);
-        } else if (selectposition === "poc2") {
-          inputPosiName.name = "poc2name";
-          positionname.appendChild(inputPosiName);
-          inputPosiDesignation.name = "poc2designation";
-          positiondesignation.appendChild(inputPosiDesignation);
-          inputPosiMobNo.name = "poc2mobno";
-          positionmobno.appendChild(inputPosiMobNo);
-          inputPosiAltMobNo.name = "poc2altmobno";
-          positionaltmob.appendChild(inputPosiAltMobNo);
-          inputPosiEmail.name = "poc2email";
-          positionemail.appendChild(inputPosiEmail);
-          inputPosiAddress.name = "poc2address";
-          positionaddress.appendChild(inputPosiAddress);
-          inputPosiButton.id = "btn-poc2";
-          positionadd.appendChild(inputPosiButton);
-        }
-
-        let addButton = document
-          .getElementById("row-0")
-          .querySelector("#positionadd")
-          .querySelector("button");
-        addButton.addEventListener("click", () => {
-          let copiedRow = currentRow.cloneNode(true);
-          copiedRow.id = "";
-          let selectedName = copiedRow.querySelector("#parentSelectPosition");
-          console.log(selectedName);
-          let nameText = document.createElement("p");
-          if (selectposition == "headhr") {
-            nameText.innerHTML = "HEAD HR";
-          } else if (selectposition == "poc1") {
-            nameText.innerHTML = "POC 1";
-          } else {
-            nameText.innerHTML = "POC 2";
-          }
-          let buttonElement = copiedRow.querySelector("button");
-          copiedRow.removeChild(selectedName);
-          copiedRow.insertBefore(nameText, copiedRow.firstChild);
-          buttonElement.remove();
-
-          if (addButton.id === "btn-headhr") {
-            divhr.appendChild(copiedRow);
-          } else if (addButton.id == "btn-poc1") {
-            divpoc1.appendChild(copiedRow);
-          } else {
-            divpoc2.appendChild(copiedRow);
+      // Add event listeners to checkboxes
+      checks.forEach((check) => {
+        check.addEventListener("change", (event) => {
+          if (event.target) {
+            if (check.name == "checkmtechcs") {
+              setRequired("checkmtechcs");
+            } else if (check.name == "checkmsccs") {
+              setRequired("checkmsccs");
+            } else if (check.name == "checkmscdfis") {
+              setRequired("checkmscdfis");
+            } else if (check.name == "checkmtechadsai") {
+              setRequired("checkmtechadsai");
+            }
           }
         });
-      }
-
-      document.addEventListener("DOMContentLoaded", insertCommunicationFields);
-      document
-        .getElementById("selectposition")
-        .addEventListener("change", insertCommunicationFields);
+      });
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
