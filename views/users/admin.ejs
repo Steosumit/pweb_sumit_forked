@@ -69,7 +69,16 @@
         position: fixed;
         width: 200px;
         height: 100%;
-        background: var(--blue);
+        /* background: var(--blue);   */
+        background-image: linear-gradient(
+          to right top,
+          #a5719b,
+          #ab5caa,
+          #a846be,
+          #9b2fd7,
+          #7e1cf3
+        );
+
         border-left: 10px solid var(--blue);
         transition: 0.5s;
         overflow: hidden;
@@ -169,7 +178,7 @@
       /* ===================== Main ===================== */
       .main {
         position: absolute;
-        width: 85%;
+        width: 83%;
         left: 200px;
         min-height: 100vh;
         background: var(--white);
@@ -260,6 +269,7 @@
       .cardBox .card {
         position: relative;
         background: var(--white);
+
         padding: 30px;
         border-radius: 20px;
         display: flex;
@@ -287,7 +297,15 @@
       }
 
       .cardBox .card:hover {
-        background: var(--blue);
+        /* background: var(--blue); */
+        background-image: linear-gradient(
+          to right top,
+          #a5719b,
+          #a765a1,
+          #a659a8,
+          #a34cb1,
+          #9d40bb
+        );
       }
       .cardBox .card:hover .numbers,
       .cardBox .card:hover .cardName,
@@ -328,7 +346,7 @@
       .cardHeader .btn {
         position: relative;
         padding: 5px 10px;
-        background: var(--blue);
+        /* background: var(--blue); */
         text-decoration: none;
         color: var(--white);
         border-radius: 6px;
@@ -581,16 +599,33 @@
       }
 
       button {
-        font-size: 18px;
+        font-size: 15px;
         padding: 7px;
-        background-color: orangered;
+        /* background-color:orangered ; */
         color: white;
         border-style: none;
-        border-radius: 20px;
+        border-radius: 10px;
         cursor: pointer;
+        background-image: linear-gradient(
+          to right top,
+          #a5719b,
+          #a765a1,
+          #a659a8,
+          #a34cb1,
+          #9d40bb
+        );
       }
       button:hover {
-        transform: scale(1.05);
+        color: white;
+        transform: scale(1.005);
+        background-image: linear-gradient(
+          to right top,
+          #a5719b,
+          #cb7285,
+          #da8064,
+          #cc9b48,
+          #a2b94c
+        );
       }
       .queriesRaised {
         position: relative;
@@ -789,14 +824,16 @@
             <a href="#">
               <span class="icon">
                 <img
-                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/nfsu1_w88qok.png"
+                  src="nfsu1.png"
                   alt=""
-                  width="80px"
-                  height="100px"
+                  width="63px"
+                  height="80px"
                   style="padding-top: 7px"
                 />
               </span>
-              <span class="title">NFSU</span>
+              <span style="padding-top: 17px; padding-left: 8px; color: wheat"
+                ><h4>Placement Cell <br /><span>SCSDF </span></h4></span
+              >
             </a>
           </li>
 
@@ -845,7 +882,7 @@
                   aria-label="briefcase outline"
                 ></ion-icon>
               </span>
-              <span class="title">Job Seekers</span>
+              <span class="title">Students</span>
             </a>
           </li>
 
@@ -935,15 +972,12 @@
           </div>
 
           <div class="user">
-            <img
-              src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/administrator_quwadq.png"
-              alt=""
-            />
+            <img src="administrator.png" alt="" />
           </div>
         </div>
 
         <!-- Add Charts -->
-        <section id="chartSection" style="display: block">
+        <section id="chartSection">
           <div class="welcome-container">
             <h1 id="welcome-message" class="animated-text">
               Welcome back, Admin! Glad to have you here.
@@ -961,9 +995,9 @@
               </div>
               <canvas
                 id="myChart"
-                style="height: 355px; display: block; width: 710px"
-                width="1420"
-                height="710"
+                style="height: 386px; display: block; width: 773px"
+                width="1546"
+                height="772"
                 class="chartjs-render-monitor"
               ></canvas>
             </div>
@@ -1267,8 +1301,11 @@
           <div class="details">
             <div class="recentOrders">
               <div class="cardHeader">
-                <h2>Job Seekers Approved</h2>
-                <a href="#" class="btn"
+                <h2>Students Registrations Approved</h2>
+                <a href="#" class="btn">
+                  <button>Enable</button>
+                  <button>Disable</button>
+                  <button>Delete</button
                   ><input
                     type="text"
                     style="
@@ -1286,97 +1323,51 @@
                 <table>
                   <thead>
                     <tr>
+                      <td>All <br /><input type="checkbox" /></td>
                       <td>Placement ID</td>
 
                       <td>Students Name</td>
                       <td>Company Applied To</td>
                       <td>Job Role</td>
                       <td>Course Name</td>
-
-                      <td>Enable Registration</td>
-                      <td>Disable Registration</td>
                     </tr>
                   </thead>
 
                   <tbody>
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>19300300008004444</td>
                       <td>Piyus Sahu</td>
                       <td>Cisco</td>
                       <td>Vapt</td>
                       <td>MTech CS</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>19300300008004444</td>
                       <td>Piyus Sahu</td>
                       <td>Cisco</td>
                       <td>Vapt</td>
                       <td>MTech CS</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>19300300008004444</td>
                       <td>Piyus Sahu</td>
                       <td>Cisco</td>
                       <td>Vapt</td>
                       <td>MTech CS</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>19300300008004444</td>
                       <td>Piyus Sahu</td>
                       <td>Cisco</td>
                       <td>Vapt</td>
                       <td>MTech CS</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
-                    </tr>
-
-                    <tr>
-                      <td>19300300008004444</td>
-                      <td>Piyus Sahu</td>
-                      <td>Cisco</td>
-                      <td>Vapt</td>
-                      <td>MTech CS</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
-                    </tr>
-
-                    <tr>
-                      <td>19300300008004444</td>
-                      <td>Piyus Sahu</td>
-                      <td>Cisco</td>
-                      <td>Vapt</td>
-                      <td>MTech CS</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
-                    </tr>
-
-                    <tr>
-                      <td>19300300008004444</td>
-                      <td>Piyus Sahu</td>
-                      <td>Cisco</td>
-                      <td>Vapt</td>
-                      <td>MTech CS</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
-                    </tr>
-
-                    <tr>
-                      <td>19300300008004444</td>
-                      <td>Piyus Sahu</td>
-                      <td>Cisco</td>
-                      <td>Vapt</td>
-                      <td>MTech CS</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -1388,7 +1379,7 @@
           <div class="details">
             <div class="recentOrders">
               <div class="cardHeader">
-                <h2>Job Seekers Requests</h2>
+                <h2>Student Registration Requests</h2>
                 <a href="#" class="btn"
                   ><input
                     type="text"
@@ -1551,8 +1542,11 @@
             <div class="recentOrders">
               <div class="cardHeader">
                 <h2>Company Registrations</h2>
-                <a href="#" class="btn"
-                  ><input
+                <a href="#" class="btn">
+                  <button>Enable</button>
+                  <button>Disable</button>
+                  <button>Delete</button>
+                  <input
                     type="text"
                     style="
                       border-radius: 10px;
@@ -1569,6 +1563,7 @@
                 <table>
                   <thead>
                     <tr>
+                      <td>All<input type="checkbox" /></td>
                       <td>Company Name</td>
                       <td>Prefered Campus</td>
                       <td>Job Location</td>
@@ -1577,14 +1572,12 @@
                       <td>Job Description</td>
                       <td>CTC/Stipend</td>
                       <td>Last Date To Apply</td>
-                      <td>Applied Students</td>
-                      <td>Edit Details</td>
-                      <td>Delete</td>
                     </tr>
                   </thead>
 
                   <tbody>
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>Meta</td>
                       <td>Gandhi Nagar</td>
                       <td>job location</td>
@@ -1593,13 +1586,12 @@
                       <td>pdf</td>
                       <td>50LPA</td>
                       <td>13/05/2024</td>
-                      <td>20</td>
-                      <td><button class="btn btn-primary">Edit</button></td>
-                      <td><button class="btn btn-primary">Delete</button></td>
+
                       <!-- <td><span class="status delivered">Delivered</span></td> -->
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>Meta</td>
                       <td>Gandhi Nagar</td>
                       <td>job location</td>
@@ -1608,12 +1600,10 @@
                       <td>pdf</td>
                       <td>50LPA</td>
                       <td>13/05/2024</td>
-                      <td>20</td>
-                      <td><button class="btn btn-primary">Edit</button></td>
-                      <td><button class="btn btn-primary">Delete</button></td>
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>Meta</td>
                       <td>Gandhi Nagar</td>
                       <td>job location</td>
@@ -1622,12 +1612,10 @@
                       <td>pdf</td>
                       <td>50LPA</td>
                       <td>13/05/2024</td>
-                      <td>20</td>
-                      <td><button class="btn btn-primary">Edit</button></td>
-                      <td><button class="btn btn-primary">Delete</button></td>
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>Meta</td>
                       <td>Gandhi Nagar</td>
                       <td>job location</td>
@@ -1636,12 +1624,10 @@
                       <td>pdf</td>
                       <td>50LPA</td>
                       <td>13/05/2024</td>
-                      <td>20</td>
-                      <td><button class="btn btn-primary">Edit</button></td>
-                      <td><button class="btn btn-primary">Delete</button></td>
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>Meta</td>
                       <td>Gandhi Nagar</td>
                       <td>job location</td>
@@ -1650,12 +1636,10 @@
                       <td>pdf</td>
                       <td>50LPA</td>
                       <td>13/05/2024</td>
-                      <td>20</td>
-                      <td><button class="btn btn-primary">Edit</button></td>
-                      <td><button class="btn btn-primary">Delete</button></td>
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>Meta</td>
                       <td>Gandhi Nagar</td>
                       <td>job location</td>
@@ -1664,37 +1648,6 @@
                       <td>pdf</td>
                       <td>50LPA</td>
                       <td>13/05/2024</td>
-                      <td>20</td>
-                      <td><button class="btn btn-primary">Edit</button></td>
-                      <td><button class="btn btn-primary">Delete</button></td>
-                    </tr>
-
-                    <tr>
-                      <td>Meta</td>
-                      <td>Gandhi Nagar</td>
-                      <td>job location</td>
-                      <td>Internship (I)</td>
-                      <td>Vapt</td>
-                      <td>pdf</td>
-                      <td>50LPA</td>
-                      <td>13/05/2024</td>
-                      <td>20</td>
-                      <td><button class="btn btn-primary">Edit</button></td>
-                      <td><button class="btn btn-primary">Delete</button></td>
-                    </tr>
-
-                    <tr>
-                      <td>Meta</td>
-                      <td>Gandhi Nagar</td>
-                      <td>job location</td>
-                      <td>Internship (I)</td>
-                      <td>Vapt</td>
-                      <td>pdf</td>
-                      <td>50LPA</td>
-                      <td>13/05/2024</td>
-                      <td>20</td>
-                      <td><button class="btn btn-primary">Edit</button></td>
-                      <td><button class="btn btn-primary">Delete</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -1722,7 +1675,7 @@
                       </td>
                       <td>Company Name</td>
                       <td>
-                        <button>Verify</button>
+                        <button>View Details</button>
                       </td>
                     </tr>
 
@@ -1737,7 +1690,7 @@
                       </td>
                       <td>Company Name</td>
                       <td>
-                        <button>Verify</button>
+                        <button>View Details</button>
                       </td>
                     </tr>
 
@@ -1752,7 +1705,7 @@
                       </td>
                       <td>Company Name</td>
                       <td>
-                        <button>Verify</button>
+                        <button>View Details</button>
                       </td>
                     </tr>
 
@@ -1767,7 +1720,7 @@
                       </td>
                       <td>Company Name</td>
                       <td>
-                        <button>Verify</button>
+                        <button>View Details</button>
                       </td>
                     </tr>
 
@@ -1782,7 +1735,7 @@
                       </td>
                       <td>Company Name</td>
                       <td>
-                        <button>Verify</button>
+                        <button>View Details</button>
                       </td>
                     </tr>
 
@@ -1797,7 +1750,7 @@
                       </td>
                       <td>Company Name</td>
                       <td>
-                        <button>Verify</button>
+                        <button>View Details</button>
                       </td>
                     </tr>
                   </tbody>
@@ -2017,7 +1970,11 @@
             <div class="recentOrders">
               <div class="cardHeader">
                 <h2>Students List</h2>
-                <a href="#" class="btn"
+
+                <a href="#" class="btn">
+                  <button>Enable</button>
+                  <button>Disable</button>
+                  <button>Delete</button
                   ><input
                     type="text"
                     style="
@@ -2035,96 +1992,60 @@
                 <table>
                   <thead>
                     <tr>
+                      <td>All <br /><input type="checkbox" /></td>
                       <td>Placement ID</td>
                       <td>Photo</td>
                       <td>Students Name</td>
 
                       <td>Course Name</td>
                       <td>Email ID</td>
-                      <td>Enable Account</td>
-                      <td>Disable Account</td>
                     </tr>
                   </thead>
 
                   <tbody>
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>19300300008004444</td>
                       <td><img src="" alt="image1" /></td>
                       <td>Piyus Sahu</td>
                       <td>MTech CS</td>
                       <td>piyussahu@gmail.com</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>19300300008004444</td>
                       <td><img src="" alt="image1" /></td>
                       <td>Piyus Sahu</td>
                       <td>MTech CS</td>
                       <td>piyussahu@gmail.com</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>19300300008004444</td>
                       <td><img src="" alt="image1" /></td>
                       <td>Piyus Sahu</td>
                       <td>MTech CS</td>
                       <td>piyussahu@gmail.com</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>19300300008004444</td>
                       <td><img src="" alt="image1" /></td>
                       <td>Piyus Sahu</td>
                       <td>MTech CS</td>
                       <td>piyussahu@gmail.com</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
                     </tr>
 
                     <tr>
+                      <td><input type="checkbox" /></td>
                       <td>19300300008004444</td>
                       <td><img src="" alt="image1" /></td>
                       <td>Piyus Sahu</td>
                       <td>MTech CS</td>
                       <td>piyussahu@gmail.com</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
-                    </tr>
-
-                    <tr>
-                      <td>19300300008004444</td>
-                      <td><img src="" alt="image1" /></td>
-                      <td>Piyus Sahu</td>
-                      <td>MTech CS</td>
-                      <td>piyussahu@gmail.com</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
-                    </tr>
-
-                    <tr>
-                      <td>19300300008004444</td>
-                      <td><img src="" alt="image1" /></td>
-                      <td>Piyus Sahu</td>
-                      <td>MTech CS</td>
-                      <td>piyussahu@gmail.com</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
-                    </tr>
-
-                    <tr>
-                      <td>19300300008004444</td>
-                      <td><img src="" alt="image1" /></td>
-                      <td>Piyus Sahu</td>
-                      <td>MTech CS</td>
-                      <td>piyussahu@gmail.com</td>
-                      <td><button>Enable</button></td>
-                      <td><button>Disable</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -2140,12 +2061,7 @@
               </div>
 
               <div class="iconBx">
-                <img
-                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/hacker_yj3m7r.png"
-                  alt=""
-                  width="40px"
-                  height="40px"
-                />
+                <img src="hacker.png" alt="" width="40px" height="40px" />
               </div>
             </div>
 
@@ -2156,12 +2072,7 @@
               </div>
 
               <div class="iconBx">
-                <img
-                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/hacker_yj3m7r.png"
-                  alt=""
-                  width="40px"
-                  height="40px"
-                />
+                <img src="hacker.png" alt="" width="40px" height="40px" />
               </div>
             </div>
 
@@ -2174,12 +2085,7 @@
               </div>
 
               <div class="iconBx">
-                <img
-                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/security_zr4hiw.png"
-                  alt=""
-                  width="40px"
-                  height="40px"
-                />
+                <img src="security.png" alt="" width="40px" height="40px" />
               </div>
             </div>
 
@@ -2192,12 +2098,7 @@
               </div>
 
               <div class="iconBx">
-                <img
-                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/ai_zrqwrk.png"
-                  alt=""
-                  width="40px"
-                  height="40px"
-                />
+                <img src="ai.png" alt="" width="40px" height="40px" />
               </div>
             </div>
           </div>
@@ -2206,6 +2107,7 @@
     </div>
 
     <!-- =========== Scripts =========  -->
+    <!-- <script src="assets/js/main.js"></script> -->
 
     <!-- ====== ionicons ======= -->
     <script
@@ -2278,7 +2180,7 @@
         options: {
           title: {
             display: true,
-            text: "STATICS",
+            text: "STATISTICS",
           },
         },
       });
@@ -2310,6 +2212,29 @@
     <script>
       var copy = document.querySelector(".logos-slide").cloneNode(true);
       document.querySelector(".logos").appendChild(copy);
+    </script>
+    <script>
+      // add hovered class to selected list item
+      let list = document.querySelectorAll(".navigation li");
+
+      function activeLink() {
+        list.forEach((item) => {
+          item.classList.remove("hovered");
+        });
+        this.classList.add("hovered");
+      }
+
+      list.forEach((item) => item.addEventListener("click", activeLink));
+
+      // Menu Toggle
+      let toggle = document.querySelector(".toggle");
+      let navigation = document.querySelector(".navigation");
+      let main = document.querySelector(".main");
+
+      toggle.onclick = function () {
+        navigation.classList.toggle("active");
+        main.classList.toggle("active");
+      };
     </script>
   </body>
 </html>

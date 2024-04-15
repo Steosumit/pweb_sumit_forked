@@ -225,7 +225,7 @@ app.post(
     let existingOTP = await OTP.findOne({ email: email });
     let newOtp = Math.floor(Math.random() * 900000) + 100000;
     if (username == "Student") {
-      if (!email.trim().endsWith("@nfsu.ac.in" && em)) {
+      if (!email.trim().endsWith("@nfsu.ac.in" )) {
         req.flash("error", "Please Enter a valid College Student Email.");
         res.redirect("/otp-initialize/?username=Student");
       }

@@ -2,8 +2,16 @@
 <link rel="stylesheet" href="/style.css" />
 <div class="login-big-div login-stu">
   <div class="login-card pop-out row">
-    <div class="col-md-4">
-      <div class="login-img-div">
+    <div
+      class="col-md-4"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div class="login-img-div" style="justify-self: start;">
         <a href="/"
           ><img
             src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
@@ -44,7 +52,6 @@
           style="display: none"
           value="<%=username%>"
         />
-        <br /><br />
         <br />
         <button class="btn btn-lg btn-primary" type="submit">
           Verify Your Email
@@ -69,7 +76,6 @@
           />
         </label>
         <br />
-        <br />
         <label style="width: 100%"
           ><h6>Enrollment No.</h6>
           <input
@@ -80,7 +86,7 @@
             name="enrollnostu"
           />
         </label>
-        <br />
+
         <br />
         <label style="width: 100%"
           ><h6>Email ID</h6>
@@ -93,7 +99,7 @@
           />
         </label>
         <br />
-        <br />
+
         <label style="width: 100%"
           ><h6>Mobile Number</h6>
           <input
@@ -104,7 +110,7 @@
             placeholder="Enter Your Mobile No."
         /></label>
 
-        <br /><br />
+        <br />
         <label style="width: 100%"
           ><h6>Course Name</h6>
 
@@ -121,7 +127,7 @@
           </select>
         </label>
         <br />
-        <br>
+
         <button class="btn btn-lg btn-primary" type="submit">
           Verify Your Email
         </button>
