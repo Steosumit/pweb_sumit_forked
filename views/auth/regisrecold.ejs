@@ -1,0 +1,611 @@
+<%layout("/layouts/boilerplate.ejs")%>
+<link rel="stylesheet" href="/style.css" />
+<div class="regis-big-div">
+  <div
+    class="left-login"
+    style="width: 100%; display: flex; justify-content: center"
+  >
+    <div class="pop-out">
+      <a href="/"
+        ><img
+          loading="lazy"
+          src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
+          width="250"
+          style="padding: 1rem"
+          alt=""
+      /></a>
+    </div>
+  </div>
+  <form
+    novalidate
+    class="needs-validation"
+    action="/register/rec"
+    method="post"
+  >
+    <div class="down-regis">
+      <div class="resources-student-big-div">
+        <div class="content-div regis-content-div">
+          <div class="content-title container">
+            <h2
+              style="
+                text-align: center;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+                margin-bottom: 0;
+              "
+            >
+              Registration : Recruiter
+            </h2>
+            <hr />
+            <h2>Company's Information</h2>
+            <br />
+
+            <div class="input-fields">
+              <div class="form-group">
+                <label for="CompanyName">Company Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="companyname"
+                  value="aa"
+                  id="CompanyName"
+                  placeholder="Company Name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="NatureofBusiness">Nature of Business</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="natureofbusiness"
+                  value="aa"
+                  id="NatureofBusiness"
+                  placeholder="Nature of Business"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="Website">Website Link</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="websitelink"
+                  id="Website"
+                  placeholder="Website Link"
+                  required
+                  value="hehe"
+                />
+              </div>
+              <div class="form-group">
+                <label for="PostalAddress">Postal Address</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="postaladdress"
+                  id="PostalAddress"
+                  placeholder="Postal Address"
+                  required
+                  value="hehe"
+                />
+              </div>
+              <div class="form-group">
+                <label for="Category">Category of Business</label>
+                <input
+                  type="text"
+                  name="category"
+                  class="form-control"
+                  id="Category"
+                  placeholder="Category of Business"
+                  required
+                  value="hehe"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-div regis-content-div">
+          <div class="content-title container">
+            <hr />
+            <h2>Communication Details</h2>
+            <br />
+            <div class="comm-fields">
+              <h2 style="padding-top: 1rem; padding-bottom: 2rem">HEAD HR</h2>
+
+              <div class="input-fields">
+                <div class="form-group">
+                  <label for="hrname">HR-Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="123322"
+                    id="hrname"
+                    required
+                    name="hrname"
+                    placeholder="HR-Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Designation">Designation </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Designation"
+                    name="hrdesignation"
+                    value="hehe"
+                    required
+                    placeholder="Designation"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="OfficeAddress">Office Address </label>
+                  <textarea
+                    type="text"
+                    value="hehe"
+                    class="form-control"
+                    id="OfficeAddress"
+                    required
+                    name="hrofficeaddress"
+                    placeholder="Office Address"
+                  >
+                  </textarea>
+                </div>
+                <div class="form-group">
+                  <label for="MobileNumber">Mobile Number</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="MobileNumber"
+                    required
+                    value="9"
+                    name="hrmobileno"
+                    placeholder="Mobile Number"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="TelephoneNumber">Alternate Mobile Number</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    value="9"
+                    id="TelephoneNumber"
+                    required
+                    name="althrmobileno"
+                    placeholder="Alternate Mobile Number"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="EmailId"> Email Id</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="hremail"
+                    readonly
+                    value="<%=email%>"
+                    required
+                    id="EmailId"
+                    placeholder="Email Id"
+                  />
+                </div>
+              </div>
+
+              <h2 style="padding-top: 1rem; padding-bottom: 2rem">
+                HEAD POC-1
+              </h2>
+
+              <div class="input-fields">
+                <div class="form-group">
+                  <label for="pocname">POC-Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="123322"
+                    id="pocname"
+                    required
+                    name="pocname"
+                    placeholder="POC-Name"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="pocDesignation">Designation </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="pocDesignation"
+                    name="pocdesignation"
+                    value="hehe"
+                    required
+                    placeholder="Designation"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="pocOfficeAddress">Office Address </label>
+                  <textarea
+                    type="text"
+                    value="hehe"
+                    class="form-control"
+                    id="pocOfficeAddress"
+                    required
+                    name="pocofficeaddress"
+                    placeholder="Office Address"
+                  >
+                  </textarea>
+                </div>
+                <div class="form-group">
+                  <label for="pocMobileNumber">Mobile Number</label>
+                  <input
+                    type="tel"
+                    class="form-control"
+                    id="pocMobileNumber"
+                    value="9"
+                    required
+                    name="pocmobileno"
+                    placeholder="Mobile Number"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="pocTelephoneNumber"
+                    >Alternate Mobile Number</label
+                  >
+                  <input
+                    type="tel"
+                    value="8"
+                    class="form-control"
+                    id="pocTelephoneNumber"
+                    required
+                    name="altpocmobileno"
+                    placeholder="Alternate Mobile Number"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="pocEmailId"> Email Id</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="pocemail"
+                    required
+                    value="<%=email%>"
+                    id="pocEmailId"
+                    placeholder="Email Id"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-div regis-content-div" id="procedure">
+          <div class="content-title container">
+            <hr />
+            <h2>Offering Details</h2>
+            <br />
+            <div class="comm-fields">
+              <div class="input-fields">
+                <div class="form-group">
+                  <label for="JobType"> Job Type </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="a"
+                    required
+                    name="jobtype"
+                    id="JobType"
+                    placeholder="Job Type"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="JobDesignation"> Job Designation </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    required
+                    value="a"
+                    name="jobdesignation"
+                    id="JobDesignation"
+                    placeholder=" Job Designation"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Sector">Sector</label>
+                  <select required name="sector" class="form-check" id="Sector">
+                    <option value="Software/Coding/IT">
+                      Software/Coding/IT
+                    </option>
+                    <option value="Analytics">Analytics</option>
+                    <option value="Core(Technical)">Core(Technical)</option>
+                    <option value="Consulting">Consulting</option>
+                    <option value="Product Management">
+                      Product Management
+                    </option>
+                    <option value="Finance">Finance</option>
+                    <option value="Data Science/ AI/ ML">
+                      Data Science/ AI/ ML
+                    </option>
+                    <option value="Research Teaching">Research Teaching</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="TentativenoofHires">Tentative no. of Hires</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    value="1"
+                    id="TentativenoofHires"
+                    name="tentativenoofhires"
+                    required
+                    placeholder="Tentative no. of Hires"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="TentativeJobLocation">
+                    Tentative Job Location
+                  </label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    required
+                    value="a"
+                    name="tentativejoblocation"
+                    id="TentativeJobLocation"
+                    placeholder=" Tentative Job Location"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="JobDescription">Job Description</label>
+                  <textarea
+                    type="text"
+                    class="form-control"
+                    id="JobDescription"
+                    required
+                    name="JobDescription"
+                    placeholder="Job Description"
+                  >
+a
+                  </textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-div regis-content-div" id="procedure">
+          <div class="content-title container">
+            <hr />
+            <h2>Eligibility Matrix</h2>
+            <br />
+
+            <p>Cyber Security</p>
+            <div class="form-check">
+              <label class="form-check-label" for="MTechCS"> MTech </label>
+              <input
+                class="form-check-input mx-3"
+                name="MTechCS"
+                type="checkbox"
+                checked
+                value="yes"
+                id="MTechCS"
+              />
+            </div>
+            <div class="form-check">
+              <label class="form-check-label" for="MScCS"> MSc </label>
+              <input
+                class="form-check-input mx-3"
+                name="MScCS"
+                type="checkbox"
+                value="yes"
+                id="MScCS"
+              />
+            </div>
+            <br />
+
+            <p>Digital Forensics and Information Security</p>
+
+            <div class="form-check">
+              <label class="form-check-label" for="MScDFIS"> MSc </label>
+              <input
+                class="form-check-input mx-3"
+                name="MScDFIS"
+                type="checkbox"
+                value="yes"
+                id="MScDFIS"
+              />
+            </div>
+
+            <p>Applied Data Science & Artificial Intelligence</p>
+            <div class="form-check">
+              <label class="form-check-label" for="MTechADSAI"> MTech </label>
+              <input
+                class="form-check-input mx-3"
+                value="yes"
+                checked
+                name="MTechADSAI"
+                type="checkbox"
+                id="MTechADSAI"
+              />
+            </div>
+          </div>
+          <br />
+          <div class="form-group">
+            <label for="Categorycomp">Category Compensation</label>
+            <input
+              type="text"
+              class="form-control"
+              value="a"
+              name="categorycompensation"
+              id="Categorycomp"
+              placeholder="Category"
+              required
+            />
+          </div>
+        </div>
+        <div class="content-div regis-content-div" id="procedure">
+          <div class="content-title container">
+            <hr />
+            <h2>Campus Process Mode</h2>
+            <br />
+            <div class="comm-fields">
+              <div class="input-fields">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    value="yes"
+                    checked
+                    name="isvirtual"
+                    id="CampusProcessMode"
+                    required
+                  />
+                  <label class="form-check-label" for="CampusProcessMode">
+                    Virtual – All processes are conducted online
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="comm-fields">
+              <div class="input-fields">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    value="yes"
+                    name="isvirtual"
+                    id="CampusProcessMode2"
+                    required
+                  />
+                  <label class="form-check-label" for="CampusProcessMode2">
+                    In-campus – All processes are conducted in campus
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="comm-fields">
+              <div class="input-fields">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    value="hybrid"
+                    name="isvirtual"
+                    id="CampusProcessMode3"
+                    required=""
+                  />
+                  <label class="form-check-label" for="CampusProcessMode3">
+                    Hybrid – Some processes are conducted online while some in
+                    campus
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="comm-fields">
+              <div class="input-fields">
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="radio"
+                    value="notdecided"
+                    name="isvirtual"
+                    id="CampusProcessMode4"
+                    required
+                  />
+                  <label class="form-check-label" for="CampusProcessMode4">
+                    Undecided
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-div regis-content-div" id="procedure">
+          <div class="content-title container">
+            <hr />
+            <h2>Declaration</h2>
+            <br />
+            1. As a representative of above company, I hereby declare that all
+            information provided in the registration form for participation in
+            the campus placement session 2024-25 is true and accurate to the
+            best of my knowledge. <br />
+            2. I understand that any false information provided may result in
+            the disqualification of our company from participating in the
+            placement session. I also acknowledge and agree to abide by all
+            rules, policies, and guidelines set forth by the Placement Cell and
+            the educational institution hosting the placement session. <br />
+            3. Furthermore, I understand that the Placement Cell reserves the
+            right to conduct background checks on our company, including but not
+            limited to verifying our credentials and reputation in the industry.
+            I authorize the Placement Cell to share relevant information about
+            our company with students for the purpose of recruitment during the
+            placement session 2024-25. <br />
+            4. I understand that any violation of the rules and policies may
+            lead to the termination of our company's participation in the
+            placement session, and I agree to accept any disciplinary actions
+            deemed appropriate by the Placement Cell. <br />
+            5. I further declare that any student data or information obtained
+            during the recruitment process will be used solely for the purpose
+            of recruitment and will not be shared with any third parties or used
+            for any other purposes without explicit consent from the student or
+            the educational institution. I understand that any unauthorized
+            sharing or misuse of student data may result in legal action and
+            disqualification from future participation in campus placement
+            sessions.
+            <br /><br />
+            <div class="form-check">
+              <label class="form-check-label" for="flexCheckDefault11">
+                I Agree
+              </label>
+              <input
+                class="form-check-input"
+                required
+                type="checkbox"
+                checked
+                value="yes"
+                value=""
+                id="flexCheckDefault11"
+              />
+            </div>
+            <br />
+            <div class="submit-btn">
+              <button class="btn btn-lg btn-success" id="form-btn-regisrec">
+                SUBMIT
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  // JavaScript for form validation
+  (function () {
+    "use strict";
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll(".needs-validation");
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
+<!-- <script>
+  document
+    .querySelectorAll('input[type="checkbox"]')
+    .addEventListener("change", function () {
+      var checkbox = this;
+      if (checkbox.checked) {
+        checkbox.value = "yes";
+      } else {
+        checkbox.value = "no";
+      }
+    });
+</script> -->

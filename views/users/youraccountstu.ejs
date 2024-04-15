@@ -160,12 +160,34 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container">
-        <a class="navbar-brand" href="/"
-          ><img
-            src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1712682857/nfsu_vrolyh.png"
+        <a
+          target="_blank"
+          class="card-links pop-out col"
+          data-bs-toggle="collapse"
+          data-bs-target="#message9"
+        >
+          <img
+            src="https://www.nfsu.ac.in/assets/img/emblem.png"
             alt=""
-            width="180"
-        /></a>
+            width="150"
+          />
+        </a>
+        <div
+          class="collapse"
+          id="message9"
+          style="background-color: transparent"
+        >
+          <div
+            class="card card-body"
+            style="
+              background-color: transparent;
+              border: dashed thin midnightblue;
+              padding: 0.5rem;
+            "
+          >
+            Please Log out First !
+          </div>
+        </div>
         <button
           class="navbar-toggler"
           type="button"
@@ -189,6 +211,9 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
             </li>
             <li class="nav-item">
               <a class="nav-link" aria-current="page" href="#">Manage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/logout">Logout</a>
             </li>
             <li class="nav-item">
               <a class="btn btn-primary" aria-current="page" href="#"
@@ -320,7 +345,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
           </div>
 
           <div class="card_content">
-            <span class="card_title">Apssple</span>
+            <span class="card_title">Apple</span>
             <span class="card_name">vapt</span>
           </div>
         </div>

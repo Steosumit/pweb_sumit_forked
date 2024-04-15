@@ -537,7 +537,7 @@ h6 {
 .login-card button {
   text-align: center;
   margin-left: auto;
-  width: 100%;
+  width: 50%;
   background-color: #0c359e;
   border: none;
   margin-right: auto;
@@ -550,13 +550,13 @@ h6 {
 }
 .login-card form {
   width: 100%;
-  /* display: flex;
-  flex-direction: column;
   height: 100%;
-  justify-content: space-between; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .login-card input {
-  width: 100%;
+  width: 50%;
   border: none;
   border-radius: 0.5rem;
   text-align: left;
@@ -736,7 +736,7 @@ h6 {
   display: none;
 }
 .team-cards .non-mob {
-  width: 100%;
+  width: 80%;
   padding: 4rem;
 }
 .team-cards .non-mob .col-md-4,
@@ -746,8 +746,8 @@ h6 {
   justify-content: center;
 }
 .team-cards .non-mob .col-md-4 img {
-  width: 19rem;
-  height: 19rem;
+  width: 16rem;
+  height: 16rem;
   object-fit: cover;
   border-radius: 30%;
   border: blanchedalmond thick solid;
@@ -774,7 +774,6 @@ h6 {
 .team-a h1,
 .team-b h1 {
   background-color: blanchedalmond;
-
   padding: 1rem;
 }
 .team-cards {
@@ -984,7 +983,6 @@ h6 {
   width: 100%;
   display: flex;
   flex-direction: column;
-
   align-items: center;
   overflow: hidden;
 }

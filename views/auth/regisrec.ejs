@@ -1,599 +1,1987 @@
-<%layout("/layouts/boilerplate.ejs")%>
-<link rel="stylesheet" href="/style.css" />
-<div class="regis-big-div">
-  <div
-    class="left-login"
-    style="width: 100%; display: flex; justify-content: center"
-  >
-    <div class="pop-out">
-      <a href="/"
-        ><img
-          loading="lazy"
-          src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
-          width="250"
-          style="padding: 1rem"
-          alt=""
-      /></a>
-    </div>
-  </div>
-  <form
-    novalidate
-    class="needs-validation"
-    action="/register/rec"
-    method="post"
-  >
-    <div class="down-regis">
-      <div class="resources-student-big-div">
-        <div class="content-div regis-content-div">
-          <div class="content-title container">
-            <h2
-              style="
-                text-align: center;
-                padding-top: 2rem;
-                padding-bottom: 2rem;
-                margin-bottom: 0;
-              "
-            >
-              Registration : Recruiter
-            </h2>
-            <hr />
-            <h2>Company's Information</h2>
-            <br />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <title>Document</title>
+    <style>
+      .regis-big-div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
 
-            <div class="input-fields">
-              <div class="form-group">
-                <label for="CompanyName">Company Name</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="companyname"
-                  value="aa"
-                  id="CompanyName"
-                  placeholder="Company Name"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="NatureofBusiness">Nature of Business</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="natureofbusiness"
-                  value="aa"
-                  id="NatureofBusiness"
-                  placeholder="Nature of Business"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="Website">Website Link</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="websitelink"
-                  id="Website"
-                  placeholder="Website Link"
-                  required
-                  value="hehe"
-                />
-              </div>
-              <div class="form-group">
-                <label for="PostalAddress">Postal Address</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="postaladdress"
-                  id="PostalAddress"
-                  placeholder="Postal Address"
-                  required
-                  value="hehe"
-                />
-              </div>
-              <div class="form-group">
-                <label for="Category">Category of Business</label>
-                <input
-                  type="text"
-                  name="category"
-                  class="form-control"
-                  id="Category"
-                  placeholder="Category of Business"
-                  required
-                  value="hehe"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="content-div regis-content-div">
-          <div class="content-title container">
-            <hr />
-            <h2>Communication Details</h2>
-            <br />
-            <div class="comm-fields">
-              <h2 style="padding-top: 1rem; padding-bottom: 2rem">HEAD HR</h2>
+        align-items: center;
+        overflow: hidden;
+      }
 
-              <div class="input-fields">
-                <div class="form-group">
-                  <label for="hrname">HR-Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    value="123322"
-                    id="hrname"
-                    required
-                    name="hrname"
-                    placeholder="HR-Name"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="Designation">Designation </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="Designation"
-                    name="hrdesignation"
-                    value="hehe"
-                    required
-                    placeholder="Designation"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="OfficeAddress">Office Address </label>
-                  <textarea
-                    type="text"
-                    value="hehe"
-                    class="form-control"
-                    id="OfficeAddress"
-                    required
-                    name="hrofficeaddress"
-                    placeholder="Office Address"
-                  >
-                  </textarea>
-                </div>
-                <div class="form-group">
-                  <label for="MobileNumber">Mobile Number</label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    id="MobileNumber"
-                    required
-                    value="9"
-                    name="hrmobileno"
-                    placeholder="Mobile Number"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="TelephoneNumber">Alternate Mobile Number</label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    value="9"
-                    id="TelephoneNumber"
-                    required
-                    name="althrmobileno"
-                    placeholder="Alternate Mobile Number"
-                  />
-                </div>
+      .regis-big-div form {
+        line-height: 2rem;
+      }
+      .regis-big-div form .form-group {
+        width: fit-content;
+      }
+      .regis-logo {
+        width: 100%;
+        height: 15rem;
 
-                <div class="form-group">
-                  <label for="EmailId"> Email Id</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    name="hremail"
-                    readonly
-                    value="<%=email%>"
-                    required
-                    id="EmailId"
-                    placeholder="Email Id"
-                  />
-                </div>
-              </div>
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
 
-              <h2 style="padding-top: 1rem; padding-bottom: 2rem">
-                HEAD POC-1
-              </h2>
+        background-color: powderblue;
+      }
+      .regis-logo-img {
+        width: 28rem;
+        height: 10rem;
+        background: url("https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png");
+        background-size: cover;
+        background-position: center;
+      }
+      /* .regis-logo-img img {
+  object-fit: contain;
+} */
 
-              <div class="input-fields">
-                <div class="form-group">
-                  <label for="pocname">POC-Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    value="123322"
-                    id="pocname"
-                    required
-                    name="pocname"
-                    placeholder="POC-Name"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="pocDesignation">Designation </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="pocDesignation"
-                    name="pocdesignation"
-                    value="hehe"
-                    required
-                    placeholder="Designation"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="pocOfficeAddress">Office Address </label>
-                  <textarea
-                    type="text"
-                    value="hehe"
-                    class="form-control"
-                    id="pocOfficeAddress"
-                    required
-                    name="pocofficeaddress"
-                    placeholder="Office Address"
-                  >
-                  </textarea>
-                </div>
-                <div class="form-group">
-                  <label for="pocMobileNumber">Mobile Number</label>
-                  <input
-                    type="tel"
-                    class="form-control"
-                    id="pocMobileNumber"
-                    value="9"
-                    required
-                    name="pocmobileno"
-                    placeholder="Mobile Number"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="pocTelephoneNumber"
-                    >Alternate Mobile Number</label
-                  >
-                  <input
-                    type="tel"
-                    value="8"
-                    class="form-control"
-                    id="pocTelephoneNumber"
-                    required
-                    name="altpocmobileno"
-                    placeholder="Alternate Mobile Number"
-                  />
-                </div>
+      .input-fields {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .form-group {
+        margin-right: 05rem;
+        margin-bottom: 1rem;
+      }
 
-                <div class="form-group">
-                  <label for="pocEmailId"> Email Id</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    name="pocemail"
-                    required
-                    value="<%=email%>"
-                    id="pocEmailId"
-                    placeholder="Email Id"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="content-div regis-content-div" id="procedure">
-          <div class="content-title container">
-            <hr />
-            <h2>Offering Details</h2>
-            <br />
-            <div class="comm-fields">
-              <div class="input-fields">
-                <div class="form-group">
-                  <label for="JobType"> Job Type </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    value="a"
-                    required
-                    name="jobtype"
-                    id="JobType"
-                    placeholder="Job Type"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="JobDesignation"> Job Designation </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    required
-                    value="a"
-                    name="jobdesignation"
-                    id="JobDesignation"
-                    placeholder=" Job Designation"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="Sector">Sector</label>
-                  <select required name="sector" class="form-check" id="Sector">
-                    <option value="Software/Coding/IT">
-                      Software/Coding/IT
-                    </option>
-                    <option value="Analytics">Analytics</option>
-                    <option value="Core(Technical)">Core(Technical)</option>
-                    <option value="Consulting">Consulting</option>
-                    <option value="Product Management">
-                      Product Management
-                    </option>
-                    <option value="Finance">Finance</option>
-                    <option value="Data Science/ AI/ ML">
-                      Data Science/ AI/ ML
-                    </option>
-                    <option value="Research Teaching">Research Teaching</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="TentativenoofHires">Tentative no. of Hires</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    value="1"
-                    id="TentativenoofHires"
-                    name="tentativenoofhires"
-                    required
-                    placeholder="Tentative no. of Hires"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="TentativeJobLocation">
-                    Tentative Job Location
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    required
-                    value="a"
-                    name="tentativejoblocation"
-                    id="TentativeJobLocation"
-                    placeholder=" Tentative Job Location"
-                  />
-                </div>
-                <div class="form-group">
-                  <label for="JobDescription">Job Description</label>
-                  <textarea
-                    type="text"
-                    class="form-control"
-                    id="JobDescription"
-                    required
-                    name="JobDescription"
-                    placeholder="Job Description"
-                  >
-a
-                  </textarea>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="content-div regis-content-div" id="procedure">
-          <div class="content-title container">
-            <hr />
-            <h2>Eligibility Matrix</h2>
-            <br />
+      .form-group input {
+        width: 15rem;
+      }
 
-            <p>Cyber Security</p>
-            <div class="form-check">
-              <label class="form-check-label" for="MTechCS"> MTech </label>
-              <input
-                class="form-check-input mx-3"
-                name="MTechCS"
-                type="checkbox"
-                checked
-                value="yes"
-                id="MTechCS"
-              />
-            </div>
-            <div class="form-check">
-              <label class="form-check-label" for="MScCS"> MSc </label>
-              <input
-                class="form-check-input mx-3"
-                name="MScCS"
-                type="checkbox"
-                value="yes"
-                id="MScCS"
-              />
-            </div>
-            <br />
+      .down-regis .card {
+        background-color: transparent;
+        border: 0;
+        width: 20rem;
+      }
+      .down-regis .card p {
+        margin: 0;
+      }
+      /* .down-regis button {
+  margin: 3rem;
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-bottom: 10rem;
+} */
+      .submit-btn {
+        display: flex;
+        justify-content: center;
+      }
 
-            <p>Digital Forensics and Information Security</p>
+      .card-body {
+        padding: 0;
+      }
+      .regis-card-title {
+        text-align: start !important;
+      }
 
-            <div class="form-check">
-              <label class="form-check-label" for="MScDFIS"> MSc </label>
-              <input
-                class="form-check-input mx-3"
-                name="MScDFIS"
-                type="checkbox"
-                value="yes"
-                id="MScDFIS"
-              />
-            </div>
-
-            <p>Applied Data Science & Artificial Intelligence</p>
-            <div class="form-check">
-              <label class="form-check-label" for="MTechADSAI"> MTech </label>
-              <input
-                class="form-check-input mx-3"
-                value="yes"
-                checked
-                name="MTechADSAI"
-                type="checkbox"
-                id="MTechADSAI"
-              />
-            </div>
-          </div>
-          <br />
-          <div class="form-group">
-            <label for="Categorycomp">Category Compensation</label>
-            <input
-              type="text"
-              class="form-control"
-              value="a"
-              name="categorycompensation"
-              id="Categorycomp"
-              placeholder="Category"
-              required
-            />
-          </div>
-        </div>
-        <div class="content-div regis-content-div" id="procedure">
-          <div class="content-title container">
-            <hr />
-            <h2>Campus Process Mode</h2>
-            <br />
-            <div class="comm-fields">
-              <div class="input-fields">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    value="yes"
-                    checked
-                    name="isvirtual"
-                    id="CampusProcessMode"
-                    required
-                  />
-                  <label class="form-check-label" for="CampusProcessMode">
-                    Virtual – All processes are conducted online
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="comm-fields">
-              <div class="input-fields">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    value="yes"
-                    name="isvirtual"
-                    id="CampusProcessMode2"
-                    required
-                  />
-                  <label class="form-check-label" for="CampusProcessMode2">
-                    In-campus – All processes are conducted in campus
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="comm-fields">
-              <div class="input-fields">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    value="hybrid"
-                    name="isvirtual"
-                    id="CampusProcessMode3"
-                    required=""
-                  />
-                  <label class="form-check-label" for="CampusProcessMode3">
-                    Hybrid – Some processes are conducted online while some in
-                    campus
-                  </label>
-                </div>
-              </div>
-            </div>
-            <div class="comm-fields">
-              <div class="input-fields">
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="radio"
-                    value="notdecided"
-                    name="isvirtual"
-                    id="CampusProcessMode4"
-                    required
-                  />
-                  <label class="form-check-label" for="CampusProcessMode4">
-                    Undecided
-                  </label>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="content-div regis-content-div" id="procedure">
-          <div class="content-title container">
-            <hr />
-            <h2>Declaration</h2>
-            <br />
-            I declare that I have read and understood all the terms and
-            conditions mentioned in the advertisement. I fulfil all the
-            requirements for candidature/appointment, on the basis of which the
-            above details are filled in the online application and I have the
-            original documents available. I am able to present whatever document
-            is demanded by the university at any time. The above mentioned
-            details are true and correct to my knowledge and belief and if any
-            of the details are incorrect or the documents are found to be
-            defective then my candidature/appointment is subject to revocation
-            at any stage ab initio and I will be liable for criminal
-            proceedings. I agree to it and the decision of the university in
-            this matter will be final and it is binding on me.
-            <br />
-            Note: Your application will be considered valid only after mandatory
-            confirmation on this website.
-            <br /><br />
-            <div class="form-check">
-              <label class="form-check-label" for="flexCheckDefault11">
-                I Agree
-              </label>
-              <input
-                class="form-check-input"
-                required
-                type="checkbox"
-                checked
-                value="yes"
-                value=""
-                id="flexCheckDefault11"
-              />
-            </div>
-            <br />
-            <div class="submit-btn">
-              <button class="btn btn-lg btn-success" id="form-btn-regisrec">
-                SUBMIT
-              </button>
-            </div>
-          </div>
+      .comm-fields {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="regis-big-div">
+      <div
+        class="left-login"
+        style="width: 100%; display: flex; justify-content: center"
+      >
+        <div class="pop-out">
+          <a href="/"
+            ><img
+              loading="lazy"
+              src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
+              width="250"
+              style="padding: 1rem"
+              alt=""
+          /></a>
         </div>
       </div>
-    </div>
-  </form>
-</div>
+      <form
+        novalidate=""
+        class="needs-validation"
+        action="/register/rec"
+        method="post"
+      >
+        <div class="down-regis">
+          <div class="resources-student-big-div">
+            <div class="content-div regis-content-div">
+              <div class="content-title container">
+                <h2
+                  style="
+                    text-align: center;
+                    padding-top: 2rem;
+                    padding-bottom: 2rem;
+                    margin-bottom: 0;
+                  "
+                >
+                  Registration : Recruiter
+                </h2>
+                <hr />
+                <h2 style="border-left: solid 4px; padding-left: 5px">
+                  Company's Information
+                </h2>
+                <br />
 
-<script>
-  // JavaScript for form validation
-  (function () {
-    "use strict";
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.querySelectorAll(".needs-validation");
-    // Loop over them and prevent submission
-    Array.prototype.slice.call(forms).forEach(function (form) {
-      form.addEventListener(
-        "submit",
-        function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
+                <div class="input-fields">
+                  <div class="form-group">
+                    <label for="CompanyName">Company Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="companyname"
+                      value="aa"
+                      id="CompanyName"
+                      placeholder="Company Name"
+                      required=""
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="NatureofBusiness">Nature of Business</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="natureofbusiness"
+                      value="aa"
+                      id="NatureofBusiness"
+                      placeholder="Nature of Business"
+                      required=""
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="Website">Website Link</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="websitelink"
+                      id="Website"
+                      placeholder="Website Link"
+                      required=""
+                      value="hehe"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="PostalAddress">Postal Address</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="postaladdress"
+                      id="PostalAddress"
+                      placeholder="Postal Address"
+                      required=""
+                      value="hehe"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="Category">Category of Business</label>
+                    <input
+                      type="text"
+                      name="category"
+                      class="form-control"
+                      id="Category"
+                      placeholder="Category of Business"
+                      required=""
+                      value="hehe"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="content-div regis-content-div">
+              <div class="content-title container">
+                <hr />
+                <h2 style="border-left: solid 4px; padding-left: 5px">
+                  Communication Details
+                </h2>
+                <br />
+                <div class="comm-fields">
+                  <div class="input-fields" style="overflow-x: scroll">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th style="background-color: #163269; color: white">
+                            Select Position
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Name
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Designation
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Mobile Number
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Telephone Number
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Email Id
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Official Address
+                          </th>
+                          <th
+                            style="background-color: #163269; color: white"
+                          ></th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr id="row-0">
+                          <td id="parentSelectPosition">
+                            <select
+                              name="selectposition"
+                              class="form-select"
+                              id="selectposition"
+                              required=""
+                            >
+                              <option value="poc1">POC 1</option>
+                              <option value="headhr">Head HR</option>
+                              <option value="poc2">POC 2</option>
+                            </select>
+                          </td>
+                          <td id="positionname">
+                            <!-- <input
+                              type="text"
+                              class="form-control"
+                              name="name"
+                              id="name"
+                              placeholder="Name"
+                              required=""
+                            /> -->
+                          </td>
+                          <td id="positiondesignation">
+                            <!-- <input
+                              type="text"
+                              class="form-control"
+                              name="designation"
+                              id="designation"
+                              placeholder="Designation"
+                              required=""
+                            /> -->
+                          </td>
+
+                          <td id="positionmobno">
+                            <!-- <input
+                              type="tel"
+                              class="form-control"
+                              name="mobilenumber"
+                              id="mobilenumber"
+                              placeholder="Mobile No."
+                              required=""
+                            /> -->
+                          </td>
+                          <td id="positionaltmob">
+                            <!-- <input
+                              type="tel"
+                              class="form-control"
+                              name="altmobno"
+                              id="telephonenumber"
+                              placeholder="Telephone No."
+                              required=""
+                            /> -->
+                          </td>
+                          <td id="positionemail">
+                            <!-- <input
+                              type="email"
+                              class="form-control"
+                              name="email"
+                              id="email"
+                              placeholder="Email"
+                              required=""
+                            /> -->
+                          </td>
+                          <td id="positionaddress">
+                            <!-- <textarea
+                              type="text"
+                              class="form-control"
+                              id="officialaddress"
+                              name="officialaddress"
+                              required=""
+                              placeholder="Official Address"
+                            >
+                            </textarea> -->
+                          </td>
+                          <td id="positionadd">
+                            <!-- <button type="button" class="btn btn-primary">
+                              Add
+                            </button> -->
+                          </td>
+                        </tr>
+                        <div id="row-1"></div>
+                        <div id="row-2"></div>
+                        <div id="row-3"></div>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="content-div regis-content-div" id="procedure">
+              <div class="content-title container">
+                <hr />
+                <h2 style="border-left: solid 4px; padding-left: 5px">
+                  Offering Details
+                </h2>
+                <br />
+                <div class="comm-fields">
+                  <div class="input-fields">
+                    <div class="form-group">
+                      <label for="JobTitle"> Job Title </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="a"
+                        required=""
+                        name="jobtitle"
+                        id="JobTitle"
+                        placeholder="Job Title"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="JobType"> Job Type </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        value="a"
+                        required=""
+                        name="jobtype"
+                        id="JobType"
+                        placeholder="Job Type"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="JobDesignation"> Job Designation </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        required=""
+                        value="a"
+                        name="jobdesignation"
+                        id="JobDesignation"
+                        placeholder=" Job Designation"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="Sector">Sector</label>
+                      <select
+                        required=""
+                        name="sector"
+                        class="form-check"
+                        id="Sector"
+                      >
+                        <option value="Software/Coding/IT">
+                          Software/Coding/IT
+                        </option>
+                        <option value="Analytics">Analytics</option>
+                        <option value="Core(Technical)">Core(Technical)</option>
+                        <option value="Consulting">Consulting</option>
+                        <option value="Product Management">
+                          Product Management
+                        </option>
+                        <option value="Finance">Finance</option>
+                        <option value="Data Science/ AI/ ML">
+                          Data Science/ AI/ ML
+                        </option>
+                        <option value="Research Teaching">
+                          Research Teaching
+                        </option>
+                        <option value="Others">Others</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="TentativenoofHires"
+                        >Tentative no. of Hires</label
+                      >
+                      <input
+                        type="number"
+                        class="form-control"
+                        value="1"
+                        id="TentativenoofHires"
+                        name="tentativenoofhires"
+                        required=""
+                        placeholder="Tentative no. of Hires"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="TentativeJobLocation">
+                        Tentative Job Location
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        required=""
+                        value="a"
+                        name="tentativejoblocation"
+                        id="TentativeJobLocation"
+                        placeholder=" Tentative Job Location"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="JobDescription">Job Description</label>
+                      <textarea
+                        type="text"
+                        class="form-control"
+                        id="JobDescription"
+                        required=""
+                        name="JobDescription"
+                        placeholder="Job Description"
+                      >
+      a
+                        </textarea
+                      >
+                      <label for="AttachFile"> Attach File </label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        required=""
+                        id="AttachFile"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="content-div regis-content-div" id="procedure">
+              <div class="content-title container">
+                <hr />
+                <h2 style="border-left: solid 4px; padding-left: 5px">
+                  Eligibility Matrix
+                </h2>
+                <br />
+                <div class="comm-fields">
+                  <div class="input-fields">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th style="background-color: #163269; color: white">
+                            Discipline
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            MTech
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            MSc
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Cyber Security</td>
+                          <td>
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value="MTechCS"
+                              name="mtechcs"
+                              id="mtechcs"
+                              required=""
+                            />
+                          </td>
+                          <td>
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value="MscCS"
+                              name="msccs"
+                              id="MscCS"
+                              required=""
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Digital Forensics &amp; Infromation Security</td>
+                          <td>
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value="MTechDFIS"
+                              id="MTechDFIS"
+                              required=""
+                              disabled
+                            />
+                          </td>
+                          <td>
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value="MscDFIS"
+                              name="mscdfis"
+                              id="MscDFIS"
+                              required=""
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>Applied Data Science &amp; Digital Forensics</td>
+                          <td>
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value="MTechAIDS"
+                              name="mtechaids"
+                              id="MTechAIDS"
+                              required=""
+                            />
+                          </td>
+                          <td>
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              value="MscAIDS"
+
+                              id="MTechAIDS"
+                              required=""
+                              disabled
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-div regis-content-div">
+              <div class="content-title container">
+                <hr />
+                <h2 style="border-left: solid 4px; padding-left: 5px">
+                  Compensation Details
+                </h2>
+                <br />
+                <div class="comm-fields">
+                  <h5>
+                    MTech Cyber Security
+                    <hr />
+                  </h5>
+                  <div class="input-fields">
+                    <div class="form-group">
+                      <label for="MTCSBasic">Basic</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSBasic"
+                        id="MTCSBasic"
+                        placeholder="Basic"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSProvidentFundandGratuity"
+                        >Provident Fund and Gratuity</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSProvidentFundandGratuity"
+                        id="MTCSProvidentFundandGratuity"
+                        placeholder="Provident Fund and Gratuity"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSHRA">HRA</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSHRA"
+                        id="MTCSHRA"
+                        placeholder="HRA"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSJoiningBonus">Joining Bonus</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSJoiningBonus"
+                        id="MTCSJoiningBonus"
+                        placeholder="Joining Bonus"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSRelocationBonus">Relocation Bonus</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSRelocationBonus"
+                        id="MTCSRelocationBonus"
+                        placeholder="Relocation Bonus"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSStockswithvestingplan"
+                        >Stocks(with vesting plan)</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSStockswithvestingplan"
+                        id="MTCSStockswithvestingplan"
+                        placeholder="Stocks(with vesting plan)"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSOthers">Others</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSOthers"
+                        id="MTCSOthers"
+                        placeholder="Others"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSTakeHome">Take Home</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSTakeHome"
+                        id="MTCSTakeHome"
+                        placeholder="Take Home"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSCTC">CTC</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSCTC"
+                        id="MTCSCTC"
+                        placeholder="CTC"
+                        required=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="comm-fields">
+                  <h5>
+                    MSc Cyber Security
+                    <hr />
+                  </h5>
+                  <div class="input-fields">
+                    <div class="form-group">
+                      <label for="MSCCSBasic">Basic</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSBasic"
+                        id="MSCCSBasic"
+                        placeholder="Basic"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSProvidentFundandGratuity"
+                        >Provident Fund and Gratuity</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSProvidentFundandGratuity"
+                        id="MSCCSProvidentFundandGratuity"
+                        placeholder="Provident Fund and Gratuity"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSHRA">HRA</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSHRA"
+                        id="MSCCSHRA"
+                        placeholder="HRA"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSJoiningBonus">Joining Bonus</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSJoiningBonus"
+                        id="MSCCSJoiningBonus"
+                        placeholder="Joining Bonus"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSRelocationBonus">Relocation Bonus</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSRelocationBonus"
+                        id="MSCCSRelocationBonus"
+                        placeholder="Relocation Bonus"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSStockswithvestingplan"
+                        >Stocks(with vesting plan)</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSStockswithvestingplan"
+                        id="MSCCSStockswithvestingplan"
+                        placeholder="Stocks(with vesting plan)"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSOthers">Others</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSOthers"
+                        id="MSCCSOthers"
+                        placeholder="Others"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSTakeHome">Take Home</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSTakeHome"
+                        id="MSCCSTakeHome"
+                        placeholder="Take Home"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSCTC">CTC</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSCTC"
+                        id="MSCCSCTC"
+                        placeholder="CTC"
+                        required=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="comm-fields">
+                  <h5>
+                    Msc Digital Forensics and Information Security
+                    <hr />
+                  </h5>
+                  <div class="input-fields">
+                    <div class="form-group">
+                      <label for="MSCDFAIBasic">Basic</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFAIBasic"
+                        id="MSCDFAIBasic"
+                        placeholder="Basic"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFAIProvidentFundandGratuity"
+                        >Provident Fund and Gratuity</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFAIProvidentFundandGratuity"
+                        id="MSCDFAIProvidentFundandGratuity"
+                        placeholder="Provident Fund and Gratuity"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFAIHRA">HRA</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFAIHRA"
+                        id="MSCDFAIHRA"
+                        placeholder="HRA"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFAIJoiningBonus">Joining Bonus</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFAIJoiningBonus"
+                        id="MSCDFAIJoiningBonus"
+                        placeholder="Joining Bonus"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFAIRelocationBonus"
+                        >Relocation Bonus</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFAIRelocationBonus"
+                        id="MSCDFAIRelocationBonus"
+                        placeholder="Relocation Bonus"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFAIStockswithvestingplan"
+                        >Stocks(with vesting plan)</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFAIStockswithvestingplan"
+                        id="MSCDFAIStockswithvestingplan"
+                        placeholder="Stocks(with vesting plan)"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFAIOthers">Others</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFAIOthers"
+                        id="MSCDFAIOthers"
+                        placeholder="Others"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFAITakeHome">Take Home</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFAITakeHome"
+                        id="MSCDFAITakeHome"
+                        placeholder="Take Home"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFAICTC">CTC</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFAICTC"
+                        id="MSCDFAICTC"
+                        placeholder="CTC"
+                        required=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="comm-fields">
+                  <h5>
+                    MTech Artificial Intelligence and Data Science
+                    <hr />
+                  </h5>
+                  <div class="input-fields">
+                    <div class="form-group">
+                      <label for="MTAIDSBasic">Basic</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSBasic"
+                        id="MTAIDSBasic"
+                        placeholder="Basic"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSProvidentFundandGratuity"
+                        >Provident Fund and Gratuity</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSProvidentFundandGratuity"
+                        id="MTAIDSProvidentFundandGratuity"
+                        placeholder="Provident Fund and Gratuity"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSHRA">HRA</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSHRA"
+                        id="MTAIDSHRA"
+                        placeholder="HRA"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSJoiningBonus">Joining Bonus</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSJoiningBonus"
+                        id="MTAIDSJoiningBonus"
+                        placeholder="Joining Bonus"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSRelocationBonus"
+                        >Relocation Bonus</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSRelocationBonus"
+                        id="MTAIDSRelocationBonus"
+                        placeholder="Relocation Bonus"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSStockswithvestingplan"
+                        >Stocks(with vesting plan)</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSStockswithvestingplan"
+                        id="MTAIDSStockswithvestingplan"
+                        placeholder="Stocks(with vesting plan)"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSOthers">Others</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSOthers"
+                        id="MTAIDSOthers"
+                        placeholder="Others"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSTakeHome">Take Home</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSTakeHome"
+                        id="MTAIDSTakeHome"
+                        placeholder="Take Home"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSCTC">CTC</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSCTC"
+                        id="MTAIDSCTC"
+                        placeholder="CTC"
+                        required=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- eligibility cretiria -->
+            <div class="content-div regis-content-div">
+              <div class="content-title container">
+                <hr />
+                <h2 style="border-left: solid 4px; padding-left: 5px">
+                  Eligibility Criteria
+                </h2>
+                <br />
+                <div class="comm-fields">
+                  <h5>
+                    MTech Cyber Security
+                    <hr />
+                  </h5>
+                  <div class="input-fields">
+                    <div class="form-group">
+                      <label for="MTCSCGPA">CGPA(on scale of 10)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSCGPA"
+                        id="MTCSCGPA"
+                        placeholder="CGPA(on scale of 10)"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSGraduation">Graduation</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSGraduation"
+                        id="MTCSGraduation"
+                        placeholder="Graduation"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSDiploma">XII/Diploma%</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSDiploma"
+                        id="MTCSDiploma"
+                        placeholder="XII/Diploma%"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSX"> X%</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSX"
+                        id="MTCSX"
+                        placeholder="X% "
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTCSAgeLimit"> Age Limit(if any)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTCSAgeLimit"
+                        id="MTCSAgeLimit"
+                        placeholder=" Age Limit(if any)"
+                        required=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="comm-fields">
+                  <h5>
+                    MSc Cyber Security
+                    <hr />
+                  </h5>
+                  <div class="input-fields">
+                    <div class="form-group">
+                      <label for="MSCCSCGPA">CGPA(on scale of 10)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSCGPA"
+                        id="MSCCSCGPA"
+                        placeholder="CGPA(on scale of 10)"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSGraduation">Graduation</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSGraduation"
+                        id="MSCCSGraduation"
+                        placeholder="Graduation"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSDiploma">XII/Diploma%</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSDiploma"
+                        id="MSCCSDiploma"
+                        placeholder="XII/Diploma%"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSX">X%</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSX"
+                        id="MSCCSX"
+                        placeholder="X%"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCCSAgeLimit">Age Limit(if any)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCCSAgeLimit"
+                        id="MSCCSAgeLimit"
+                        placeholder="Age Limit(if any) "
+                        required=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="comm-fields">
+                  <h5>
+                    Msc Digital Forensics and Information Security
+                    <hr />
+                  </h5>
+                  <div class="input-fields">
+                    <div class="form-group">
+                      <label for="MSCDFISCGPA">CGPA(on scale of 10)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFISCGPA"
+                        id="MSCCSCGPA"
+                        placeholder="CGPA(on scale of 10)"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFISGraduation">Graduation</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFISGraduation"
+                        id="MSCDFISGraduation"
+                        placeholder="Graduation"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFISDiploma">XII/Diploma%</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFISDiploma"
+                        id="MSCDFISDiploma"
+                        placeholder="XII/Diploma%"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFISX">X%</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFISX"
+                        id="MSCDFISX"
+                        placeholder="X%"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MSCDFISAgeLimit">Age Limit(if any)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MSCDFISAgeLimit"
+                        id="MSCDFISAgeLimit"
+                        placeholder="Age Limit(if any) "
+                        required=""
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="comm-fields">
+                  <h5>
+                    MTech Artificial Intelligence and Data Science
+                    <hr />
+                  </h5>
+                  <div class="input-fields">
+                    <div class="form-group">
+                      <label for="MTAIDSCGPA">CGPA(on scale of 10)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSCGPA"
+                        id="MTAIDSCGPA"
+                        placeholder="CGPA(on scale of 10)"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSGraduation">Graduation</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSGraduation"
+                        id="MTAIDSGraduation"
+                        placeholder="Graduation"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSDiploma">XII/Diploma%</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSDiploma"
+                        id="MTAIDSDiploma"
+                        placeholder="XII/Diploma%"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSX">X%</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSX"
+                        id="MTAIDSX"
+                        placeholder="X%"
+                        required=""
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="MTAIDSAgeLimit">Age Limit(if any)</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MTAIDSAgeLimit"
+                        id="MTAIDSAgeLimit"
+                        placeholder="Age Limit(if any) "
+                        required=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- internship if appicable -->
+            <div class="content-div regis-content-div">
+              <div class="content-title container">
+                <hr />
+                <h2 style="border-left: solid 4px; padding-left: 5px">
+                  Internship Details (If applicable)
+                </h2>
+                <br />
+                <div class="comm-fields mt-3">
+                  <div class="input-fields" style="overflow-x: scroll">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th style="background-color: #163269; color: white">
+                            Program
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Duration
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Stipend Amount
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            CTC After Completion
+                          </th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td>M. Tech. Cyber Security</td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="mtechcsduration"
+                              name="mtechcsduration"
+                              placeholder="Duration"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="mtechcsstipendamount"
+                              name="mtechcsstipendamount"
+                              placeholder="Stipend Amount"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="mtechcsctcaftercompletion"
+                              name="mtechcsctcaftercompletion"
+                              placeholder="CTC After Completion"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>M.Sc. Cyber Security</td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="msccsprogramduration"
+                              name="msccsprogramduration"
+                              placeholder="Duration"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="msccsstipendamount"
+                              name="msccsstipendamount"
+                              placeholder="Stipend Amount"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="msccsctcaftercompletion"
+                              name="msccsctcaftercompletion"
+                              placeholder="CTC After Completion"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            M.Sc. Digital Forensics &amp; Information Security
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="mscdfisprogramduration"
+                              name="mscdfisprogramduration"
+                              placeholder="Duration"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="mscdfisstipendamount"
+                              name="mscdfisstipendamount"
+                              placeholder="Stipend Amount"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="mscdfisctcaftercompletion"
+                              name="mscdfisctcaftercompletion"
+                              placeholder="CTC After Completion"
+                            />
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            M.Tech Applied Data Science and Artificial
+                            Intelligence
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="mtechdsaiprogramduration"
+                              name="mtechdsaiprogramduration"
+                              placeholder="Duration"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="mtechdsaistipendamount"
+                              name="mtechdsaistipendamount"
+                              placeholder="Stipend Amount"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="mtechdsaictcaftercompletion"
+                              name="mtechdsaictcaftercompletion"
+                              placeholder="CTC After Completion"
+                            />
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--campus mode details  -->
+            <div class="content-div regis-content-div" id="procedure">
+              <div class="content-title container">
+                <hr />
+                <h2 style="border-left: solid 4px; padding-left: 5px">
+                  Campus Process Mode
+                </h2>
+                <br />
+                <div class="comm-fields">
+                  <div class="input-fields">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        value="yes"
+                        checked=""
+                        name="isvirtual"
+                        id="CampusProcessMode"
+                        required=""
+                      />
+                      <label class="form-check-label" for="CampusProcessMode">
+                        Virtual – All processes are conducted online
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="comm-fields">
+                  <div class="input-fields">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        value="yes"
+                        name="isvirtual"
+                        id="CampusProcessMode2"
+                        required=""
+                      />
+                      <label class="form-check-label" for="CampusProcessMode2">
+                        In-campus – All processes are conducted in campus
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="comm-fields">
+                  <div class="input-fields">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        value="hybrid"
+                        name="isvirtual"
+                        id="CampusProcessMode3"
+                        required=""
+                      />
+                      <label class="form-check-label" for="CampusProcessMode3">
+                        Hybrid – Some processes are conducted online while some
+                        in campus
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="comm-fields">
+                  <div class="input-fields">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        value="notdecided"
+                        name="isvirtual"
+                        id="CampusProcessMode4"
+                        required=""
+                      />
+                      <label class="form-check-label" for="CampusProcessMode4">
+                        Undecided
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- bond contract -->
+            <div class="content-div regis-content-div">
+              <div class="content-title container">
+                <hr />
+                <h2 style="border-left: solid 4px; padding-left: 5px">
+                  Bonds/ Contracts and Medical Requirements
+                </h2>
+                <br />
+                <div class="row">
+                  <div class="col-6">
+                    <h6>
+                      1. Is there a service bond/contract?
+
+                      <label class="form-check-label" for="YES"> YES </label>
+                      <input
+                        class="form-check-input"
+                        required=""
+                        type="checkbox"
+                        value=""
+                        id="YES"
+                      />
+                    </h6>
+
+                    <div class="input-fields">
+                      <div class="form-group"></div>
+
+                      <label for="servicebond"
+                        >If applicable, what will be the duration, amount, and
+                        stipulated conditions?</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="servicebond"
+                        id="servicebond"
+                        placeholder="... "
+                        required=""
+                      />
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <h6>2. Medical Requirements:</h6>
+
+                    <div class="input-fields">
+                      <div class="form-group"></div>
+
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="MedicalRequirements"
+                        id="MedicalRequirements"
+                        placeholder="... "
+                        required=""
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- selection process -->
+
+            <div class="content-div regis-content-div">
+              <div class="content-title container">
+                <hr />
+                <h2 style="border-left: solid 4px; padding-left: 5px">
+                  Selection Process
+                </h2>
+                <br />
+
+                <div class="row">
+                  <div class="col-6">
+                    <h6>
+                      1. Shortlist from Resumes:
+                      <label class="form-check-label" for="yesselection">
+                        YES
+                      </label>
+                      <input
+                        class="form-check-input"
+                        required=""
+                        type="checkbox"
+                        value=""
+                        id="yesselection"
+                      />
+                    </h6>
+
+                    <label for="selectionbond "
+                      >If applicable, specify the criteria below:</label
+                    >
+                    <textarea
+                      type="text"
+                      class="form-control"
+                      id="selectionbond"
+                      name="selectionbond"
+                      placeholder="..."
+                    >
+                    </textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- selection process futher rounds table -->
+            <div class="content-div regis-content-div" id="procedure">
+              <div class="content-title container">
+                <div class="comm-fields mt-3">
+                  <!-- <h2 style="padding-top: 1rem; padding-bottom: 2rem">HEAD HR</h2> -->
+                  <h6>2. Futher Rounds for the shortlisted students:</h6>
+                  <div class="input-fields" style="overflow-x: scroll">
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                          <th style="background-color: #163269; color: white">
+                            Serial No.
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Stage Name
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Duration(in mins)
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            No. of Rounds
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Mode(online/offline)
+                          </th>
+                          <th style="background-color: #163269; color: white">
+                            Other Details(if any)
+                          </th>
+
+                          <th
+                            style="background-color: #163269; color: white"
+                          ></th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr>
+                          <td>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="serialno"
+                              name="serialno"
+                              placeholder="Serial No."
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="stagename"
+                              name="stagename"
+                              placeholder="Stage Name"
+                            />
+                          </td>
+
+                          <td>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="duration"
+                              name="duration"
+                              placeholder="Duration (in min)"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="roundsno"
+                              placeholder=" No. of rounds"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="mode"
+                              name="mode"
+                              placeholder="Mode"
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              class="form-control"
+                              id="otherdetails"
+                              name="otherdetails"
+                              placeholder="Other Details"
+                            />
+                          </td>
+
+                          <td>
+                            <button
+                              type="button"
+                              class="btn btn-primary"
+                              style="background-color: green"
+                              id="futherroundsbtn"
+                            >
+                              Add
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+
+                    <h6>For queries please contact:........</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="content-div regis-content-div" id="procedure">
+              <div class="content-title container">
+                <hr />
+                <h2 style="border-left: solid 4px; padding-left: 5px">
+                  Declaration
+                </h2>
+                <br />
+                1. As a representative of above company, I hereby declare that
+                all information provided in the registration form for
+                participation in the campus placement session 2024-25 is true
+                and accurate to the best of my knowledge. <br />
+                2. I understand that any false information provided may result
+                in the disqualification of our company from participating in the
+                placement session. I also acknowledge and agree to abide by all
+                rules, policies, and guidelines set forth by the Placement Cell
+                and the educational institution hosting the placement session.
+                <br />
+                3. Furthermore, I understand that the Placement Cell reserves
+                the right to conduct background checks on our company, including
+                but not limited to verifying our credentials and reputation in
+                the industry. I authorize the Placement Cell to share relevant
+                information about our company with students for the purpose of
+                recruitment during the placement session 2024-25. <br />
+                4. I understand that any violation of the rules and policies may
+                lead to the termination of our company's participation in the
+                placement session, and I agree to accept any disciplinary
+                actions deemed appropriate by the Placement Cell. <br />
+                5. I further declare that any student data or information
+                obtained during the recruitment process will be used solely for
+                the purpose of recruitment and will not be shared with any third
+                parties or used for any other purposes without explicit consent
+                from the student or the educational institution. I understand
+                that any unauthorized sharing or misuse of student data may
+                result in legal action and disqualification from future
+                participation in campus placement sessions.
+                <br /><br />
+                <div class="form-check">
+                  <label class="form-check-label" for="flexCheckDefault11">
+                    I Agree
+                  </label>
+                  <input
+                    class="form-check-input"
+                    required=""
+                    type="checkbox"
+                    checked=""
+                    value="yes"
+                    id="flexCheckDefault11"
+                  />
+                </div>
+                <br />
+                <div class="submit-btn">
+                  <button class="btn btn-lg btn-success" id="form-btn-regisrec">
+                    SUBMIT
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      // JavaScript for form validation
+      (function () {
+        "use strict";
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll(".needs-validation");
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+
+    <script>
+      let positionname = document.getElementById("positionname");
+      let positiondesignation = document.getElementById("positiondesignation");
+      let positionmobno = document.getElementById("positionmobno");
+      let positionaltmob = document.getElementById("positionaltmob");
+      let positionemail = document.getElementById("positionemail");
+      let positionaddress = document.getElementById("positionaddress");
+      let positionadd = document.getElementById("positionadd");
+
+      let divhr = document.getElementById("row-1");
+      let divpoc1 = document.getElementById("row-2");
+      let divpoc2 = document.getElementById("row-3");
+      let currentRow = document.getElementById("row-0");
+
+      let clearInputs = () => {
+        positionname.innerHTML = "";
+        positiondesignation.innerHTML = "";
+        positionmobno.innerHTML = "";
+        positionaltmob.innerHTML = "";
+        positionemail.innerHTML = "";
+        positionaddress.innerHTML = "";
+        positionadd.innerHTML = "";
+      };
+      function insertCommunicationFields() {
+        // Clear previous inputs
+        let selectposition = document.getElementById("selectposition").value;
+        if (positionname.innerHTML != "") clearInputs();
+
+        let inputPosiName = document.createElement("input");
+        let inputPosiDesignation = document.createElement("input");
+        let inputPosiMobNo = document.createElement("input");
+        let inputPosiAltMobNo = document.createElement("input");
+        let inputPosiEmail = document.createElement("input");
+        let inputPosiAddress = document.createElement("textarea");
+        let inputPosiButton = document.createElement("button");
+
+        inputPosiName.type = "text";
+        inputPosiName.classList.add("form-control");
+        inputPosiName.placeholder = "Name";
+        inputPosiName.required = true;
+
+        inputPosiDesignation.type = "text";
+        inputPosiDesignation.classList.add("form-control");
+        inputPosiDesignation.placeholder = "Designation";
+        inputPosiDesignation.required = true;
+
+        inputPosiMobNo.type = "number";
+        inputPosiMobNo.classList.add("form-control");
+        inputPosiMobNo.placeholder = "Mobile No.";
+        inputPosiMobNo.required = true;
+
+        inputPosiAltMobNo.type = "number";
+        inputPosiAltMobNo.classList.add("form-control");
+        inputPosiAltMobNo.placeholder = "Alternate Mobile No.";
+        inputPosiAltMobNo.required = true;
+
+        inputPosiEmail.type = "email";
+        inputPosiEmail.classList.add("form-control");
+        inputPosiEmail.placeholder = "Email";
+        inputPosiEmail.required = true;
+
+        inputPosiAddress.type = "text";
+        inputPosiAddress.classList.add("form-control");
+        inputPosiAddress.placeholder = "Address";
+        inputPosiAddress.required = true;
+
+        inputPosiButton.type = "button";
+        inputPosiButton.classList.add("btn");
+        inputPosiButton.classList.add("btn-primary");
+        inputPosiButton.innerHTML = "Add";
+
+        if (selectposition === "headhr") {
+          inputPosiName.name = "headhrname";
+          positionname.appendChild(inputPosiName);
+
+          inputPosiDesignation.name = "headhrdesignation";
+          positiondesignation.appendChild(inputPosiDesignation);
+
+          inputPosiMobNo.name = "headhrmobno";
+          positionmobno.appendChild(inputPosiMobNo);
+
+          inputPosiAltMobNo.name = "headhraltmobno";
+          positionaltmob.appendChild(inputPosiAltMobNo);
+
+          inputPosiEmail.name = "headhremail";
+          positionemail.appendChild(inputPosiEmail);
+
+          inputPosiAddress.name = "headhraddress";
+          positionaddress.appendChild(inputPosiAddress);
+
+          inputPosiButton.id = "btn-headhr";
+          positionadd.appendChild(inputPosiButton);
+        } else if (selectposition === "poc1") {
+          inputPosiName.name = "poc1name";
+          positionname.appendChild(inputPosiName);
+          inputPosiDesignation.name = "poc1designation";
+          positiondesignation.appendChild(inputPosiDesignation);
+          inputPosiMobNo.name = "poc1mobno";
+          positionmobno.appendChild(inputPosiMobNo);
+          inputPosiAltMobNo.name = "poc1altmobno";
+          positionaltmob.appendChild(inputPosiAltMobNo);
+          inputPosiEmail.name = "poc1email";
+          positionemail.appendChild(inputPosiEmail);
+          inputPosiAddress.name = "poc1address";
+          positionaddress.appendChild(inputPosiAddress);
+          inputPosiButton.id = "btn-poc1";
+          positionadd.appendChild(inputPosiButton);
+        } else if (selectposition === "poc2") {
+          inputPosiName.name = "poc2name";
+          positionname.appendChild(inputPosiName);
+          inputPosiDesignation.name = "poc2designation";
+          positiondesignation.appendChild(inputPosiDesignation);
+          inputPosiMobNo.name = "poc2mobno";
+          positionmobno.appendChild(inputPosiMobNo);
+          inputPosiAltMobNo.name = "poc2altmobno";
+          positionaltmob.appendChild(inputPosiAltMobNo);
+          inputPosiEmail.name = "poc2email";
+          positionemail.appendChild(inputPosiEmail);
+          inputPosiAddress.name = "poc2address";
+          positionaddress.appendChild(inputPosiAddress);
+          inputPosiButton.id = "btn-poc2";
+          positionadd.appendChild(inputPosiButton);
+        }
+
+        let addButton = document
+          .getElementById("row-0")
+          .querySelector("#positionadd")
+          .querySelector("button");
+        addButton.addEventListener("click", () => {
+          let copiedRow = currentRow.cloneNode(true);
+          copiedRow.id = "";
+          let selectedName = copiedRow.querySelector("#parentSelectPosition");
+          console.log(selectedName);
+          let nameText = document.createElement("p");
+          if (selectposition == "headhr") {
+            nameText.innerHTML = "HEAD HR";
+          } else if (selectposition == "poc1") {
+            nameText.innerHTML = "POC 1";
+          } else {
+            nameText.innerHTML = "POC 2";
           }
-          form.classList.add("was-validated");
-        },
-        false
-      );
-    });
-  })();
-</script>
-<!-- <script>
-  document
-    .querySelectorAll('input[type="checkbox"]')
-    .addEventListener("change", function () {
-      var checkbox = this;
-      if (checkbox.checked) {
-        checkbox.value = "yes";
-      } else {
-        checkbox.value = "no";
+          let buttonElement = copiedRow.querySelector("button");
+          copiedRow.removeChild(selectedName);
+          copiedRow.insertBefore(nameText, copiedRow.firstChild);
+          buttonElement.remove();
+
+          if (addButton.id === "btn-headhr") {
+            divhr.appendChild(copiedRow);
+          } else if (addButton.id == "btn-poc1") {
+            divpoc1.appendChild(copiedRow);
+          } else {
+            divpoc2.appendChild(copiedRow);
+          }
+        });
       }
-    });
-</script> -->
+
+      document.addEventListener("DOMContentLoaded", insertCommunicationFields);
+      document
+        .getElementById("selectposition")
+        .addEventListener("change", insertCommunicationFields);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

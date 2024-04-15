@@ -142,9 +142,20 @@ let isLoginFieldsFilled = (req, res, next) => {
     res.redirect("/otp-verify-page");
   }
 };
-
+let studentStayInDashboard = (req, res, next) => {
+  if (
+    req.isAuthenticated() &&
+    res.locals.isAdmin == false &&
+    req.url != "/account" &&
+    req.url != "/logout"
+  ) {
+    res.redirect("/account");
+  } else {
+    return next();
+  }
+};
 app.use(isAuthenticated);
-
+app.use(studentStayInDashboard);
 app.listen(9090, () => {
   console.log("server is listening to port 9090");
 });
@@ -214,7 +225,7 @@ app.post(
     let existingOTP = await OTP.findOne({ email: email });
     let newOtp = Math.floor(Math.random() * 900000) + 100000;
     if (username == "Student") {
-      if (!email.trim().endsWith("@nfsu.ac.in")) {
+      if (!email.trim().endsWith("@nfsu.ac.in" && em)) {
         req.flash("error", "Please Enter a valid College Student Email.");
         res.redirect("/otp-initialize/?username=Student");
       }
@@ -360,18 +371,23 @@ app.post(
 );
 
 app.get("/register/:user", shallNotAuthenticated, isVerified, (req, res) => {
-  let { user } = req.params;
+  try {
+    let { user } = req.params;
 
-  if (user == "rec") {
-    res.render("auth/regisrec.ejs", { email: req.session.bodyData.email });
-  } else if (user == "stu") {
-    req.flash(
-      "success",
-      `Email Verification Successfull ! <br> We will send Your Credentials on the Provided Email. <br> Please wait for further Email Updates on approval of the Admin.`
-    );
-    res.redirect("/");
-  } else {
-    req.flash("error", "Invalid URL");
+    if (user == "rec") {
+      res.render("auth/regisrec.ejs", { email: req.session.bodyData.email });
+    } else if (user == "stu") {
+      req.flash(
+        "success",
+        `Email Verification Successfull ! <br> We will send Your Credentials on the Provided Email. <br> Please wait for further Email Updates on approval of the Admin.`
+      );
+      res.redirect("/");
+    } else {
+      req.flash("error", "Invalid URL");
+      res.redirect("/");
+    }
+  } catch (e) {
+    req.flash("error", "Please Verify Your Email !");
     res.redirect("/");
   }
 });
