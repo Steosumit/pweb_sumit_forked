@@ -138,6 +138,11 @@ nav {
   height: 90%;
   box-shadow: rgb(255, 184, 157, 0.9) 0px 0px 100px, lightgray 0px 0px 00px;
 }
+
+.fancy-hr{
+  color: black;
+  border: dashed;
+}
 /*  */
 .home-second {
   min-height: 60vh;
@@ -824,12 +829,12 @@ h6 {
 
 /*  */
 .contactus {
-  background-color: #242424;
+  background-color: #fff;
   height: fit-content;
 
   padding: 0rem;
   padding-bottom: 5rem;
-  color: white;
+  color: black;
 }
 .team-banner {
   width: 100%;
@@ -837,7 +842,7 @@ h6 {
 
 .contactus h1 {
   text-align: center;
-  padding-top: 5rem;
+  padding-top: 3rem;
 }
 
 .map-div-contact {
@@ -851,6 +856,8 @@ h6 {
   width: 80%;
   height: 30rem;
   margin-bottom: 3rem;
+  box-shadow: 0 0 40px rgb(0, 0, 0,0.15);
+
 }
 
 /* iframe { */

@@ -72,14 +72,10 @@
         /* background: var(--blue);   */
         background-image: linear-gradient(
           to right top,
-          #a5719b,
-          #ab5caa,
-          #a846be,
-          #9b2fd7,
-          #7e1cf3
+          darkblue,
+          rgb(3, 120, 109)
         );
 
-        border-left: 10px solid var(--blue);
         transition: 0.5s;
         overflow: hidden;
       }
@@ -108,7 +104,8 @@
       }
 
       .navigation ul li:nth-child(1) {
-        margin-bottom: 40px;
+        margin-bottom: 20px;
+        margin-top: 20px;
         pointer-events: none;
       }
 
@@ -130,8 +127,12 @@
         display: block;
         min-width: 60px;
         height: 60px;
+
         line-height: 75px;
         text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       .navigation ul li a .icon ion-icon {
         font-size: 1.75rem;
@@ -824,14 +825,10 @@
             <a href="#">
               <span class="icon">
                 <img
-                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/nfsu1_w88qok.png"
-                  alt=""
-                  width="63px"
-                  height="80px"
-                  style="padding-top: 7px"
-                />
+                src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/nfsu1_w88qok.png"
+                alt="" width=40px" height="60px" style="padding-top: 7px" />
               </span>
-              <span style="padding-top: 17px; padding-left: 8px; color: wheat"
+              <span style="padding-top: 12px; padding-left: 8px; color: wheat"
                 ><h4>Placement Cell <br /><span>SCSDF </span></h4></span
               >
             </a>
@@ -932,7 +929,7 @@
           </li>
 
           <li>
-            <a href="#">
+            <a href="#signout">
               <span class="icon">
                 <ion-icon
                   name="log-out-outline"
@@ -1987,6 +1984,11 @@
               </div>
             </div>
           </div>
+        </section>
+        <section id="signout">
+          <a href="/logout">
+            <button class="btn btn-primary">Sign out as Admin</button>
+          </a>
         </section>
       </div>
     </div>

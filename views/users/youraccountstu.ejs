@@ -124,8 +124,8 @@
       nav {
         background: rgba(255, 255, 255, 0.05);
         box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-        backdrop-filter: blur(1px);
-        -webkit-backdrop-filter: blur(1px);
+        /* backdrop-filter: blur(1px); */
+        /* -webkit-backdrop-filter: blur(1px); */
         border-radius: 10px;
         border: 1px solid rgba(255, 255, 255, 0.18);
       }
@@ -162,16 +162,33 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
       <div class="container">
         <a
           target="_blank"
-          class="card-links pop-out col"
+          class="card-links pop-out col navbar-brand"
           data-bs-toggle="collapse"
           data-bs-target="#message9"
+          style="display: flex"
         >
           <img
-            src="https://www.nfsu.ac.in/assets/img/emblem.png"
+            src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/nfsu1_w88qok.png"
             alt=""
-            width="150"
+            width="50"
+            style="display: inline"
           />
+          <p
+            style="
+              color: black;
+              font-weight: 400;
+              font-size: 1rem;
+              padding-left: 0.5rem;
+            "
+          >
+            School of Cyber Security & Digital Forensics <br />
+            <span
+              style="font-size: 1.1rem; font-weight: 500; letter-spacing: 0px"
+              >Placement Cell</span
+            >
+          </p>
         </a>
+
         <div
           class="collapse"
           id="message9"
@@ -201,25 +218,60 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav nav-underline ms-auto">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#"
-                >Dashboard</a
+            <div class="dropdown profile-icon-div">
+              <div
+                data-bs-toggle="dropdown"
+                style="
+                  background-image: url(https://cdn-icons-png.flaticon.com/512/2919/2919906.png);
+                  background-size: cover;
+                  width: 3rem;
+                  height: 3rem;
+                  margin-right: 5rem;
+                "
               >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Any Query</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#">Manage</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/logout">Logout</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-primary" aria-current="page" href="#"
-                >Resources</a
-              >
-            </li>
+                <!-- <img src="" width="40" alt="" /> -->
+              </div>
+
+              <ul class="dropdown-menu" style="margin-top: 1rem">
+                <li>
+                  <a class="dropdown-item" href="/account" style="color: brown"
+                    >Your Account</a
+                  >
+                </li>
+
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="/logout" style="color: brown"
+                    >Dashboard</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="/logout" style="color: brown"
+                    >Ask Queries</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="/logout" style="color: brown"
+                    >Resources</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="/logout" style="color: brown"
+                    >Manage</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+
+                <li>
+                  <a class="dropdown-item" href="/logout" style="color: brown"
+                    >Sign Out</a
+                  >
+                </li>
+              </ul>
+            </div>
           </ul>
         </div>
       </div>
