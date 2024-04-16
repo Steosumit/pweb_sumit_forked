@@ -109,12 +109,7 @@
           /></a>
         </div>
       </div>
-      <form
-        novalidate=""
-        class="needs-validation"
-        action="/register/rec"
-        method="post"
-      >
+
         <div class="down-regis">
           <div class="resources-student-big-div">
             <div class="content-div regis-content-div">
@@ -127,7 +122,7 @@
                     margin-bottom: 0;
                   "
                 >
-                  Registration : Recruiter
+                  Registration AUDIT: Recruiter
                 </h2>
                 <hr />
                 <h2 style="border-left: solid 4px; padding-left: 5px">
@@ -138,11 +133,11 @@
                 <div class="input-fields">
                   <div class="form-group">
                     <label for="CompanyName">Company Name</label>
-                    <input
+                    <input  readonly
                       type="text"
                       class="form-control"
                       name="companyname"
-                      value="aa"
+                      value="<%=recruiter.companyname%>"
                       id="CompanyName"
                       placeholder="Company Name"
                       required
@@ -150,11 +145,11 @@
                   </div>
                   <div class="form-group">
                     <label for="NatureofBusiness">Nature of Business</label>
-                    <input
+                    <input  readonly
                       type="text"
                       class="form-control"
                       name="natureofbusiness"
-                      value="aa"
+                      value="<%=recruiter.natureofbusiness%>"
                       id="NatureofBusiness"
                       placeholder="Nature of Business"
                       required
@@ -162,38 +157,38 @@
                   </div>
                   <div class="form-group">
                     <label for="Website">Website Link</label>
-                    <input
+                    <input  readonly
                       type="text"
                       class="form-control"
                       name="websitelink"
                       id="Website"
                       placeholder="Website Link"
                       required
-                      value="hehe"
+                      value="<%=recruiter.websitelink%>"
                     />
                   </div>
                   <div class="form-group">
                     <label for="PostalAddress">Postal Address</label>
-                    <input
+                    <input  readonly
                       type="text"
                       class="form-control"
                       name="postaladdress"
                       id="PostalAddress"
                       placeholder="Postal Address"
                       required
-                      value="hehe"
+                      value="<%=recruiter.postaladdress%>"
                     />
                   </div>
                   <div class="form-group">
                     <label for="Category">Category of Business</label>
-                    <input
+                    <input  readonly
                       type="text"
                       name="category"
                       class="form-control"
                       id="Category"
                       placeholder="Category of Business"
                       required
-                      value="hehe"
+                      value="<%=recruiter.category%>"
                     />
                   </div>
                 </div>
@@ -244,20 +239,20 @@
                             <h5 style="text-align: center">Head HR</h5>
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               name="headhrname"
-                              value="3"
+                              value="<%=recruiter.headhrname%>"
                               placeholder="Name"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
-                              value="3"
+                              value="<%=recruiter.headhrdesignation%>"
                               name="headhrdesignation"
                               placeholder="Designation"
                               required
@@ -265,10 +260,10 @@
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="tel"
                               class="form-control"
-                              value="3"
+                              value="<%=recruiter.headhrmobno%>"
                               name="headhrmobno"
                               placeholder="Mobile no"
                               required
@@ -276,34 +271,34 @@
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="tel"
                               class="form-control"
-                              value="3"
+                              value="<%=recruiter.headhraltmobno%>"
                               name="headhraltmobno"
                               placeholder="Alternate Mobile no"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="email"
                               class="form-control"
                               name="headhremail"
-                              value="<%=email%>"
+                              value="<%=recruiter.headhremail%>"
                               placeholder="Email Id"
                               required
                             />
                           </td>
                           <td>
-                            <textarea
+                            <textarea  readonly
                               type="text"
                               class="form-control"
                               name="headhraddress"
                               placeholder="Address"
                               required
                             >
-dasdf</textarea
+<%=recruiter.headhraddress%></textarea
                             >
                           </td>
                         </tr>
@@ -312,55 +307,61 @@ dasdf</textarea
                             <h5 style="text-align: center">POC 1</h5>
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               name="poc1name"
-                              value="a"
+                              value="<%=recruiter.poc1name%>"
                               placeholder="Name"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
+                              value="<%=recruiter.poc1designation%>"
                               name="poc1designation"
                               placeholder="Designation"
                             />
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="tel"
                               class="form-control"
                               name="poc1mobno"
+                              value="<%=recruiter.poc1mobno%>"
                               placeholder="Mobile no"
                             />
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="tel"
                               class="form-control"
                               name="poc1altmobno"
+                              value="<%=recruiter.poc1altmobno%>"
                               placeholder="Alternate Mobile no"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="email"
                               class="form-control"
+                              value="<%=recruiter.poc1email%>"
                               name="poc1email"
                               placeholder="Email Id"
                             />
                           </td>
                           <td>
-                            <textarea
+                            <textarea  readonly
                               type="text"
                               class="form-control"
                               name="poc1address"
                               placeholder="Address"
-                            ></textarea>
+                            >
+<%=recruiter.poc1address%></textarea
+                            >
                           </td>
                         </tr>
                         <tr>
@@ -368,55 +369,61 @@ dasdf</textarea
                             <h5 style="text-align: center">POC 2</h5>
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               name="poc2name"
-                              value="a"
+                              value="<%=recruiter.poc2name%>"
                               placeholder="Name"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
+                              value="<%=recruiter.poc2designation%>"
                               name="poc2designation"
                               placeholder="Designation"
                             />
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="tel"
                               class="form-control"
+                              value="<%=recruiter.poc2mobno%>"
                               name="poc2mobno"
                               placeholder="Mobile no"
                             />
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="tel"
                               class="form-control"
+                              value="<%=recruiter.poc2altmobno%>"
                               name="poc2altmobno"
                               placeholder="Alternate Mobile no"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="email"
                               class="form-control"
+                              value="<%=recruiter.poc2email%>"
                               name="poc2email"
                               placeholder="Email Id"
                             />
                           </td>
                           <td>
-                            <textarea
+                            <textarea  readonly
                               type="text"
                               class="form-control"
                               name="poc2address"
                               placeholder="Address"
-                            ></textarea>
+                            >
+<%=recruiter.poc2address%></textarea
+                            >
                           </td>
                         </tr>
                       </tbody>
@@ -436,10 +443,10 @@ dasdf</textarea
                   <div class="input-fields">
                     <div class="form-group">
                       <label for="JobTitle"> Job Title </label>
-                      <input
+                      <input  readonly
                         type="text"
                         class="form-control"
-                        value="a"
+                        value="<%=recruiter.jobtitle%>"
                         required
                         name="jobtitle"
                         id="JobTitle"
@@ -448,10 +455,10 @@ dasdf</textarea
                     </div>
                     <div class="form-group">
                       <label for="JobType"> Job Type </label>
-                      <input
+                      <input  readonly
                         type="text"
                         class="form-control"
-                        value="a"
+                        value="<%=recruiter.jobtype%>"
                         required
                         name="jobtype"
                         id="JobType"
@@ -460,51 +467,42 @@ dasdf</textarea
                     </div>
                     <div class="form-group">
                       <label for="JobDesignation"> Job Designation </label>
-                      <input
+                      <input  readonly
                         type="text"
                         class="form-control"
                         required
-                        value="a"
+                        value="<%=recruiter.jobdesignation%>"
                         name="jobdesignation"
                         id="JobDesignation"
                         placeholder=" Job Designation"
                       />
                     </div>
-                    <div class="form-group">
-                      <label for="Sector">Sector</label>
-                      <select
-                        required
-                        name="sector"
-                        class="form-check"
-                        id="Sector"
-                      >
-                        <option value="Software/Coding/IT">
-                          Software/Coding/IT
-                        </option>
-                        <option value="Analytics">Analytics</option>
-                        <option value="Core(Technical)">Core(Technical)</option>
-                        <option value="Consulting">Consulting</option>
-                        <option value="Product Management">
-                          Product Management
-                        </option>
-                        <option value="Finance">Finance</option>
-                        <option value="Data Science/ AI/ ML">
-                          Data Science/ AI/ ML
-                        </option>
-                        <option value="Research Teaching">
-                          Research Teaching
-                        </option>
-                        <option value="Others">Others</option>
-                      </select>
-                    </div>
+<div class="form-group">
+  <label for="Sector">Sector</label>
+ <select  disabled required name="sector" class="form-check" id="Sector">
+    <option value="Software/Coding/IT" <%= recruiter.sector === "Software/Coding/IT" ? "selected" : "" %>>Software/Coding/IT</option>
+    <option value="Analytics" <%= recruiter.sector === "Analytics" ? "selected" : "" %>>Analytics</option>
+    <option value="Core(Technical)" <%= recruiter.sector === "Core(Technical)" ? "selected" : "" %>>Core(Technical)</option>
+    <option value="Consulting" <%= recruiter.sector === "Consulting" ? "selected" : "" %>>Consulting</option>
+    <option value="Product Management" <%= recruiter.sector === "Product Management" ? "selected" : "" %>>Product Management</option>
+    <option value="Finance" <%= recruiter.sector === "Finance" ? "selected" : "" %>>Finance</option>
+    <option value="Data Science/ AI/ ML" <%= recruiter.sector === "Data Science/ AI/ ML" ? "selected" : "" %>>Data Science/ AI/ ML</option>
+    <option value="Research Teaching" <%= recruiter.sector === "Research Teaching" ? "selected" : "" %>>Research Teaching</option>
+    <option value="Others" <%= recruiter.sector === "Others" ? "selected" : "" %>>Others</option>
+  </select>
+</div>
+
+
+
+
                     <div class="form-group">
                       <label for="TentativenoofHires"
                         >Tentative no. of Hires</label
                       >
-                      <input
+                      <input  readonly
                         type="number"
                         class="form-control"
-                        value="1"
+                        value="<%=recruiter.tentativenoofhires%>"
                         id="TentativenoofHires"
                         name="tentativenoofhires"
                         required
@@ -515,11 +513,11 @@ dasdf</textarea
                       <label for="TentativeJobLocation">
                         Tentative Job Location
                       </label>
-                      <input
+                      <input  readonly
                         type="text"
                         class="form-control"
                         required
-                        value="a"
+                        value="<%=recruiter.tentativejoblocation%>"
                         name="tentativejoblocation"
                         id="TentativeJobLocation"
                         placeholder=" Tentative Job Location"
@@ -527,7 +525,7 @@ dasdf</textarea
                     </div>
                     <div class="form-group">
                       <label for="JobDescription">Job Description</label>
-                      <textarea
+                      <textarea  readonly
                         type="text"
                         class="form-control"
                         id="JobDescription"
@@ -535,11 +533,11 @@ dasdf</textarea
                         name="JobDescription"
                         placeholder="Job Description"
                       >
-      a
+<%=recruiter.JobDescription%>
                         </textarea
                       >
                       <!-- <label for="AttachFile"> Attach File </label>
-                      <input type="file" class="form-control" id="AttachFile" /> -->
+                      <input  readonly type="file" class="form-control" id="AttachFile" /> -->
                     </div>
                   </div>
                 </div>
@@ -572,19 +570,21 @@ dasdf</textarea
                         <tr>
                           <td>Cyber Security</td>
                           <td>
-                            <input
+                            <input  readonly
                               class="form-check-input courseInputCheck"
-                              type="checkbox"
-                              value="yes"
+                              type="checkbox" disabled
+value="yes"
                               name="checkmtechcs"
+                              <%= recruiter.checkmtechcs === "yes" ? "checked" : "" %>
                               id="checkmtechcs"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               class="form-check-input courseInputCheck"
-                              type="checkbox"
+                              type="checkbox" disabled
                               value="yes"
+                                <%= recruiter.checkmsccs === "yes" ? "checked" : "" %>
                               name="checkmsccs"
                               id="checkmsccs"
                             />
@@ -593,19 +593,19 @@ dasdf</textarea
                         <tr>
                           <td>Digital Forensics &amp; Infromation Security</td>
                           <td>
-                            <input
+                            <input  readonly
                               class="form-check-input courseInputCheck"
-                              type="checkbox"
+                              type="checkbox" disabled
                               style="display: none"
-                              value="MTechDFIS"
                               disabled
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               class="form-check-input courseInputCheck"
-                              type="checkbox"
-                              value="yes"
+                              type="checkbox" disabled
+value="yes"
+    <%= recruiter.checkmscdfis === "yes" ? "checked" : "" %>
                               name="checkmscdfis"
                               id="checkmscdfis"
                             />
@@ -614,18 +614,19 @@ dasdf</textarea
                         <tr>
                           <td>Applied Data Science &amp; Digital Forensics</td>
                           <td>
-                            <input
+                            <input  readonly
                               class="form-check-input courseInputCheck"
-                              type="checkbox"
+                              type="checkbox" disabled
                               value="yes"
                               name="checkmtechadsai"
+                                <%= recruiter.checkmtechadsai === "yes" ? "checked" : "" %>
                               id="checkmtechadsai"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               class="form-check-input courseInputCheck"
-                              type="checkbox"
+                              type="checkbox" disabled
                               style="display: none"
                               id="MTechAIDS"
                               disabled
@@ -690,17 +691,19 @@ dasdf</textarea
                         <tr class="forcheckmtechcs forcheck">
                           <td>Mtech Cybersecurity</td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="basicmtechcs"
+                              value="<%=recruiter.basicmtechcs%>"
                               placeholder="Basic"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
+                              value="<%=recruiter.pfmtechcs%>"
                               class="form-control"
                               name="pfmtechcs"
                               placeholder="PF"
@@ -708,62 +711,69 @@ dasdf</textarea
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.hramtechcs%>"
                               name="hramtechcs"
                               placeholder="HRA"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.joiningbonusmtechcs%>"
                               name="joiningbonusmtechcs"
                               placeholder="Joining Bonus"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.relocationbonusmtechcs%>"
                               name="relocationbonusmtechcs"
                               placeholder="Relocation Bonus"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.stocksmtechcs%>"
                               name="stocksmtechcs"
                               placeholder="Stocks(with vesting plan)"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.takehomemtechcs%>"
                               name="takehomemtechcs"
                               placeholder="Take Home"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="ctcmtechcs"
+                              value="<%=recruiter.ctcmtechcs%>"
                               placeholder="CTC"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
+                              value="<%=recruiter.othersmtechcs%>"
                               class="form-control"
                               name="othersmtechcs"
                               placeholder="Others"
@@ -774,83 +784,92 @@ dasdf</textarea
                         <tr class="forcheckmtechadsai forcheck">
                           <td>Mtech ADSAI</td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="basicmtechadsai"
+                              value="<%=recruiter.basicmtechadsai%>"
                               placeholder="Basic"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="pfmtechadsai"
+                              value="<%=recruiter.pfmtechadsai%>"
                               placeholder="PF"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="hramtechadsai"
                               placeholder="HRA"
+                              value="<%=recruiter.hramtechadsai%>"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="joiningbonusmtechadsai"
+                              value="<%=recruiter.joiningbonusmtechadsai%>"
                               placeholder="Joining Bonus"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="relocationbonusmtechadsai"
+                              value="<%=recruiter.relocationbonusmtechadsai%>"
                               placeholder="Relocation Bonus"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="stocksmtechadsai"
+                              value="<%=recruiter.stocksmtechadsai%>"
                               placeholder="Stocks(with vesting plan)"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="takehomemtechadsai"
+                              value="<%=recruiter.takehomemtechadsai%>"
                               placeholder="Take Home"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="ctcmtechadsai"
                               placeholder="CTC"
                               required
+                              value="<%=recruiter.ctcmtechadsai%>"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               name="othersmtechadsai"
                               placeholder="Others"
+                              value="<%=recruiter.othersmtechadsai%>"
                               required
                             />
                           </td>
@@ -858,26 +877,29 @@ dasdf</textarea
                         <tr class="forcheckmsccs forcheck">
                           <td>MSc Cybersecurity</td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="basicmsccs"
                               placeholder="Basic"
                               required
+                              value="<%=recruiter.basicmsccs%>"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="pfmsccs"
+                              value="<%=recruiter.pfmsccs%>"
                               placeholder="PF"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
+                              value="<%=recruiter.hramsccs%>"
                               class="form-control"
                               name="hramsccs"
                               placeholder="HRA"
@@ -885,17 +907,19 @@ dasdf</textarea
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.joiningbonusmsccs%>"
                               name="joiningbonusmsccs"
                               placeholder="Joining Bonus"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
+                              value="<%=recruiter.relocationbonusmsccs%>"
                               class="form-control"
                               name="relocationbonusmsccs"
                               placeholder="Relocation Bonus"
@@ -903,37 +927,41 @@ dasdf</textarea
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="stocksmsccs"
+                              value="<%=recruiter.stocksmsccs%>"
                               placeholder="Stocks(with vesting plan)"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.takehomemsccs%>"
                               name="takehomemsccs"
                               placeholder="Take Home"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="ctcmsccs"
                               placeholder="CTC"
+                              value="<%=recruiter.ctcmsccs%>"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               name="othersmsccs"
+                              value="<%=recruiter.othersmsccs%>"
                               placeholder="Others"
                               required
                             />
@@ -942,80 +970,89 @@ dasdf</textarea
                         <tr class="forcheckmscdfis forcheck">
                           <td>MSc DFIS</td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="basicmscdfis"
                               placeholder="Basic"
+                              value="<%=recruiter.basicmscdfis%>"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="pfmscdfis"
                               placeholder="PF"
                               required
+                              value="<%=recruiter.pfmscdfis%>"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.hramscdfis%>"
                               name="hramscdfis"
                               placeholder="HRA"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.joiningbonusmscdfis%>"
                               name="joiningbonusmscdfis"
                               placeholder="Joining Bonus"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="relocationbonusmscdfis"
+                              value="<%=recruiter.relocationbonusmscdfis%>"
                               placeholder="Relocation Bonus"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="stocksmscdfis"
+                              value="<%=recruiter.stocksmscdfis%>"
                               placeholder="Stocks(with vesting plan)"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="takehomemscdfis"
+                              value="<%=recruiter.takehomemscdfis%>"
                               placeholder="Take Home"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.ctcmscdfis%>"
                               name="ctcmscdfis"
                               placeholder="CTC"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
+                              value="<%=recruiter.othersmscdfis%>"
                               class="form-control"
                               name="othersmscdfis"
                               placeholder="Others"
@@ -1069,16 +1106,18 @@ dasdf</textarea
                         <tr class="forcheckmtechcs forcheck">
                           <td>Mtech Cybersecurity</td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="CGPAmtechcs"
+                              value="<%=recruiter.CGPAmtechcs%>"
                               placeholder="CGPA"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
+                              value="<%=recruiter.Graduationmtechcs%>"
                               type="number"
                               class="form-control"
                               name="Graduationmtechcs"
@@ -1087,29 +1126,32 @@ dasdf</textarea
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.twelthmtechcs%>"
                               name="twelthmtechcs"
                               placeholder="Percentage"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="tenthmtechcs"
+                              value="<%=recruiter.tenthmtechcs%>"
                               placeholder="Percentage"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="agelimitmtechcs"
                               placeholder="Age limit"
+                              value="<%=recruiter.agelimitmtechcs%>"
                               required
                             />
                           </td>
@@ -1117,8 +1159,9 @@ dasdf</textarea
                         <tr class="forcheckmtechadsai forcheck">
                           <td>Mtech ADSAI</td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
+                              value="<%=recruiter.CGPAmtechadsai%>"
                               class="form-control"
                               name="CGPAmtechadsai"
                               placeholder="CGPA"
@@ -1126,17 +1169,19 @@ dasdf</textarea
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="Graduationmtechadsai"
+                              value="<%=recruiter.Graduationmtechadsai%>"
                               placeholder="Graduation"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
+                              value="<%=recruiter.mtechadsai12th%>"
                               class="form-control"
                               name="mtechadsai12th"
                               placeholder="Percentage"
@@ -1144,18 +1189,20 @@ dasdf</textarea
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="mtechadsai10th"
+                              value="<%=recruiter.mtechadsai10th%>"
                               placeholder="Percentage"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.agelimitmtechadsai%>"
                               name="agelimitmtechadsai"
                               placeholder="Age Limit"
                               required
@@ -1165,46 +1212,51 @@ dasdf</textarea
                         <tr class="forcheckmsccs forcheck">
                           <td>MSc Cybersecurity</td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="CGPAmsccs"
+                              value="<%=recruiter.CGPAmsccs%>"
                               placeholder="CGPA"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.Graduationmsccs%>"
                               name="Graduationmsccs"
                               placeholder="Graduation"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="msccs12th"
                               placeholder="Percentage"
+                              value="<%=recruiter.msccs12th%>"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="msccs10th"
+                              value="<%=recruiter.msccs10th%>"
                               placeholder="Percentage"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="agelimitmsccs"
+                              value="<%=recruiter.agelimitmsccs%>"
                               placeholder="Age Limit"
                               required
                             />
@@ -1213,45 +1265,50 @@ dasdf</textarea
                         <tr class="forcheckmscdfis forcheck">
                           <td>MSc DFIS</td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.CGPAmscdfis%>"
                               name="CGPAmscdfis"
                               placeholder="CGPA"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               name="Graduationmscdfis"
                               placeholder="Graduation"
+                              value="<%=recruiter.Graduationmscdfis%>"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.mscdfis12th%>"
                               name="mscdfis12th"
                               placeholder="Percentage"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.mscdfis10th%>"
                               name="mscdfis10th"
                               placeholder="Percentage"
                               required
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.agelimitmscdfis%>"
                               name="agelimitmscdfis"
                               placeholder="Age Limit"
                               required
@@ -1296,29 +1353,32 @@ dasdf</textarea
                         <tr>
                           <td>M. Tech. Cyber Security</td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               id="internmtechduration"
                               name="internmtechcsduration"
+                              value="<%=recruiter.internmtechcsduration%>"
                               placeholder="Duration"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               id="mtechcsstipendamount"
                               name="internmtechcsstipend"
+                              value="<%=recruiter.internmtechcsstipend%>"
                               placeholder="Stipend Amount"
                             />
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               id="mtechcsctcaftercompletion"
+                              value="<%=recruiter.internmtechcsctc%>"
                               name="internmtechcsctc"
                               placeholder="CTC After Completion"
                             />
@@ -1327,8 +1387,9 @@ dasdf</textarea
                         <tr>
                           <td>M.Sc. Cyber Security</td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
+                              value="<%=recruiter.internmsccsduration%>"
                               class="form-control"
                               id="msccsprogramduration"
                               name="internmsccsduration"
@@ -1336,21 +1397,23 @@ dasdf</textarea
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               id="msccsstipendamount"
+                              value="<%=recruiter.internmsccsstipend%>"
                               name="internmsccsstipend"
                               placeholder="Stipend Amount"
                             />
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               id="msccsctcaftercompletion"
                               name="internmsccsctc"
+                              value="<%=recruiter.internmsccsctc%>"
                               placeholder="CTC After Completion"
                             />
                           </td>
@@ -1360,28 +1423,31 @@ dasdf</textarea
                             M.Sc. Digital Forensics &amp; Information Security
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               id="mscdfisprogramduration"
                               name="internmscdfisduration"
+                              value="<%=recruiter.internmscdfisduration%>"
                               placeholder="Duration"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               id="mscdfisstipendamount"
+                              value="<%=recruiter.internmscdfisstipend%>"
                               name="internmscdfisstipend"
                               placeholder="Stipend Amount"
                             />
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
+                              value="<%=recruiter.internmscdfisctc%>"
                               id="mscdfisctcaftercompletion"
                               name="internmscdfisctc"
                               placeholder="CTC After Completion"
@@ -1394,8 +1460,9 @@ dasdf</textarea
                             Intelligence
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
+                              value="<%=recruiter.internmtechadsaiduration%>"
                               class="form-control"
                               id="mtechdsaiprogramduration"
                               name="internmtechadsaiduration"
@@ -1403,19 +1470,21 @@ dasdf</textarea
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               id="mtechdsaistipendamount"
                               name="internmtechadsaistipend"
+                              value="<%=recruiter.internmtechadsaistipend%>"
                               placeholder="Stipend Amount"
                             />
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
+                              value="<%=recruiter.internmtechadsaictc%>"
                               id="mtechdsaictcaftercompletion"
                               name="internmtechadsaictc"
                               placeholder="CTC After Completion"
@@ -1440,29 +1509,30 @@ dasdf</textarea
                 <div class="comm-fields">
                   <div class="input-fields">
                     <div class="form-check">
-                      <label class="form-check-label" for="CampusProcessMode">
-                        Virtual – All processes are conducted online
-                      </label>
-                      <input
+                      <input  readonly
                         class="form-check-input"
-                        type="radio"
-                        value="virtual"
-                        checked
+                        type="radio" disabled
+                        <%= recruiter.isvirtual=== "virtual" ? "checked" : "" %>
+value="virtual"
                         name="isvirtual"
                         id="CampusProcessMode"
                         required
                       />
+                      <label class="form-check-label" for="CampusProcessMode">
+                        Virtual – All processes are conducted online
+                      </label>
                     </div>
                   </div>
                 </div>
                 <div class="comm-fields">
                   <div class="input-fields">
                     <div class="form-check">
-                      <input
+                      <input  readonly
                         class="form-check-input"
-                        type="radio"
-                        name="isvirtual"
+                        type="radio" disabled
                         value="nonVirtual"
+                        <%= recruiter.isvirtual=== "nonVirtual" ? "checked" : "" %>
+                        name="isvirtual"
                         id="CampusProcessMode2"
                         required
                       />
@@ -1475,11 +1545,12 @@ dasdf</textarea
                 <div class="comm-fields">
                   <div class="input-fields">
                     <div class="form-check">
-                      <input
+                      <input  readonly
                         class="form-check-input"
-                        type="radio"
+                        type="radio" disabled
                         value="hybrid"
                         name="isvirtual"
+                         <%= recruiter.isvirtual=== "hybrid" ? "checked" : "" %>
                         id="CampusProcessMode3"
                         required
                       />
@@ -1493,10 +1564,11 @@ dasdf</textarea
                 <div class="comm-fields">
                   <div class="input-fields">
                     <div class="form-check">
-                      <input
+                      <input  readonly
                         class="form-check-input"
-                        type="radio"
+                        type="radio" disabled
                         value="notdecided"
+                         <%= recruiter.isvirtual=== "notdecided" ? "checked" : "" %>
                         name="isvirtual"
                         id="CampusProcessMode4"
                         required
@@ -1520,36 +1592,40 @@ dasdf</textarea
                 <br />
                 <div class="row">
                   <div class="col-6">
-                    <label for="servicebond"
-                      >1. If there is a service bond/contract, what will be the
-                      duration, amount, and stipulated conditions?</label
-                    >
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="servicebonddetails"
-                      id="servicebond"
-                      placeholder="Enter Details"
-                    />
+
+
+                      <label for="servicebond"
+                        >1. If there is a service bond/contract, what will be the duration, amount, and
+                        stipulated conditions?</label
+                      >
+                      <input  readonly
+                        type="text"
+                        class="form-control"
+                        name="servicebonddetails"
+                        id="servicebond"
+                        value="<%=recruiter.servicebonddetails%>"
+                        placeholder="Enter Details"
+                      />
                   </div>
+
 
                   <div class="col-6">
                     <h6>2. Medical Requirements:</h6>
 
                     <div class="input-fields">
-                      <div class="form-group"></div>
 
-                      <input
+                      <input  readonly
                         type="text"
                         class="form-control"
                         name="MedicalRequirements"
-                        value="a"
+                        value="<%=recruiter.MedicalRequirements%>"
                         id="MedicalRequirements"
                         placeholder="Enter Details"
                         required
                       />
                     </div>
-                  </div>
+                    </div>
+
                 </div>
               </div>
             </div>
@@ -1566,30 +1642,17 @@ dasdf</textarea
 
                 <div class="row">
                   <div class="col-6">
-                    <h6>
-                      1. Shortlist from Resumes:
-                      <label class="form-check-label" for="yesselection">
-                        YES
-                      </label>
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        name="shortlistfromresume"
-                        value="yes"
-                        id="yesselection"
-                      />
-                    </h6>
+
 
                     <label for="selectionbond "
-                      >If applicable, specify the criteria below:</label
+                      >If Shortlist is from Resumes, specify the criteria below:</label
                     >
-                    <textarea
+                    <textarea  readonly
                       type="text"
                       class="form-control"
                       id="selectionbond"
                       name="selectioncriteriadetails"
-                      placeholder="..."
-                    >
+                    ><%=recruiter.selectioncriteriadetails%>
                     </textarea>
                   </div>
                 </div>
@@ -1640,9 +1703,10 @@ dasdf</textarea
                             <h3 style="text-align: center">1</h3>
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
+                              value="<%=recruiter.stagename1%>"
                               id="stagename"
                               name="stagename1"
                               placeholder="Stage Name"
@@ -1650,43 +1714,48 @@ dasdf</textarea
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               id="duration"
                               name="stageduration1"
                               placeholder="Duration (in min)"
+                              value="<%=recruiter.stageduration1%>"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               id="roundsno"
+                              value="<%=recruiter.noofrounds1%>"
                               name="noofrounds1"
                               placeholder=" No. of rounds"
                             />
                           </td>
                           <td>
-                            <select
+                           <select  disabled
                               type="text"
                               class="form-control"
                               id="mode"
+                              value="<%=recruiter.modeofstage1%>"
                               name="modeofstage1"
                               placeholder="Mode"
                             >
-                              <option value="Offline">Offline</option>
-                              <option value="Online">Online</option>
+                              <option value="Offline" <%= recruiter.modeofstage1 === "Offline" ? "selected" : "" %>>Offline</option>
+                              <option value="Online" <%= recruiter.modeofstage1 === "Online" ? "selected" : "" %>>Online</option>
                             </select>
                           </td>
                           <td>
-                            <textarea
+                            <textarea  readonly
                               type="text"
                               class="form-control"
                               id="otherdetails"
                               name="otherdetails1"
                               placeholder="Other Details"
-                            ></textarea>
+                              readonly
+                            ><%=recruiter.otherdetails1%>
+                        </textarea>
                           </td>
                         </tr>
                         <tr>
@@ -1694,53 +1763,58 @@ dasdf</textarea
                             <h3 style="text-align: center">2</h3>
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               id="stagename"
                               name="stagename2"
                               placeholder="Stage Name"
+                              value="<%=recruiter.stagename2%>"
                             />
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               id="duration"
                               name="stageduration2"
+                              value="<%=recruiter.stageduration2%>"
                               placeholder="Duration (in min)"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               id="roundsno"
                               name="noofrounds2"
+                              value="<%=recruiter.noofrounds2%>"
                               placeholder=" No. of rounds"
                             />
                           </td>
                           <td>
-                            <select
+                           <select  disabled
                               type="text"
                               class="form-control"
                               id="mode"
+                              value="<%=recruiter.modeofstage2%>"
                               name="modeofstage2"
                               placeholder="Mode"
                             >
-                              <option value="Offline">Offline</option>
-                              <option value="Online">Online</option>
+                              <option value="Offline" <%= recruiter.modeofstage2 === "Offline" ? "selected" : "" %>>Offline</option>
+                              <option value="Online" <%= recruiter.modeofstage2 === "Online" ? "selected" : "" %>>Online</option>
                             </select>
                           </td>
                           <td>
-                            <textarea
+                            <textarea  readonly
                               type="text"
                               class="form-control"
                               id="otherdetails"
+
                               name="otherdetails2"
                               placeholder="Other Details"
-                            ></textarea>
+                            ><%=recruiter.otherdetails2%></textarea>
                           </td>
                         </tr>
                         <tr>
@@ -1748,53 +1822,58 @@ dasdf</textarea
                             <h3 style="text-align: center">3</h3>
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               id="stagename"
+                              value="<%=recruiter.stagename3%>"
                               name="stagename3"
                               placeholder="Stage Name"
                             />
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               id="duration"
+                              value="<%=recruiter.stageduration3%>"
                               name="stageduration3"
                               placeholder="Duration (in min)"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.noofrounds3%>"
                               id="roundsno"
                               name="noofrounds3"
                               placeholder=" No. of rounds"
                             />
                           </td>
                           <td>
-                            <select
+                           <select  disabled
                               type="text"
                               class="form-control"
+                              value="<%=recruiter.modeofstage3%>"
                               id="mode"
                               name="modeofstage3"
                               placeholder="Mode"
                             >
-                              <option value="Offline">Offline</option>
-                              <option value="Online">Online</option>
+                               <option value="Offline" <%= recruiter.modeofstage3 === "Offline" ? "selected" : "" %>>Offline</option>
+                              <option value="Online" <%= recruiter.modeofstage3 === "Online" ? "selected" : "" %>>Online</option>
                             </select>
                           </td>
                           <td>
-                            <textarea
+                            <textarea  readonly
                               type="text"
                               class="form-control"
                               id="otherdetails"
+
                               name="otherdetails3"
                               placeholder="Other Details"
-                            ></textarea>
+                            ><%=recruiter.otherdetails3%></textarea>
                           </td>
                         </tr>
                         <tr>
@@ -1802,9 +1881,10 @@ dasdf</textarea
                             <h3 style="text-align: center">4</h3>
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
+                              value="<%=recruiter.stagename4%>"
                               id="stagename"
                               name="stagename4"
                               placeholder="Stage Name"
@@ -1812,43 +1892,47 @@ dasdf</textarea
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.stageduration4%>"
                               id="duration"
                               name="stageduration4"
                               placeholder="Duration (in min)"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               id="roundsno"
+                              value="<%=recruiter.noofrounds4%>"
                               name="noofrounds4"
                               placeholder=" No. of rounds"
                             />
                           </td>
                           <td>
-                            <select
+                           <select  disabled
                               type="text"
                               class="form-control"
                               id="mode"
+                              value="<%=recruiter.modeofstage4%>"
                               name="modeofstage4"
                               placeholder="Mode"
                             >
-                              <option value="Offline">Offline</option>
-                              <option value="Online">Online</option>
+                             <option value="Offline" <%= recruiter.modeofstage4 === "Offline" ? "selected" : "" %>>Offline</option>
+                              <option value="Online" <%= recruiter.modeofstage4 === "Online" ? "selected" : "" %>>Online</option>
                             </select>
                           </td>
                           <td>
-                            <textarea
+                            <textarea  readonly
                               type="text"
                               class="form-control"
                               id="otherdetails"
+
                               name="otherdetails4"
                               placeholder="Other Details"
-                            ></textarea>
+                            ><%=recruiter.otherdetails4%></textarea>
                           </td>
                         </tr>
                         <tr>
@@ -1856,53 +1940,58 @@ dasdf</textarea
                             <h3 style="text-align: center">5</h3>
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="text"
                               class="form-control"
                               id="stagename"
+                              value="<%=recruiter.stagename5%>"
                               name="stagename5"
                               placeholder="Stage Name"
                             />
                           </td>
 
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
+                              value="<%=recruiter.stageduration5%>"
                               id="duration"
                               name="stageduration5"
                               placeholder="Duration (in min)"
                             />
                           </td>
                           <td>
-                            <input
+                            <input  readonly
                               type="number"
                               class="form-control"
                               id="roundsno"
+                              value="<%=recruiter.noofrounds5%>"
                               name="noofrounds5"
                               placeholder=" No. of rounds"
                             />
                           </td>
                           <td>
-                            <select
+                           <select  disabled
                               type="text"
                               class="form-control"
+                              value="<%=recruiter.modeofstage5%>"
                               id="mode"
                               name="modeofstage5"
                               placeholder="Mode"
                             >
-                              <option value="Offline">Offline</option>
-                              <option value="Online">Online</option>
+                               <option value="Offline" <%= recruiter.modeofstage5 === "Offline" ? "selected" : "" %>>Offline</option>
+                              <option value="Online" <%= recruiter.modeofstage5 === "Online" ? "selected" : "" %>>Online</option>
                             </select>
                           </td>
                           <td>
-                            <textarea
+                            <textarea  readonly
                               type="text"
                               class="form-control"
+
                               id="otherdetails"
                               name="otherdetails5"
                               placeholder="Other Details"
-                            ></textarea>
+                            ><%=recruiter.otherdetails5%></textarea>
                           </td>
                         </tr>
                       </tbody>
@@ -1955,33 +2044,28 @@ dasdf</textarea
                 result in legal action and disqualification from future
                 participation in campus placement sessions.
                 <br /><br />
-                <div class="form-check">
-                  <label class="form-check-label" for="flexCheckDefault11">
-                    I Agree
-                  </label>
-                  <input
-                    class="form-check-input"
-                    required
-                    type="checkbox"
-                    checked
-                    id="flexCheckDefault11"
-                  />
-                </div>
-                <br />
+                <%if(!noAuditNeeded){%>
+ <form
+        novalidate=""
+        class="needs-validation"
+        action="/admin/recaudited/<%=recid%>?_method=PUT"
+        method="post"
+      >
                 <div class="submit-btn">
                   <button
                     class="btn btn-lg btn-success"
                     id="form-btn-regisrec"
                     style="margin-bottom: 5rem"
                   >
-                    SUBMIT
+                    Mark as Audited
                   </button>
                 </div>
+      </form><%}%>
+
               </div>
             </div>
           </div>
         </div>
-      </form>
     </div>
 
     <script>
@@ -2007,7 +2091,7 @@ dasdf</textarea
       })();
     </script>
 
-    <script>
+    <!-- <script>
       // Function to disable all input fields
       let disableAllCourseInputs = () => {
         let allInputs = document.querySelectorAll(".forcheck input");
@@ -2056,7 +2140,7 @@ dasdf</textarea
           }
         });
       });
-    </script>
+    </script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   </body>

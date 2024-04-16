@@ -134,6 +134,18 @@ const recruiterSchema = new mongoose.Schema({
   noofrounds5: { type: String },
   modeofstage5: { type: String },
   otherdetails5: { type: String },
+  checkmtechcs: {
+    type: String,
+  },
+  checkmsccs: {
+    type: String,
+  },
+  checkmscdfis: {
+    type: String,
+  },
+  checkmtechadsai: {
+    type: String,
+  },
 });
 const Recruiter = mongoose.model("Recruiter", recruiterSchema);
 

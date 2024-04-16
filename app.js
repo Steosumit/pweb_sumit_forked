@@ -441,12 +441,12 @@ app.post(
           websitelink: req.body.websitelink,
           postaladdress: req.body.postaladdress,
           category: req.body.category,
-          headhrname: req.body.headhname || "",
-          headhrdesignation: req.body.headhdesignation || "",
-          headhraltmobno: req.body.headhaltmobno || "",
-          headhrmobno: req.body.headhmobno || "",
-          headhremail: req.body.headhemail || "",
-          headhraddress: req.body.headhaddress || "",
+          headhrname: req.body.headhrname || "",
+          headhrdesignation: req.body.headhrdesignation || "",
+          headhraltmobno: req.body.headhraltmobno || "",
+          headhrmobno: req.body.headhrmobno || "",
+          headhremail: req.body.headhremail || "",
+          headhraddress: req.body.headhraddress || "",
           poc1name: req.body.poc1name || "",
           poc1designation: req.body.poc1designation || "",
           poc1altmobno: req.body.poc1altmobno || "",
@@ -467,7 +467,10 @@ app.post(
           tentativenoofhires: req.body.tentativenoofhires,
           tentativejoblocation: req.body.tentativejoblocation,
           JobDescription: req.body.JobDescription,
-
+          checkmtechcs: req.body.checkmtechcs,
+          checkmsccs: req.body.checkmsccs,
+          checkmscdfis: req.body.checkmscdfis,
+          checkmtechadsai: req.body.checkmtechadsai,
           basicmtechcs: req.body.basicmtechcs,
           pfmtechcs: req.body.pfmtechcs,
           hramtechcs: req.body.hramtechcs,
@@ -716,14 +719,78 @@ app.get(
     let allStudentsPending = await VerifiedUser.find({
       "bodyData.username": "Student",
     });
-
+    let allRegisteredRecruiters = await Recruiter.find({ isAudited: true });
+    // console.log("recs :");
+    // console.log(allRecruitersPending);
+    // console.log("stu");
+    // console.log(allStudentsPending);
     res.render("users/admin.ejs", {
       allRecruitersPending: allRecruitersPending,
       allStudentsPending: allStudentsPending,
+      allRegisteredRecruiters: allRegisteredRecruiters,
     });
   })
 );
 
+app.get(
+  "/admin/recdetails/:recid",
+  isThisAdmin,
+  wrapAsync(async (req, res) => {
+    let { recid } = req.params;
+    let { noAuditNeeded } = req.query;
+
+    try {
+      let recDetails = await Recruiter.findOne({ _id: recid });
+
+      if (!recDetails) {
+        // If recruiter not found, return a 404 Not Found response
+        return res.status(404).send("Recruiter not found");
+      }
+
+      // console.log(recDetails);
+      // If recruiter found, send the recruiter details to the client
+      res.render("resources/recruiterDetails", {
+        recruiter: recDetails,
+        recid: recid,
+        noAuditNeeded: noAuditNeeded,
+      });
+    } catch (error) {
+      // If an error occurs during database query, return a 500 Internal Server Error response
+      res.status(500).send("Error fetching recruiter details:" + error);
+    }
+  })
+);
+
+app.put(
+  "/admin/recaudited/:recid",
+  isThisAdmin,
+  wrapAsync(async (req, res) => {
+    let { recid } = req.params;
+    try {
+      let recDetails = await Recruiter.findOne({ _id: recid });
+
+      if (!recDetails) {
+        // If recruiter not found, return a 404 Not Found response
+        return res.status(404).send("Recruiter not found");
+      }
+
+      // Update the isAudited field to true
+      recDetails.isAudited = true;
+
+      // Save the changes to the database
+      await recDetails.save();
+
+      // Respond with a success message
+      req.flash("success", "Recruiter Updated Successfully !");
+      res.redirect("/admin");
+    } catch (error) {
+      // If an error occurs during database query or save operation,
+      // return a 500 Internal Server Error response
+      console.error("Error updating recruiter details:", error);
+      res.status(500).send("Error updating recruiter details");
+    }
+  })
+);
 app.get("/placement-team", (req, res) => {
   res.render("team/placementTeam.ejs");
 });

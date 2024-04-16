@@ -824,7 +824,7 @@
             <a href="#">
               <span class="icon">
                 <img
-                  src="nfsu1.png"
+                  src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/nfsu1_w88qok.png"
                   alt=""
                   width="63px"
                   height="80px"
@@ -971,17 +971,15 @@
             </label>
           </div>
 
-          <div class="user">
+          <!-- <div class="user">
             <img src="administrator.png" alt="" />
-          </div>
+          </div> -->
         </div>
 
         <!-- Add Charts -->
         <section id="chartSection">
           <div class="welcome-container">
-            <h1 id="welcome-message" class="animated-text">
-
-            </h1>
+            <h1 id="welcome-message" class="animated-text"></h1>
           </div>
           <div class="graphbox">
             <div class="box">
@@ -1539,220 +1537,109 @@
 
           <!-- ================ COMPANY Details List ================= -->
           <div class="details">
-            <div class="recentOrders">
-              <div class="cardHeader">
-                <h2>Company Registrations</h2>
-                <a href="#" class="btn">
-                  <button>Delete</button>
-                  <input
-                    type="text"
-                    style="
-                      border-radius: 10px;
-                      margin: 5px;
-                      padding: 3px;
-                      font-size: 14px;
-                      width: 150px;
-                    "
-                    placeholder="Search"
-                  />
-                </a>
-              </div>
-              <div style="height: 500px; overflow-y: scroll">
-                <table>
-                  <thead>
-                    <tr>
-                      <td>All<input type="checkbox" /></td>
-                      <td>Company Name</td>
-                      <td>Prefered Campus</td>
-                      <td>Job Location</td>
-                      <td>Job Type</td>
-                      <td>Job Title</td>
-                      <td>Job Description</td>
-                      <td>CTC/Stipend</td>
-                      <td>Last Date To Apply</td>
-                    </tr>
-                  </thead>
+            <div class="recentCustomers">
+              <div class="recentOrders">
+                <div class="cardHeader">
+                  <h2>Registered Companies</h2>
+                  <!-- <a href="#" class="btn"
+                    ><input
+                      type="text"
+                      style="
+                        border-radius: 10px;
+                        margin: 5px;
+                        padding: 3px;
+                        font-size: 14px;
+                        width: 150px;
+                      "
+                      placeholder="Search"
+                    />
+                  </a> -->
+                </div>
+                <div style="height: 500px; overflow-y: scroll">
+                  <table>
+                    <thead>
+                      <tr>
+                        <td>Company Name</td>
+                        <td>Job Title</td>
+                        <td>Job Type</td>
+                        <td>Job Description</td>
+                        <td>CTC</td>
+                      </tr>
+                    </thead>
 
-                  <tbody>
-                    <tr>
-                      <td><input type="checkbox" /></td>
-                      <td>Meta</td>
-                      <td>Gandhi Nagar</td>
-                      <td>job location</td>
-                      <td>Internship (I)</td>
-                      <td>Vapt</td>
-                      <td>pdf</td>
-                      <td>50LPA</td>
-                      <td>13/05/2024</td>
-
-                      <!-- <td><span class="status delivered">Delivered</span></td> -->
-                    </tr>
-
-                    <tr>
-                      <td><input type="checkbox" /></td>
-                      <td>Meta</td>
-                      <td>Gandhi Nagar</td>
-                      <td>job location</td>
-                      <td>Internship (I)</td>
-                      <td>Vapt</td>
-                      <td>pdf</td>
-                      <td>50LPA</td>
-                      <td>13/05/2024</td>
-                    </tr>
-
-                    <tr>
-                      <td><input type="checkbox" /></td>
-                      <td>Meta</td>
-                      <td>Gandhi Nagar</td>
-                      <td>job location</td>
-                      <td>Internship (I)</td>
-                      <td>Vapt</td>
-                      <td>pdf</td>
-                      <td>50LPA</td>
-                      <td>13/05/2024</td>
-                    </tr>
-
-                    <tr>
-                      <td><input type="checkbox" /></td>
-                      <td>Meta</td>
-                      <td>Gandhi Nagar</td>
-                      <td>job location</td>
-                      <td>Internship (I)</td>
-                      <td>Vapt</td>
-                      <td>pdf</td>
-                      <td>50LPA</td>
-                      <td>13/05/2024</td>
-                    </tr>
-
-                    <tr>
-                      <td><input type="checkbox" /></td>
-                      <td>Meta</td>
-                      <td>Gandhi Nagar</td>
-                      <td>job location</td>
-                      <td>Internship (I)</td>
-                      <td>Vapt</td>
-                      <td>pdf</td>
-                      <td>50LPA</td>
-                      <td>13/05/2024</td>
-                    </tr>
-
-                    <tr>
-                      <td><input type="checkbox" /></td>
-                      <td>Meta</td>
-                      <td>Gandhi Nagar</td>
-                      <td>job location</td>
-                      <td>Internship (I)</td>
-                      <td>Vapt</td>
-                      <td>pdf</td>
-                      <td>50LPA</td>
-                      <td>13/05/2024</td>
-                    </tr>
-                  </tbody>
-                </table>
+                    <tbody>
+                      <% allRegisteredRecruiters.forEach(recruiter => { %>
+                      <tr>
+                        <td><%= recruiter.companyname %></td>
+                        <td><%= recruiter.jobtitle %></td>
+                        <td><%= recruiter.jobtype %></td>
+                        <td><%= recruiter.JobDescription %></td>
+                        <td><%= recruiter.tentativenoofhires %></td>
+                        <td>
+                          <a
+                            href="/admin/recdetails/<%= recruiter._id %>?noAuditNeeded=true"
+                          >
+                            <button>See Details</button>
+                          </a>
+                        </td>
+                      </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-
             <!-- ================= New Customers ================ -->
           </div>
           <div class="recentStudents">
             <div class="recentCustomers">
-              <div class="cardHeader">
-                <h2>Company Listing Requests</h2>
-              </div>
-              <div style="height: 500px;">
-                <table>
-                  <tbody>
-                    <tr>
-                      <td width="40px">
-                        <div class="imgBx">
-                          <img src="assets/imgs/customer02.jpg" alt="" />
-                        </div>
-                      </td>
-                      <td>
-                        <h4><span>Job Role ID:</span></h4>
-                      </td>
-                      <td>Company Name</td>
-                      <td>
-                        <button>View Details</button>
-                      </td>
-                    </tr>
+              <div class="recentOrders">
+                <div class="cardHeader">
+                  <h2>Company Registrations Pending</h2>
+                  <!-- <a href="#" class="btn"
+                    ><input
+                      type="text"
+                      style="
+                        border-radius: 10px;
+                        margin: 5px;
+                        padding: 3px;
+                        font-size: 14px;
+                        width: 150px;
+                      "
+                      placeholder="Search"
+                    />
+                  </a> -->
+                </div>
+                <div style="height: 500px; overflow-y: scroll">
+                  <table>
+                    <thead>
+                      <tr>
+                        <td>Company Name</td>
+                        <td>Job Title</td>
+                        <td>Job Type</td>
+                        <td>Job Description</td>
+                        <td>CTC</td>
+                      </tr>
+                    </thead>
 
-                    <tr>
-                      <td width="40px">
-                        <div class="imgBx">
-                          <img src="assets/imgs/customer02.jpg" alt="" />
-                        </div>
-                      </td>
-                      <td>
-                        <h4><span>Company ID:</span></h4>
-                      </td>
-                      <td>Company Name</td>
-                      <td>
-                        <button>View Details</button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td width="40px">
-                        <div class="imgBx">
-                          <img src="assets/imgs/customer02.jpg" alt="" />
-                        </div>
-                      </td>
-                      <td>
-                        <h4><span>Company ID:</span></h4>
-                      </td>
-                      <td>Company Name</td>
-                      <td>
-                        <button>View Details</button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td width="40px">
-                        <div class="imgBx">
-                          <img src="assets/imgs/customer02.jpg" alt="" />
-                        </div>
-                      </td>
-                      <td>
-                        <h4><span>Company ID:</span></h4>
-                      </td>
-                      <td>Company Name</td>
-                      <td>
-                        <button>View Details</button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td width="40px">
-                        <div class="imgBx">
-                          <img src="assets/imgs/customer02.jpg" alt="" />
-                        </div>
-                      </td>
-                      <td>
-                        <h4><span>Company ID:</span></h4>
-                      </td>
-                      <td>Company Name</td>
-                      <td>
-                        <button>View Details</button>
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td width="40px">
-                        <div class="imgBx">
-                          <img src="assets/imgs/customer02.jpg" alt="" />
-                        </div>
-                      </td>
-                      <td>
-                        <h4><span>Company ID:</span></h4>
-                      </td>
-                      <td>Company Name</td>
-                      <td>
-                        <button>View Details</button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                    <tbody>
+                      <% allRecruitersPending.forEach(recruiter => { %>
+                      <tr>
+                        <td><%= recruiter.companyname %></td>
+                        <td><%= recruiter.jobtitle %></td>
+                        <td><%= recruiter.jobtype %></td>
+                        <td><%= recruiter.JobDescription %></td>
+                        <td><%= recruiter.tentativenoofhires %></td>
+                        <td>
+                          <a href="/admin/recdetails/<%= recruiter._id %>">
+                            <button>See Details</button>
+                          </a>
+                        </td>
+                      </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 
