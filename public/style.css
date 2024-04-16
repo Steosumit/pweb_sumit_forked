@@ -139,10 +139,23 @@ nav {
   box-shadow: rgb(255, 184, 157, 0.9) 0px 0px 100px, lightgray 0px 0px 00px;
 }
 
-.fancy-hr{
-  color: black;
-  border: dashed;
+.animated-hr {
+  border: none;
+  height: 1px;
+  background-color: black;
+  width: 0;
+  animation: expand 1s ease-in-out infinite;
 }
+
+@keyframes expand {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
 /*  */
 .home-second {
   min-height: 60vh;
@@ -511,7 +524,7 @@ nav {
   color: #0c359e !important;
   padding: 2rem;
   border-radius: 1rem;
-  width: 80rem;
+  width: fit-content;
 }
 .login-img-div {
   width: 100%;
@@ -531,6 +544,7 @@ h6 {
 }
 
 .login-identity {
+  width: 100% !important;
   border-bottom: #0c359e thick solid;
 }
 /*
@@ -568,7 +582,7 @@ h6 {
   align-items: center;
 }
 .login-card input {
-  width: 50%;
+  width: 100%;
   border: none;
   border-radius: 0.5rem;
   text-align: left;
@@ -856,8 +870,7 @@ h6 {
   width: 80%;
   height: 30rem;
   margin-bottom: 3rem;
-  box-shadow: 0 0 40px rgb(0, 0, 0,0.15);
-
+  box-shadow: 0 0 40px rgb(0, 0, 0, 0.15);
 }
 
 /* iframe { */
@@ -1183,9 +1196,9 @@ h6 {
 .beyond-placement {
   padding-bottom: 6rem;
 }
-.beyond-placement img {
-  box-shadow: 0 0 20px rgba(107, 35, 163, 0.3);
-}
+/* .beyond-placement img {
+  /* box-shadow: 0 0 20px rgba(107, 35, 163, 0.3);
+} */
 
 /* faq */
 
