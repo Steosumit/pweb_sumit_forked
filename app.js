@@ -20,6 +20,8 @@ const { studentSchema, recruiterSchema } = require("./schema");
 const Recruiter = require("./models/recruiter");
 const VerifiedUser = require("./models/verifiedUser");
 const OTP = require("./models/otp");
+const { v4: uuidv4 } = require("uuid");
+const { pid } = require("process");
 
 const store = MongoStore.create({
   mongoUrl: dbUrl,
@@ -224,9 +226,19 @@ app.post(
     let { email, username } = req.body;
     let existingOTP = await OTP.findOne({ email: email });
     let newOtp = Math.floor(Math.random() * 900000) + 100000;
+
     if (username == "Student") {
-      if (!email.trim().endsWith("@nfsu.ac.in")) {
-        req.flash("error", "Please Enter a valid College Student Email.");
+      if (
+        !email.trim().endsWith("@nfsu.ac.in")
+        // !email.includes("mtcs12325") ||
+        // !email.includes("dfis12325") ||
+        // !email.includes("mscs12325") ||
+        // !email.includes("mtadsai12325")
+      ) {
+        req.flash(
+          "error",
+          "Please Enter a valid College Student Email of SCSDF."
+        );
         res.redirect("/otp-initialize/?username=Student");
       }
     }
@@ -658,7 +670,6 @@ National Forensic Science University.
         if (error) {
           return res.status(400).send(error.details[0].message);
         }
-
         const newStudent = new Student({
           firstname: req.body.firstname,
           disability: req.body.disability,
@@ -685,7 +696,6 @@ National Forensic Science University.
           twelth: req.body.twelth,
           lastsemcgpa: req.body.lastsemcgpa,
         });
-
         let { password } = req.body;
         const registeredStudent = await Student.register(newStudent, password);
 
@@ -708,7 +718,8 @@ National Forensic Science University.
 );
 
 app.get("/account", isLoggedIn, (req, res) => {
-  res.render("users/youraccountstu.ejs");
+  let { isRegistered } = req.user;
+  res.render("users/youraccountstu.ejs", { isRegistered: isRegistered });
 });
 
 app.get(
@@ -720,6 +731,7 @@ app.get(
       "bodyData.username": "Student",
     });
     let allRegisteredRecruiters = await Recruiter.find({ isAudited: true });
+    let allAuditedStudents = await Student.find({ isAudited: true });
     // console.log("recs :");
     // console.log(allRecruitersPending);
     // console.log("stu");
@@ -728,6 +740,7 @@ app.get(
       allRecruitersPending: allRecruitersPending,
       allStudentsPending: allStudentsPending,
       allRegisteredRecruiters: allRegisteredRecruiters,
+      allAuditedStudents: allAuditedStudents,
     });
   })
 );
@@ -789,6 +802,176 @@ app.put(
       console.error("Error updating recruiter details:", error);
       res.status(500).send("Error updating recruiter details");
     }
+  })
+);
+
+app.get(
+  "/admin/markStuAudit/:verifiedStuID",
+  isThisAdmin,
+  wrapAsync(async (req, res) => {
+    let { verifiedStuID } = req.params;
+    let stuVerified = await VerifiedUser.findOne({ _id: verifiedStuID });
+    await VerifiedUser.deleteMany({ _id: verifiedStuID });
+    let twoDigitNo = stuVerified.bodyData.enrollnostu.slice(-2);
+    let courseName = stuVerified.bodyData.coursename;
+    console.log(stuVerified);
+    function generatePID(courseName, twoDigitNo) {
+      let prefix = "";
+      switch (courseName) {
+        case "MscCs":
+          prefix = "PL-MSCS-";
+          break;
+        case "MscDfis":
+          prefix = "PL-MSDF-";
+          break;
+        case "MtechCs":
+          prefix = "PL-MTCS-";
+          break;
+        case "MtechAdsai":
+          prefix = "PL-MTADSAI-";
+          break;
+        default:
+          return "Invalid course name";
+      }
+      return prefix + twoDigitNo;
+    }
+
+    let pId = generatePID(courseName, twoDigitNo);
+    let password = uuidv4();
+
+    const newStudent = new Student({
+      isAudited: true,
+      isRegistered: false,
+      enrollmentNo: stuVerified.bodyData.enrollnostu,
+      fullname: stuVerified.bodyData.stuname,
+      fathername: "",
+      course: stuVerified.bodyData.coursename,
+      gender: "",
+      birthdate: "",
+      maritalstatus: "",
+      disability: "",
+      mobileno: stuVerified.bodyData.stumobno,
+      altmobileno: "",
+      email: stuVerified.bodyData.email,
+      altemail: "",
+      category: "",
+      nationality: "",
+      presentcountry: "",
+      presentstate: "",
+      presentdistrict: "",
+      username: pId,
+      landmark: "",
+      presentaddress: "",
+      pincode: "",
+      tenth: "",
+      twelth: "",
+      lastsemcgpa: "",
+    });
+
+    //send credentials
+    let message = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Our Platform</title>
+    <style>
+        /* Reset styles */
+        body, p, h1, h2, h3, h4, h5, h6 {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .credentials {
+            background-color: #f9f9f9;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .credentials p {
+            margin-bottom: 5px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Our Platform!</h1>
+        <p>We're excited to have you onboard. Below are your login credentials:</p>
+        <div class="credentials">
+            <p><strong>Username:</strong> ${pId}</p>
+            <p><strong>Password:</strong> ${password}</p>
+        </div>
+        <p>Please use the provided credentials to log in to your account and complete your registration process as soon as possible.</p>
+        <p>If you have any questions or need assistance, feel free to contact us.</p>
+        <a href="#" style="color:white;" class="btn">Login Now</a>
+    </div>
+</body>
+</html>
+`;
+
+    const registeredStudent = await Student.register(newStudent, password);
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "smile.itsadil@gmail.com",
+        pass: process.env.APP_PASSWORD,
+      },
+    });
+    const mailOptions = {
+      from: "ThePlacementCell@NFSU<smile.itsadil@gmail.com>",
+      to: stuVerified.bodyData.email,
+      subject:
+        "Welcome to National Forensic Science University's Placement Cell.",
+      html: message,
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        req.flash(
+          "error",
+          "error in sending credentials to student : " + error
+        );
+        res.redirect("/admin");
+      } else {
+        req.flash("success", "Student marked as Audited. ");
+        res.redirect("/admin");
+      }
+    });
   })
 );
 app.get("/placement-team", (req, res) => {

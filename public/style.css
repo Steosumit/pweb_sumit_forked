@@ -138,22 +138,11 @@ nav {
   height: 90%;
   box-shadow: rgb(255, 184, 157, 0.9) 0px 0px 100px, lightgray 0px 0px 00px;
 }
-
-.animated-hr {
-  border: none;
-  height: 1px;
-  background-color: black;
-  width: 0;
-  animation: expand 1s ease-in-out infinite;
+.animated-hr-coral {
+  border-bottom: dashed coral thick;
 }
-
-@keyframes expand {
-  0% {
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
+.animated-hr-purple {
+  border-bottom: dashed purple thick;
 }
 
 /*  */
@@ -370,11 +359,11 @@ nav {
 
 /*  */
 .home-third {
+  min-height: 100vh;
+  color: black;
   background: linear-gradient(to left, white, rgba(233, 179, 255, 0.4));
   border-top-left-radius: 0rem;
   border-top-right-radius: 200rem;
-  min-height: 100vh;
-  color: black;
   border-bottom-left-radius: 3rem;
   border-bottom-right-radius: 3rem;
   margin-top: 5rem;
@@ -843,7 +832,7 @@ h6 {
 
 /*  */
 .contactus {
-  background-color: #fff;
+  background-color: #7EA1FF;
   height: fit-content;
 
   padding: 0rem;
@@ -1105,6 +1094,7 @@ h6 {
   flex-direction: column;
   counter-reset: white;
   background-color: #171717;
+   background: linear-gradient(to bottom, rgb(28, 28, 120), #7EA1FF);
 }
 .banner h1 {
   color: white;
@@ -1135,6 +1125,9 @@ h6 {
 }
 .resources-student-big-div {
   width: 100%;
+}
+.resources-student-big-div .content-div{
+background-color: #7EA1FF;
 }
 .content-div {
   background-color: powderblue;
