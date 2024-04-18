@@ -20,6 +20,8 @@ const { studentSchema, recruiterSchema } = require("./schema");
 const Recruiter = require("./models/recruiter");
 const VerifiedUser = require("./models/verifiedUser");
 const OTP = require("./models/otp");
+const Listing = require("./models/listing");
+const Application = require("./models/application");
 const { v4: uuidv4 } = require("uuid");
 const { pid } = require("process");
 
@@ -99,8 +101,12 @@ let isLoggedIn = wrapAsync(async (req, res, next) => {
 
 let shallNotAuthenticated = wrapAsync(async (req, res, next) => {
   if (req.isAuthenticated()) {
-    req.flash("error", "You Must Log out First !");
-    res.redirect("/");
+    if (req.user.isAudited == true) {
+      return next();
+    } else {
+      req.flash("error", "You Must Log out First !");
+      res.redirect("/");
+    }
   } else {
     return next();
   }
@@ -111,8 +117,12 @@ let isVerified = wrapAsync(async (req, res, next) => {
   if (result) {
     return next();
   } else {
-    req.flash("error", "Please verify your Email First !");
-    res.redirect("/");
+    if (req.user.isAudited == true) {
+      return next();
+    } else {
+      req.flash("error", "Please verify your Email First !");
+      res.redirect("/");
+    }
   }
 });
 let isThisAdmin = (req, res, next) => {
@@ -148,8 +158,11 @@ let studentStayInDashboard = (req, res, next) => {
   if (
     req.isAuthenticated() &&
     res.locals.isAdmin == false &&
-    req.url != "/account" &&
-    req.url != "/logout"
+    !(req.path === "/account") &&
+    !(req.path === "/logout") &&
+    !(req.path === "/register/stu") &&
+    !(req.path == "/account/sturegisdetails/") &&
+    !(req.path == "/account/apply")
   ) {
     res.redirect("/account");
   } else {
@@ -227,21 +240,21 @@ app.post(
     let existingOTP = await OTP.findOne({ email: email });
     let newOtp = Math.floor(Math.random() * 900000) + 100000;
 
-    if (username == "Student") {
-      if (
-        !email.trim().endsWith("@nfsu.ac.in")
-        // !email.includes("mtcs12325") ||
-        // !email.includes("dfis12325") ||
-        // !email.includes("mscs12325") ||
-        // !email.includes("mtadsai12325")
-      ) {
-        req.flash(
-          "error",
-          "Please Enter a valid College Student Email of SCSDF."
-        );
-        res.redirect("/otp-initialize/?username=Student");
-      }
-    }
+    // if (username == "Student") {
+    //   if (
+    //     !email.trim().endsWith("@nfsu.ac.in")
+    //     // !email.includes("mtcs12325") ||
+    //     // !email.includes("dfis12325") ||
+    //     // !email.includes("mscs12325") ||
+    //     // !email.includes("mtadsai12325")
+    //   ) {
+    //     req.flash(
+    //       "error",
+    //       "Please Enter a valid College Student Email of SCSDF."
+    //     );
+    //     res.redirect("/otp-initialize/?username=Student");
+    //   }
+    // }
     if (existingOTP) {
       req.flash("success", "OTP is already Sent");
       req.session.bodyData = req.body;
@@ -356,7 +369,11 @@ app.post(
             bodyData: req.session.bodyData,
           });
           if (req.session.bodyData.username == "Student") {
-            res.redirect("/register/stu");
+            req.flash(
+              "success",
+              `Email Verification Successfull ! <br> We will send Your Credentials on the Provided Email. <br> Please wait for further Email Updates on approval of the Admin.`
+            );
+            res.redirect("/");
           } else {
             res.redirect("/register/rec");
           }
@@ -397,11 +414,15 @@ app.get("/register/:user", shallNotAuthenticated, isVerified, (req, res) => {
     if (user == "rec") {
       res.render("auth/regisrec.ejs", { email: req.session.bodyData.email });
     } else if (user == "stu") {
-      req.flash(
-        "success",
-        `Email Verification Successfull ! <br> We will send Your Credentials on the Provided Email. <br> Please wait for further Email Updates on approval of the Admin.`
-      );
-      res.redirect("/");
+      console.log(req.user);
+      res.render("auth/regisstu.ejs", {
+        email: req.user.email,
+        mobno: req.user.mobileno,
+        enroll: req.user.enrollmentNo,
+        fullname: req.user.fullname,
+        course: req.user.course,
+        username: req.user.username,
+      });
     } else {
       req.flash("error", "Invalid URL");
       res.redirect("/");
@@ -666,22 +687,21 @@ National Forensic Science University.
       }
     } else if (user == "stu") {
       try {
-        const { error } = studentSchema.validate(req.body);
-        if (error) {
-          return res.status(400).send(error.details[0].message);
-        }
-        const newStudent = new Student({
-          firstname: req.body.firstname,
+        // const { error } = studentSchema.validate(req.body);
+        // if (error) {
+        //   return res.status(400).send(error.details[0].message);
+        // }
+        const newStudentDetails = {
+          isRegistered: true,
           disability: req.body.disability,
-          surname: req.body.surname,
           fathername: req.body.fathername,
+          mothername: req.body.mothername,
           birthdate: req.body.birthdate,
           maritalstatus: req.body.maritalstatus,
           gender: req.body.gender,
-          mobileno: req.body.mobileno,
+
           altmobileno: req.body.altmobileno,
-          enrollmentNo: req.body.enrollmentNo,
-          email: req.body.email,
+
           altemail: req.body.altemail,
           category: req.body.category,
           nationality: req.body.nationality,
@@ -692,22 +712,37 @@ National Forensic Science University.
           presentaddress: req.body.presentaddress,
           pincode: req.body.pincode,
           tenth: req.body.tenth,
-          username: req.body.enrollmentNo,
+
           twelth: req.body.twelth,
           lastsemcgpa: req.body.lastsemcgpa,
-        });
-        let { password } = req.body;
-        const registeredStudent = await Student.register(newStudent, password);
+        };
 
-        req.login(registeredStudent, (err) => {
-          if (err) {
-            return next(err);
-          } else {
-            req.flash("success", "Welcome to the Placement Cell !");
-            res.redirect("/");
-          }
-        });
+        let query = { _id: req.user._id };
+        let update = { $set: newStudentDetails };
+        let options = { new: true };
+        try {
+          let updatedStudent = await Student.findOneAndUpdate(
+            query,
+            update,
+            options
+          );
+          // console.log("updated stu:" + updatedStudent);
+          res.redirect("/account");
+        } catch (e) {
+          console.log("error in updating student :" + e);
+          res.redirect("/register/stu");
+        }
+
+        // req.login(registeredStudent, (err) => {
+        //   if (err) {
+        //     return next(err);
+        //   } else {
+        //     req.flash("success", "Welcome to the Placement Cell !");
+        //     res.redirect("/");
+        //   }
+        // });
       } catch (error) {
+        console.log(error);
         req.flash("error", error.message);
         res.redirect("/register/stu");
       }
@@ -717,10 +752,99 @@ National Forensic Science University.
   })
 );
 
-app.get("/account", isLoggedIn, (req, res) => {
-  let { isRegistered } = req.user;
-  res.render("users/youraccountstu.ejs", { isRegistered: isRegistered });
-});
+app.get(
+  "/account",
+  isLoggedIn,
+  wrapAsync(async (req, res) => {
+    let { isRegistered, _id, course } = req.user;
+
+    const allListings = await Listing.find({});
+
+    try {
+      const studentApplications = await Application.find({ stuId: _id });
+      const appliedListingIds = studentApplications.map((app) => app.listingId);
+      const filteredOnAppliedListings = allListings.filter((listing) => {
+        return !appliedListingIds.some((appliedListingId) =>
+          appliedListingId.equals(listing._id)
+        );
+      });
+      const appliedListings = allListings.filter((listing) => {
+        return appliedListingIds.some((appliedListingId) =>
+          appliedListingId.equals(listing._id)
+        );
+      });
+      const availableListings = filteredOnAppliedListings.filter(
+        (listing) =>
+          listing.forCourse.includes(course) ||
+          listing.forCourse.includes("All")
+      );
+
+      res.render("users/youraccountstu.ejs", {
+        isRegistered: isRegistered,
+        stuId: _id,
+        availableListings: availableListings,
+        appliedListings: appliedListings,
+      });
+    } catch (err) {
+      console.error("Error retrieving student applications:", err);
+      res.redirect("/account");
+    }
+  })
+);
+
+app.get(
+  "/account/sturegisdetails",
+  isLoggedIn,
+  wrapAsync(async (req, res) => {
+    let { stuId } = req.query;
+    let stuDetails = await Student.findOne({ _id: stuId });
+
+    res.render("resources/studentDetails.ejs", {
+      stuDetails: stuDetails,
+    });
+  })
+);
+app.get(
+  "/account/apply",
+  wrapAsync(async (req, res) => {
+    let { listingId, stuId } = req.query;
+    let stuDetails = await Student.findOne({ _id: stuId });
+    res.render("resources/apply.ejs", {
+      listingId: listingId,
+      stuId: stuId,
+      stuDetails: stuDetails,
+    });
+  })
+);
+
+app.post(
+  "/account/apply",
+  wrapAsync(async (req, res) => {
+    let { listingId, stuId } = req.body;
+    //let resumeLink = upload file
+    let resumeLink = "hhe";
+    let prevapp = await Application.find({
+      stuId: stuId,
+      listingId: listingId,
+    });
+    if (prevapp.length != 0) {
+      req.flash("error", "Already Applied !");
+      res.redirect("/account");
+    } else {
+      let newApplication = new Application({
+        stuId: stuId,
+        listingId: listingId,
+        resumeLink: resumeLink,
+        createdAt: new Date(),
+      });
+
+      await newApplication.save();
+
+      req.flash("success", "Application Submitted Succesfully !");
+      res.redirect("/account");
+    }
+  })
+);
 
 app.get(
   "/admin",
@@ -731,7 +855,18 @@ app.get(
       "bodyData.username": "Student",
     });
     let allRegisteredRecruiters = await Recruiter.find({ isAudited: true });
-    let allAuditedStudents = await Student.find({ isAudited: true });
+    let allAuditedStudents = await Student.find({
+      isAudited: true,
+      isRegistered: false,
+    });
+    let allRegisteredStudents = await Student.find({ isRegistered: true });
+    let allListedRecruiters = await Listing.find({});
+    let allApplications = await Application.find({})
+      .populate("stuId")
+      .populate("listingId");
+    //   .populate("stuId")
+    //   .populate("listingId");
+
     // console.log("recs :");
     // console.log(allRecruitersPending);
     // console.log("stu");
@@ -741,6 +876,9 @@ app.get(
       allStudentsPending: allStudentsPending,
       allRegisteredRecruiters: allRegisteredRecruiters,
       allAuditedStudents: allAuditedStudents,
+      allRegisteredStudents: allRegisteredStudents,
+      allListedRecruiters: allListedRecruiters,
+      allApplications: allApplications,
     });
   })
 );
@@ -805,6 +943,37 @@ app.put(
   })
 );
 
+app.post(
+  "/admin/addcompanylisting",
+  isThisAdmin,
+  wrapAsync(async (req, res) => {
+    let newListing = new Listing({
+      companyName: req.body.companyName,
+      jobLocation: req.body.jobLocation,
+      jobType: req.body.jobType,
+      jobTitle: req.body.jobTitle,
+      forCourse: req.body.forCourse,
+      ctc: req.body.ctc,
+      lastDateToApply: req.body.lastDateToApply,
+    });
+
+    await newListing.save();
+    req.flash("success", "Listing Added Successfully !");
+    res.redirect("/admin");
+    // console.log("newlisting: " + newListing);
+  })
+);
+
+app.get(
+  "/admin/removefromlisting/:listingId",
+  isThisAdmin,
+  wrapAsync(async (req, res) => {
+    let { listingId } = req.params;
+    await Listing.deleteMany({ _id: listingId });
+    req.flash("success", "Listing Removed Successfully !");
+    res.redirect("/admin");
+  })
+);
 app.get(
   "/admin/markStuAudit/:verifiedStuID",
   isThisAdmin,
@@ -814,7 +983,6 @@ app.get(
     await VerifiedUser.deleteMany({ _id: verifiedStuID });
     let twoDigitNo = stuVerified.bodyData.enrollnostu.slice(-2);
     let courseName = stuVerified.bodyData.coursename;
-    console.log(stuVerified);
     function generatePID(courseName, twoDigitNo) {
       let prefix = "";
       switch (courseName) {
@@ -845,6 +1013,7 @@ app.get(
       enrollmentNo: stuVerified.bodyData.enrollnostu,
       fullname: stuVerified.bodyData.stuname,
       fathername: "",
+      mothername: "",
       course: stuVerified.bodyData.coursename,
       gender: "",
       birthdate: "",

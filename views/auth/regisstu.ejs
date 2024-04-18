@@ -8,6 +8,7 @@
           loading="lazy"
           src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
           alt=""
+          width="300"
       /></a>
     </div>
   </div>
@@ -32,47 +33,48 @@
                 <input
                   type="text"
                   class="form-control"
-                  name="enrollmentNo"
                   id="Enrollment"
+                  readonly
+                  disabled
+                  value="<%=enroll%>"
                   placeholder="Enrollment No."
-                  required
                 />
               </div>
               <div class="form-group">
-                <label for="password">Password</label>
+                <label for="username">Username</label>
                 <input
                   type="text"
+                  value="<%=username%>"
                   class="form-control"
-                  name="password"
-                  id="password"
-                  placeholder="Password"
-                  required
+                  id="username"
+                  placeholder="username"
+                  readonly
+                  disabled
                 />
               </div>
               <div class="form-group">
-                <label for="firstname">First Name</label>
+                <label for="firstname">Full Name</label>
                 <input
                   type="text"
                   class="form-control"
-                  name="firstname"
                   id="firstname"
                   placeholder="First Name"
-                  required
-                  value="hehe"
+                  disabled
+                  readonly
+                  value="<%=fullname%>"
                 />
               </div>
               <div class="form-group">
-                <label for="surname">Surname</label>
+                <label>Course</label>
                 <input
                   type="text"
                   class="form-control"
-                  name="surname"
-                  id="surname"
-                  placeholder="Surname"
-                  required
-                  value="hehe"
+                  disabled
+                  readonly
+                  value="<%=course%>"
                 />
               </div>
+
               <div class="form-group">
                 <label for="fathername">Father's Name</label>
                 <input
@@ -93,6 +95,7 @@
                   id="mothername"
                   placeholder="Mother's Name"
                   required
+                  name="mothername"
                   value="eehe"
                 />
               </div>
@@ -241,11 +244,12 @@
                 <input
                   type="tel"
                   class="form-control"
-                  required
+                  disabled
+                  readonly
                   id="mobno"
                   name="mobileno"
                   placeholder="Mobile Number"
-                  value="1234554321"
+                  value="<%=mobno%>"
                 />
               </div>
               <div class="form-group">
@@ -266,10 +270,10 @@
                   type="email"
                   class="form-control"
                   id="email"
-                  required
-                  name="email"
+                  readonly
+                  disabled
                   placeholder="Email"
-                  value="abccba@gmail.com"
+                  value="<%=email%>"
                 />
               </div>
               <div class="form-group">

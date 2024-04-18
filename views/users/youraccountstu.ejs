@@ -234,8 +234,11 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
               <%if(isRegistered){%>
               <ul class="dropdown-menu" style="margin-top: 1rem">
                 <li>
-                  <a class="dropdown-item" href="/account" style="color: brown"
-                    >Your Account</a
+                  <a
+                    class="dropdown-item"
+                    href="/account/sturegisdetails/?stuId=<%=stuId%>"
+                    style="color: brown"
+                    >Your Registered Details</a
                   >
                 </li>
 
@@ -535,7 +538,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
                     scope="col"
                     style="color: white; background-color: darkblue"
                   >
-                    Offered Campus
+                    Job Title
                   </th>
                   <th
                     scope="col"
@@ -548,12 +551,6 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
                     style="color: white; background-color: darkblue"
                   >
                     Job Type
-                  </th>
-                  <th
-                    scope="col"
-                    style="color: white; background-color: darkblue"
-                  >
-                    Job Title
                   </th>
                   <th
                     scope="col"
@@ -582,71 +579,105 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
                 </tr>
               </thead>
               <tbody>
+                <% availableListings.forEach(listing => { %>
                 <tr>
-                  <td scope="row">Meta</td>
-                  <td scope="row">Gandhi Nagar</td>
-                  <td scope="row">job location</td>
-                  <td scope="row">Internship (I)</td>
-                  <td scope="row">Vapt</td>
-                  <td scope="row">pdf</td>
-                  <td scope="row">50LPA</td>
-                  <td scope="row">13/05/2024</td>
+                  <td scope="row"><%=listing.companyName%></td>
+                  <td scope="row"><%=listing.jobTitle%></td>
+                  <td scope="row"><%=listing.jobLocation%></td>
+                  <td scope="row"><%=listing.jobType%></td>
+                  <td scope="row"><%=listing.jobDescription%></td>
+                  <td scope="row"><%=listing.ctc%></td>
+                  <td scope="row"><%=listing.lastDateToApply%></td>
                   <td scope="row">
-                    <a href="#" class="btn btn-outline-primary">Apply</a>
+                    <a
+                      href="/account/apply?listingId=<%=listing._id%>&stuId=<%=stuId%>"
+                      class="btn btn-outline-primary"
+                      >Apply</a
+                    >
                   </td>
                 </tr>
+                <%});%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="d-flex" id="tablesection">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <table
+              class="table table-hover table-responsive"
+              id="scrollabletable"
+            >
+              <thead>
                 <tr>
-                  <td scope="row">Meta</td>
-                  <td scope="row">Gandhi Nagar</td>
-                  <td scope="row">job location</td>
-                  <td scope="row">Internship (I)</td>
-                  <td scope="row">Vapt</td>
-                  <td scope="row">pdf</td>
-                  <td scope="row">50LPA</td>
-                  <td scope="row">13/05/2024</td>
-                  <td scope="row">
-                    <a href="#" class="btn btn-outline-primary">Apply</a>
-                  </td>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Company Name
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Job Title
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Job Location
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Job Type
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Job Description
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    CTC/Stipend
+                  </th>
+                  <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Last Date To Apply
+                  </th>
+                  <!-- <th
+                    scope="col"
+                    style="color: white; background-color: darkblue"
+                  >
+                    Application Status
+                  </th> -->
                 </tr>
+              </thead>
+              <tbody>
+                <% appliedListings.forEach(listing => { %>
                 <tr>
-                  <td scope="row">Meta</td>
-                  <td scope="row">Gandhi Nagar</td>
-                  <td scope="row">job location</td>
-                  <td scope="row">Internship (I)</td>
-                  <td scope="row">Vapt</td>
-                  <td scope="row">pdf</td>
-                  <td scope="row">50LPA</td>
-                  <td scope="row">13/05/2024</td>
-                  <td scope="row">
-                    <a href="#" class="btn btn-outline-primary">Apply</a>
-                  </td>
+                  <td scope="row"><%=listing.companyName%></td>
+                  <td scope="row"><%=listing.jobTitle%></td>
+                  <td scope="row"><%=listing.jobLocation%></td>
+                  <td scope="row"><%=listing.jobType%></td>
+                  <td scope="row"><%=listing.jobDescription%></td>
+                  <td scope="row"><%=listing.ctc%></td>
+                  <td scope="row"><%=listing.lastDateToApply%></td>
+                  <!-- <td scope="row">
+                    <a href="/account/apply?listingId=<%=listing._id%>&stuId=<%=stuId%>" class="btn btn-outline-primary">Apply</a>
+                  </td> -->
                 </tr>
-                <tr>
-                  <td scope="row">Meta</td>
-                  <td scope="row">Gandhi Nagar</td>
-                  <td scope="row">job location</td>
-                  <td scope="row">Internship (I)</td>
-                  <td scope="row">Vapt</td>
-                  <td scope="row">pdf</td>
-                  <td scope="row">50LPA</td>
-                  <td scope="row">13/05/2024</td>
-                  <td scope="row">
-                    <a href="#" class="btn btn-outline-primary">Apply</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td scope="row">Meta</td>
-                  <td scope="row">Gandhi Nagar</td>
-                  <td scope="row">job location</td>
-                  <td scope="row">Internship (I)</td>
-                  <td scope="row">Vapt</td>
-                  <td scope="row">pdf</td>
-                  <td scope="row">50LPA</td>
-                  <td scope="row">13/05/2024</td>
-                  <td scope="row">
-                    <a href="#" class="btn btn-outline-primary">Apply</a>
-                  </td>
-                </tr>
+                <%});%>
               </tbody>
             </table>
           </div>

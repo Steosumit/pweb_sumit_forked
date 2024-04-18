@@ -4,29 +4,25 @@ const mongoose = require("mongoose");
 const studentSchema = new mongoose.Schema({
   isAudited: {
     type: Boolean,
-
   },
   isRegistered: {
     type: Boolean,
-    
   },
   course: {
     type: String,
-
   },
   fullname: {
     type: String,
-
   },
 
   fathername: {
     type: String,
-
+  },
+  mothername: {
+    type: String,
   },
   birthdate: {
     type: Date,
-
-
   },
   mobileno: {
     type: Number,
@@ -45,60 +41,46 @@ const studentSchema = new mongoose.Schema({
   },
   altmobileno: {
     type: Number,
-
   },
   email: {
     type: String,
     unique: true,
-
   },
   altemail: {
     type: String,
-
   },
   category: {
     type: String,
-
   },
   nationality: {
     type: String,
-
   },
   presentcountry: {
     type: String,
-
   },
   presentstate: {
     type: String,
-
   },
   presentdistrict: {
     type: String,
-
   },
   landmark: {
     type: String,
-
   },
   presentaddress: {
     type: String,
-
   },
   gender: {
     type: String,
-
   },
   disability: {
     type: String,
-
   },
   maritalstatus: {
     type: String,
-
   },
   enrollmentNo: {
     type: Number,
-
   },
   pincode: {
     type: Number,

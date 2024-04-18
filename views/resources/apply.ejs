@@ -1,0 +1,574 @@
+<link rel="stylesheet" href="/style.css" />
+<div class="regis-big-div">
+  <!-- <div class="left-login">
+    <div class="pop-out">
+      <a href="/"
+        ><img
+          loading="lazy"
+          src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
+          alt=""
+          width="300"
+      /></a>
+    </div>
+  </div> -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"
+  ></script>
+
+  <div class="down-regis">
+    <div class="resources-student-big-div">
+      <div class="content-div regis-content-div">
+        <div class="content-title container">
+          <h2 style="text-align: center">Registration Details : Student</h2>
+          <hr />
+          <h2>Personal Details</h2>
+          <br />
+
+          <div class="input-fields">
+            <div class="form-group">
+              <label for="Enrollment">Enrollment No.</label>
+              <input
+                type="text"
+                class="form-control"
+                id="Enrollment"
+                readonly
+                disabled
+                value="<%=stuDetails.enrollmentNo%>"
+                placeholder="Enrollment No."
+              />
+            </div>
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                id="username"
+                placeholder="username"
+                readonly
+                disabled
+                value="<%=stuDetails.username%>"
+              />
+            </div>
+            <div class="form-group">
+              <label for="firstname">Full Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstname"
+                placeholder="First Name"
+                disabled
+                readonly
+                value="<%=stuDetails.fullname%>"
+              />
+            </div>
+            <div class="form-group">
+              <label>Course</label>
+              <input
+                type="text"
+                class="form-control"
+                disabled
+                readonly
+                value="<%=stuDetails.course%>"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="fathername">Father's Name</label>
+              <input
+                type="text"
+                name="fathername"
+                class="form-control"
+                id="fathername"
+                placeholder="Father's Name"
+                readonly
+                disabled
+                value="<%=stuDetails.fathername%>"
+              />
+            </div>
+            <div class="form-group">
+              <label for="mothername">Mother's Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="mothername"
+                placeholder="Mother's Name"
+                readonly
+                disabled
+                value="<%=stuDetails.mothername%>"
+              />
+            </div>
+
+            <div class="form-group">
+              <div class="card-body">
+                <p class="regis-card-title">Gender</p>
+                <input
+                  type="text"
+                  class="form-control"
+                  readonly
+                  disabled
+                  value="<%=stuDetails.gender%>"
+                />
+              </div>
+              <div class="form-group">
+                <label for="birthdate">Birth Date</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="birthdate"
+                  name="birthdate"
+                  readonly
+                  disabled
+                  value="<%=stuDetails.birthdate%>"
+                />
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <p class="regis-card-title">Marital Status</p>
+                  <input
+                    type="text"
+                    class="form-control"
+                    readonly
+                    disabled
+                    value="<%=stuDetails.maritalstatus%>"
+                  />
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-body">
+                  <p class="regis-card-title">
+                    Are you a person with a disability?
+                  </p>
+                  <input
+                    type="text"
+                    class="form-control"
+                    readonly
+                    disabled
+                    value="<%=stuDetails.disability%>"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="mobno">Mobile Number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  disabled
+                  readonly
+                  id="mobno"
+                  name="mobileno"
+                  placeholder="Mobile Number"
+                  value="<%=stuDetails.mobileno%>"
+                />
+              </div>
+              <div class="form-group">
+                <label for="altmob">Alternate Mobile No</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="altmob"
+                  placeholder="Alternate Mobile No"
+                  name="altmobileno"
+                  readonly
+                  disabled
+                  value="<%=stuDetails.altmobileno%>"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  placeholder="Email"
+                  readonly
+                  disabled
+                  value="<%=stuDetails.email%>"
+                />
+              </div>
+              <div class="form-group">
+                <label for="altemail">Alternate Email </label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="altemail"
+                  placeholder="Alternate  Email "
+                  name="altemail"
+                  readonly
+                  disabled
+                  value="<%=stuDetails.altemail%>"
+                />
+              </div>
+              <div class="form-group">
+                <label for="category">Category Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="altemail"
+                  placeholder="Alternate  Email "
+                  name="altemail"
+                  readonly
+                  disabled
+                  value="<%=stuDetails.altemail%>"
+                />
+              </div>
+              <div class="form-group">
+                <label for="nationality">Nationality</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nationality"
+                  name="nationality"
+                  readonly
+                  disabled
+                  value="<%=stuDetails.nationality%>"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-div regis-content-div">
+          <div class="content-title container">
+            <hr />
+            <h2>Communication Details</h2>
+            <br />
+            <div class="comm-fields">
+              <div class="input-fields">
+                <div class="form-group">
+                  <label for="presentcountry">Present Country</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="presentcountry"
+                    name="presentcountry"
+                    readonly
+                    disabled
+                    value="<%=stuDetails.presentcountry%>"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="presentstate">Present State</label>
+
+                  <input
+                    type="text"
+                    name="presentstate"
+                    required
+                    id="presentstate"
+                    class="form-control"
+                    readonly
+                    disabled
+                    value="<%=stuDetails.presentstate%>"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="presentdistrict">Present District</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="presentdistrict"
+                    name="presentdistrict"
+                    readonly
+                    disabled
+                    value="<%=stuDetails.presentdistrict%>"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Landmark">Landmark</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Landmark"
+                    name="landmark"
+                    readonly
+                    disabled
+                    value="<%=stuDetails.landmark%>"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="presentaddress">Present Address</label>
+                  <textarea
+                    type="text"
+                    class="form-control"
+                    id="presentaddress"
+                    name="presentaddress"
+                    readonly
+                    disabled
+                    value="<%=stuDetails.presentaddress%>"
+                  >
+                  </textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="Pincode">Pincode/Zipcode</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    value="123322"
+                    id="Pincode"
+                    name="pincode"
+                    readonly
+                    disabled
+                    value="<%=stuDetails.pincode%>"
+                  />
+                </div>
+              </div>
+
+              <div class="input-fields">
+                <div class="form-group">
+                  <label for="presentcountryp">Permanent Country</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    readonly
+                    disabled
+                    id="presentcountryp"
+                    placeholder="Permanent Country"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="presentstatep">Permanent State</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    required
+                    id="presentstatep"
+                    placeholder="Permanent State"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="presentdistrictp">Permanent District</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="presentdistrictp"
+                    required
+                    placeholder="Permanent District"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="Landmarkp">Landmark</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Landmarkp"
+                    placeholder="Landmark"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="presentaddressp">Permanent Address</label>
+                  <textarea
+                    type="text"
+                    class="form-control"
+                    required
+                    id="presentaddressp"
+                    placeholder="Permanent Address"
+                  ></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="Pincodep">Pincode/Zipcode</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="Pincodep"
+                    placeholder="Pincode"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content-div regis-content-div" id="procedure">
+          <div class="content-title container">
+            <hr />
+            <h2>Education Details</h2>
+            <br />
+            <div class="comm-fields">
+              <div class="input-fields">
+                <div class="form-group">
+                  <label for="10th">10th Result</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    required
+                    id="10th"
+                    name="tenth"
+                    readonly
+                    disabled
+                    value="<%=stuDetails.tenth%>"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="12th">12th Result</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="12th"
+                    name="twelth"
+                    readonly
+                    disabled
+                    value="<%=stuDetails.twelth%>"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="lastsemcgpa">Last Sem CGPA</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="lastsemcgpa"
+                    name="lastsemcgpa"
+                    placeholder="CGPA"
+                    readonly
+                    disabled
+                    value="<%=stuDetails.lastsemcgpa%>"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-div regis-content-div" id="procedure">
+          <div class="content-title container">
+            <hr />
+            <h2>Declaration</h2>
+            <br />
+            1. I hereby declare that all information provided in this
+            registration form is true and accurate to the best of my knowledge,
+            and I understand that any false information may result in the
+            cancellation of my registration for the placement session 2024-25.
+            <br />
+            2. I have read, understood, and agree to abide by all the rules,
+            policies, and guidelines set forth by the Placement Cell and
+            participating companies for the duration of the placement session
+            2024-25. <br />
+            3. Furthermore, I authorize the Placement Cell to share my academic
+            and personal information with potential employers for the purpose of
+            recruitment during the placement session 2024-25. I acknowledge that
+            the Placement Cell and participating companies have the right to
+            conduct background checks, including but not limited to academic
+            records and employment history, to verify the information provided
+            in this registration form. <br />
+            4. I understand that failure to comply with the rules and policies
+            of the placement session may result in disciplinary action,
+            including but not limited to disqualification from further
+            participation in placement activities. <br />
+            5. I acknowledge that the Placement Cell reserves the right to
+            modify or update the rules and policies of the placement session,
+            and it is my responsibility to stay informed about any changes
+            communicated by the Placement Cell.
+
+            <br /><br />
+            <div class="form-check">
+              <label class="form-check-label" for="flexCheckDefault">
+                I Agree
+              </label>
+              <input
+                class="form-check-input"
+                checked
+                readonly
+                disabled
+                type="checkbox"
+                value=""
+                id="flexCheckDefault"
+              />
+            </div>
+            <br />
+            <br /><br /><br /><br /><br />
+            <form action="/account/apply" method="post">
+              <input
+                name="listingId"
+                readonly
+                style="display: none"
+                value="<%=listingId%>"
+              />
+
+              <input
+                name="stuId"
+                readonly
+                style="display: none"
+                value="<%=stuId%>"
+              />
+              <div class="form-group">
+                <label for="lastsemcgpa"
+                  >Upload Your Resume For This Listing
+                </label>
+                <input
+                  type="file"
+                  class="form-control"
+                  name="resumeLink"
+                  value="xyzpng"
+                />
+              </div>
+
+              <button class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript for form validation
+    (function () {
+      "use strict";
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll(".needs-validation");
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    })();
+  </script>
+
+  <script>
+    function copyPresentAddress() {
+      var presentcountry = document.getElementById("presentcountry").value;
+      var presentstate = document.getElementById("presentstate").value;
+      var presentdistrict = document.getElementById("presentdistrict").value;
+      var Landmark = document.getElementById("Landmark").value;
+      var presentaddress = document.getElementById("presentaddress").value;
+      var Pincode = document.getElementById("Pincode").value;
+      document.getElementById("presentcountryp").value = presentcountry;
+      document.getElementById("presentstatep").value = presentstate;
+      document.getElementById("presentdistrictp").value = presentdistrict;
+      document.getElementById("Landmarkp").value = Landmark;
+      document.getElementById("presentaddressp").value = presentaddress;
+      document.getElementById("Pincodep").value = Pincode;
+    }
+    document.getElementById("addcheck").addEventListener("change", function () {
+      if (this.checked) {
+        copyPresentAddress();
+      } else {
+        document.getElementById("presentcountryp").value = "";
+        document.getElementById("presentstatep").value = "";
+        document.getElementById("presentdistrictp").value = "";
+        document.getElementById("Landmarkp").value = "";
+        document.getElementById("presentaddressp").value = "";
+        document.getElementById("Pincodep").value = "";
+      }
+    });
+  </script>
+</div>
