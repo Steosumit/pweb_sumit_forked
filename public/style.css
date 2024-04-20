@@ -138,9 +138,9 @@ nav {
   height: 90%;
   box-shadow: rgb(255, 184, 157, 0.9) 0px 0px 100px, lightgray 0px 0px 00px;
 }
-.animated-hr-coral {
+/* .animated-hr-coral {
   border-bottom: dashed coral thick;
-}
+} */
 .animated-hr-purple {
   border-bottom: dashed purple thick;
 }

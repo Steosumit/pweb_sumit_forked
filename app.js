@@ -23,7 +23,13 @@ const OTP = require("./models/otp");
 const Listing = require("./models/listing");
 const Application = require("./models/application");
 const { v4: uuidv4 } = require("uuid");
-const { pid } = require("process");
+const axios = require("axios");
+const multer = require("multer");
+const { storage, cloudinary } = require("./cloudConfig");
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
+});
 
 const store = MongoStore.create({
   mongoUrl: dbUrl,
@@ -79,100 +85,23 @@ async function main() {
 }
 
 //middlewares
-let isAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.locals.isAuthenticated = true;
-    res.locals.isAdmin = req.user.username == process.env.ADMIN_USERNAME;
-  } else {
-    res.locals.isAuthenticated = false;
-    res.locals.isAdmin = false;
-  }
-  next();
-};
 
-let isLoggedIn = wrapAsync(async (req, res, next) => {
-  if (!req.isAuthenticated()) {
-    req.flash("error", "You must be logged in first !");
-    res.redirect("/");
-  } else {
-    return next();
-  }
-});
+const {
+  isAuthenticated,
+  isLoggedIn,
+  shallNotAuthenticated,
+  isVerified,
+  isThisAdmin,
+  isLoginFieldsFilled,
+  studentStayInDashboard,
+} = require("./middleware");
 
-let shallNotAuthenticated = wrapAsync(async (req, res, next) => {
-  if (req.isAuthenticated()) {
-    if (req.user.isAudited == true) {
-      return next();
-    } else {
-      req.flash("error", "You Must Log out First !");
-      res.redirect("/");
-    }
-  } else {
-    return next();
-  }
-});
-
-let isVerified = wrapAsync(async (req, res, next) => {
-  let result = await VerifiedUser.findOne({ bodyData: req.session.bodyData });
-  if (result) {
-    return next();
-  } else {
-    if (req.user.isAudited == true) {
-      return next();
-    } else {
-      req.flash("error", "Please verify your Email First !");
-      res.redirect("/");
-    }
-  }
-});
-let isThisAdmin = (req, res, next) => {
-  if (res.locals.isAdmin == true) {
-    return next();
-  } else {
-    req.flash("error", "You Must be Admin to access Admin Page !");
-    res.redirect("/");
-  }
-};
-let isLoginFieldsFilled = (req, res, next) => {
-  if (req.session.bodyData.username == "Student") {
-    if (
-      req.session.bodyData.stuname &&
-      req.session.bodyData.enrollnostu &&
-      req.session.bodyData.email &&
-      req.session.bodyData.stumobno &&
-      req.session.bodyData.coursename
-    ) {
-      return next();
-    } else {
-      req.flash("error", "Please Provide all Login Details !");
-      res.redirect("/otp-verify-page");
-    }
-  } else if (req.session.bodyData.email) {
-    return next();
-  } else {
-    req.flash("error", "Please Provide all Login Details !");
-    res.redirect("/otp-verify-page");
-  }
-};
-let studentStayInDashboard = (req, res, next) => {
-  if (
-    req.isAuthenticated() &&
-    res.locals.isAdmin == false &&
-    !(req.path === "/account") &&
-    !(req.path === "/logout") &&
-    !(req.path === "/register/stu") &&
-    !(req.path == "/account/sturegisdetails/") &&
-    !(req.path == "/account/apply")
-  ) {
-    res.redirect("/account");
-  } else {
-    return next();
-  }
-};
 app.use(isAuthenticated);
 app.use(studentStayInDashboard);
-app.listen(9090, () => {
-  console.log("server is listening to port 9090");
+
+
+app.listen(8080, () => {
+  console.log("server is listening to port 8080");
 });
 
 app.get("/", (req, res) => {
@@ -185,6 +114,7 @@ app.get("/", (req, res) => {
 // login
 
 app.get("/login-student", shallNotAuthenticated, (req, res) => {
+  // let reCaptchaClientKey = process.env.CAPTCHACLIENTKEY;
   res.render("auth/loginstu.ejs");
 });
 
@@ -203,6 +133,21 @@ app.post(
       req.flash("success", "Welcome to the Admin Dashboard !");
       res.redirect("/admin");
     } else {
+      //send the user back if captcha not done
+      // const postData = {
+      //   secret: process.env.CAPTCHASECRET,
+      //   response: req.body["g-recaptcha-response"],
+      // };
+
+      // let captchaValidationResponse = await axios
+      //   .post("https://www.google.com/recaptcha/api/siteverify", postData)
+      //   .then((response) => {
+      //     // console.log("Response:", response.data);
+      //   })
+      //   .catch((error) => {
+      //     console.error("Error in response:", error);
+      //   });
+
       req.flash("success", "Welcome to The Placement Cell !");
       res.redirect("/account");
     }
@@ -437,6 +382,10 @@ app.post(
   "/register/:user",
   shallNotAuthenticated,
   isVerified,
+  upload.fields([
+    { name: "tenthmarksheet", maxCount: 1 },
+    { name: "twelthmarksheet", maxCount: 1 },
+  ]),
   wrapAsync(async (req, res) => {
     let { user } = req.params;
 
@@ -458,6 +407,7 @@ app.post(
           console.log("Error finding user in Verified User ! ");
           res.redirect("/register/rec");
         }
+
         //validate the rec's regis form using joi on server side
         // const { error } = recruiterSchema.validate(req.body);
         // if (error) {
@@ -687,11 +637,17 @@ National Forensic Science University.
       }
     } else if (user == "stu") {
       try {
+        //checking the joi validation
         // const { error } = studentSchema.validate(req.body);
         // if (error) {
         //   return res.status(400).send(error.details[0].message);
         // }
+
+        let tenthMarksheetUrl = req.files.tenthmarksheet[0].path;
+        let twelthMarksheetUrl = req.files.twelthmarksheet[0].path;
         const newStudentDetails = {
+          tenthMarksheetUrl: tenthMarksheetUrl,
+          twelthMarksheetUrl: twelthMarksheetUrl,
           isRegistered: true,
           disability: req.body.disability,
           fathername: req.body.fathername,
@@ -726,7 +682,7 @@ National Forensic Science University.
             update,
             options
           );
-          // console.log("updated stu:" + updatedStudent);
+          console.log("updated stu:" + updatedStudent);
           res.redirect("/account");
         } catch (e) {
           console.log("error in updating student :" + e);
@@ -816,13 +772,15 @@ app.get(
     });
   })
 );
-
 app.post(
   "/account/apply",
+  upload.single("resumeLink"),
+  // resumeToCloudinary,
   wrapAsync(async (req, res) => {
     let { listingId, stuId } = req.body;
     //let resumeLink = upload file
-    let resumeLink = "hhe";
+    let resumeLink = req.file.path;
+
     let prevapp = await Application.find({
       stuId: stuId,
       listingId: listingId,
@@ -1012,6 +970,8 @@ app.get(
       isRegistered: false,
       enrollmentNo: stuVerified.bodyData.enrollnostu,
       fullname: stuVerified.bodyData.stuname,
+      tenthMarksheetUrl: "",
+      twelthMarksheetUrl: "",
       fathername: "",
       mothername: "",
       course: stuVerified.bodyData.coursename,

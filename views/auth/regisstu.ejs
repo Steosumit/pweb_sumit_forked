@@ -17,6 +17,7 @@
     class="needs-validation"
     action="/register/stu"
     method="post"
+    enctype="multipart/form-data"
   >
     <div class="down-regis">
       <div class="resources-student-big-div">
@@ -545,6 +546,16 @@
                   />
                 </div>
                 <div class="form-group">
+                  <label for="10thupload">Upload 10th Marksheet</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    required
+                    id="10thupload"
+                    name="tenthmarksheet"
+                  />
+                </div>
+                <div class="form-group">
                   <label for="12th">12th Result</label>
                   <input
                     type="number"
@@ -554,6 +565,16 @@
                     required
                     placeholder="Percentage"
                     value="12"
+                  />
+                </div>
+                  <div class="form-group">
+                  <label for="12thupload">Upload 12th Marksheet</label>
+                  <input
+                    type="file"
+                    class="form-control"
+                    required
+                    id="12thupload"
+                    name="twelthmarksheet"
                   />
                 </div>
                 <div class="form-group">

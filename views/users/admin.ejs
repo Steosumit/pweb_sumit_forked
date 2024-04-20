@@ -1,4 +1,4 @@
-<html lang="en" class="hydrated">
+ <%-include("../includes/flash.ejs")%><html lang="en" class="hydrated">
   <head>
     <meta charset="UTF-8" />
     <style data-styles="">
@@ -11,7 +11,7 @@
     </style>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Admin Dashboard</title>
+    <title>Admin Dashboard</title>
     <!-- ======= Styles ====== -->
     <!-- <link rel="stylesheet" href="assets/css/style.css"> -->
     <link
@@ -72,15 +72,18 @@
         /* background: var(--blue);   */
         background-image: linear-gradient(
           to right top,
-          darkblue,
-          rgb(3, 120, 109)
+          rgb(72, 72, 192),
+          rgb(48, 167, 155)
         );
 
         transition: 0.5s;
         overflow: hidden;
       }
       .navigation.active {
-        width: 80px;
+        width: 66px;
+        .icon-text {
+          display: none;
+        }
       }
 
       .navigation ul {
@@ -828,7 +831,9 @@
                 src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1713022989/nfsu1_w88qok.png"
                 alt="" width=40px" height="60px" style="padding-top: 7px; " />
               </span>
-              <span style="padding-top: 12px; padding-left: 8px; color: wheat"
+              <span
+                class="icon-text"
+                style="padding-top: 12px; padding-left: 8px; color: wheat"
                 ><h4>Placement Cell <br /><span>SCSDF </span></h4></span
               >
             </li>

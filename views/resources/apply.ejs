@@ -486,7 +486,7 @@
             </div>
             <br />
             <br /><br /><br /><br /><br />
-            <form action="/account/apply" method="post">
+            <form action="/account/apply" method="post" enctype="multipart/form-data">
               <input
                 name="listingId"
                 readonly
@@ -508,6 +508,7 @@
                   type="file"
                   class="form-control"
                   name="resumeLink"
+                  required
                   value="xyzpng"
                 />
               </div>
