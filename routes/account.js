@@ -3,7 +3,7 @@ const router = express.Router({ mergeParams: true });
 const accountController = require("../controllers/account");
 const wrapAsync = require("../utils/wrapasync");
 const { isLoggedIn } = require("../middleware");
-const { storage, cloudinary } = require("../cloudConfig");
+const { storage } = require("../cloudConfig");
 
 const multer = require("multer");
 const upload = multer({

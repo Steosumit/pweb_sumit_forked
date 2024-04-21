@@ -4,7 +4,7 @@ const VerifiedUser = require("../models/verifiedUser");
 const Listing = require("../models/listing");
 const Application = require("../models/application");
 const { v4: uuidv4 } = require("uuid");
-
+const nodemailer = require("nodemailer");
 module.exports.showAdmin = async (req, res) => {
   let allRecruitersPending = await Recruiter.find({ isAudited: false });
   let allStudentsPending = await VerifiedUser.find({

@@ -29,6 +29,18 @@ const upload = multer({
   storage: storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
 });
+//middlewares
+const {
+  isAuthenticated,
+  isLoggedIn,
+  shallNotAuthenticated,
+  isVerified,
+  isThisAdmin,
+  isLoginFieldsFilled,
+  studentStayInDashboard,
+  isTwoFactorDone,
+} = require("./middleware");
+
 const adminRouter = require("./routes/admin");
 const accountRouter = require("./routes/account");
 const registrationRouter = require("./routes/registration");
@@ -36,6 +48,7 @@ const teamRouter = require("./routes/team");
 const communityRouter = require("./routes/community");
 const resourcesRouter = require("./routes/resources");
 const authRouter = require("./routes/authentication");
+
 
 const store = MongoStore.create({
   mongoUrl: dbUrl,
@@ -89,18 +102,6 @@ main()
 async function main() {
   await mongoose.connect(dbUrl);
 }
-
-//middlewares
-const {
-  isAuthenticated,
-  isLoggedIn,
-  shallNotAuthenticated,
-  isVerified,
-  isThisAdmin,
-  isLoginFieldsFilled,
-  studentStayInDashboard,
-  isTwoFactorDone,
-} = require("./middleware");
 
 app.use(isAuthenticated);
 app.use(studentStayInDashboard);

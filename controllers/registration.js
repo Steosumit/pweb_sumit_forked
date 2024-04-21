@@ -1,3 +1,8 @@
+
+const nodemailer = require("nodemailer");
+const Student = require("../models/student");
+const Recruiter = require("../models/recruiter");
+const VerifiedUser = require("../models/verifiedUser");
 module.exports.renderRegistrationForm = (req, res) => {
   try {
     let { user } = req.params;

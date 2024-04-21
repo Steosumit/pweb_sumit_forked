@@ -1,3 +1,6 @@
+const Student = require("../models/student");
+const Listing = require("../models/listing");
+const Application = require("../models/application");
 module.exports.showAccount = async (req, res) => {
   let { isRegistered, _id, course } = req.user;
 

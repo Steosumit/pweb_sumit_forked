@@ -1,3 +1,8 @@
+const nodemailer = require("nodemailer");
+const Student = require("../models/student");
+const VerifiedUser = require("../models/verifiedUser");
+const OTP = require("../models/otp");
+
 module.exports.renderLoginPage = (req, res) => {
   // let reCaptchaClientKey = process.env.CAPTCHACLIENTKEY;
   res.render("auth/loginstu.ejs");
@@ -274,5 +279,3 @@ module.exports.verifyOtp = async (req, res) => {
     });
   }
 };
-
-
