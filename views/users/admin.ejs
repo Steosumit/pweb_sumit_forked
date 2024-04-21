@@ -1,4 +1,5 @@
- <%-include("../includes/flash.ejs")%><html lang="en" class="hydrated">
+<%-include("../includes/flash.ejs")%>
+<html lang="en" class="hydrated">
   <head>
     <meta charset="UTF-8" />
     <style data-styles="">
@@ -824,7 +825,7 @@
     <div class="onetype" id="allofyou">
       <div class="navigation">
         <ul>
-          <a href="/" style="text-decoration: none">
+          <a href="/" style="text-decoration: none" id="homelogo">
             <li style="display: flex; justify-content: center">
               <span class="icon">
                 <img
@@ -933,7 +934,7 @@
             </a>
           </li>
 
-          <li>
+          <li id="signoutli">
             <a href="#signout">
               <span class="icon">
                 <ion-icon
@@ -2393,18 +2394,41 @@
           </div>
         </section>
         <section id="signout">
-          <a href="/logout">
+          <!-- <a href="/logout">
             <button class="btn btn-primary">Sign out as Admin</button>
           </a>
           <a href="/">
             <button class="btn btn-primary">Home</button>
-          </a>
+          </a> -->
         </section>
       </div>
     </div>
 
     <!-- =========== Scripts =========  -->
     <!-- <script src="assets/js/main.js"></script> -->
+
+    <script>
+      let signoutli = document.querySelector("#signoutli");
+
+      signoutli.addEventListener("click", () => {
+        if (window.confirm("Are you sure want to Sign Out?")) {
+          let signOutForm = document.createElement("form");
+          signOutForm.action = "/logout";
+          document.querySelector("body").appendChild(signOutForm);
+          signOutForm.submit();
+        } else {
+          return;
+        }
+      });
+
+      let homeLogo = document.querySelector("#homelogo");
+      homeLogo.addEventListener("click", () => {
+        let homeRedirectForm = document.createElement("form");
+        homeRedirectForm.action = "/";
+        document.querySelector("body").appendChild(homeRedirectForm);
+        homeRedirectForm.submit();
+      });
+    </script>
 
     <!-- ====== ionicons ======= -->
     <script

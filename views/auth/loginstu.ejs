@@ -19,7 +19,7 @@
       <br />
       <h5 class="login-identity"><p>Student</p></h5>
       <br />
-      <form id="captchaForm" action="/login-student" method="post">
+      <form id="captchaForm" action="/auth/twofactorauth" method="post">
         <input
           type="text"
           name="username"
@@ -80,7 +80,7 @@
 
       <br />
       <div class="register-here">
-        <a href="/otp-initialize/?username=Student"
+        <a href="/auth/otp-initialize/?username=Student"
           >Don't have an account? Register Here</a
         >
       </div>

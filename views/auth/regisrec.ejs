@@ -1,4 +1,5 @@
- <%-include("../includes/flash.ejs")%><html lang="en">
+<%-include("../includes/flash.ejs")%>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -162,15 +163,20 @@
                   </div>
                   <div class="form-group">
                     <label for="NatureofBusiness">Nature of Business</label>
-                    <input
+                    <select
                       type="text"
                       class="form-control"
                       name="natureofbusiness"
-                      value="aa"
                       id="NatureofBusiness"
                       placeholder="Nature of Business"
                       required
-                    />
+                    >
+                      <option value="productbased" selected>
+                        Product Based
+                      </option>
+                      <option value="servicebased">Service Based</option>
+                      <option value="government">Government</option>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label for="Website">Website Link</label>
@@ -198,15 +204,32 @@
                   </div>
                   <div class="form-group">
                     <label for="Category">Category of Business</label>
-                    <input
+                    <select
                       type="text"
                       name="category"
                       class="form-control"
                       id="Category"
                       placeholder="Category of Business"
                       required
-                      value="hehe"
-                    />
+                    >
+                      <option value="CyberSecurity" selected>Cyber Security</option>
+                      <option value="Financeandbanking">
+                        Finance and banking
+                      </option>
+                      <option value="Agriculture">Agriculture</option>
+                      <option value="Hospitalityandtourism">
+                        Hospitality and tourism
+                      </option>
+                      <option value="Transportationandlogistics">
+                        Transportation and logistics
+                      </option>
+                      <option value="Healthcare">Healthcare</option>
+                      <option value="Retail">Retail</option>
+                      <option value="Manufacturing">Manufacturing</option>
+                      <option value="Informationtechnology">
+                        Information technology
+                      </option>
+                    </select>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,6 @@
 const wrapAsync = require("./utils/wrapasync");
 const VerifiedUser = require("./models/verifiedUser");
-
+const OTP = require("./models/otp");
 module.exports.isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
     res.locals.isAuthenticated = true;
@@ -94,3 +94,17 @@ module.exports.studentStayInDashboard = (req, res, next) => {
     return next();
   }
 };
+
+module.exports.isTwoFactorDone = wrapAsync(async (req, res, next) => {
+  let result = await OTP.findOne({
+    email: req.session.bodyData.email,
+    code: req.body.otp,
+  });
+  if (result) {
+    await OTP.deleteMany({ email: req.session.bodyData.email });
+    return next();
+  } else {
+    req.flash("error", "Please Enter Correct OTP.");
+    res.redirect("/login-student/verifyotp");
+  }
+});

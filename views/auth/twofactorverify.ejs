@@ -24,18 +24,36 @@
         /></a>
       </div>
       <br />
-      <h4 style="text-align: center">Please Enter the OTP For Registration</h4>
+      <h4 style="text-align: center">
+        Please Enter OTP For 2-Factor-Authentication
+      </h4>
       <br />
-      <h5 class="login-identity"><p><%=username%></p></h5>
+      <h5 class="login-identity"><p>Student</p></h5>
 
-      <form action="/auth/otp-verify" method="post">
+      <form action="/auth/login-student" method="post">
         <input
-          type="email"
+          type="text"
+          name="username"
+          readonly
           style="display: none"
-          name="email"
+          value="<%=username%>"
+        />
+        <input
+          type="text"
+          name="password"
+          readonly
+          style="display: none"
+          value="<%=password%>"
+        />
+        <br />
+        <input
+          type="text"
+          readonly
+          disabled
+          style="text-align: center"
           value="<%=email%>"
         />
-        <br /><br />
+        <br />
         <input
           type="tel"
           name="otp"
@@ -44,12 +62,6 @@
         />
         <br /><br />
         <button class="btn btn-lg btn-primary" type="submit">Verify</button>
-        <h6>
-          <br />
-          <a href="/auth/resendotp/?email=<%=email%>&username=<%=username%>"
-            >Resend OTP</a
-          >
-        </h6>
       </form>
 
       <br /><br />

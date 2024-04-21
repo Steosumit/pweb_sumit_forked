@@ -32,7 +32,7 @@
       type="image/x-icon"
       href="https://upload.wikimedia.org/wikipedia/en/9/96/National_Forensic_Sciences_University_Logo.png"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
   </head>
   <body>
     <%-include("../includes/navbar.ejs")%> <%-include("../includes/flash.ejs")%>
@@ -48,7 +48,8 @@
           window.location.pathname === "/register/stu" ||
           window.location.pathname == "/otp-initialize/" ||
           window.location.pathname === "/otp-verify" ||
-          window.location.pathname == "/otp-verify-page"
+          window.location.pathname == "/otp-verify-page" ||
+          window.location.pathname == "/login-student/verifyotp"
         ) {
           navbar.classList.add("navbar-login");
           footer.classList.add("footer-login");

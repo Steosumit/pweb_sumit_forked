@@ -11,7 +11,7 @@
         align-items: center;
       "
     >
-      <div class="login-img-div" style="justify-self: start;">
+      <div class="login-img-div" style="justify-self: start">
         <a href="/"
           ><img
             src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
@@ -34,7 +34,7 @@
     </div>
     <div class="col-md-8">
       <%if(username == "Recruiter"){%>
-      <form action="/sendotp" method="post">
+      <form action="/auth/sendotp" method="post">
         <label style="width: 100%"
           ><h6>Email ID</h6>
           <br />
@@ -58,7 +58,7 @@
         </button>
       </form>
       <%}else{%>
-      <form action="/sendotp" method="post">
+      <form action="/auth/sendotp" method="post">
         <input
           type="text"
           name="username"
