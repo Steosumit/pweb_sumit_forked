@@ -2,6 +2,9 @@ const { string } = require("joi");
 const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose = require("mongoose");
 const studentSchema = new mongoose.Schema({
+  haveResetPass: {
+    type: Boolean,
+  },
   tenthMarksheetUrl: {
     type: String,
   },

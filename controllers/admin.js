@@ -5,12 +5,17 @@ const Listing = require("../models/listing");
 const Application = require("../models/application");
 const { v4: uuidv4 } = require("uuid");
 const nodemailer = require("nodemailer");
+
 module.exports.showAdmin = async (req, res) => {
   let allRecruitersPending = await Recruiter.find({ isAudited: false });
   let allStudentsPending = await VerifiedUser.find({
     "bodyData.username": "Student",
   });
-  let allRegisteredRecruiters = await Recruiter.find({ isAudited: true });
+  let allRegisteredRecruiters = await Recruiter.find({ isRegistered: true });
+  let allAuditedRecruiters = await Recruiter.find({
+    isAudited: true,
+    isRegistered: false,
+  });
   let allAuditedStudents = await Student.find({
     isAudited: true,
     isRegistered: false,
@@ -30,6 +35,7 @@ module.exports.showAdmin = async (req, res) => {
 
   res.render("users/admin.ejs", {
     allRecruitersPending: allRecruitersPending,
+    allAuditedRecruiters: allAuditedRecruiters,
     allStudentsPending: allStudentsPending,
     allRegisteredRecruiters: allRegisteredRecruiters,
     allAuditedStudents: allAuditedStudents,
@@ -76,13 +82,63 @@ module.exports.markRecAudit = async (req, res) => {
 
     // Update the isAudited field to true
     recDetails.isAudited = true;
+    recDetails.isRegistered = false;
 
     // Save the changes to the database
     await recDetails.save();
 
+    //Send Email to the Recruiter informing him of pursuing further detailed registration
+
+    let regisLink = `https://placementcellnfsu.onrender.com/register/rec?recid=${recid}`;
+    let message = `<p style="color: red;">Dear Respected Recruiter,</p>
+
+<br/>
+We have audited and accepted your participation request associated with your account in The NFSU School of Cyber Security and Digital Forensics Placement Cell. We Request you to Please Follow the Given Link below and complete the <strong>Remaining Registration Procedure.</strong>.
+<br/><br/>
+ <strong>Following is The Registration Link</strong>:
+<br/><br/>
+<h1>
+<strong>${regisLink}</strong></h1>
+<br/>
+You can paste the above Link in the Browser's address bar.
+ <br/><br/>
+ Please Complete Your Remaining Registration Procedure as soon as possible.
+ <br/><br/>
+<strong>Thank you,</strong><br/>
+<p style="color: red;">The Placement Team .</p>
+<br/>
+<div>
+<img
+      src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
+      style="border-radius:2rem;width:60%;"
+      alt="..."
+    />
+</div>`;
+
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "smile.itsadil@gmail.com",
+        pass: process.env.APP_PASSWORD,
+      },
+    });
+    const mailOptions = {
+      from: "ThePlacementCell@NFSU<smile.itsadil@gmail.com>",
+      to: recDetails.headhremail,
+      subject: "Registration Pending Information",
+      html: message,
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(error);
+        res.status(500).send("Failed to send Registration Mail");
+      } else {
+        req.flash("success", "Recruiter Updated Successfully !");
+        res.redirect("/admin");
+      }
+    });
+
     // Respond with a success message
-    req.flash("success", "Recruiter Updated Successfully !");
-    res.redirect("/admin");
   } catch (error) {
     // If an error occurs during database query or save operation,
     // return a 500 Internal Server Error response
@@ -148,6 +204,7 @@ module.exports.markStuAudit = async (req, res) => {
   const newStudent = new Student({
     isAudited: true,
     isRegistered: false,
+    haveResetPass: false,
     enrollmentNo: stuVerified.bodyData.enrollnostu,
     fullname: stuVerified.bodyData.stuname,
     tenthMarksheetUrl: "",

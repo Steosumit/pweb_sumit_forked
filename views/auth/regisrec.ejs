@@ -155,28 +155,23 @@
                       type="text"
                       class="form-control"
                       name="companyname"
-                      value="aa"
+                      value="<%=companyname%>"
                       id="CompanyName"
                       placeholder="Company Name"
-                      required
+                      readonly
                     />
                   </div>
                   <div class="form-group">
                     <label for="NatureofBusiness">Nature of Business</label>
-                    <select
+                    <input
                       type="text"
                       class="form-control"
+                      readonly
                       name="natureofbusiness"
                       id="NatureofBusiness"
                       placeholder="Nature of Business"
-                      required
-                    >
-                      <option value="productbased" selected>
-                        Product Based
-                      </option>
-                      <option value="servicebased">Service Based</option>
-                      <option value="government">Government</option>
-                    </select>
+                      value="<%=natureofbusiness%>"
+                    />
                   </div>
                   <div class="form-group">
                     <label for="Website">Website Link</label>
@@ -186,8 +181,8 @@
                       name="websitelink"
                       id="Website"
                       placeholder="Website Link"
-                      required
-                      value="hehe"
+                      readonly
+                      value="<%=websitelink%>"
                     />
                   </div>
                   <div class="form-group">
@@ -198,38 +193,21 @@
                       name="postaladdress"
                       id="PostalAddress"
                       placeholder="Postal Address"
-                      required
-                      value="hehe"
+                      readonly
+                      value="<%=postaladdress%>"
                     />
                   </div>
                   <div class="form-group">
                     <label for="Category">Category of Business</label>
-                    <select
+                    <input
                       type="text"
                       name="category"
                       class="form-control"
                       id="Category"
                       placeholder="Category of Business"
-                      required
-                    >
-                      <option value="CyberSecurity" selected>Cyber Security</option>
-                      <option value="Financeandbanking">
-                        Finance and banking
-                      </option>
-                      <option value="Agriculture">Agriculture</option>
-                      <option value="Hospitalityandtourism">
-                        Hospitality and tourism
-                      </option>
-                      <option value="Transportationandlogistics">
-                        Transportation and logistics
-                      </option>
-                      <option value="Healthcare">Healthcare</option>
-                      <option value="Retail">Retail</option>
-                      <option value="Manufacturing">Manufacturing</option>
-                      <option value="Informationtechnology">
-                        Information technology
-                      </option>
-                    </select>
+                      readonly
+                      value="<%=category%>"
+                    />
                   </div>
                 </div>
               </div>
@@ -283,7 +261,8 @@
                               type="text"
                               class="form-control"
                               name="headhrname"
-                              value="3"
+                              readonly
+                              value="<%=headhrname%>"
                               placeholder="Name"
                               required
                             />
@@ -303,7 +282,8 @@
                             <input
                               type="tel"
                               class="form-control"
-                              value="3"
+                              value="<%=headhrmobno%>"
+                              readonly
                               name="headhrmobno"
                               placeholder="Mobile no"
                               required
@@ -325,7 +305,8 @@
                               type="email"
                               class="form-control"
                               name="headhremail"
-                              value="<%=email%>"
+                              value="<%=headhremail%>"
+                              readonly
                               placeholder="Email Id"
                               required
                             />

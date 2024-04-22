@@ -7,6 +7,7 @@ const {
   shallNotAuthenticated,
   isTwoFactorDone,
   isLoginFieldsFilled,
+  isPassResetEligible,
 } = require("../middleware");
 const wrapAsync = require("../utils/wrapasync");
 
@@ -50,5 +51,12 @@ router.route("/resendotp").get(wrapAsync(authenticationController.resendOtp));
 router
   .route("/otp-verify")
   .post(isLoginFieldsFilled, wrapAsync(authenticationController.verifyOtp));
+
+router
+  .route("/resetpass")
+  .get(authenticationController.renderResetPass)
+  .post(wrapAsync(authenticationController.sendResetPassOtp))
+  .put(wrapAsync(authenticationController.verifyResetPassOtp))
+  .patch(wrapAsync(authenticationController.makeResetPass));
 
 module.exports = router;

@@ -6,6 +6,7 @@ const recruiterSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  isRegistered: { type: Boolean, required: true },
   companyname: { type: String },
   natureofbusiness: { type: String },
   websitelink: { type: String },

@@ -15,9 +15,10 @@ router
   .route("/")
   .get(
     shallNotAuthenticated,
-    isVerified,
+      isVerified,
+    wrapAsync(
     registrationController.renderRegistrationForm
-  )
+  ))
   .post(
     shallNotAuthenticated,
     isVerified,

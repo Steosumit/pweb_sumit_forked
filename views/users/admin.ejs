@@ -1977,11 +1977,11 @@
             </div>
             <!-- ================= New Customers ================ -->
           </div>
-          <div class="recentStudents">
+          <div class="details">
             <div class="recentCustomers">
               <div class="recentOrders">
                 <div class="cardHeader">
-                  <h2>Company Registrations Pending</h2>
+                  <h2>Audited Companies</h2>
                   <!-- <a href="#" class="btn"
                     ><input
                       type="text"
@@ -2009,13 +2009,70 @@
                     </thead>
 
                     <tbody>
-                      <% allRecruitersPending.forEach(recruiter => { %>
+                      <% allAuditedRecruiters.forEach(recruiter => { %>
                       <tr>
                         <td><%= recruiter.companyname %></td>
                         <td><%= recruiter.jobtitle %></td>
                         <td><%= recruiter.jobtype %></td>
                         <td><%= recruiter.JobDescription %></td>
                         <td><%= recruiter.tentativenoofhires %></td>
+                        <td>
+                          <a
+                            href="/admin/recdetails/<%= recruiter._id %>?noAuditNeeded=true"
+                          >
+                            <button>See Details</button>
+                          </a>
+                        </td>
+                      </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- ================= New Customers ================ -->
+          </div>
+          <div class="recentStudents">
+            <div class="recentCustomers">
+              <div class="recentOrders">
+                <div class="cardHeader">
+                  <h2>Company Auditing Pending</h2>
+                  <!-- <a href="#" class="btn"
+                    ><input
+                      type="text"
+                      style="
+                        border-radius: 10px;
+                        margin: 5px;
+                        padding: 3px;
+                        font-size: 14px;
+                        width: 150px;
+                      "
+                      placeholder="Search"
+                    />
+                  </a> -->
+                </div>
+                <div style="height: 500px; overflow-y: scroll">
+                  <table>
+                    <thead>
+                      <tr>
+                        <td>Company Name</td>
+                        <td>Nature of Business</td>
+                        <td>Category</td>
+                        <td>HR Mobile No.</td>
+                        <td>HR Email</td>
+                        <td>Postal Address</td>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <% allRecruitersPending.forEach(recruiter => { %>
+                      <tr>
+                        <td><%= recruiter.companyname %></td>
+                        <td><%= recruiter.natureofbusiness %></td>
+                        <td><%= recruiter.category %></td>
+                        <td><%= recruiter.headhrmobno %></td>
+                        <td><%=recruiter.headhremail%></td>
+                        <td><%= recruiter.postaladdress %></td>
                         <td>
                           <a href="/admin/recdetails/<%= recruiter._id %>">
                             <button>See Details</button>
@@ -2413,7 +2470,7 @@
       signoutli.addEventListener("click", () => {
         if (window.confirm("Are you sure want to Sign Out?")) {
           let signOutForm = document.createElement("form");
-          signOutForm.action = "/logout";
+          signOutForm.action = "/auth/logout";
           document.querySelector("body").appendChild(signOutForm);
           signOutForm.submit();
         } else {

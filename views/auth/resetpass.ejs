@@ -1,0 +1,117 @@
+<%layout("/layouts/boilerplate.ejs")%>
+
+<div class="login-big-div login-stu">
+  <div class="right-login">
+    <div class="login-card pop-out">
+      <div style="text-align: center">
+        <a href="/"
+          ><img
+            src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
+            loading="lazy"
+            width="250"
+            alt=""
+        /></a>
+      </div>
+      <br />
+      <h3 style="font-size: 1.5rem; text-align: center">Reset Password</h3>
+      <br />
+      <h5 class="login-identity"><p>Student</p></h5>
+      <%if(resentOtpVerified == false){%> <%if(otpSent == true){%>
+      <form action="/auth/resetpass?_method=PUT" method="post" id="verifyResendPassOtpForm">
+        <input
+          type="number"
+          name="otp"
+          required
+          style="text-align: center"
+          placeholder="Enter Your OTP "
+        />
+
+        <br />
+        <button class="btn btn-primary">Verify OTP</button>
+      </form>
+      <%}else{%>
+      <form action="/auth/resetpass" method="post">
+        <input
+          type="email"
+          name="email"
+          required
+          style="text-align: center"
+          placeholder="Enter Your Email "
+        />
+        <br />
+        <button class="btn btn-primary">Send OTP</button>
+      </form>
+      <%}%>
+      <br />
+      <input
+        type="password"
+        style="text-align: center"
+        name="newpassword"
+        disabled
+        placeholder="Enter New Password"
+      />
+      <br />
+
+      <br />
+      <!-- <button
+          class="g-recaptcha btn btn-lg btn-primary"
+          data-sitekey=""
+          data-callback="onSubmit"
+          data-action="submit"
+        >
+          Sign-In
+        </button> -->
+      <!-- <div
+          class="g-recaptcha"
+          required
+          data-sitekey=""
+          data-action="LOGIN"
+        ></div>
+        <br /> -->
+      <button
+        class="btn btn-primary"
+        style="text-align: center; width: 100%"
+        type="submit"
+        disabled
+      >
+        Reset Password
+      </button>
+      <%}else if(resentOtpVerified){%>
+      <br />
+      <form action="/auth/resetpass?_method=PATCH" method="post">
+        <input
+          type="password"
+          style="text-align: center"
+          name="password"
+          required
+          placeholder="Enter New Password"
+        />
+        <br />
+        <br />
+        <!-- <button
+          class="g-recaptcha btn btn-lg btn-primary"
+          data-sitekey=""
+          data-callback="onSubmit"
+          data-action="submit"
+        >
+          Sign-In
+        </button> -->
+        <!-- <div
+          class="g-recaptcha"
+          required
+          data-sitekey=""
+          data-action="LOGIN"
+        ></div>
+        <br /> -->
+        <button
+          class="btn btn-primary"
+          style="text-align: center; width: 100%"
+          type="submit"
+        >
+          Reset Password
+        </button>
+      </form>
+      <%}%>
+    </div>
+  </div>
+</div>

@@ -42,13 +42,8 @@
         var navbar = document.querySelector(".navbar");
         let footer = document.querySelector(".container-big-footer");
         if (
-          window.location.pathname === "/auth/login-student" ||
-          window.location.pathname === "/register/rec" ||
-          window.location.pathname === "/register/stu" ||
-          window.location.pathname == "/auth/otp-initialize/" ||
-          window.location.pathname === "/auth/otp-verify" ||
-          window.location.pathname == "/auth/otp-verify-page" ||
-          window.location.pathname == "/auth/login-student/verifyotp"
+          window.location.pathname.startsWith("/auth/") ||
+          window.location.pathname.startsWith("/register/")
         ) {
           navbar.classList.add("navbar-login");
           footer.classList.add("footer-login");

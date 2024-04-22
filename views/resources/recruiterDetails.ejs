@@ -203,6 +203,7 @@
                 <br />
                 <div class="comm-fields">
                   <div class="input-fields" style="overflow-x: scroll">
+
                     <table class="table table-striped">
                       <thead>
                         <tr>
@@ -288,8 +289,11 @@
                               value="<%=recruiter.headhremail%>"
                               placeholder="Email Id"
                               required
+                              id="recruiterHeadHrEmail"
                             />
                           </td>
+
+
                           <td>
                             <textarea  readonly
                               type="text"
@@ -302,6 +306,7 @@
                             >
                           </td>
                         </tr>
+
                         <tr>
                           <td>
                             <h5 style="text-align: center">POC 1</h5>
@@ -428,6 +433,7 @@
                         </tr>
                       </tbody>
                     </table>
+                    <button id="copyRecruiterEmailBtn" class="btn btn-primary">Copy HR's Email</button>
                   </div>
                 </div>
               </div>
@@ -2054,19 +2060,31 @@ value="virtual"
                 <div class="submit-btn">
                   <button
                     class="btn btn-lg btn-success"
-                    id="form-btn-regisrec"
                     style="margin-bottom: 5rem"
                   >
                     Mark as Audited
                   </button>
                 </div>
-      </form><%}%>
+      </form>
+
+
+
+      <%}%>
 
               </div>
             </div>
           </div>
         </div>
     </div>
+
+   <script>
+  let copyRecruiterEmailBtn = document.getElementById("copyRecruiterEmailBtn");
+  let recruiterHeadHrEmail = document.getElementById("recruiterHeadHrEmail");
+
+  copyRecruiterEmailBtn.addEventListener("click", (event) => {
+    navigator.clipboard.writeText(recruiterHeadHrEmail.value);
+  });
+</script>
 
     <script>
       // JavaScript for form validation

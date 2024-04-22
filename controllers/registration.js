@@ -1,9 +1,8 @@
-
 const nodemailer = require("nodemailer");
 const Student = require("../models/student");
 const Recruiter = require("../models/recruiter");
 const VerifiedUser = require("../models/verifiedUser");
-module.exports.renderRegistrationForm = (req, res) => {
+module.exports.renderRegistrationForm = async (req, res) => {
   try {
     let { user } = req.params;
     //3 things stored
@@ -15,9 +14,34 @@ module.exports.renderRegistrationForm = (req, res) => {
 
     //recruiter is successfully stored in db with isAudited == false but student is just stored in VerifiedUser model with 5 UserFields and will shown in admin dash from that model only , its not saved in Student model as of yet
     if (user == "rec") {
-      res.render("auth/regisrec.ejs", { email: req.session.bodyData.email });
+      let { recid } = req.query;
+      let recDetails = await Recruiter.findOne({ _id: recid });
+      if (!recDetails) {
+        req.flash(
+          "error",
+          "Please Enter a Valid Recruiter's Registration URL !"
+        );
+        res.redirect("/");
+      }
+      if (recDetails.isRegistered == true) {
+        req.flash("success", "You already have been Registered !");
+        res.redirect("/");
+      }
+
+      req.session.recid = recid;
+
+      res.render("auth/regisrec.ejs", {
+        headhremail: recDetails.headhremail,
+        headhrname: recDetails.headhrname,
+        headhrmobno: recDetails.headhrmobno,
+        postaladdress: recDetails.postaladdress,
+        websitelink: recDetails.websitelink,
+        companyname: recDetails.companyname,
+        natureofbusiness: recDetails.natureofbusiness,
+        category: recDetails.category,
+      });
     } else if (user == "stu") {
-      console.log(req.user);
+      //   console.log(req.user);
       res.render("auth/regisstu.ejs", {
         email: req.user.email,
         mobno: req.user.mobileno,
@@ -49,14 +73,14 @@ module.exports.registerTheUser = async (req, res) => {
 
       //check if the email isnt the verified one
 
-      let verifiedBodyData = await VerifiedUser.findOne({
-        bodyData: req.session.bodyData,
-      });
-      if (req.body.headhremail != verifiedBodyData.bodyData.email) {
-        req.flash("error", "Please Provide a Verified Email Address !");
-        console.log("Error finding user in Verified User ! ");
-        res.redirect("/register/rec");
-      }
+      //   let verifiedBodyData = await VerifiedUser.findOne({
+      //     bodyData: req.session.bodyData,
+      //   });
+      //   if (req.body.headhremail != verifiedBodyData.bodyData.email) {
+      //     req.flash("error", "Please Provide a Verified Email Address !");
+      //     console.log("Error finding user in Verified User ! ");
+      //     res.redirect("/register/rec");
+      //   }
 
       //validate the rec's regis form using joi on server side
       // const { error } = recruiterSchema.validate(req.body);
@@ -65,10 +89,9 @@ module.exports.registerTheUser = async (req, res) => {
       //   res.redirect("/register/rec");
       // }
 
-      const newRecruiter = new Recruiter({
-        isAudited: false,
-        //with the isAudited field
-        _id: new mongoose.Types.ObjectId(),
+      const newRecruiter = {
+        isAudited: true,
+        isRegistered: true,
         companyname: req.body.companyname,
         natureofbusiness: req.body.natureofbusiness,
         websitelink: req.body.websitelink,
@@ -201,19 +224,22 @@ module.exports.registerTheUser = async (req, res) => {
         noofrounds5: req.body.noofrounds5,
         modeofstage5: req.body.modeofstage5,
         otherdetails5: req.body.otherdetails5,
-      });
+      };
 
+      let query = { _id: req.session.recid };
+      let update = { $set: newRecruiter };
+      let options = { new: true };
       try {
-        await newRecruiter.save();
+        let updatedRecruiter = await Recruiter.findOneAndUpdate(
+          query,
+          update,
+          options
+        );
 
         await VerifiedUser.deleteMany({
           "bodyData.email": newRecruiter.headhremail,
         });
         // If save operation is successful, continue with redirection or other operations
-        req.flash(
-          "success",
-          `Welcome to the NFSU Placement Cell ! <br>  Please Contact the Administration for Further Recruitment Steps. <br> We'll Keep You Informed on the Provided HR Email.`
-        );
 
         //sending thanking email
         message = `<p style="color: red;">Dear Respected Recruiter,</p><br/>
@@ -261,7 +287,7 @@ National Forensic Science University.
         });
         const mailOptions = {
           from: "ThePlacementCell@NFSU<smile.itsadil@gmail.com>",
-          to: req.session.bodyData.email,
+          to: newRecruiter.headhremail,
           subject:
             "Welcome to National Forensic Science University's Placement Cell.",
           html: message,
@@ -271,6 +297,10 @@ National Forensic Science University.
             console.log("error in sending thanking email : " + error);
             res.redirect("/");
           } else {
+            req.flash(
+              "success",
+              `Welcome to the NFSU Placement Cell ! <br> Your Registration as a Recruiter is Completed ! <br>  Please Contact the Administration for Further Recruitment Steps. <br> We'll Keep You Informed on the Provided HR Email.`
+            );
             res.redirect("/");
           }
         });
@@ -332,7 +362,7 @@ National Forensic Science University.
           update,
           options
         );
-        console.log("updated stu:" + updatedStudent);
+
         res.redirect("/account");
       } catch (e) {
         console.log("error in updating student :" + e);

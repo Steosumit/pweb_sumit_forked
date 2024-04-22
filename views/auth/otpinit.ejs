@@ -32,26 +32,140 @@
       <br /><br />
       <br /><br />
     </div>
+
     <div class="col-md-8">
       <%if(username == "Recruiter"){%>
+
       <form action="/auth/sendotp" method="post">
-        <label style="width: 100%"
-          ><h6>Email ID</h6>
-          <br />
-          <input
-            type="email"
-            name="email"
-            required
-            style="text-align: center"
-            placeholder="Enter Your Email"
-          />
-        </label>
-        <input
-          type="text"
-          name="username"
-          style="display: none"
-          value="<%=username%>"
-        />
+        <div class="row" style="width: 100%">
+          <div class="col-md-6">
+            <label style="width: 100%"
+              ><h6>Company Name</h6>
+              <input
+                type="text"
+                name="companyname"
+                required
+                style="text-align: center"
+                placeholder="Enter Your Company Name"
+              />
+            </label>
+            <br />
+
+            <label style="width: 100%" for="NatureofBusiness"
+              ><h6>Nature of Business</h6>
+              <select
+                type="text"
+                style="width: 100%; text-align: center"
+                class="form-control"
+                name="natureofbusiness"
+                id="NatureofBusiness"
+                placeholder="Nature of Business"
+                required
+              >
+                <option value="productbased" selected>Product Based</option>
+                <option value="servicebased">Service Based</option>
+                <option value="government">Government</option>
+              </select>
+            </label>
+            <br />
+
+            <label for="Website"><h6>Website Link</h6></label>
+            <input
+              type="text"
+              class="form-control"
+              name="websitelink"
+              id="Website"
+              style="text-align: center"
+              placeholder="Website Link"
+              required
+            />
+            <br />
+
+            <label for="Category"><h6>Category of Business</h6></label>
+            <select
+              type="text"
+              name="category"
+              class="form-control"
+              style="width: 100%; text-align: center"
+              id="Category"
+              placeholder="Category of Business"
+              required
+            >
+              <option value="CyberSecurity" selected>Cyber Security</option>
+              <option value="Financeandbanking">Finance and banking</option>
+              <option value="Agriculture">Agriculture</option>
+              <option value="Hospitalityandtourism">
+                Hospitality and tourism
+              </option>
+              <option value="Transportationandlogistics">
+                Transportation and logistics
+              </option>
+              <option value="Healthcare">Healthcare</option>
+              <option value="Retail">Retail</option>
+              <option value="Manufacturing">Manufacturing</option>
+              <option value="Informationtechnology">
+                Information technology
+              </option>
+            </select>
+            <br />
+
+            <input
+              type="text"
+              name="username"
+              style="display: none"
+              value="<%=username%>"
+            />
+          </div>
+          <div class="col-md-6">
+            <label style="width: 100%"
+              ><h6>HR Full Name</h6>
+              <input
+                type="text"
+                name="headhrname"
+                required
+                style="text-align: center"
+                placeholder="Enter HR Name"
+              />
+            </label>
+            <br />
+            <label style="width: 100%"
+              ><h6>HR Email ID</h6>
+              <input
+                type="email"
+                name="email"
+                required
+                style="text-align: center"
+                placeholder="Enter Your Email"
+              />
+            </label>
+            <br />
+
+            <label style="width: 100%"
+              ><h6>HR Mobile No.</h6>
+              <input
+                type="tel"
+                name="headhrmobno"
+                required
+                style="text-align: center"
+                placeholder="Enter Mob. No"
+              />
+            </label>
+            <br />
+            <label for="Website2"><h6>Postal Address</h6></label>
+            <textarea
+              type="text"
+              class="form-control"
+              name="postaladdress"
+              id="Website2"
+              style="text-align: center"
+              placeholder="Postal Address"
+              required
+              value="hehe"
+            ></textarea>
+            <br />
+          </div>
+        </div>
+
         <br />
         <button class="btn btn-lg btn-primary" type="submit">
           Verify Your Email

@@ -84,7 +84,7 @@ module.exports.studentStayInDashboard = (req, res, next) => {
     req.isAuthenticated() &&
     res.locals.isAdmin == false &&
     !(req.path === "/account") &&
-    !(req.path === "/logout") &&
+    !(req.path === "/auth/logout") &&
     !(req.path === "/register/stu") &&
     !(req.path == "/account/sturegisdetails/") &&
     !(req.path == "/account/apply")
@@ -105,6 +105,6 @@ module.exports.isTwoFactorDone = wrapAsync(async (req, res, next) => {
     return next();
   } else {
     req.flash("error", "Please Enter Correct OTP.");
-    res.redirect("/login-student/verifyotp");
+    res.redirect("/auth/login-student/verifyotp");
   }
 });
