@@ -17,7 +17,11 @@
       <br />
       <h5 class="login-identity"><p>Student</p></h5>
       <%if(resentOtpVerified == false){%> <%if(otpSent == true){%>
-      <form action="/auth/resetpass?_method=PUT" method="post" id="verifyResendPassOtpForm">
+      <form
+        action="/auth/resetpass?_method=PUT"
+        method="post"
+        id="verifyResendPassOtpForm"
+      >
         <input
           type="number"
           name="otp"

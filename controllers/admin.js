@@ -32,7 +32,6 @@ module.exports.showAdmin = async (req, res) => {
   // console.log(allRecruitersPending);
   // console.log("stu");
   // console.log(allStudentsPending);
-
   res.render("users/admin.ejs", {
     allRecruitersPending: allRecruitersPending,
     allAuditedRecruiters: allAuditedRecruiters,
@@ -299,8 +298,10 @@ module.exports.markStuAudit = async (req, res) => {
         <h1>Welcome to Our Platform!</h1>
         <p>We're excited to have you onboard. Below are your login credentials:</p>
         <div class="credentials">
-            <p><strong>Username:</strong>${pId}</p>
-            <p><strong>Password:</strong>${password}</p>
+            <p><strong>Username:
+            <br> </strong>${pId}</p>
+            <p><strong>Password:
+            <br> </strong>${password}</p>
         </div>
         <p>Please use the provided credentials to log in to your account and complete your registration process as soon as possible.</p>
         <p>If you have any questions or need assistance, feel free to contact us.</p>

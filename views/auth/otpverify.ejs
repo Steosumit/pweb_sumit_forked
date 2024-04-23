@@ -26,7 +26,13 @@
       <br />
       <h4 style="text-align: center">Please Enter the OTP For Registration</h4>
       <br />
-      <h5 class="login-identity"><p><%=username%></p></h5>
+      <h5 class="login-identity">
+        <p>
+          <%=username%>
+
+          <br /><%=email%>
+        </p>
+      </h5>
 
       <form action="/auth/otp-verify" method="post">
         <input

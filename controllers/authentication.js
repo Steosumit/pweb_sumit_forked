@@ -4,6 +4,7 @@ const VerifiedUser = require("../models/verifiedUser");
 const OTP = require("../models/otp");
 const Recruiter = require("../models/recruiter");
 const mongoose = require("mongoose");
+const wrapAsync = require("../utils/wrapasync");
 
 module.exports.renderLoginPage = (req, res) => {
   // let reCaptchaClientKey = process.env.CAPTCHACLIENTKEY;
@@ -13,7 +14,7 @@ module.exports.renderLoginPage = (req, res) => {
 module.exports.sendTwoFactor = async (req, res) => {
   let { username, password } = req.body;
   let stuDetails = await Student.findOne({ username: username });
-  if (stuDetails == undefined) {
+  if (!stuDetails) {
     req.flash("error", "Please Enter Correct Username/Password !");
     res.redirect("/auth/login-student");
   }
@@ -65,9 +66,9 @@ To Verify your Email, please Insert the <strong>Following OTP</strong>:
       console.error(error);
       res.status(500).send("Failed to send OTP");
     } else {
-      req.flash("success", "OTP sent successfully");
       req.session.bodyData = req.body;
       req.session.bodyData.email = stuDetails.email;
+      req.flash("success", "OTP sent successfully");
       res.redirect(`/auth/login-student/verifyotp`);
     }
   });
@@ -119,6 +120,7 @@ module.exports.logOutUser = function (req, res, next) {
   });
 };
 
+//FOR REGISTRATION
 module.exports.renderOtpInputForm = async (req, res) => {
   req.session.username = req.query.username;
   res.render("auth/otpinit.ejs", { username: req.session.username });
@@ -126,6 +128,11 @@ module.exports.renderOtpInputForm = async (req, res) => {
 
 module.exports.sendOtp = async (req, res) => {
   let { email, username } = req.body;
+  let checkExistingStudent = await Student.findOne({ email: email });
+  if (checkExistingStudent) {
+    req.flash("error", "Email already Registered !");
+    res.redirect("/auth/login-student");
+  }
   let existingOTP = await OTP.findOne({ email: email });
   let newOtp = Math.floor(Math.random() * 900000) + 100000;
 
@@ -207,7 +214,7 @@ You can paste the above OTP in the <strong>Following Link</strong>:
         console.error(error);
         res.status(500).send("Failed to send OTP");
       } else {
-          req.session.bodyData = req.body;
+        req.session.bodyData = req.body;
         req.flash("success", "OTP sent successfully");
         res.redirect(`/auth/otp-verify-page`);
       }
@@ -525,11 +532,14 @@ module.exports.makeResetPass = async (req, res) => {
       req.flash("error", "Cant Reset the Password more than Once !");
       res.redirect("/auth/login-student");
     }
-    stu.password = req.body.password;
 
-    stu.haveResetPass = true;
-
-    await stu.save();
+    stu.setPassword(
+      req.body.password.trim(),
+      wrapAsync(async () => {
+        stu.haveResetPass = true;
+        await stu.save();
+      })
+    );
 
     req.flash("success", "Password Reset Successful !");
     res.redirect("/auth/login-student");

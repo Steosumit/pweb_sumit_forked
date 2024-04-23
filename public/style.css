@@ -90,6 +90,7 @@ nav {
 
 .home-big-div {
   position: relative;
+
   overflow: hidden;
   /* min-height: fit-content; */
 }
@@ -207,7 +208,6 @@ nav {
 /* why recruit from nfsu? */
 
 #whytitle {
-  text-shadow: 2px 2px lightskyblue;
   text-shadow: 2px 2px rgb(108, 199, 229);
 }
 
@@ -832,7 +832,7 @@ h6 {
 
 /*  */
 .contactus {
-  background-color: #7EA1FF;
+  background-color: #7ea1ff;
   height: fit-content;
 
   padding: 0rem;
@@ -1094,7 +1094,7 @@ h6 {
   flex-direction: column;
   counter-reset: white;
   background-color: #171717;
-   background: linear-gradient(to bottom, rgb(28, 28, 120), #7EA1FF);
+  background: linear-gradient(to bottom, rgb(28, 28, 120), #7ea1ff);
 }
 .banner h1 {
   color: white;
@@ -1126,8 +1126,8 @@ h6 {
 .resources-student-big-div {
   width: 100%;
 }
-.resources-student-big-div .content-div{
-background-color: #7EA1FF;
+.resources-student-big-div .content-div {
+  background-color: #7ea1ff;
 }
 .content-div {
   background-color: powderblue;
