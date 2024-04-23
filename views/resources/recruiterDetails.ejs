@@ -1,4 +1,5 @@
- <%-include("../includes/flash.ejs")%><html lang="en">
+ <%-include("../includes/flash.ejs")%>
+ <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -542,8 +543,9 @@
 <%=recruiter.JobDescription%>
                         </textarea
                       >
-                      <!-- <label for="AttachFile"> Attach File </label>
-                      <input  readonly type="file" class="form-control" id="AttachFile" /> -->
+                      <label for="AttachFile"> Attach File </label>
+                      <input  readonly type="text" class="form-control"
+                      value="<%=recruiter.attachedFileLink%>" id="AttachFile" />
                     </div>
                   </div>
                 </div>

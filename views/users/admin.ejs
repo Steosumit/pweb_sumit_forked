@@ -19,11 +19,11 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0"
     />
-    <link
+    <!-- <link
       rel="icon"
       type="image/x-icon"
       href="https://upload.wikimedia.org/wikipedia/en/9/96/National_Forensic_Sciences_University_Logo.png"
-    />
+    /> -->
     <style>
       /* =========== Google Fonts ============ */
       @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
@@ -832,6 +832,10 @@
         color: midnightblue;
         padding: 1rem;
       }
+
+      html {
+        scroll-behavior: smooth;
+      }
     </style>
   </head>
 
@@ -965,10 +969,15 @@
 
           <div class="search">
             <label>
-              <input type="text" placeholder="Search here" />
+              <input
+                type="text"
+                placeholder="Search here"
+                style="display: none"
+              />
               <ion-icon
                 name="search-outline"
                 role="img"
+                style="display: none"
                 class="md hydrated"
                 aria-label="search outline"
               ></ion-icon>
@@ -1262,22 +1271,51 @@
             <div class="recentOrders">
               <div class="cardHeader">
                 <h2>Applications Received</h2>
-                <!-- <a href="#" class="btn">
-                  <button>Enable</button>
-                  <button>Disable</button>
-                  <button>Delete</button
-                  ><input
-                    type="text"
-                    style="
-                      border-radius: 10px;
-                      margin: 5px;
-                      padding: 3px;
-                      font-size: 14px;
-                      width: 150px;
-                    "
-                    placeholder="Search"
-                  />
-                </a> -->
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <input
+                  type="text"
+                  id="ApplicationsReceivedSearch"
+                  style="
+                    border-radius: 10px;
+                    margin: 5px;
+                    padding: 3px;
+                    font-size: 14px;
+                    width: 150px;
+                  "
+                  placeholder="Search"
+                />
+                <button id="ApplicationsReceivedButton">Search</button>
+                <a href="" class="btn" id="ApplicationsReceivedAnchor"> </a>
+                <script>
+                  let ApplicationsReceivedinput = document.getElementById(
+                    "ApplicationsReceivedSearch"
+                  );
+
+                  let ApplicationsReceivedanchor = document.getElementById(
+                    "ApplicationsReceivedAnchor"
+                  );
+
+                  let ApplicationsReceivedsearchBtn = document.getElementById(
+                    "ApplicationsReceivedButton"
+                  );
+
+                  ApplicationsReceivedsearchBtn.addEventListener(
+                    "click",
+                    (event) => {
+                      ApplicationsReceivedanchor.href =
+                        "/admin#" +
+                        ApplicationsReceivedinput.value +
+                        "ApplicationsReceived";
+                      ApplicationsReceivedanchor.click();
+                    }
+                  );
+                </script>
               </div>
               <div style="height: 500px; overflow-y: scroll">
                 <table>
@@ -1292,7 +1330,7 @@
 
                   <tbody>
                     <% for (appObj of allApplications) {%>
-                    <tr>
+                    <tr id="<%=appObj.stuId.fullname%>ApplicationsReceived">
                       <td><%=appObj.stuId.fullname%></td>
                       <td><%=appObj.stuId.course%></td>
                       <td><%=appObj.stuId.mobileno%></td>
@@ -1459,19 +1497,51 @@
               <div class="recentOrders">
                 <div class="cardHeader">
                   <h2>Registered Students</h2>
-                  <!-- <a href="#" class="btn"
-                    ><input
-                      type="text"
-                      style="
-                        border-radius: 10px;
-                        margin: 5px;
-                        padding: 3px;
-                        font-size: 14px;
-                        width: 150px;
-                      "
-                      placeholder="Search"
-                    />
-                  </a> -->
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <input
+                    type="text"
+                    id="RegisteredStudentsSearch"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                  <button id="RegisteredStudentsButton">Search</button>
+                  <a href="" class="btn" id="RegisteredStudentsAnchor"> </a>
+                  <script>
+                    let RegisteredStudentsinput = document.getElementById(
+                      "RegisteredStudentsSearch"
+                    );
+
+                    let RegisteredStudentsanchor = document.getElementById(
+                      "RegisteredStudentsAnchor"
+                    );
+
+                    let RegisteredStudentssearchBtn = document.getElementById(
+                      "RegisteredStudentsButton"
+                    );
+
+                    RegisteredStudentssearchBtn.addEventListener(
+                      "click",
+                      (event) => {
+                        RegisteredStudentsanchor.href =
+                          "/admin#" +
+                          RegisteredStudentsinput.value +
+                          "RegisteredStudents";
+                        RegisteredStudentsanchor.click();
+                      }
+                    );
+                  </script>
                 </div>
                 <div style="height: 500px; overflow-y: scroll">
                   <table>
@@ -1487,7 +1557,7 @@
 
                     <tbody>
                       <% allRegisteredStudents.forEach(student => { %>
-                      <tr>
+                      <tr id="<%= student.fullname %>RegisteredStudents">
                         <td><%= student.fullname %></td>
                         <td><%= student.enrollmentNo %></td>
                         <td><%= student.course %></td>
@@ -1512,19 +1582,51 @@
               <div class="recentOrders">
                 <div class="cardHeader">
                   <h2>Audited Students</h2>
-                  <!-- <a href="#" class="btn"
-                    ><input
-                      type="text"
-                      style="
-                        border-radius: 10px;
-                        margin: 5px;
-                        padding: 3px;
-                        font-size: 14px;
-                        width: 150px;
-                      "
-                      placeholder="Search"
-                    />
-                  </a> -->
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <input
+                    type="text"
+                    id="AuditedStudentsSearch"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                  <button id="AuditedStudentsButton">Search</button>
+                  <a href="" class="btn" id="AuditedStudentsAnchor"> </a>
+                  <script>
+                    let AuditedStudentsinput = document.getElementById(
+                      "AuditedStudentsSearch"
+                    );
+
+                    let AuditedStudentsanchor = document.getElementById(
+                      "AuditedStudentsAnchor"
+                    );
+
+                    let AuditedStudentssearchBtn = document.getElementById(
+                      "AuditedStudentsButton"
+                    );
+
+                    AuditedStudentssearchBtn.addEventListener(
+                      "click",
+                      (event) => {
+                        AuditedStudentsanchor.href =
+                          "/admin#" +
+                          AuditedStudentsinput.value +
+                          "AuditedStudents";
+                        AuditedStudentsanchor.click();
+                      }
+                    );
+                  </script>
                 </div>
                 <div style="height: 500px; overflow-y: scroll">
                   <table>
@@ -1540,7 +1642,7 @@
 
                     <tbody>
                       <% allAuditedStudents.forEach(student => { %>
-                      <tr>
+                      <tr id="<%= student.fullname %>AuditedStudents">
                         <td><%= student.fullname %></td>
                         <td><%= student.enrollmentNo %></td>
                         <td><%= student.course %></td>
@@ -1565,10 +1667,17 @@
               <div class="recentCustomers">
                 <div class="recentOrders">
                   <div class="cardHeader">
-                    <h2>Student Onboard Requests Pending</h2>
-                    <!-- <a href="#" class="btn"
-                    ><input
+                    <h2>Student Onboard requests pending</h2>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <input
                       type="text"
+                      id="StudentOnboardRequestsPendingSearch"
                       style="
                         border-radius: 10px;
                         margin: 5px;
@@ -1578,23 +1687,86 @@
                       "
                       placeholder="Search"
                     />
-                  </a> -->
+                    <button id="StudentOnboardRequestsPendingButton">
+                      Search
+                    </button>
+                    <a
+                      href=""
+                      class="btn"
+                      id="StudentOnboardRequestsPendingAnchor"
+                    >
+                    </a>
+                    <script>
+                      let StudentOnboardRequestsPendinginput =
+                        document.getElementById(
+                          "StudentOnboardRequestsPendingSearch"
+                        );
+
+                      let StudentOnboardRequestsPendinganchor =
+                        document.getElementById(
+                          "StudentOnboardRequestsPendingAnchor"
+                        );
+
+                      let StudentOnboardRequestsPendingsearchBtn =
+                        document.getElementById(
+                          "StudentOnboardRequestsPendingButton"
+                        );
+
+                      StudentOnboardRequestsPendingsearchBtn.addEventListener(
+                        "click",
+                        (event) => {
+                          StudentOnboardRequestsPendinganchor.href =
+                            "/admin#" +
+                            StudentOnboardRequestsPendinginput.value +
+                            "StudentOnboardRequestsPending";
+                          StudentOnboardRequestsPendinganchor.click();
+                        }
+                      );
+                    </script>
                   </div>
                   <div style="height: 500px; overflow-y: scroll">
                     <table>
                       <thead>
                         <tr>
+                          <td>
+                            Select All
+                            <input
+                              class="form-control"
+                              type="checkbox"
+                              id="selectAllStudentMarkAsAuditedChecks"
+                              name="studentMarkAsAuditedChecks"
+                            />
+                          </td>
                           <td>Student Name</td>
                           <td>Enroll No.</td>
                           <td>Course</td>
                           <td>Email</td>
                           <td>Mob No.</td>
+                          <td colspan="2">
+                            <button
+                              id="markAllStudentAudited"
+                              style="display: none"
+                            >
+                              MARK ALL AUDITED
+                            </button>
+                          </td>
                         </tr>
                       </thead>
 
                       <tbody>
                         <% allStudentsPending.forEach(student => { %>
-                        <tr>
+                        <tr
+                          id="<%= student.bodyData.stuname %>StudentOnboardRequestsPending"
+                        >
+                          <td>
+                            <input
+                              class="form-control"
+                              type="checkbox"
+                              id="studentMarkAsAuditedChecks"
+                              name="studentMarkAsAuditedChecks"
+                              value="<%=student._id%>"
+                            />
+                          </td>
                           <td><%= student.bodyData.stuname %></td>
                           <td><%= student.bodyData.enrollnostu %></td>
                           <td><%= student.bodyData.coursename %></td>
@@ -1611,12 +1783,91 @@
                             </a>
                           </td>
                         </tr>
+
                         <% }); %>
                       </tbody>
                     </table>
                   </div>
                 </div>
               </div>
+              <script>
+                document
+                  .getElementById("selectAllStudentMarkAsAuditedChecks")
+                  .addEventListener("change", function () {
+                    const checkboxes = document.querySelectorAll(
+                      'input[name="studentMarkAsAuditedChecks"]'
+                    );
+                    checkboxes.forEach((checkbox) => {
+                      checkbox.checked = this.checked;
+                    });
+                  });
+              </script>
+              <script>
+                // Function to check if any checkbox is checked
+                function anyCheckboxChecked() {
+                  const checkboxes = document.querySelectorAll(
+                    'input[name="studentMarkAsAuditedChecks"]'
+                  );
+                  for (const checkbox of checkboxes) {
+                    if (checkbox.checked) {
+                      return true;
+                    }
+                  }
+                  return false;
+                }
+
+                // Add event listener to each checkbox
+                document
+                  .querySelectorAll('input[name="studentMarkAsAuditedChecks"]')
+                  .forEach((checkbox) => {
+                    checkbox.addEventListener("change", function () {
+                      const submitButton = document.getElementById(
+                        "markAllStudentAudited"
+                      );
+                      if (anyCheckboxChecked()) {
+                        submitButton.style.display = "block";
+                      } else {
+                        submitButton.style.display = "none";
+                      }
+                    });
+                  });
+              </script>
+              <script>
+                document
+                  .getElementById("markAllStudentAudited")
+                  .addEventListener("click", function (event) {
+                    event.preventDefault();
+
+                    // const formData = new FormData(this);
+                    const idsOfCheckboxes = [];
+
+                    let allCheckedNonAuditedStudents =
+                      document.querySelectorAll(
+                        `input[name="studentMarkAsAuditedChecks"]:checked`
+                      );
+
+                    allCheckedNonAuditedStudents.forEach((checkbox) => {
+                      idsOfCheckboxes.push(checkbox.value);
+                    });
+
+                    let form = document.createElement("form");
+                    form.method = "post";
+                    form.action = "/admin/markStuAudit/112233";
+
+                    let input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = "idsOfCheckboxes"; // Name of the input field
+                    const idsOfCheckboxesWithoutOn = idsOfCheckboxes.filter(
+                      (id) => id !== "on"
+                    );
+                    input.value = JSON.stringify(idsOfCheckboxesWithoutOn);
+                    // Convert the array to a JSON string
+                    form.appendChild(input);
+
+                    document.body.appendChild(form);
+                    form.submit();
+                  });
+              </script>
 
               <!-- add listings -->
               <!-- <div class="addlistings">
@@ -1782,19 +2033,52 @@
               <div class="recentOrders">
                 <div class="cardHeader">
                   <h2>De-Board a Student</h2>
-                  <!-- <a href="#" class="btn"
-                    ><input
-                      type="text"
-                      style="
-                        border-radius: 10px;
-                        margin: 5px;
-                        padding: 3px;
-                        font-size: 14px;
-                        width: 150px;
-                      "
-                      placeholder="Search"
-                    />
-                  </a> -->
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <input
+                    type="text"
+                    DeBoardaStudent
+                    id="DeBoardaStudentSearch"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                  <button id="DeBoardaStudentButton">Search</button>
+                  <a href="" class="btn" id="DeBoardaStudentAnchor"> </a>
+                  <script>
+                    let DeBoardaStudentinput = document.getElementById(
+                      "DeBoardaStudentSearch"
+                    );
+
+                    let DeBoardaStudentanchor = document.getElementById(
+                      "DeBoardaStudentAnchor"
+                    );
+
+                    let DeBoardaStudentsearchBtn = document.getElementById(
+                      "DeBoardaStudentButton"
+                    );
+
+                    DeBoardaStudentsearchBtn.addEventListener(
+                      "click",
+                      (event) => {
+                        DeBoardaStudentanchor.href =
+                          "/admin#" +
+                          DeBoardaStudentinput.value +
+                          "DeBoardaStudent";
+                        DeBoardaStudentanchor.click();
+                      }
+                    );
+                  </script>
                 </div>
                 <div style="height: 500px; overflow-y: scroll">
                   <table>
@@ -1810,7 +2094,7 @@
 
                     <tbody>
                       <% allAuditedStudents.forEach(student => { %>
-                      <tr>
+                      <tr id="<%= student.fullname %>DeBoardaStudent">
                         <td><%= student.fullname %></td>
                         <td><%= student.enrollmentNo %></td>
                         <td><%= student.course %></td>
@@ -1823,7 +2107,7 @@
                         </td>
                       </tr>
                       <% }); %> <% allRegisteredStudents.forEach(student => { %>
-                      <tr>
+                      <tr id="<%= student.fullname %>DeBoardaStudent">
                         <td><%= student.fullname %></td>
                         <td><%= student.enrollmentNo %></td>
                         <td><%= student.course %></td>
@@ -1900,19 +2184,52 @@
               <div class="recentOrders">
                 <div class="cardHeader">
                   <h2>Listed Companies</h2>
-                  <!-- <a href="#" class="btn"
-                    ><input
-                      type="text"
-                      style="
-                        border-radius: 10px;
-                        margin: 5px;
-                        padding: 3px;
-                        font-size: 14px;
-                        width: 150px;
-                      "
-                      placeholder="Search"
-                    />
-                  </a> -->
+
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <input
+                    type="text"
+                    id="listedCompaniesSearch"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                  <button id="listedCompaniesButton">Search</button>
+                  <a href="" class="btn" id="listedCompaniesAnchor"> </a>
+                  <script>
+                    let listedCompaniesinput = document.getElementById(
+                      "listedCompaniesSearch"
+                    );
+
+                    let listedCompaniesanchor = document.getElementById(
+                      "listedCompaniesAnchor"
+                    );
+
+                    let listedCompaniessearchBtn = document.getElementById(
+                      "listedCompaniesButton"
+                    );
+
+                    listedCompaniessearchBtn.addEventListener(
+                      "click",
+                      (event) => {
+                        listedCompaniesanchor.href =
+                          "/admin#" +
+                          listedCompaniesinput.value +
+                          "listedCompanies";
+                        listedCompaniesanchor.click();
+                      }
+                    );
+                  </script>
                 </div>
                 <div style="height: 500px; overflow-y: scroll">
                   <table>
@@ -1931,18 +2248,25 @@
 
                     <tbody>
                       <% allListedRecruiters.forEach(listing => { %>
-                      <tr>
+                      <tr id="<%= listing.companyName %>listedCompanies">
                         <td><%= listing.companyName %></td>
                         <td><%= listing.jobTitle %></td>
                         <td><%= listing.jobType %></td>
                         <td><%= listing.jobLocation %></td>
-                        <td>ToBeFilled</td>
+                        <td>
+                          <a
+                            style="text-decoration: none; color: black"
+                            target="_blank"
+                            href="<%=listing.jobDescriptionFile%>"
+                            >Show File</a
+                          >
+                        </td>
                         <td><%= listing.ctc %></td>
                         <td><%= listing.forCourse %></td>
                         <td><%= listing.lastDateToApply %></td>
                         <td>
-                          <a href="/admin/removefromlisting/<%=listing._id%>">
-                            <button>Remove from Listings</button>
+                          <a href="/admin/listingDetails/<%=listing._id%>">
+                            <button>Edit Listing</button>
                           </a>
                         </td>
                       </tr>
@@ -1959,19 +2283,51 @@
               <div class="recentOrders">
                 <div class="cardHeader">
                   <h2>Registered Companies</h2>
-                  <!-- <a href="#" class="btn"
-                    ><input
-                      type="text"
-                      style="
-                        border-radius: 10px;
-                        margin: 5px;
-                        padding: 3px;
-                        font-size: 14px;
-                        width: 150px;
-                      "
-                      placeholder="Search"
-                    />
-                  </a> -->
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <input
+                    type="text"
+                    id="RegisteredCompaniesSearch"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                  <button id="RegisteredCompaniesButton">Search</button>
+                  <a href="" class="btn" id="RegisteredCompaniesAnchor"> </a>
+                  <script>
+                    let RegisteredCompaniesinput = document.getElementById(
+                      "RegisteredCompaniesSearch"
+                    );
+
+                    let RegisteredCompaniesanchor = document.getElementById(
+                      "RegisteredCompaniesAnchor"
+                    );
+
+                    let RegisteredCompaniessearchBtn = document.getElementById(
+                      "RegisteredCompaniesButton"
+                    );
+
+                    RegisteredCompaniessearchBtn.addEventListener(
+                      "click",
+                      (event) => {
+                        RegisteredCompaniesanchor.href =
+                          "/admin#" +
+                          RegisteredCompaniesinput.value +
+                          "RegisteredCompanies";
+                        RegisteredCompaniesanchor.click();
+                      }
+                    );
+                  </script>
                 </div>
                 <div style="height: 500px; overflow-y: scroll">
                   <table>
@@ -1987,7 +2343,7 @@
 
                     <tbody>
                       <% allRegisteredRecruiters.forEach(recruiter => { %>
-                      <tr>
+                      <tr id="<%= recruiter.companyname %>RegisteredCompanies">
                         <td><%= recruiter.companyname %></td>
                         <td><%= recruiter.jobtitle %></td>
                         <td><%= recruiter.jobtype %></td>
@@ -2014,19 +2370,51 @@
               <div class="recentOrders">
                 <div class="cardHeader">
                   <h2>Audited Companies</h2>
-                  <!-- <a href="#" class="btn"
-                    ><input
-                      type="text"
-                      style="
-                        border-radius: 10px;
-                        margin: 5px;
-                        padding: 3px;
-                        font-size: 14px;
-                        width: 150px;
-                      "
-                      placeholder="Search"
-                    />
-                  </a> -->
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <input
+                    type="text"
+                    id="AuditedCompaniesSearch"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                  <button id="AuditedCompaniesButton">Search</button>
+                  <a href="" class="btn" id="AuditedCompaniesAnchor"> </a>
+                  <script>
+                    let AuditedCompaniesinput = document.getElementById(
+                      "AuditedCompaniesSearch"
+                    );
+
+                    let AuditedCompaniesanchor = document.getElementById(
+                      "AuditedCompaniesAnchor"
+                    );
+
+                    let AuditedCompaniessearchBtn = document.getElementById(
+                      "AuditedCompaniesButton"
+                    );
+
+                    AuditedCompaniessearchBtn.addEventListener(
+                      "click",
+                      (event) => {
+                        AuditedCompaniesanchor.href =
+                          "/admin#" +
+                          AuditedCompaniesinput.value +
+                          "AuditedCompanies";
+                        AuditedCompaniesanchor.click();
+                      }
+                    );
+                  </script>
                 </div>
                 <div style="height: 500px; overflow-y: scroll">
                   <table>
@@ -2042,7 +2430,7 @@
 
                     <tbody>
                       <% allAuditedRecruiters.forEach(recruiter => { %>
-                      <tr>
+                      <tr id="<%= recruiter.companyname %>AuditedCompanies">
                         <td><%= recruiter.companyname %></td>
                         <td><%= recruiter.jobtitle %></td>
                         <td><%= recruiter.jobtype %></td>
@@ -2069,19 +2457,50 @@
               <div class="recentOrders">
                 <div class="cardHeader">
                   <h2>Company Auditing Pending</h2>
-                  <!-- <a href="#" class="btn"
-                    ><input
-                      type="text"
-                      style="
-                        border-radius: 10px;
-                        margin: 5px;
-                        padding: 3px;
-                        font-size: 14px;
-                        width: 150px;
-                      "
-                      placeholder="Search"
-                    />
-                  </a> -->
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <input
+                    type="text"
+                    id="CompanyAuditingPendingSearch"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                  <button id="CompanyAuditingPendingButton">Search</button>
+                  <a href="" class="btn" id="CompanyAuditingPendingAnchor"> </a>
+                  <script>
+                    let CompanyAuditingPendinginput = document.getElementById(
+                      "CompanyAuditingPendingSearch"
+                    );
+
+                    let CompanyAuditingPendinganchor = document.getElementById(
+                      "CompanyAuditingPendingAnchor"
+                    );
+
+                    let CompanyAuditingPendingsearchBtn =
+                      document.getElementById("CompanyAuditingPendingButton");
+
+                    CompanyAuditingPendingsearchBtn.addEventListener(
+                      "click",
+                      (event) => {
+                        CompanyAuditingPendinganchor.href =
+                          "/admin#" +
+                          CompanyAuditingPendinginput.value +
+                          "CompanyAuditingPending";
+                        CompanyAuditingPendinganchor.click();
+                      }
+                    );
+                  </script>
                 </div>
                 <div style="height: 500px; overflow-y: scroll">
                   <table>
@@ -2098,7 +2517,9 @@
 
                     <tbody>
                       <% allRecruitersPending.forEach(recruiter => { %>
-                      <tr>
+                      <tr
+                        id="<%= recruiter.companyname %>CompanyAuditingPending"
+                      >
                         <td><%= recruiter.companyname %></td>
                         <td><%= recruiter.natureofbusiness %></td>
                         <td><%= recruiter.category %></td>
@@ -2137,6 +2558,7 @@
                     validate=""
                     method="post"
                     action="/admin/addcompanylisting"
+                    enctype="multipart/form-data"
                   >
                     <div class="col-md-5">
                       <label for="companyName" class="form-label"
@@ -2265,9 +2687,9 @@
                       >
                       <input
                         type="file"
-                        disabled
+                        required
                         id="jobdescriptionFile"
-                        name="jobdescriptionFile"
+                        name="jobDescriptionFile"
                         class="css-input"
                       />
                     </div>
@@ -2311,19 +2733,51 @@
               <div class="recentOrders">
                 <div class="cardHeader">
                   <h2>De-Board a company</h2>
-                  <!-- <a href="#" class="btn"
-                    ><input
-                      type="text"
-                      style="
-                        border-radius: 10px;
-                        margin: 5px;
-                        padding: 3px;
-                        font-size: 14px;
-                        width: 150px;
-                      "
-                      placeholder="Search"
-                    />
-                  </a> -->
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <input
+                    type="text"
+                    id="DeBoardacompanySearch"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                  <button id="DeBoardacompanyButton">Search</button>
+                  <a href="" class="btn" id="DeBoardacompanyAnchor"> </a>
+                  <script>
+                    let DeBoardacompanyinput = document.getElementById(
+                      "DeBoardacompanySearch"
+                    );
+
+                    let DeBoardacompanyanchor = document.getElementById(
+                      "DeBoardacompanyAnchor"
+                    );
+
+                    let DeBoardacompanysearchBtn = document.getElementById(
+                      "DeBoardacompanyButton"
+                    );
+
+                    DeBoardacompanysearchBtn.addEventListener(
+                      "click",
+                      (event) => {
+                        DeBoardacompanyanchor.href =
+                          "/admin#" +
+                          DeBoardacompanyinput.value +
+                          "DeBoardacompany";
+                        DeBoardacompanyanchor.click();
+                      }
+                    );
+                  </script>
                 </div>
                 <div style="height: 500px; overflow-y: scroll">
                   <table>
@@ -2340,7 +2794,7 @@
 
                     <tbody>
                       <% allAuditedRecruiters.forEach(recruiter => { %>
-                      <tr>
+                      <tr id="<%= recruiter.companyname %>DeBoardacompany">
                         <td><%= recruiter.companyname %></td>
                         <td><%= recruiter.natureofbusiness %></td>
                         <td><%= recruiter.category %></td>
@@ -2357,7 +2811,7 @@
                       </tr>
                       <% }); %> <% allRegisteredRecruiters.forEach(recruiter =>
                       { %>
-                      <tr>
+                      <tr id="<%= recruiter.companyname %>DeBoardacompany">
                         <td><%= recruiter.companyname %></td>
                         <td><%= recruiter.natureofbusiness %></td>
                         <td><%= recruiter.category %></td>
@@ -2380,6 +2834,7 @@
             </div>
           </div>
         </section>
+
         <section id="companydata" style="display: none">
           <div class="cardBox">
             <div class="card">

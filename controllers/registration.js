@@ -65,12 +65,6 @@ module.exports.registerTheUser = async (req, res) => {
 
   if (user == "rec") {
     try {
-      // Iterate over the keys of req.body
-      // for (const key in req.body) {
-      //   // Generate the code to store each field in the database
-      //   console.log(`${key}:{ type:String},`);
-      // }
-
       //check if the email isnt the verified one
 
       //   let verifiedBodyData = await VerifiedUser.findOne({
@@ -92,6 +86,7 @@ module.exports.registerTheUser = async (req, res) => {
       const newRecruiter = {
         isAudited: true,
         isRegistered: true,
+        attachedFileLink: req.files.attachedFile[0].path,
         companyname: req.body.companyname,
         natureofbusiness: req.body.natureofbusiness,
         websitelink: req.body.websitelink,

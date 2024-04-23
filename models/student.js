@@ -53,7 +53,7 @@ const studentSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    unique: true,
+    // unique: true,
   },
   altemail: {
     type: String,

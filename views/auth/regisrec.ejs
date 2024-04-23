@@ -127,6 +127,7 @@
         class="needs-validation"
         action="/register/rec"
         method="post"
+        enctype="multipart/form-data"
       >
         <div class="down-regis">
           <div class="resources-student-big-div">
@@ -554,8 +555,13 @@ dasdf</textarea
       a
                         </textarea
                       >
-                      <!-- <label for="AttachFile"> Attach File </label>
-                      <input type="file" class="form-control" id="AttachFile" /> -->
+                      <label for="AttachFile"> Attach File </label>
+                      <input
+                        type="file"
+                        class="form-control"
+                        name="attachedFile"
+                        id="AttachFile"
+                      />
                     </div>
                   </div>
                 </div>

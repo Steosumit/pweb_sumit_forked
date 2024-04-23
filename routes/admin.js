@@ -3,6 +3,12 @@ const router = express.Router({ mergeParams: true });
 const adminController = require("../controllers/admin");
 const { isThisAdmin } = require("../middleware");
 const wrapAsync = require("../utils/wrapasync");
+const { storage } = require("../cloudConfig");
+const multer = require("multer");
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
+});
 
 router.route("/").get(isThisAdmin, wrapAsync(adminController.showAdmin));
 
@@ -16,15 +22,27 @@ router
 
 router
   .route("/addcompanylisting")
-  .post(isThisAdmin, wrapAsync(adminController.addCompanyListing));
+  .post(
+    isThisAdmin,
+    upload.single("jobDescriptionFile"),
+    wrapAsync(adminController.addCompanyListing)
+  );
 
+router
+  .route("/listingDetails/:listingId")
+  .get(isThisAdmin, wrapAsync(adminController.showListingDetails));
+
+router
+  .route("/updateListing/:listingId")
+  .post(isThisAdmin, wrapAsync(adminController.updateListing));
 router
   .route("/removefromlisting/:listingId")
   .get(isThisAdmin, wrapAsync(adminController.removeCompanyListing));
 
 router
   .route("/markStuAudit/:verifiedStuID")
-  .get(isThisAdmin, wrapAsync(adminController.markStuAudit));
+  .get(isThisAdmin, wrapAsync(adminController.markStuAudit))
+  .post(isThisAdmin, wrapAsync(adminController.markStuArrayAudit));
 
 router
   .route("/deboard/recruiter/:recid")

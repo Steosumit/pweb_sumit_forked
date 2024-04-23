@@ -1,5 +1,9 @@
 const mongoose = require("mongoose");
 const listingSchema = new mongoose.Schema({
+  jobDescriptionFile: {
+    type: String,
+    required: true,
+  },
   companyName: {
     type: String,
     required: true,

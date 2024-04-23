@@ -15,16 +15,16 @@ router
   .route("/")
   .get(
     shallNotAuthenticated,
-      isVerified,
-    wrapAsync(
-    registrationController.renderRegistrationForm
-  ))
+    isVerified,
+    wrapAsync(registrationController.renderRegistrationForm)
+  )
   .post(
     shallNotAuthenticated,
     isVerified,
     upload.fields([
       { name: "tenthmarksheet", maxCount: 1 },
       { name: "twelthmarksheet", maxCount: 1 },
+      { name: "attachedFile", maxCount: 1 },
     ]),
     wrapAsync(registrationController.registerTheUser)
   );

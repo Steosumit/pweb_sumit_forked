@@ -128,11 +128,13 @@ module.exports.renderOtpInputForm = async (req, res) => {
 
 module.exports.sendOtp = async (req, res) => {
   let { email, username } = req.body;
-  let checkExistingStudent = await Student.findOne({ email: email });
-  if (checkExistingStudent) {
-    req.flash("error", "Email already Registered !");
-    res.redirect("/auth/login-student");
-  }
+  // if (username == "Student") {
+  //   let checkExistingStudent = await Student.findOne({ email: email });
+  //   if (checkExistingStudent) {
+  //     req.flash("error", "Email already Registered !");
+  //     res.redirect("/auth/login-student");
+  //   }
+  // }
   let existingOTP = await OTP.findOne({ email: email });
   let newOtp = Math.floor(Math.random() * 900000) + 100000;
 
