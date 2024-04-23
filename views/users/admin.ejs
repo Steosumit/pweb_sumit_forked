@@ -1012,7 +1012,40 @@
 
           <div class="logos">
             <div class="logos-slide">
-              <img src="google-1-1.svg" />
+              <img
+                src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710498665/nse_vma8mv.jpg"
+              />
+              <img
+                src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710498664/abb_covv3p.png"
+              />
+              <img
+                src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710498666/Salesforce_gkoanz.png"
+              />
+              <img
+                src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710498666/qualcomm_dc47r7.png"
+              />
+              <img
+                src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710498665/icic_m4fhz7.png"
+              />
+              <img
+                src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710498664/deloitte_fzbz3s.png"
+              />
+              <img
+                src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710498664/Amazon_lerdye.png"
+              />
+
+              <img
+                src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710498665/boa_bqwjfk.png"
+              />
+              <img
+                src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710498665/delhipolice_dl6osh.png"
+                alt=""
+              />
+            </div>
+            <!-- <div class="logos-slide">
+              <img
+                src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710498665/Microsoft_kxlmrr.png"
+              />
               <img src="meta-1.svg" />
               <img src="ibm.svg" />
               <img src="deloitte-2.svg" />
@@ -1022,19 +1055,7 @@
 
               <img src="crowdstrike-2.svg" />
               <img src="sophos-logo.svg" alt="" />
-            </div>
-            <div class="logos-slide">
-              <img src="google-1-1.svg" />
-              <img src="meta-1.svg" />
-              <img src="ibm.svg" />
-              <img src="deloitte-2.svg" />
-              <img src="microsoft-5.svg" />
-              <img src="fortinet-logo.svg" />
-              <img src="darktrace-3.svg" />
-
-              <img src="crowdstrike-2.svg" />
-              <img src="sophos-logo.svg" alt="" />
-            </div>
+            </div> -->
           </div>
         </section>
         <!-- queries  -->
@@ -1539,12 +1560,13 @@
             </div>
             <!-- ================= New Customers ================ -->
           </div>
-          <div class="recentStudents">
-            <div class="recentCustomers">
-              <div class="recentOrders">
-                <div class="cardHeader">
-                  <h2>Student Onboard Requests Pending</h2>
-                  <!-- <a href="#" class="btn"
+          <div class="details">
+            <div class="recentStudents">
+              <div class="recentCustomers">
+                <div class="recentOrders">
+                  <div class="cardHeader">
+                    <h2>Student Onboard Requests Pending</h2>
+                    <!-- <a href="#" class="btn"
                     ><input
                       type="text"
                       style="
@@ -1557,42 +1579,47 @@
                       placeholder="Search"
                     />
                   </a> -->
-                </div>
-                <div style="height: 500px; overflow-y: scroll">
-                  <table>
-                    <thead>
-                      <tr>
-                        <td>Student Name</td>
-                        <td>Enroll No.</td>
-                        <td>Course</td>
-                        <td>Email</td>
-                        <td>Mob No.</td>
-                      </tr>
-                    </thead>
+                  </div>
+                  <div style="height: 500px; overflow-y: scroll">
+                    <table>
+                      <thead>
+                        <tr>
+                          <td>Student Name</td>
+                          <td>Enroll No.</td>
+                          <td>Course</td>
+                          <td>Email</td>
+                          <td>Mob No.</td>
+                        </tr>
+                      </thead>
 
-                    <tbody>
-                      <% allStudentsPending.forEach(student => { %>
-                      <tr>
-                        <td><%= student.bodyData.stuname %></td>
-                        <td><%= student.bodyData.enrollnostu %></td>
-                        <td><%= student.bodyData.coursename %></td>
-                        <td><%= student.bodyData.email %></td>
-                        <td><%= student.bodyData.stumobno %></td>
-                        <td>
-                          <a href="/admin/markStuAudit/<%=student._id%>">
-                            <button>Mark as Audited</button></a
-                          >
-                        </td>
-                      </tr>
-                      <% }); %>
-                    </tbody>
-                  </table>
+                      <tbody>
+                        <% allStudentsPending.forEach(student => { %>
+                        <tr>
+                          <td><%= student.bodyData.stuname %></td>
+                          <td><%= student.bodyData.enrollnostu %></td>
+                          <td><%= student.bodyData.coursename %></td>
+                          <td><%= student.bodyData.email %></td>
+                          <td><%= student.bodyData.stumobno %></td>
+                          <td>
+                            <a href="/admin/markStuAudit/<%=student._id%>">
+                              <button>Mark as Audited</button></a
+                            >
+                          </td>
+                          <td>
+                            <a href="/admin/deboard/student/<%= student._id %>">
+                              <button>Delete Request</button>
+                            </a>
+                          </td>
+                        </tr>
+                        <% }); %>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <!-- add listings -->
-            <!-- <div class="addlistings">
+              <!-- add listings -->
+              <!-- <div class="addlistings">
               <div class="cardHeader">
                 <h2>Add Listings</h2>
               </div>
@@ -1748,6 +1775,73 @@
                 </form>
               </div>
             </div> -->
+            </div>
+          </div>
+          <div class="details">
+            <div class="recentCustomers">
+              <div class="recentOrders">
+                <div class="cardHeader">
+                  <h2>De-Board a Student</h2>
+                  <!-- <a href="#" class="btn"
+                    ><input
+                      type="text"
+                      style="
+                        border-radius: 10px;
+                        margin: 5px;
+                        padding: 3px;
+                        font-size: 14px;
+                        width: 150px;
+                      "
+                      placeholder="Search"
+                    />
+                  </a> -->
+                </div>
+                <div style="height: 500px; overflow-y: scroll">
+                  <table>
+                    <thead>
+                      <tr>
+                        <td>Student Name</td>
+                        <td>Enroll No.</td>
+                        <td>Course</td>
+                        <td>Email</td>
+                        <td>Mob No.</td>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <% allAuditedStudents.forEach(student => { %>
+                      <tr>
+                        <td><%= student.fullname %></td>
+                        <td><%= student.enrollmentNo %></td>
+                        <td><%= student.course %></td>
+                        <td><%= student.mobileno %></td>
+                        <td><%= student.email %></td>
+                        <td>
+                          <a href="/admin/deboard/student/<%=student._id%>">
+                            <button id="DeboardBtn">De-Board</button>
+                          </a>
+                        </td>
+                      </tr>
+                      <% }); %> <% allRegisteredStudents.forEach(student => { %>
+                      <tr>
+                        <td><%= student.fullname %></td>
+                        <td><%= student.enrollmentNo %></td>
+                        <td><%= student.course %></td>
+                        <td><%= student.mobileno %></td>
+                        <td><%= student.email %></td>
+                        <td>
+                          <a href="/admin/deboard/student/<%=student._id%>">
+                            <button id="DeboardBtn">De-Board</button>
+                          </a>
+                        </td>
+                      </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- ================= New Customers ================ -->
           </div>
         </section>
 
@@ -1970,7 +2064,7 @@
             </div>
             <!-- ================= New Customers ================ -->
           </div>
-          <div class="recentStudents">
+          <div class="details">
             <div class="recentCustomers">
               <div class="recentOrders">
                 <div class="cardHeader">
@@ -2016,6 +2110,13 @@
                             <button>See Details</button>
                           </a>
                         </td>
+                        <td>
+                          <a
+                            href="/admin/deboard/recruiter/<%= recruiter._id %>"
+                          >
+                            <button>Delete Request</button>
+                          </a>
+                        </td>
                       </tr>
                       <% }); %>
                     </tbody>
@@ -2023,33 +2124,34 @@
                 </div>
               </div>
             </div>
+          </div>
+          <div class="details">
+            <div class="recentCustomers">
+              <div class="addlistings">
+                <div class="cardHeader">
+                  <h2>Add Listings</h2>
+                </div>
+                <div class="companyDetails" style="margin-top: 20px">
+                  <form
+                    class="row g-3 needs-validation"
+                    validate=""
+                    method="post"
+                    action="/admin/addcompanylisting"
+                  >
+                    <div class="col-md-5">
+                      <label for="companyName" class="form-label"
+                        >Official Company Name</label
+                      >
+                      <input
+                        type="text"
+                        id="companyName"
+                        class="css-input"
+                        required
+                        name="companyName"
+                      />
+                    </div>
 
-            <!-- add listings -->
-            <div class="addlistings">
-              <div class="cardHeader">
-                <h2>Add Listings</h2>
-              </div>
-              <div class="companyDetails" style="margin-top: 20px">
-                <form
-                  class="row g-3 needs-validation"
-                  validate=""
-                  method="post"
-                  action="/admin/addcompanylisting"
-                >
-                  <div class="col-md-5">
-                    <label for="companyName" class="form-label"
-                      >Official Company Name</label
-                    >
-                    <input
-                      type="text"
-                      id="companyName"
-                      class="css-input"
-                      required
-                      name="companyName"
-                    />
-                  </div>
-
-                  <!-- <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                     <label for="offeredCampus" class="form-label"
                       >Campus Prefered</label
                     >
@@ -2062,142 +2164,218 @@
                       <option value="gandhiNagar">Gandhi Nagar</option>
                     </select>
                   </div> -->
-                  <div class="col-md-4">
-                    <label for="jobLocation" class="form-label"
-                      >Job Location
-                    </label>
-                    <input
-                      type="text"
-                      id="jobLocation"
-                      class="css-input"
-                      required
-                      name="jobLocation"
-                    />
-                  </div>
-                  <div class="col-md-3">
-                    <label for="joType" class="form-label">Job Type</label>
-                    <select
-                      name="jobType"
-                      id="joType"
-                      class="css-input"
-                      required
-                    >
-                      <option value="Internship">Internship (I)</option>
-                      <option value="Intern FTE">Intern FTE (I+F)</option>
-                      <option value="FTE">FTE (F)</option>
-                      <option value="Internship PPO">
-                        Internship PPO (I+P)
-                      </option>
-                    </select>
-                  </div>
-                  <div class="col-md-4">
-                    <label for="jobTitle" class="form-label">Job Title </label>
-                    <input
-                      type="text"
-                      id="jobTitle"
-                      class="css-input"
-                      required
-                      name="jobTitle"
-                    />
-                  </div>
-                  <div
-                    class="col-md-4"
-                    style="
-                      border-style: groove;
-                      border-radius: 30px;
-                      padding: 5px;
-                    "
-                  >
-                    <label for="All"> All</label>
-                    <input
-                      type="checkbox"
-                      class="css-input"
-                      name="forCourse"
-                      value="All"
-                      id="All"
-                      style="height: 20px"
-                    />
-                    <label for="MTechCS">MTech CS</label>
-                    <input
-                      type="checkbox"
-                      class="css-input"
-                      name="forCourse"
-                      value="MtechCs"
-                      id="MTechCS"
-                      style="height: 20px"
-                    />
-                    <label for="MScCS">MSc CS</label>
-                    <input
-                      type="checkbox"
-                      class="css-input"
-                      name="forCourse"
-                      id="MScCS"
-                      value="MscCs"
-                      style="height: 20px"
-                    />
-                    <label for="MScDFIS">MSc DFIS</label>
-                    <input
-                      type="checkbox"
-                      class="css-input"
-                      name="forCourse"
-                      id="MScDFIS"
-                      value="MscDfis"
-                      style="height: 20px"
-                    />
-                    <label for="MScAIDS"> MTech ADSAI</label>
-                    <input
-                      type="checkbox"
-                      class="css-input"
-                      name="forCourse"
-                      id="MtechAdsai"
-                      value="MtechAdsai"
-                      style="height: 20px"
-                    />
-                  </div>
-
-                  <div class="col-md-4">
-                    <label for="jobdescriptionFile" class="form-label"
-                      >Job Description *</label
-                    >
-                    <input
-                      type="file"
-                      disabled
-                      id="jobdescriptionFile"
-                      name="jobdescriptionFile"
-                      class="css-input"
-                    />
-                  </div>
-                  <div class="col-md-4">
-                    <label for="ctc" class="form-label">CTC/Stipend</label>
-                    <input
-                      type="number"
-                      id="ctc"
-                      class="css-input"
-                      name="ctc"
-                      required
-                    />
-                  </div>
-                  <div class="col-md-4">
-                    <label for="lastDate" class="form-label">
-                      Last Date To Apply *</label
-                    >
-                    <input
-                      type="date"
-                      id="lastDate"
-                      name="lastDateToApply"
-                      class="css-input"
-                      required
-                    />
-                  </div>
-
-                  <div class="row my-3">
-                    <div class="col" style="text-align: center">
-                      <button type="submit" class="btn btn-success">
-                        Add Listing
-                      </button>
+                    <div class="col-md-4">
+                      <label for="jobLocation" class="form-label"
+                        >Job Location
+                      </label>
+                      <input
+                        type="text"
+                        id="jobLocation"
+                        class="css-input"
+                        required
+                        name="jobLocation"
+                      />
                     </div>
-                  </div>
-                </form>
+                    <div class="col-md-3">
+                      <label for="joType" class="form-label">Job Type</label>
+                      <select
+                        name="jobType"
+                        id="joType"
+                        class="css-input"
+                        required
+                      >
+                        <option value="Internship">Internship (I)</option>
+                        <option value="Intern FTE">Intern FTE (I+F)</option>
+                        <option value="FTE">FTE (F)</option>
+                        <option value="Internship PPO">
+                          Internship PPO (I+P)
+                        </option>
+                      </select>
+                    </div>
+                    <div class="col-md-4">
+                      <label for="jobTitle" class="form-label"
+                        >Job Title
+                      </label>
+                      <input
+                        type="text"
+                        id="jobTitle"
+                        class="css-input"
+                        required
+                        name="jobTitle"
+                      />
+                    </div>
+                    <div
+                      class="col-md-4"
+                      style="
+                        border-style: groove;
+                        border-radius: 30px;
+                        padding: 5px;
+                      "
+                    >
+                      <label for="All"> All</label>
+                      <input
+                        type="checkbox"
+                        class="css-input"
+                        name="forCourse"
+                        value="All"
+                        id="All"
+                        style="height: 20px"
+                      />
+                      <label for="MTechCS">MTech CS</label>
+                      <input
+                        type="checkbox"
+                        class="css-input"
+                        name="forCourse"
+                        value="MtechCs"
+                        id="MTechCS"
+                        style="height: 20px"
+                      />
+                      <label for="MScCS">MSc CS</label>
+                      <input
+                        type="checkbox"
+                        class="css-input"
+                        name="forCourse"
+                        id="MScCS"
+                        value="MscCs"
+                        style="height: 20px"
+                      />
+                      <label for="MScDFIS">MSc DFIS</label>
+                      <input
+                        type="checkbox"
+                        class="css-input"
+                        name="forCourse"
+                        id="MScDFIS"
+                        value="MscDfis"
+                        style="height: 20px"
+                      />
+                      <label for="MScAIDS"> MTech ADSAI</label>
+                      <input
+                        type="checkbox"
+                        class="css-input"
+                        name="forCourse"
+                        id="MtechAdsai"
+                        value="MtechAdsai"
+                        style="height: 20px"
+                      />
+                    </div>
+
+                    <div class="col-md-4">
+                      <label for="jobdescriptionFile" class="form-label"
+                        >Job Description *</label
+                      >
+                      <input
+                        type="file"
+                        disabled
+                        id="jobdescriptionFile"
+                        name="jobdescriptionFile"
+                        class="css-input"
+                      />
+                    </div>
+                    <div class="col-md-4">
+                      <label for="ctc" class="form-label">CTC/Stipend</label>
+                      <input
+                        type="number"
+                        id="ctc"
+                        class="css-input"
+                        name="ctc"
+                        required
+                      />
+                    </div>
+                    <div class="col-md-4">
+                      <label for="lastDate" class="form-label">
+                        Last Date To Apply *</label
+                      >
+                      <input
+                        type="date"
+                        id="lastDate"
+                        name="lastDateToApply"
+                        class="css-input"
+                        required
+                      />
+                    </div>
+
+                    <div class="row my-3">
+                      <div class="col" style="text-align: center">
+                        <button type="submit" class="btn btn-success">
+                          Add Listing
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="details">
+            <div class="recentCustomers">
+              <div class="recentOrders">
+                <div class="cardHeader">
+                  <h2>De-Board a company</h2>
+                  <!-- <a href="#" class="btn"
+                    ><input
+                      type="text"
+                      style="
+                        border-radius: 10px;
+                        margin: 5px;
+                        padding: 3px;
+                        font-size: 14px;
+                        width: 150px;
+                      "
+                      placeholder="Search"
+                    />
+                  </a> -->
+                </div>
+                <div style="height: 500px; overflow-y: scroll">
+                  <table>
+                    <thead>
+                      <tr>
+                        <td>Company Name</td>
+                        <td>Nature of Business</td>
+                        <td>Category</td>
+                        <td>HR Mobile No.</td>
+                        <td>HR Email</td>
+                        <td>Postal Address</td>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <% allAuditedRecruiters.forEach(recruiter => { %>
+                      <tr>
+                        <td><%= recruiter.companyname %></td>
+                        <td><%= recruiter.natureofbusiness %></td>
+                        <td><%= recruiter.category %></td>
+                        <td><%= recruiter.headhrmobno %></td>
+                        <td><%=recruiter.headhremail%></td>
+                        <td><%= recruiter.postaladdress %></td>
+                        <td>
+                          <a
+                            href="/admin/deboard/recruiter/<%= recruiter._id %>"
+                          >
+                            <button id="DeboardBtn">De-Board</button>
+                          </a>
+                        </td>
+                      </tr>
+                      <% }); %> <% allRegisteredRecruiters.forEach(recruiter =>
+                      { %>
+                      <tr>
+                        <td><%= recruiter.companyname %></td>
+                        <td><%= recruiter.natureofbusiness %></td>
+                        <td><%= recruiter.category %></td>
+                        <td><%= recruiter.headhrmobno %></td>
+                        <td><%=recruiter.headhremail%></td>
+                        <td><%= recruiter.postaladdress %></td>
+                        <td>
+                          <a
+                            href="/admin/deboard/recruiter/<%= recruiter._id %>"
+                          >
+                            <button id="DeboardBtn">De-Board</button>
+                          </a>
+                        </td>
+                      </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -2404,6 +2582,19 @@
 
     <script>
       let signoutli = document.querySelector("#signoutli");
+
+      let DeboardBtns = document.querySelectorAll("#DeboardBtn");
+
+      DeboardBtns.forEach((btn) => {
+        btn.addEventListener("click", (event) => {
+          event.preventDefault();
+          if (window.confirm("Are you sure to De-Board  ?")) {
+            btn.closest("a").click();
+          } else {
+            return;
+          }
+        });
+      });
 
       signoutli.addEventListener("click", () => {
         if (window.confirm("Are you sure want to Sign Out?")) {

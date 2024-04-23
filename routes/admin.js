@@ -26,4 +26,11 @@ router
   .route("/markStuAudit/:verifiedStuID")
   .get(isThisAdmin, wrapAsync(adminController.markStuAudit));
 
+router
+  .route("/deboard/recruiter/:recid")
+  .get(isThisAdmin, wrapAsync(adminController.deboardRecruiter));
+router
+  .route("/deboard/student/:stuid")
+  .get(isThisAdmin, wrapAsync(adminController.deboardStudent));
+
 module.exports = router;

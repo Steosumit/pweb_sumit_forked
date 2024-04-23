@@ -337,3 +337,31 @@ module.exports.markStuAudit = async (req, res) => {
     }
   });
 };
+
+module.exports.deboardRecruiter = async (req, res) => {
+  let { recid } = req.params;
+  let result = await Recruiter.deleteMany({ _id: recid });
+
+  req.flash("success", "Recruiter De-Boarded Successfully !");
+  res.redirect("/admin");
+};
+
+module.exports.deboardStudent = async (req, res) => {
+  let { stuid } = req.params;
+  let stu = await Student.findOne({ _id: stuid });
+
+  if (stu) {
+    await VerifiedUser.deleteMany({
+      "bodyData.email": stu.email,
+    });
+  } else {
+    await VerifiedUser.deleteMany({
+      _id: stuid,
+    });
+  }
+  await Application.deleteMany({ stuId: stuid });
+  await Student.deleteMany({ _id: stuid });
+
+  req.flash("success", "Student De-Boarded Successfully !");
+  res.redirect("/admin");
+};
