@@ -5,6 +5,8 @@ const Listing = require("../models/listing");
 const Application = require("../models/application");
 const { v4: uuidv4 } = require("uuid");
 const nodemailer = require("nodemailer");
+let converter = require("json-2-csv");
+
 
 module.exports.showAdmin = async (req, res) => {
   let allRecruitersPending = await Recruiter.find({ isAudited: false });
@@ -572,4 +574,71 @@ module.exports.deboardStudent = async (req, res) => {
 
   req.flash("success", "Student De-Boarded Successfully !");
   res.redirect("/admin");
+};
+
+module.exports.exportAllStudentData = async (req, res) => {
+  try {
+    const students = await Student.find({});
+    const sanitizedStudents = students.map((student) => {
+      const sanitizedStudent = {};
+      Object.entries(student).forEach(([key, value]) => {
+        if (!key.startsWith("$") && !key.startsWith("_doc._id.")) {
+          sanitizedStudent[key] = value;
+        }
+      });
+      return sanitizedStudent;
+    });
+    const csv = await converter.json2csv(sanitizedStudents);
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0");
+    var yyyy = today.getFullYear();
+    var hh = String(today.getHours()).padStart(2, "0");
+    var min = String(today.getMinutes()).padStart(2, "0");
+    var formattedDateTime = dd + "-" + mm + "-" + yyyy + " " + hh + "_" + min;
+
+    res.setHeader("Content-Type", "text/csv");
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=SPC Students ${formattedDateTime}.csv`
+    );
+    res.send(csv);
+  } catch (err) {
+    console.error("Error exporting CSV:", err);
+    res.status(500).send("Error exporting CSV");
+  }
+};
+module.exports.exportAllCompanyData = async (req, res) => {
+  try {
+    const companies = await Recruiter.find({});
+    const sanitizedcompanies = companies.map((company) => {
+      const sanitizedcompanies = {};
+      Object.entries(company).forEach(([key, value]) => {
+        if (!key.startsWith("$") && !key.startsWith("_doc._id.")) {
+          sanitizedcompanies[key] = value;
+        }
+      });
+      return sanitizedcompanies;
+    });
+    const csv = await converter.json2csv(sanitizedcompanies);
+
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, "0");
+    var mm = String(today.getMonth() + 1).padStart(2, "0");
+    var yyyy = today.getFullYear();
+    var hh = String(today.getHours()).padStart(2, "0");
+    var min = String(today.getMinutes()).padStart(2, "0");
+    var formattedDateTime = dd + "-" + mm + "-" + yyyy + " " + hh + "_" + min;
+
+    res.setHeader("Content-Type", "text/csv");
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=SPC Companies ${formattedDateTime}.csv`
+    );
+    res.send(csv);
+  } catch (err) {
+    console.error("Error exporting CSV:", err);
+    res.status(500).send("Error exporting CSV");
+  }
 };

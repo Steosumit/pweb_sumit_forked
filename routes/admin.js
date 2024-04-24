@@ -51,4 +51,12 @@ router
   .route("/deboard/student/:stuid")
   .get(isThisAdmin, wrapAsync(adminController.deboardStudent));
 
+router
+  .route("/export/student")
+  .get(isThisAdmin, wrapAsync(adminController.exportAllStudentData));
+
+router
+  .route("/export/company")
+  .get(isThisAdmin, wrapAsync(adminController.exportAllCompanyData));
+
 module.exports = router;

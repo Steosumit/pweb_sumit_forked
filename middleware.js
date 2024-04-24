@@ -97,11 +97,11 @@ module.exports.studentStayInDashboard = (req, res, next) => {
 
 module.exports.isTwoFactorDone = wrapAsync(async (req, res, next) => {
   let result = await OTP.findOne({
-    email: req.session.bodyData.email,
+    email: req.session.email,
     code: req.body.otp,
   });
   if (result) {
-    await OTP.deleteMany({ email: req.session.bodyData.email });
+    await OTP.deleteMany({ email: req.session.email });
     return next();
   } else {
     req.flash("error", "Please Enter Correct OTP.");

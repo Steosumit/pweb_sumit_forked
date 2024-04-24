@@ -8,6 +8,7 @@ const wrapAsync = require("../utils/wrapasync");
 
 module.exports.renderLoginPage = (req, res) => {
   // let reCaptchaClientKey = process.env.CAPTCHACLIENTKEY;
+  req.session.destroy();
   res.render("auth/loginstu.ejs");
 };
 
@@ -20,7 +21,7 @@ module.exports.sendTwoFactor = async (req, res) => {
   }
 
   let newOtp = Math.floor(Math.random() * 900000) + 100000;
-  await OTP.deleteMany({ email: stuDetails.email });
+  if (stuDetails) await OTP.deleteMany({ email: stuDetails.email });
   await OTP.insertMany({
     email: stuDetails.email,
     code: newOtp,
@@ -61,24 +62,30 @@ To Verify your Email, please Insert the <strong>Following OTP</strong>:
     subject: "2 Factor Authentication Request",
     html: message,
   };
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send("Failed to send OTP");
-    } else {
-      req.session.bodyData = req.body;
-      req.session.bodyData.email = stuDetails.email;
-      req.flash("success", "OTP sent successfully");
-      res.redirect(`/auth/login-student/verifyotp`);
-    }
-  });
+  // transporter.sendMail(mailOptions, (error, info) => {
+  //   if (error) {
+  //     console.error(error);
+  //     res.status(500).send("Failed to send OTP");
+  //   } else {
+  //     req.session.bodyData = req.body;
+  //     req.session.bodyData.email = stuDetails.email;
+  //     req.flash("success", "OTP sent successfully");
+  //     res.redirect(`/auth/login-student/verifyotp`);
+  //   }
+  // });
+  transporter.sendMail(mailOptions);
+  req.session.username = req.body.username;
+  req.session.password = req.body.password;
+  req.session.email = stuDetails.email;
+  req.flash("success", "OTP sent successfully");
+  res.redirect(`/auth/login-student/verifyotp`);
 };
 
 module.exports.renderVerifyTwoFactor = (req, res) => {
   res.render("auth/twofactorverify.ejs", {
-    email: req.session.bodyData.email,
-    username: req.session.bodyData.username,
-    password: req.session.bodyData.password,
+    email: req.session.email,
+    username: req.session.username,
+    password: req.session.password,
   });
 };
 
@@ -122,6 +129,7 @@ module.exports.logOutUser = function (req, res, next) {
 
 //FOR REGISTRATION
 module.exports.renderOtpInputForm = async (req, res) => {
+  req.session.destroy();
   req.session.username = req.query.username;
   res.render("auth/otpinit.ejs", { username: req.session.username });
 };

@@ -1323,7 +1323,8 @@
                     <tr>
                       <td>Student Name</td>
                       <td>Course</td>
-                      <td>mobileno</td>
+                      <td>Company Name</td>
+                      <td>Mobile No.</td>
                       <td>Date Applied</td>
                     </tr>
                   </thead>
@@ -1333,6 +1334,7 @@
                     <tr id="<%=appObj.stuId.fullname%>ApplicationsReceived">
                       <td><%=appObj.stuId.fullname%></td>
                       <td><%=appObj.stuId.course%></td>
+                      <td><%=appObj.listingId.companyName%></td>
                       <td><%=appObj.stuId.mobileno%></td>
                       <td><%=appObj.createdAt%></td>
                     </tr>
@@ -1341,6 +1343,15 @@
                 </table>
               </div>
             </div>
+            <a href="/admin/export/student">
+              <button style="width: 100%">
+                Download All Student's Data
+              </button></a
+            >
+            <br />
+            <a href="/admin/export/company">
+              <button style="width: 100%">Download All Companies's Data</button>
+            </a>
           </div>
           <!-- job seekers request -->
 

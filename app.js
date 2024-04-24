@@ -81,18 +81,16 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
 app.use(flash());
-app.use(passport.initialize());
-app.use(passport.session());
-passport.use(new LocalStrategy(Student.authenticate()));
-passport.serializeUser(Student.serializeUser());
-passport.deserializeUser(Student.deserializeUser());
-
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
 });
-
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(Student.authenticate()));
+passport.serializeUser(Student.serializeUser());
+passport.deserializeUser(Student.deserializeUser());
 main()
   .then(() => {
     console.log("Connected To db");
@@ -124,7 +122,14 @@ app.use("/placement-team", teamRouter);
 app.use("/community", communityRouter);
 app.use("/resources", resourcesRouter);
 
+
 app.all("*", (req, res) => {
-  req.flash("error", "Page Not Found !", req.path);
-  res.redirect("/");
+  // to not get path not found on /fevicon.ico in admin page (inadequate behaviour by admin page )
+
+  if (req.user && req.user.username == process.env.ADMIN_USERNAME) {
+    res.redirect("/");
+  } else {
+    req.flash("error", "Page Not Found !", req.path);
+    res.redirect("/");
+  }
 });
