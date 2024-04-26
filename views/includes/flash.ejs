@@ -4,7 +4,17 @@
   role="alert"
   style="width: 100%; text-align: center; transform: translate3d(0, 0, 0)"
 >
-  <%-success%>
+  <%-success%> <%if(isAdmin){%>
+  <button
+    type="button"
+    class="btn-close"
+    id="cross-btn"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  >
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <%}else{%>
   <button
     type="button"
     class="btn-close"
@@ -12,6 +22,7 @@
     data-bs-dismiss="alert"
     aria-label="Close"
   ></button>
+  <%}%>
 </div>
 <script></script>
 
@@ -21,7 +32,17 @@
   role="alert"
   style="width: 100%; text-align: center; transform: translate3d(0, 0, 0)"
 >
-  <%-error%>
+  <%-error%> <%if(isAdmin){%>
+  <button
+    type="button"
+    class="btn-close"
+    id="cross-btn"
+    data-bs-dismiss="alert"
+    aria-label="Close"
+  >
+    <i class="fa-solid fa-xmark"></i>
+  </button>
+  <%}else{%>
   <button
     type="button"
     class="btn-close"
@@ -29,5 +50,6 @@
     data-bs-dismiss="alert"
     aria-label="Close"
   ></button>
+  <%}%>
 </div>
 <%}%>

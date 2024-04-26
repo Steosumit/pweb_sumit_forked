@@ -7,13 +7,15 @@ const { v4: uuidv4 } = require("uuid");
 const nodemailer = require("nodemailer");
 let converter = require("json-2-csv");
 
-
 module.exports.showAdmin = async (req, res) => {
   let allRecruitersPending = await Recruiter.find({ isAudited: false });
+  let countAllRecruitersPending = allRecruitersPending.length;
   let allStudentsPending = await VerifiedUser.find({
     "bodyData.username": "Student",
   });
+  let countallStudentsPending = allStudentsPending.length;
   let allRegisteredRecruiters = await Recruiter.find({ isRegistered: true });
+  let countAllRegisteredRecruiters = allRegisteredRecruiters.length;
   let allAuditedRecruiters = await Recruiter.find({
     isAudited: true,
     isRegistered: false,
@@ -22,18 +24,15 @@ module.exports.showAdmin = async (req, res) => {
     isAudited: true,
     isRegistered: false,
   });
+  let countallAuditedStudents = allAuditedStudents.length;
   let allRegisteredStudents = await Student.find({ isRegistered: true });
+  let countallRegisteredStudents = allRegisteredStudents.length;
   let allListedRecruiters = await Listing.find({});
+  let countAllListedRecruiters = allListedRecruiters.length;
   let allApplications = await Application.find({})
     .populate("stuId")
     .populate("listingId");
-  //   .populate("stuId")
-  //   .populate("listingId");
 
-  // console.log("recs :");
-  // console.log(allRecruitersPending);
-  // console.log("stu");
-  // console.log(allStudentsPending);
   res.render("users/admin.ejs", {
     allRecruitersPending: allRecruitersPending,
     allAuditedRecruiters: allAuditedRecruiters,
@@ -43,6 +42,12 @@ module.exports.showAdmin = async (req, res) => {
     allRegisteredStudents: allRegisteredStudents,
     allListedRecruiters: allListedRecruiters,
     allApplications: allApplications,
+    countAllRecruitersPending: countAllRecruitersPending,
+    countAllRegisteredRecruiters: countAllRegisteredRecruiters,
+    countAllListedRecruiters: countAllListedRecruiters,
+    countallStudentsPending: countallStudentsPending,
+    countallRegisteredStudents: countallRegisteredStudents,
+    countallAuditedStudents: countallAuditedStudents,
   });
 };
 

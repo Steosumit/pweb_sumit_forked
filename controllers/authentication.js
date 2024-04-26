@@ -8,7 +8,7 @@ const wrapAsync = require("../utils/wrapasync");
 
 module.exports.renderLoginPage = (req, res) => {
   // let reCaptchaClientKey = process.env.CAPTCHACLIENTKEY;
-  req.session.destroy();
+
   res.render("auth/loginstu.ejs");
 };
 
@@ -129,7 +129,6 @@ module.exports.logOutUser = function (req, res, next) {
 
 //FOR REGISTRATION
 module.exports.renderOtpInputForm = async (req, res) => {
-  req.session.destroy();
   req.session.username = req.query.username;
   res.render("auth/otpinit.ejs", { username: req.session.username });
 };

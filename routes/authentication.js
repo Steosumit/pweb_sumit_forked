@@ -15,7 +15,7 @@ router
   .route("/login-student")
   .get(shallNotAuthenticated, authenticationController.renderLoginPage)
   .post(
-    isTwoFactorDone,
+    // isTwoFactorDone,
     passport.authenticate("local", {
       failureRedirect: "/auth/login-student",
       failureFlash: true,
