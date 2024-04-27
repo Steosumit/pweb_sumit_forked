@@ -1,6 +1,7 @@
 const Student = require("../models/student");
 const Listing = require("../models/listing");
 const Application = require("../models/application");
+const Update = require("../models/update");
 module.exports.showAccount = async (req, res) => {
   let { isRegistered, _id, course } = req.user;
 
@@ -24,11 +25,17 @@ module.exports.showAccount = async (req, res) => {
         listing.forCourse.includes(course) || listing.forCourse.includes("All")
     );
 
+    let allUpdates = await Update.find({});
+    let updatesToShow = allUpdates.filter(
+      (update) =>
+        update.forCourse.includes(course) || update.forCourse.includes("All")
+    );
     res.render("users/youraccountstu.ejs", {
       isRegistered: isRegistered,
       stuId: _id,
       availableListings: availableListings,
       appliedListings: appliedListings,
+      updatesToShow: updatesToShow,
     });
   } catch (err) {
     console.error("Error retrieving student applications:", err);

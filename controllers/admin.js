@@ -5,6 +5,7 @@ const Listing = require("../models/listing");
 const Application = require("../models/application");
 const { v4: uuidv4 } = require("uuid");
 const nodemailer = require("nodemailer");
+const Update = require("../models/update");
 let converter = require("json-2-csv");
 
 module.exports.showAdmin = async (req, res) => {
@@ -32,6 +33,24 @@ module.exports.showAdmin = async (req, res) => {
   let allApplications = await Application.find({})
     .populate("stuId")
     .populate("listingId");
+  let countallApplications = allApplications.length;
+
+  let allUpdates = await Update.find({});
+  let updatesForAll = allUpdates.filter((update) =>
+    update.forCourse.includes("All")
+  );
+  let updatesForMtechCs = allUpdates.filter((update) =>
+    update.forCourse.includes("MtechCs")
+  );
+  let updatesForMtechAdsai = allUpdates.filter((update) =>
+    update.forCourse.includes("MtechAdsai")
+  );
+  let updatesForMscCs = allUpdates.filter((update) =>
+    update.forCourse.includes("MScCs")
+  );
+  let updatesForMscDfis = allUpdates.filter((update) =>
+    update.forCourse.includes("MscDfis")
+  );
 
   res.render("users/admin.ejs", {
     allRecruitersPending: allRecruitersPending,
@@ -48,6 +67,12 @@ module.exports.showAdmin = async (req, res) => {
     countallStudentsPending: countallStudentsPending,
     countallRegisteredStudents: countallRegisteredStudents,
     countallAuditedStudents: countallAuditedStudents,
+    countallApplications: countallApplications,
+    updatesForAll: updatesForAll,
+    updatesForMtechCs: updatesForMtechCs,
+    updatesForMtechAdsai: updatesForMtechAdsai,
+    updatesForMscCs: updatesForMscCs,
+    updatesForMscDfis: updatesForMscDfis,
   });
 };
 
@@ -646,4 +671,22 @@ module.exports.exportAllCompanyData = async (req, res) => {
     console.error("Error exporting CSV:", err);
     res.status(500).send("Error exporting CSV");
   }
+};
+
+module.exports.renderSendUpdateForm = (req, res) => {
+  res.render("resources/sendupdate.ejs");
+};
+
+module.exports.pushUpdateToStudents = async (req, res) => {
+  let newUpdate = new Update(req.body);
+  await newUpdate.save();
+  req.flash("Update sent Successfully !");
+  res.redirect("/admin");
+};
+
+module.exports.deleteUpdate = async (req, res) => {
+  let { updateId } = req.params;
+  await Update.deleteMany({ _id: updateId });
+  req.flash("success", "Update Deleted Successfully !");
+  res.redirect("/admin");
 };

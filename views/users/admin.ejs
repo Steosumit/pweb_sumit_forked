@@ -945,7 +945,19 @@
               <span class="title">Get Help</span>
             </a>
           </li>
-
+          <li id="update">
+            <a href="#updates">
+              <span class="icon">
+                <ion-icon
+                  name="log-out-outline"
+                  role="img"
+                  class="md hydrated"
+                  aria-label="log out outline"
+                ></ion-icon>
+              </span>
+              <span class="title">Updates</span>
+            </a>
+          </li>
           <li id="signoutli">
             <a href="#signout">
               <span class="icon">
@@ -1229,8 +1241,8 @@
           <div class="cardBox">
             <div class="card">
               <div>
-                <div class="numbers">0</div>
-                <div class="cardName">Total Applicants Registered</div>
+                <div class="numbers"><%=countallApplications%></div>
+                <div class="cardName">Total Applicants Received</div>
               </div>
 
               <div class="iconBx">
@@ -1239,7 +1251,7 @@
               </div>
             </div>
 
-            <div class="card">
+            <!-- <div class="card">
               <div>
                 <div class="numbers">0</div>
                 <div class="cardName">Total Applicants Requested</div>
@@ -1248,9 +1260,9 @@
               <div class="iconBx">
                 <span class="material-symbols-sharp"> check_circle </span>
               </div>
-            </div>
+            </div> -->
 
-            <div class="card">
+            <!-- <div class="card">
               <div>
                 <div class="numbers">0</div>
                 <div class="cardName">Total Application Disapproved</div>
@@ -1259,20 +1271,20 @@
               <div class="iconBx">
                 <span class="material-symbols-sharp"> unpublished </span>
               </div>
-            </div>
+            </div> -->
 
-            <a href="/admin/export/student" style="text-decoration: none">
+            <!-- <a href="/admin/export/student" style="text-decoration: none">
               <div class="card">
-                <div>
-                  <!-- <div class="numbers">0</div> -->
-                  <div class="cardName">Export Data Students</div>
+                <div> -->
+            <!-- <div class="numbers">0</div> -->
+            <!-- <div class="cardName">Export Data Students</div>
                 </div>
 
                 <div class="iconBx">
                   <span class="material-symbols-sharp"> download </span>
                 </div>
               </div>
-            </a>
+            </a> -->
           </div>
 
           <!-- ================ Order Details List ================= -->
@@ -1341,9 +1353,23 @@
                   <tbody>
                     <% for (appObj of allApplications) {%>
                     <tr id="<%=appObj.stuId.fullname%>ApplicationsReceived">
-                      <td><%=appObj.stuId.fullname%></td>
+                      <td>
+                        <a
+                          href="/account/sturegisdetails/?stuId=<%=appObj.stuId._id%>"
+                          target="_blank"
+                        >
+                          <%=appObj.stuId.fullname%></a
+                        >
+                      </td>
                       <td><%=appObj.stuId.course%></td>
-                      <td><%=appObj.listingId.companyName%></td>
+                      <td>
+                        <a
+                          href="/admin/listingDetails/<%=appObj.listingId._id%>"
+                          target="_blank"
+                        >
+                          <%=appObj.listingId.companyName%></a
+                        >
+                      </td>
                       <td><%=appObj.stuId.mobileno%></td>
                       <td><%=appObj.createdAt%></td>
                     </tr>
@@ -1462,6 +1488,82 @@
               </div>
             </div>
           </div> -->
+        </section>
+
+        <section id="updates">
+          <h1 style="text-align: center">All Updates:</h1>
+          <br />
+          <a href="/admin/sendupdate">
+            <button style="margin: 2rem">Send New Update</button></a
+          >
+
+          <h1>All</h1>
+          <br />
+          <div class="allupdates">
+            <%updatesForAll.forEach((update)=>{%>
+            <h3><%=update.title%></h3>
+            <h5><%=update.description%></h5>
+            <a href="/admin/deleteupdate/<%=update._id%>">
+              <button>Delete Update</button></a
+            >
+
+            <% });%>
+            <br />
+          </div>
+          <h1>Mtech CS</h1>
+          <div class="mtechcsupdates">
+            <%updatesForMtechCs.forEach((update)=>{%>
+            <h3><%=update.title%></h3>
+            <h5><%=update.description%></h5>
+ <a href="/admin/deleteupdate/<%=update._id%>">
+              <button>Delete Update</button></a
+            >
+
+            <% });%>
+            <br />
+          </div>
+          <h1>Mtech ADSAI</h1>
+          <div class="mtechadsaiupdates">
+            <div class="mtechcsupdates">
+              <%updatesForMtechAdsai.forEach((update)=>{%>
+              <h3><%=update.title%></h3>
+              <h5><%=update.description%></h5>
+ <a href="/admin/deleteupdate/<%=update._id%>">
+              <button>Delete Update</button></a
+            >
+
+              <% });%>
+              <br />
+            </div>
+          </div>
+          <h1>MSc CS</h1>
+          <div class="">
+            <div class="mtechcsupdates">
+              <%updatesForMscCs.forEach((update)=>{%>
+              <h3><%=update.title%></h3>
+              <h5><%=update.description%></h5>
+ <a href="/admin/deleteupdate/<%=update._id%>">
+              <button>Delete Update</button></a
+            >
+
+              <% });%>
+              <br />
+            </div>
+          </div>
+          <h1>MSc DFIS</h1>
+          <div class="">
+            <div class="mtechcsupdates">
+              <%updatesForMscDfis.forEach((update)=>{%>
+              <h3><%=update.title%></h3>
+              <h5><%=update.description%></h5>
+ <a href="/admin/deleteupdate/<%=update._id%>">
+              <button>Delete Update</button></a
+            >
+
+              <% });%>
+              <br />
+            </div>
+          </div>
         </section>
         <section id="accounts" style="display: none">
           <div class="cardBox">
@@ -3150,8 +3252,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 
     <script>
-      var xValues = ["Students", "Companies", "Queries Raised"];
-      var yValues = [55, 49, 44];
+      var xValues = [
+        "Registered Students",
+        "Total Listings",
+        "Registered Companies",
+      ];
+      var yValues = [
+        `<%=countallRegisteredStudents%>`,
+        `<%=countAllListedRecruiters%>`,
+        `<%=countAllRegisteredRecruiters%>`,
+      ];
       var barColors = ["red", "green", "blue"];
       new Chart("myChart", {
         type: "pie",
@@ -3167,7 +3277,7 @@
         options: {
           title: {
             display: true,
-            text: "STATISTICS",
+            text: "SPC SCSDF",
           },
         },
       });

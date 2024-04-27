@@ -1,0 +1,354 @@
+<%-include("../includes/flash.ejs")%>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    />
+    <title>Send Update</title>
+    <style>
+      .regis-big-div {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .regis-big-div form {
+        line-height: 2rem;
+      }
+      .regis-big-div form .form-group {
+        width: fit-content;
+      }
+      .regis-logo {
+        width: 100%;
+        height: 15rem;
+
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        background-color: powderblue;
+      }
+      .regis-logo-img {
+        width: 28rem;
+        height: 10rem;
+        background: url("https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png");
+        background-size: cover;
+        background-position: center;
+      }
+      /* .regis-logo-img img {
+  object-fit: contain;
+} */
+
+      .input-fields {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .form-group {
+        margin-right: 05rem;
+        margin-bottom: 1rem;
+      }
+
+      .form-group input {
+        width: 15rem;
+      }
+
+      .down-regis .card {
+        background-color: transparent;
+        border: 0;
+        width: 20rem;
+      }
+      .down-regis .card p {
+        margin: 0;
+      }
+      /* .down-regis button {
+  margin: 3rem;
+  padding: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-bottom: 10rem;
+} */
+      .submit-btn {
+        display: flex;
+        justify-content: center;
+      }
+
+      .card-body {
+        padding: 0;
+      }
+      .regis-card-title {
+        text-align: start !important;
+      }
+
+      .comm-fields {
+        display: flex;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="regis-big-div">
+      <div
+        class="left-login"
+        style="width: 100%; display: flex; justify-content: center"
+      >
+        <div class="pop-out">
+          <a href="/"
+            ><img
+              loading="lazy"
+              src="https://res.cloudinary.com/ddxv0iwcs/image/upload/v1710502741/emblem_e7gmxn.png"
+              width="250"
+              style="padding: 1rem"
+              alt=""
+          /></a>
+        </div>
+      </div>
+
+      <div class="down-regis">
+        <div class="resources-student-big-div">
+          <div class="content-div regis-content-div">
+            <div class="content-title container">
+              <h2
+                style="
+                  text-align: center;
+                  padding-top: 2rem;
+                  padding-bottom: 2rem;
+                  margin-bottom: 0;
+                "
+              >
+                Send Update Form
+              </h2>
+              <hr />
+              <br />
+              <form action="/admin/sendupdate" method="post">
+                <div class="input-fields">
+                  <div class="form-group">
+                    <label for="CompanyName">Title</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="title"
+                      id="CompanyName"
+                      placeholder="Title"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="NatureofBusiness">Description</label>
+                    <textarea
+                      type="text"
+                      class="form-control"
+                      name="description"
+                      id="NatureofBusiness"
+                      placeholder="Description"
+                    ></textarea>
+                  </div>
+                  <!-- <div class="form-group">
+                    <label for="NatureofBusiness">Job Type</label>
+                    <select name="jobType" id="joType" class="form-control">
+                      <option value="Internship">Internship (I)</option>
+                      <option value="Intern FTE">Intern FTE (I+F)</option>
+                      <option value="FTE">FTE (F)</option>
+                      <option value="Internship PPO">
+                        Internship PPO (I+P)
+                      </option>
+                    </select>
+                  </div> -->
+                  <!--
+                  <div class="form-group">
+                    <label for="jobTitle" class="form-label">Job Title</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="jobTitle"
+                      id="jobTitle"
+                      placeholder="jobLocation"
+                    />
+                  </div> -->
+                </div>
+                <br />
+                <div class="input-fields">
+                  <div class="form-group">
+                    <label for="All" class="form-label">All</label>
+                    <input
+                      type="checkbox"
+                      name="forCourse"
+                      value="All"
+                      id="All"
+                      style="height: 20px; width: 40px"
+                    />
+                    <br>
+
+                    <label for="MTechCS" class="form-label">MTech CS</label>
+                    <input
+                      type="checkbox"
+                      name="forCourse"
+                      value="MtechCs"
+                      id="MtechCs"
+                      style="height: 20px; width: 40px"
+                    />
+
+                    <br>
+                    <label for="MScCS" class="form-label">MSc CS</label>
+                    <input
+                      type="checkbox"
+                      name="forCourse"
+                      value="MScCs"
+                      id="MScCS"
+                      style="height: 20px; width: 40px"
+                    />
+                    <br>
+
+                    <label for="MScDFIS" class="form-label">MSc DFIS</label>
+                    <input
+                      type="checkbox"
+                      name="forCourse"
+                      value="MscDfis"
+                      id="MScDFIS"
+                      style="height: 20px; width: 40px"
+                    />
+
+                    <br>
+                    <label for="MScAIDS" class="form-label">MTech ADSAI</label>
+                    <input
+                      type="checkbox"
+                      name="forCourse"
+                      value="MtechAdsai"
+                      id="MScAIDS"
+                      style="height: 20px; width: 40px"
+                    />
+                  </div>
+                  <br />
+
+                  <!-- <div class="form-group">
+                    <label for="jobdescriptionFile" class="form-label"
+                      >Job Description</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="jobDescriptionFile"
+                      id="jobdescriptionFile"
+                      placeholder="jobLocation"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="ctc" class="form-label">CTC/Stipend</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="ctc"
+                      id="ctc"
+                      placeholder="CTC/Stipend"
+                    />
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="lastDate" class="form-label">
+                      Last Date To Apply *</label
+                    >
+
+                    <input
+                      type="date"
+                      id="lastDate"
+                      name="lastDateToApply"
+                      class="form-control"
+                    />
+                  </div> -->
+                </div>
+                <br />
+                <div class="form-group">
+                  <button class="btn btn-primary">Send Update</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // JavaScript for form validation
+      (function () {
+        "use strict";
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll(".needs-validation");
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms).forEach(function (form) {
+          form.addEventListener(
+            "submit",
+            function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add("was-validated");
+            },
+            false
+          );
+        });
+      })();
+    </script>
+
+    <!-- <script>
+      // Function to disable all input fields
+      let disableAllCourseInputs = () => {
+        let allInputs = document.querySelectorAll(".forcheck input");
+        allInputs.forEach((input) => {
+          input.required = false;
+          input.style.display = "none";
+        });
+      };
+
+      // Call disableAllCourseInputs when the DOM is loaded
+      document.addEventListener("DOMContentLoaded", disableAllCourseInputs);
+
+      // Function to set required attribute based on checkbox state
+      let setRequired = (classname) => {
+        let rowInputs = document.querySelectorAll(".for" + classname);
+        rowInputs.forEach((inputRow) => {
+          let inputs = inputRow.querySelectorAll("input");
+          inputs.forEach((input) => {
+            if (input.required == false) {
+              input.required = true;
+              input.style.display = "inline";
+            } else {
+              input.required = false;
+              input.style.display = "none";
+            }
+          });
+        });
+      };
+
+      // Get all checkboxes with class "courseInputCheck"
+      let checks = document.querySelectorAll(".courseInputCheck");
+
+      // Add event listeners to checkboxes
+      checks.forEach((check) => {
+        check.addEventListener("change", (event) => {
+          if (event.target) {
+            if (check.name == "checkmtechcs") {
+              setRequired("checkmtechcs");
+            } else if (check.name == "checkmsccs") {
+              setRequired("checkmsccs");
+            } else if (check.name == "checkmscdfis") {
+              setRequired("checkmscdfis");
+            } else if (check.name == "checkmtechadsai") {
+              setRequired("checkmtechadsai");
+            }
+          }
+        });
+      });
+    </script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -59,4 +59,13 @@ router
   .route("/export/company")
   .get(isThisAdmin, wrapAsync(adminController.exportAllCompanyData));
 
+router
+  .route("/sendupdate")
+  .get(isThisAdmin, adminController.renderSendUpdateForm)
+  .post(isThisAdmin, wrapAsync(adminController.pushUpdateToStudents));
+
+router
+  .route("/deleteupdate/:updateId")
+  .get(isThisAdmin, wrapAsync(adminController.deleteUpdate));
+
 module.exports = router;
