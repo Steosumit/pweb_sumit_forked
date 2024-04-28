@@ -2,6 +2,38 @@ const { string } = require("joi");
 const passportLocalMongoose = require("passport-local-mongoose");
 const mongoose = require("mongoose");
 const studentSchema = new mongoose.Schema({
+  isDeboarded: {
+    type: Boolean,
+    default: false,
+  },
+  placedCompany: {
+    type: String,
+    default: "",
+  },
+  placedCtc: {
+    type: Number,
+    default: -1,
+  },
+  placedJobLocation: {
+    type: String,
+    default: "",
+  },
+  placedJobDescription: {
+    type: String,
+    default: "",
+  },
+  placedOtherDetails: {
+    type: String,
+    default: "",
+  },
+  placedDate: {
+    type: Date,
+    default: Date.now,
+  },
+  isPlaced: {
+    type: Boolean,
+    default: false,
+  },
   haveResetPass: {
     type: Boolean,
   },

@@ -30,12 +30,15 @@ module.exports.showAccount = async (req, res) => {
       (update) =>
         update.forCourse.includes(course) || update.forCourse.includes("All")
     );
+
     res.render("users/youraccountstu.ejs", {
       isRegistered: isRegistered,
       stuId: _id,
       availableListings: availableListings,
       appliedListings: appliedListings,
       updatesToShow: updatesToShow,
+      isPlaced: req.user.isPlaced,
+      isDeboarded: req.user.isDeboarded,
     });
   } catch (err) {
     console.error("Error retrieving student applications:", err);
@@ -55,6 +58,17 @@ module.exports.showStuPlacementProfile = async (req, res) => {
 module.exports.renderApplyForm = async (req, res) => {
   let { listingId, stuId } = req.query;
   let stuDetails = await Student.findOne({ _id: stuId });
+  if (stuDetails.isPlaced) {
+    req.flash("error", "Placed Students cant apply for the Companies !");
+    res.redirect("/account");
+  }
+  if (stuDetails.isDeboarded) {
+    req.flash(
+      "error",
+      "Your Account has been Disabled by the Admin. Please Contact the Administration for further Information."
+    );
+    res.redirect("/account");
+  }
   res.render("resources/apply.ejs", {
     listingId: listingId,
     stuId: stuId,

@@ -51,6 +51,9 @@ module.exports.showAdmin = async (req, res) => {
   let updatesForMscDfis = allUpdates.filter((update) =>
     update.forCourse.includes("MscDfis")
   );
+  let allplacedStudents = await Student.find({ isPlaced: true });
+
+  let allDeboardedStudents = await Student.find({ isDeboarded: true });
 
   res.render("users/admin.ejs", {
     allRecruitersPending: allRecruitersPending,
@@ -73,6 +76,8 @@ module.exports.showAdmin = async (req, res) => {
     updatesForMtechAdsai: updatesForMtechAdsai,
     updatesForMscCs: updatesForMscCs,
     updatesForMscDfis: updatesForMscDfis,
+    allplacedStudents: allplacedStudents,
+    allDeboardedStudents: allDeboardedStudents,
   });
 };
 
@@ -599,10 +604,27 @@ module.exports.deboardStudent = async (req, res) => {
       _id: stuid,
     });
   }
+
   await Application.deleteMany({ stuId: stuid });
-  await Student.deleteMany({ _id: stuid });
+  // await Student.deleteMany({ _id: stuid });
+  stu.isDeboarded = true;
+  stu.isRegistered = false;
+
+  await stu.save();
 
   req.flash("success", "Student De-Boarded Successfully !");
+  res.redirect("/admin");
+};
+
+module.exports.onboardStudent = async (req, res) => {
+  let { stuid } = req.params;
+  let stu = await Student.findOne({ _id: stuid });
+
+  stu.isDeboarded = false;
+
+  await stu.save();
+
+  req.flash("success", "Student On-Boarded Successfully !");
   res.redirect("/admin");
 };
 
@@ -688,5 +710,30 @@ module.exports.deleteUpdate = async (req, res) => {
   let { updateId } = req.params;
   await Update.deleteMany({ _id: updateId });
   req.flash("success", "Update Deleted Successfully !");
+  res.redirect("/admin");
+};
+
+module.exports.renderPlacedStudentForm = (req, res) => {
+  res.render("resources/placedstudent.ejs", {
+    applicationId: req.params.applicationId,
+  });
+};
+
+module.exports.markPlacedStudent = async (req, res) => {
+  let application = await Application.findOne({
+    _id: req.params.applicationId,
+  });
+  let student = await Student.findOne({ _id: application.stuId });
+  student.isPlaced = true;
+  student.placedCompany = req.body.companyname;
+  student.placedCtc = req.body.ctc;
+  student.placedJobLocation = req.body.joblocation;
+  student.placedJobDescription = req.body.jobdescription;
+  student.placedOtherDetails = req.body.otherdetails;
+
+  await student.save();
+
+  await Application.deleteMany({ stuId: student._id });
+  req.flash("success", "Marked as Placed Successfully !");
   res.redirect("/admin");
 };

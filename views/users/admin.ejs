@@ -949,7 +949,7 @@
             <a href="#updates">
               <span class="icon">
                 <ion-icon
-                  name="log-out-outline"
+                  name="school-outline"
                   role="img"
                   class="md hydrated"
                   aria-label="log out outline"
@@ -1372,8 +1372,71 @@
                       </td>
                       <td><%=appObj.stuId.mobileno%></td>
                       <td><%=appObj.createdAt%></td>
+                      <td>
+                        <a href="/admin/placedstudent/<%=appObj._id%>"
+                          ><button>Mark as Placed</button></a
+                        >
+                      </td>
                     </tr>
                     <%}%>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="details">
+            <div class="recentOrders">
+              <div class="cardHeader">
+                <h2>Placed Students</h2>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <input
+                  type="text"
+                  id="ApplicationsReceivedSearch"
+                  style="
+                    border-radius: 10px;
+                    margin: 5px;
+                    padding: 3px;
+                    font-size: 14px;
+                    width: 150px;
+                  "
+                  placeholder="Search"
+                />
+                <button id="ApplicationsReceivedButton">Search</button>
+                <a href="" class="btn" id="ApplicationsReceivedAnchor"> </a>
+              </div>
+              <div style="height: 500px; overflow-y: scroll">
+                <table>
+                  <thead>
+                    <tr>
+                      <td>Student Name</td>
+                      <td>Course</td>
+                      <td>Company Name</td>
+                      <td>Date Placed</td>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    <%allplacedStudents.forEach((student)=>{%>
+                    <tr>
+                      <td>
+                        <a
+                          href="/account/sturegisdetails/?stuId=<%=student._id%>"
+                          target="_blank"
+                        >
+                          <%=student.fullname%></a
+                        >
+                      </td>
+                      <td><%=student.course%></td>
+                      <td><%=student.placedCompany%></td>
+                      <td><%=student.placedDate%></td>
+                    </tr>
+                    <%});%>
                   </tbody>
                 </table>
               </div>
@@ -1490,7 +1553,7 @@
           </div> -->
         </section>
 
-        <section id="updates">
+        <section id="updates" style="display: none">
           <h1 style="text-align: center">All Updates:</h1>
           <br />
           <a href="/admin/sendupdate">
@@ -1515,7 +1578,7 @@
             <%updatesForMtechCs.forEach((update)=>{%>
             <h3><%=update.title%></h3>
             <h5><%=update.description%></h5>
- <a href="/admin/deleteupdate/<%=update._id%>">
+            <a href="/admin/deleteupdate/<%=update._id%>">
               <button>Delete Update</button></a
             >
 
@@ -1528,9 +1591,9 @@
               <%updatesForMtechAdsai.forEach((update)=>{%>
               <h3><%=update.title%></h3>
               <h5><%=update.description%></h5>
- <a href="/admin/deleteupdate/<%=update._id%>">
-              <button>Delete Update</button></a
-            >
+              <a href="/admin/deleteupdate/<%=update._id%>">
+                <button>Delete Update</button></a
+              >
 
               <% });%>
               <br />
@@ -1542,9 +1605,9 @@
               <%updatesForMscCs.forEach((update)=>{%>
               <h3><%=update.title%></h3>
               <h5><%=update.description%></h5>
- <a href="/admin/deleteupdate/<%=update._id%>">
-              <button>Delete Update</button></a
-            >
+              <a href="/admin/deleteupdate/<%=update._id%>">
+                <button>Delete Update</button></a
+              >
 
               <% });%>
               <br />
@@ -1556,9 +1619,9 @@
               <%updatesForMscDfis.forEach((update)=>{%>
               <h3><%=update.title%></h3>
               <h5><%=update.description%></h5>
- <a href="/admin/deleteupdate/<%=update._id%>">
-              <button>Delete Update</button></a
-            >
+              <a href="/admin/deleteupdate/<%=update._id%>">
+                <button>Delete Update</button></a
+              >
 
               <% });%>
               <br />
@@ -2240,6 +2303,91 @@
                         <td>
                           <a href="/admin/deboard/student/<%=student._id%>">
                             <button id="DeboardBtn">De-Board</button>
+                          </a>
+                        </td>
+                      </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- ================= New Customers ================ -->
+          </div>
+          <div class="details">
+            <div class="recentCustomers">
+              <div class="recentOrders">
+                <div class="cardHeader">
+                  <h2>De-Boarded Students</h2>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <input
+                    type="text"
+                    id="DeBoardedStudentSearch"
+                    style="
+                      border-radius: 10px;
+                      margin: 5px;
+                      padding: 3px;
+                      font-size: 14px;
+                      width: 150px;
+                    "
+                    placeholder="Search"
+                  />
+                  <button id="DeBoardedStudentButton">Search</button>
+                  <a href="" class="btn" id="DeBoardedStudentAnchor"> </a>
+                  <script>
+                    let DeBoardedStudentinput = document.getElementById(
+                      "DeBoardedStudentSearch"
+                    );
+
+                    let DeBoardedStudentanchor = document.getElementById(
+                      "DeBoardedStudentAnchor"
+                    );
+
+                    let DeBoardedStudentsearchBtn = document.getElementById(
+                      "DeBoardedStudentButton"
+                    );
+
+                    DeBoardedStudentsearchBtn.addEventListener(
+                      "click",
+                      (event) => {
+                        DeBoardedStudentanchor.href =
+                          "/admin#" +
+                          DeBoardedStudentinput.value +
+                          "DeBoardedStudent";
+                        DeBoardedStudentanchor.click();
+                      }
+                    );
+                  </script>
+                </div>
+                <div style="height: 500px; overflow-y: scroll">
+                  <table>
+                    <thead>
+                      <tr>
+                        <td>Student Name</td>
+                        <td>Enroll No.</td>
+                        <td>Course</td>
+                        <td>Email</td>
+                        <td>Mob No.</td>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      <% allDeboardedStudents.forEach(student => { %>
+                      <tr id="<%= student.fullname %>DeBoardedStudent">
+                        <td><%= student.fullname %></td>
+                        <td><%= student.enrollmentNo %></td>
+                        <td><%= student.course %></td>
+                        <td><%= student.mobileno %></td>
+                        <td><%= student.email %></td>
+                        <td>
+                          <a href="/admin/onboard/student/<%=student._id%>">
+                            <button id="DeboardBtn">On-Board</button>
                           </a>
                         </td>
                       </tr>

@@ -295,7 +295,16 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
         </div>
       </div>
     </nav>
-    <%if(isRegistered){%>
+    <%if(isDeboarded){%>
+    <h1>
+      Your Account has been Disabled by the Admin. Please Contact the
+      Administration for further Information.
+    </h1>
+    <%}else if(isPlaced){%>
+    <h1>
+      Bhai Mubarak ho Placed Hogaye !!! yeeeyeyeahh !! &hearts;&hearts;&hearts;
+    </h1>
+    <%}else if(isRegistered){%>
     <section class="dashboard d-flex">
       <div class="container">
         <div class="row mt-4">

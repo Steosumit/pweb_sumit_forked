@@ -5,6 +5,8 @@ const { isThisAdmin } = require("../middleware");
 const wrapAsync = require("../utils/wrapasync");
 const { storage } = require("../cloudConfig");
 const multer = require("multer");
+const Listing = require("../models/listing");
+const Application = require("../models/application");
 const upload = multer({
   storage: storage,
   limits: { fileSize: 5 * 1024 * 1024 }, // 5 MB
@@ -52,6 +54,9 @@ router
   .get(isThisAdmin, wrapAsync(adminController.deboardStudent));
 
 router
+  .route("/onboard/student/:stuid")
+  .get(isThisAdmin, wrapAsync(adminController.onboardStudent));
+router
   .route("/export/student")
   .get(isThisAdmin, wrapAsync(adminController.exportAllStudentData));
 
@@ -68,4 +73,8 @@ router
   .route("/deleteupdate/:updateId")
   .get(isThisAdmin, wrapAsync(adminController.deleteUpdate));
 
+router
+  .route("/placedstudent/:applicationId")
+  .get(isThisAdmin, adminController.renderPlacedStudentForm)
+  .post(isThisAdmin, wrapAsync(adminController.markPlacedStudent));
 module.exports = router;
