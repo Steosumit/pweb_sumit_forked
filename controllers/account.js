@@ -30,6 +30,8 @@ module.exports.showAccount = async (req, res) => {
       (update) =>
         update.forCourse.includes(course) || update.forCourse.includes("All")
     );
+    let countAvailableListings = availableListings.length;
+    let countAppliedListings = appliedListings.length;
 
     res.render("users/youraccountstu.ejs", {
       isRegistered: isRegistered,
@@ -39,6 +41,8 @@ module.exports.showAccount = async (req, res) => {
       updatesToShow: updatesToShow,
       isPlaced: req.user.isPlaced,
       isDeboarded: req.user.isDeboarded,
+      countAppliedListings: countAppliedListings,
+      countAvailableListings: countAvailableListings,
     });
   } catch (err) {
     console.error("Error retrieving student applications:", err);

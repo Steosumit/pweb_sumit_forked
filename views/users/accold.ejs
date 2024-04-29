@@ -691,20 +691,7 @@ border: 1px solid rgba( 255, 255, 255, 0.18 );
                 </tr>
               </thead>
               <tbody>
-                <% appliedListings.forEach(listing => { %>
-                <tr>
-                  <td scope="row"><%=listing.companyName%></td>
-                  <td scope="row"><%=listing.jobTitle%></td>
-                  <td scope="row"><%=listing.jobLocation%></td>
-                  <td scope="row"><%=listing.jobType%></td>
-                  <td scope="row"><%=listing.jobDescription%></td>
-                  <td scope="row"><%=listing.ctc%></td>
-                  <td scope="row"><%=listing.lastDateToApply%></td>
-                  <!-- <td scope="row">
-                    <a href="/account/apply?listingId=<%=listing._id%>&stuId=<%=stuId%>" class="btn btn-outline-primary">Apply</a>
-                  </td> -->
-                </tr>
-                <%});%>
+             
               </tbody>
             </table>
           </div>
