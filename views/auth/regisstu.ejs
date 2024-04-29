@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="/style.css" />
 <div class="regis-big-div">
   <div class="left-login">
+    <br />
     <div class="pop-out">
       <a href="/"
         ><img
@@ -11,6 +12,7 @@
           width="300"
       /></a>
     </div>
+    <br />
   </div>
   <form
     novalidate
@@ -23,8 +25,13 @@
       <div class="resources-student-big-div">
         <div class="content-div regis-content-div">
           <div class="content-title container">
+            <br />
+            <hr />
             <h2 style="text-align: center">Registration : Student</h2>
             <hr />
+            *You only need to Fill the remaining Input fields.
+            <br />
+            <br />
             <h2>Personal Details</h2>
             <br />
 
@@ -85,7 +92,7 @@
                   id="fathername"
                   placeholder="Father's Name"
                   required
-                  value="hehe"
+                  value="Jetha Lal Gada"
                 />
               </div>
               <div class="form-group">
@@ -97,7 +104,7 @@
                   placeholder="Mother's Name"
                   required
                   name="mothername"
-                  value="eehe"
+                  value="Daya Gada "
                 />
               </div>
 
@@ -109,6 +116,7 @@
                       <input
                         class="form-check-input"
                         type="radio"
+                        checked
                         name="gender"
                         value="female"
                         id="gender"
@@ -156,7 +164,7 @@
                   name="birthdate"
                   required
                   placeholder="DD/MM/YYYY"
-                  value="hehe"
+                  value="2004-05-18"
                 />
               </div>
               <div class="card">
@@ -169,6 +177,7 @@
                         type="radio"
                         id="married"
                         required
+                        checked
                         name="maritalstatus"
                         value="married"
                       />
@@ -229,6 +238,7 @@
                         class="form-check-input"
                         name="disability"
                         value="no"
+                        checked
                         required
                         type="radio"
                         id="disableno"
@@ -262,7 +272,7 @@
                   required
                   placeholder="Alternate Mobile No"
                   name="altmobileno"
-                  value="1234554321"
+                  value="9252180504"
                 />
               </div>
               <div class="form-group">
@@ -286,7 +296,7 @@
                   placeholder="Alternate  Email "
                   required
                   name="altemail"
-                  value="abccba@gmail.com"
+                  value="smile.itsadil@gmail.com"
                 />
               </div>
               <div class="form-group">
@@ -303,7 +313,7 @@
                   <option value="SC">SC</option>
                   <option value="OBC">OBC</option>
                   <option value="EWS">EWS</option>
-                  <option value="GENERAL">GENERAL</option>
+                  <option selected value="GENERAL">GENERAL</option>
                 </select>
               </div>
               <div class="form-group">
@@ -315,7 +325,7 @@
                   required
                   name="nationality"
                   placeholder="Nationality"
-                  value="india"
+                  value="India"
                 />
               </div>
             </div>
@@ -324,6 +334,7 @@
         <div class="content-div regis-content-div">
           <div class="content-title container">
             <hr />
+            <br />
             <h2>Communication Details</h2>
             <br />
             <div class="comm-fields">
@@ -337,7 +348,7 @@
                     id="presentcountry"
                     name="presentcountry"
                     placeholder="Present Country"
-                    value="hehe"
+                    value="India"
                   />
                 </div>
                 <div class="form-group">
@@ -369,7 +380,7 @@
                     <option value="Lakshadweep">Lakshadweep</option>
                     <option value="Puducherry">Puducherry</option>
                     <option value="Goa">Goa</option>
-                    <option value="Gujarat">Gujarat</option>
+                    <option selected value="Gujarat">Gujarat</option>
                     <option value="Haryana">Haryana</option>
                     <option value="Himachal Pradesh">Himachal Pradesh</option>
                     <option value="Jammu and Kashmir">Jammu and Kashmir</option>
@@ -401,7 +412,7 @@
                     class="form-control"
                     id="presentdistrict"
                     name="presentdistrict"
-                    value="hehe"
+                    value="Gandhinagar"
                     required
                     placeholder="Present District"
                   />
@@ -414,7 +425,7 @@
                     id="Landmark"
                     name="landmark"
                     required
-                    value="jeje"
+                    value="Kudasan"
                     placeholder="Landmark"
                   />
                 </div>
@@ -430,7 +441,8 @@
                     name="presentaddress"
                     placeholder="Present Address"
                   >
-                  </textarea>
+Near Swarnim Park, 101, Sector 10, Gandhinagar </textarea
+                  >
                 </div>
 
                 <div class="form-group">
@@ -438,7 +450,7 @@
                   <input
                     type="number"
                     class="form-control"
-                    value="123322"
+                    value="110011"
                     id="Pincode"
                     required
                     name="pincode"
@@ -466,6 +478,8 @@
                     type="text"
                     class="form-control"
                     required
+                    name="permanentCountry"
+                    value="France"
                     id="presentcountryp"
                     placeholder="Permanent Country"
                   />
@@ -477,6 +491,8 @@
                     class="form-control"
                     required
                     id="presentstatep"
+                    value="Brittany"
+                    name="permanentState"
                     placeholder="Permanent State"
                   />
                 </div>
@@ -486,6 +502,8 @@
                     type="text"
                     class="form-control"
                     id="presentdistrictp"
+                    value="Cest la ville "
+                    name="permanentDistrict"
                     required
                     placeholder="Permanent District"
                   />
@@ -495,7 +513,9 @@
                   <input
                     type="text"
                     class="form-control"
+                    name="permanentLandmark"
                     id="Landmarkp"
+                    value="Le Parc Petit"
                     placeholder="Landmark"
                     required
                   />
@@ -507,9 +527,12 @@
                     type="text"
                     class="form-control"
                     required
+                    name="permanentAddress"
                     id="presentaddressp"
                     placeholder="Permanent Address"
-                  ></textarea>
+                  >
+Dans ma Voiture, 112, Cest la Ville, Brittany</textarea
+                  >
                 </div>
 
                 <div class="form-group">
@@ -518,6 +541,8 @@
                     type="number"
                     class="form-control"
                     id="Pincodep"
+                    name="permanentPincode"
+                    value="120021"
                     placeholder="Pincode"
                     required
                   />
@@ -529,6 +554,7 @@
         <div class="content-div regis-content-div" id="procedure">
           <div class="content-title container">
             <hr />
+            <br />
             <h2>Education Details</h2>
             <br />
             <div class="comm-fields">
@@ -542,7 +568,7 @@
                     id="10th"
                     name="tenth"
                     placeholder="Percentage"
-                    value="12"
+                    value="99"
                   />
                 </div>
                 <div class="form-group">
@@ -550,7 +576,6 @@
                   <input
                     type="file"
                     class="form-control"
-                    required
                     id="10thupload"
                     name="tenthmarksheet"
                   />
@@ -564,15 +589,14 @@
                     name="twelth"
                     required
                     placeholder="Percentage"
-                    value="12"
+                    value="99"
                   />
                 </div>
-                  <div class="form-group">
+                <div class="form-group">
                   <label for="12thupload">Upload 12th Marksheet</label>
                   <input
                     type="file"
                     class="form-control"
-                    required
                     id="12thupload"
                     name="twelthmarksheet"
                   />
@@ -585,8 +609,7 @@
                     id="lastsemcgpa"
                     name="lastsemcgpa"
                     placeholder="CGPA"
-                    required
-                    value="82"
+                    value="9.9"
                   />
                 </div>
               </div>
@@ -596,6 +619,7 @@
         <div class="content-div regis-content-div" id="procedure">
           <div class="content-title container">
             <hr />
+            <br />
             <h2>Declaration</h2>
             <br />
             1. I hereby declare that all information provided in this
@@ -631,6 +655,7 @@
               <input
                 class="form-check-input"
                 required
+                checked
                 type="checkbox"
                 value=""
                 id="flexCheckDefault"

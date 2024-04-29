@@ -358,7 +358,7 @@ module.exports.markStuAudit = async (req, res) => {
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Our Platform!</h1>
+        <h1>Welcome to SPC SCSDF!</h1>
         <p>We're excited to have you onboard. Below are your login credentials:</p>
         <div class="credentials">
             <p><strong>Username:
@@ -368,7 +368,6 @@ module.exports.markStuAudit = async (req, res) => {
         </div>
         <p>Please use the provided credentials to log in to your account and complete your registration process as soon as possible.</p>
         <p>If you have any questions or need assistance, feel free to contact us.</p>
-        <a href="#" style="color:white;" class="btn">Login Now</a>
     </div>
 </body>
 </html>

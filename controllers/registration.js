@@ -49,6 +49,7 @@ module.exports.renderRegistrationForm = async (req, res) => {
         fullname: req.user.fullname,
         course: req.user.course,
         username: req.user.username,
+        isRegistered: req.user.isRegistered,
       });
     } else {
       req.flash("error", "Invalid URL");
@@ -296,6 +297,8 @@ National Forensic Science University.
               "success",
               `Welcome to the NFSU Placement Cell ! <br> Your Registration as a Recruiter is Completed ! <br>  Please Contact the Administration for Further Recruitment Steps. <br> We'll Keep You Informed on the Provided HR Email.`
             );
+
+            req.session.save();
             res.redirect("/");
           }
         });
@@ -318,11 +321,11 @@ National Forensic Science University.
       //   return res.status(400).send(error.details[0].message);
       // }
 
-      let tenthMarksheetUrl = req.files.tenthmarksheet[0].path;
-      let twelthMarksheetUrl = req.files.twelthmarksheet[0].path;
+      // let tenthMarksheetUrl = req.files.tenthmarksheet[0].path;
+      // let twelthMarksheetUrl = req.files.twelthmarksheet[0].path;
       const newStudentDetails = {
-        tenthMarksheetUrl: tenthMarksheetUrl,
-        twelthMarksheetUrl: twelthMarksheetUrl,
+        tenthMarksheetUrl: "",
+        twelthMarksheetUrl: "",
         isRegistered: true,
         disability: req.body.disability,
         fathername: req.body.fathername,

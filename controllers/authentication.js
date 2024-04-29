@@ -21,7 +21,7 @@ module.exports.sendTwoFactor = async (req, res) => {
   }
 
   let newOtp = Math.floor(Math.random() * 900000) + 100000;
-  if (stuDetails) await OTP.deleteMany({ email: stuDetails.email });
+  await OTP.findOneAndDelete({ email: stuDetails.email });
   await OTP.insertMany({
     email: stuDetails.email,
     code: newOtp,
@@ -31,7 +31,7 @@ module.exports.sendTwoFactor = async (req, res) => {
 We have received a request to OTP Verification associated with your account. If you did not make this request, you can safely ignore this email.
 <br/><br/>
 To Verify your Email, please Insert the <strong>Following OTP</strong>:
-<br/><br/>
+<br/>
 <h1>
 <strong>${newOtp}</strong></h1>
 <br/>
@@ -73,17 +73,20 @@ To Verify your Email, please Insert the <strong>Following OTP</strong>:
   //     res.redirect(`/auth/login-student/verifyotp`);
   //   }
   // });
-  transporter.sendMail(mailOptions);
-  req.session.username = req.body.username;
-  req.session.password = req.body.password;
-  req.session.email = stuDetails.email;
-  req.flash("success", "OTP sent successfully");
-  res.redirect(`/auth/login-student/verifyotp`);
+  transporter.sendMail(mailOptions, () => {
+    req.session.username = req.body.username;
+    req.session.password = req.body.password;
+    req.session.email = stuDetails.email;
+    req.flash("success", "OTP sent successfully");
+    res.redirect(`/auth/login-student/verifyotp`);
+  });
 };
 
 module.exports.renderVerifyTwoFactor = (req, res) => {
+  let startingFourLettersOfEmail = req.session.email.substring(0, 4);
+  startingFourLettersOfEmail += "************";
   res.render("auth/twofactorverify.ejs", {
-    email: req.session.email,
+    email: startingFourLettersOfEmail,
     username: req.session.username,
     password: req.session.password,
   });
@@ -134,7 +137,7 @@ module.exports.renderOtpInputForm = async (req, res) => {
 };
 
 module.exports.sendOtp = async (req, res) => {
-  let { email, username } = req.body;
+  let { email } = req.body;
   // if (username == "Student") {
   //   let checkExistingStudent = await Student.findOne({ email: email });
   //   if (checkExistingStudent) {
@@ -161,24 +164,23 @@ module.exports.sendOtp = async (req, res) => {
   //   }
   // }
   if (existingOTP) {
-    req.flash("success", "OTP is already Sent");
-    req.session.bodyData = req.body;
-    res.redirect(`/auth/otp-verify-page`);
+    existingOTP = true;
+    await OTP.findOneAndDelete({ email: email });
+  }
+  await OTP.insertMany({
+    email: email,
+    code: newOtp,
+  });
+  let message = "";
+  if (req.session.username == "Student") {
+    message = `<p style="color: red;">Hey Dear Fellow NFSUian !</p>`;
   } else {
-    await OTP.insertMany({
-      email: email,
-      code: newOtp,
-    });
-    let message = "";
-    if (req.session.username == "Student") {
-      message = `<p style="color: red;">Hey Dear Fellow NFSUian !</p>`;
-    } else {
-      message = `<p style="color: red;">Dear Respected Recruiter,</p>`;
-    }
+    message = `<p style="color: red;">Dear Respected Recruiter,</p>`;
+  }
 
-    message =
-      message +
-      `
+  message =
+    message +
+    `
 <br/>
 We have received a request to OTP Verification associated with your account. If you did not make this request, you can safely ignore this email.
 <br/><br/>
@@ -205,30 +207,36 @@ You can paste the above OTP in the <strong>Following Link</strong>:
       alt="..."
     />
 </div>`;
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: "smile.itsadil@gmail.com",
-        pass: process.env.APP_PASSWORD,
-      },
-    });
-    const mailOptions = {
-      from: "ThePlacementCell@NFSU<smile.itsadil@gmail.com>",
-      to: email,
-      subject: "OTP Verification Request",
-      html: message,
-    };
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error(error);
-        res.status(500).send("Failed to send OTP");
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "smile.itsadil@gmail.com",
+      pass: process.env.APP_PASSWORD,
+    },
+  });
+  const mailOptions = {
+    from: "ThePlacementCell@NFSU<smile.itsadil@gmail.com>",
+    to: email,
+    subject: "OTP Verification Request",
+    html: message,
+  };
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send("Failed to send OTP");
+    } else {
+      req.session.bodyData = req.body;
+
+      if (existingOTP == true) {
+        req.flash("success", "OTP is Re-Sent");
       } else {
-        req.session.bodyData = req.body;
         req.flash("success", "OTP sent successfully");
-        res.redirect(`/auth/otp-verify-page`);
       }
-    });
-  }
+
+      req.session.save();
+      res.redirect(`/auth/otp-verify-page`);
+    }
+  });
 };
 
 module.exports.renderOtpVerifyPage = (req, res) => {
@@ -241,7 +249,7 @@ module.exports.renderOtpVerifyPage = (req, res) => {
 module.exports.resendOtp = async (req, res) => {
   let { email, username } = req.query;
   try {
-    await OTP.deleteMany({ email: email });
+    await OTP.findOneAndDelete({ email: email });
   } catch (e) {
     req.flash("error", e.message);
   }
@@ -271,6 +279,8 @@ module.exports.verifyOtp = async (req, res) => {
             "success",
             `Email Verification Successfull ! <br> We will send Your Credentials on the Provided Email. <br> Please wait for further Email Updates on approval of the Admin.`
           );
+
+          req.session.save();
           res.redirect("/");
         } else {
           //   res.redirect("/register/rec");
@@ -419,6 +429,8 @@ module.exports.verifyOtp = async (req, res) => {
             "success",
             `Email Verification Successfull ! <br> We will soon Reach out to You on Provided Details. <br> Please wait for further Email Updates on approval of the Admin.`
           );
+
+          req.session.save();
           res.redirect("/");
         }
       } else {
@@ -432,6 +444,7 @@ module.exports.verifyOtp = async (req, res) => {
     } else {
       // OTP codes do not match
       req.flash("error", "Invalid OTP Entered.");
+      req.session.save();
       res.redirect("/auth/otp-verify-page");
     }
   } else {
@@ -445,14 +458,13 @@ module.exports.verifyOtp = async (req, res) => {
 
 module.exports.renderResetPass = (req, res) => {
   // req.session.resetPass = undefined;
-
   if (req.session.resentOtpVerified == true) {
     res.render("auth/resetpass.ejs", {
       otpSent: true,
       resentOtpVerified: true,
     });
   }
-  if (req.session.resetPass != undefined)
+  if (req.session.resetPass != "")
     res.render("auth/resetpass.ejs", {
       otpSent: true,
       resentOtpVerified: false,
@@ -538,18 +550,15 @@ module.exports.makeResetPass = async (req, res) => {
 
     if (stu.haveResetPass == true) {
       req.session.resentOtpVerified = false;
+      req.session.resetPass = "";
       req.flash("error", "Cant Reset the Password more than Once !");
       res.redirect("/auth/login-student");
     }
 
-    stu.setPassword(
-      req.body.password.trim(),
-      wrapAsync(async () => {
-        stu.haveResetPass = true;
-        await stu.save();
-      })
-    );
-
+    stu.setPassword(req.body.password, async () => {
+      stu.haveResetPass = true;
+      await stu.save();
+    });
     req.flash("success", "Password Reset Successful !");
     res.redirect("/auth/login-student");
   }

@@ -7,7 +7,6 @@ const ejsMate = require("ejs-mate");
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
-const flash = require("connect-flash");
 const session = require("express-session");
 const dbUrl = process.env.ATLASDB_URL;
 const MongoStore = require("connect-mongo");
@@ -24,6 +23,7 @@ const Listing = require("./models/listing");
 const Application = require("./models/application");
 const axios = require("axios");
 const multer = require("multer");
+const flash = require("connect-flash");
 const { storage, cloudinary } = require("./cloudConfig");
 const upload = multer({
   storage: storage,
@@ -67,27 +67,28 @@ const sessionOptions = {
   resave: false,
   saveUninitialized: true,
   cookie: {
-    expires: Date.now() + 60 * 60 * 1000,
-    maxAge: 60 * 60 * 1000,
+    expires: Date.now() + 12 * 60 * 60 * 1000,
+    maxAge: 12 * 60 * 60 * 1000,
     httpOnly: true,
   },
 };
 
 app.use(session(sessionOptions));
+app.use(flash());
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "/public")));
 app.engine("ejs", ejsMate);
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(methodOverride("_method"));
-app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   next();
 });
-app.use(passport.initialize());
-app.use(passport.session());
 passport.use(new LocalStrategy(Student.authenticate()));
 passport.serializeUser(Student.serializeUser());
 passport.deserializeUser(Student.deserializeUser());
@@ -121,7 +122,6 @@ app.use("/admin", adminRouter);
 app.use("/placement-team", teamRouter);
 app.use("/community", communityRouter);
 app.use("/resources", resourcesRouter);
-
 
 app.all("*", (req, res) => {
   // to not get path not found on /fevicon.ico in admin page (inadequate behaviour by admin page )

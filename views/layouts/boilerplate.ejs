@@ -47,6 +47,8 @@
         ) {
           navbar.classList.add("navbar-login");
           footer.classList.add("footer-login");
+        } else if (window.location.pathname.startsWith("/account")) {
+          footer.classList.add("footer-login");
         } else {
           navbar.classList.remove("navbar-login");
           footer.classList.remove("footer-login");

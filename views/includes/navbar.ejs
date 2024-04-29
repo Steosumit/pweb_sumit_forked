@@ -68,43 +68,15 @@
               </li>
               <li><hr class="dropdown-divider" /></li>
               <li>
-                <a class="dropdown-item" href="/auth/logout" style="color: brown"
+                <a
+                  class="dropdown-item"
+                  href="/auth/logout"
+                  style="color: brown"
                   >Sign Out</a
                 >
               </li>
             </ul>
           </div>
-
-          <%}else if(isAuthenticated == true){%>
-          <div class="dropdown profile-icon-div">
-            <div
-              data-bs-toggle="dropdown"
-              style="
-                background-image: url(https://cdn-icons-png.flaticon.com/512/2919/2919906.png);
-                background-size: cover;
-                width: 3rem;
-                height: 3rem;
-                margin-right: 2rem;
-              "
-            >
-              <!-- <img src="" width="40" alt="" /> -->
-            </div>
-
-            <ul class="dropdown-menu">
-              <li>
-                <a class="dropdown-item" href="/account" style="color: brown"
-                  >Your Account</a
-                >
-              </li>
-              <li><hr class="dropdown-divider" /></li>
-              <li>
-                <a class="dropdown-item" href="/auth/logout" style="color: brown"
-                  >Sign Out</a
-                >
-              </li>
-            </ul>
-          </div>
-          <%}%>
           <a href="/" id="home-link" style="font-weight: 500">Home</a>
           <br /><br />
           <div class="nav-item dropdown">
@@ -126,11 +98,15 @@
               </li>
               <hr />
               <li>
-                <a class="dropdown-item" href="/resources/student">Placement Guide</a>
+                <a class="dropdown-item" href="/resources/student"
+                  >Placement Guide</a
+                >
               </li>
               <hr />
               <li>
-                <a class="dropdown-item" href="/resources/student#procedure">Policy</a>
+                <a class="dropdown-item" href="/resources/student#procedure"
+                  >Policy</a
+                >
               </li>
               <hr />
               <li>
@@ -141,7 +117,9 @@
               <hr />
               <li><a class="dropdown-item" href="#">Insights</a></li>
               <hr />
-              <li><a class="dropdown-item" href="/resources/student#faq">FAQs</a></li>
+              <li>
+                <a class="dropdown-item" href="/resources/student#faq">FAQs</a>
+              </li>
             </ul>
           </div>
           <br />
@@ -167,7 +145,9 @@
               </li>
               <hr />
               <li>
-                <a class="dropdown-item" href="/resources/recruiter">Placement Guide</a>
+                <a class="dropdown-item" href="/resources/recruiter"
+                  >Placement Guide</a
+                >
               </li>
               <hr />
               <li>
@@ -197,9 +177,198 @@
                 >
               </li>
               <hr />
-              <li><a class="dropdown-item" href="/resources/recruiter#faq">FAQs</a></li>
+              <li>
+                <a class="dropdown-item" href="/resources/recruiter#faq"
+                  >FAQs</a
+                >
+              </li>
             </ul>
           </div>
+
+          <%}else if(isAuthenticated == true){%>
+          <div class="dropdown profile-icon-div">
+            <div
+              data-bs-toggle="dropdown"
+              style="
+                background-image: url(https://cdn-icons-png.flaticon.com/512/2919/2919906.png);
+                background-size: cover;
+                width: 3rem;
+                height: 3rem;
+                margin-right: 7rem;
+                margin-bottom: 1rem;
+              "
+            >
+              <!-- <img src="" width="40" alt="" /> -->
+            </div>
+
+            <%if(isRegistered){%>
+            <ul class="dropdown-menu" style="margin-top: 1rem">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="/account/sturegisdetails/?stuId=<%=stuId%>"
+                  style="color: brown"
+                  >Your Placement Profile</a
+                >
+              </li>
+
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="/logout" style="color: brown"
+                  >Dashboard</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="/logout" style="color: brown"
+                  >Ask Queries</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="/logout" style="color: brown"
+                  >Resources</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="/logout" style="color: brown"
+                  >Manage</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="/auth/logout"
+                  style="color: brown"
+                  >Sign Out</a
+                >
+              </li>
+            </ul>
+            <%}else{%>
+            <ul class="dropdown-menu" style="margin-top: 1rem">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="/auth/logout"
+                  style="color: brown"
+                  >Sign Out</a
+                >
+              </li>
+            </ul>
+            <%}%>
+          </div>
+          <%}else{%>
+          <a href="/" id="home-link" style="font-weight: 500">Home</a>
+          <br /><br />
+          <div class="nav-item dropdown">
+            <button
+              class="btn btn-light me-3 dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              style="background-color: turquoise; color: black; border: none"
+            >
+              For Students
+            </button>
+            <ul class="dropdown-menu dropdown-menu-light">
+              <li>
+                <a class="dropdown-item" href="/auth/login-student"
+                  >Students Registration/Login</a
+                >
+              </li>
+              <hr />
+              <li>
+                <a class="dropdown-item" href="/resources/student"
+                  >Placement Guide</a
+                >
+              </li>
+              <hr />
+              <li>
+                <a class="dropdown-item" href="/resources/student#procedure"
+                  >Policy</a
+                >
+              </li>
+              <hr />
+              <li>
+                <a class="dropdown-item" href="/resources/student#roadmaps"
+                  >Preparation Portal</a
+                >
+              </li>
+              <hr />
+              <li><a class="dropdown-item" href="#">Insights</a></li>
+              <hr />
+              <li>
+                <a class="dropdown-item" href="/resources/student#faq">FAQs</a>
+              </li>
+            </ul>
+          </div>
+          <br />
+
+          <div class="nav-item dropdown">
+            <button
+              class="btn btn-light me-5 dropdown-toggle"
+              href="#"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              style="background-color: turquoise; color: black; border: none"
+            >
+              For Recruiters
+            </button>
+            <ul class="dropdown-menu dropdown-menu-light">
+              <li>
+                <a
+                  class="dropdown-item"
+                  href="/auth/otp-initialize/?username=Recruiter"
+                  >Recruiter <br />Registration
+                </a>
+              </li>
+              <hr />
+              <li>
+                <a class="dropdown-item" href="/resources/recruiter"
+                  >Placement Guide</a
+                >
+              </li>
+              <hr />
+              <li>
+                <a class="dropdown-item" href="/resources/recruiter#procedure"
+                  >Recruitment <br />
+                  Process and <br />
+                  Policy</a
+                >
+              </li>
+              <hr />
+
+              <li>
+                <a
+                  class="dropdown-item"
+                  target="_blanck"
+                  href="https://drive.google.com/file/d/1YvE0lrTKEuKmyUXaOqCv6M1b6NhdvwKU/view?usp=drive_link"
+                  >Placement Brochures</a
+                >
+              </li>
+              <hr />
+              <li>
+                <a
+                  class="dropdown-item"
+                  target="_blanck"
+                  href="https://drive.google.com/file/d/1e_QMXMciDL3Aww2l9zxzcqHvz9DMKlAL/view?usp=drive_link"
+                  >Departmental Brochures</a
+                >
+              </li>
+              <hr />
+              <li>
+                <a class="dropdown-item" href="/resources/recruiter#faq"
+                  >FAQs</a
+                >
+              </li>
+            </ul>
+          </div>
+          <%}%>
         </div>
       </div>
     </div>

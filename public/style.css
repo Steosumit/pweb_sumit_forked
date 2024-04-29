@@ -27,6 +27,8 @@ nav {
 
 .navbar .dropdown-item {
   font-weight: 500;
+  padding: 1rem;
+  color: midnightblue;
 }
 .navbar-brand {
   margin-left: 2rem;
@@ -70,6 +72,11 @@ nav {
 
 .dropdown-menu {
   font-size: 0.7rem;
+  padding: 0;
+  overflow: hidden;
+  hr {
+    margin: 0;
+  }
 }
 .navbar-collapse button {
   border-radius: 1rem;
@@ -108,7 +115,6 @@ nav {
 }
 .back-photo {
   box-shadow: inset rgb(0, 0, 0, 09) 10rem 10rem 100rem 100rem;
-
   background-image: url("https://www.ssagujarat.org/nimages/gallery/13.jpg");
   background-size: cover;
 }
@@ -134,10 +140,10 @@ nav {
 
 .home-first img {
   transform: scale(0.82) translateX(15%);
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   width: 90%;
   height: 90%;
-  box-shadow: rgb(255, 184, 157, 0.9) 0px 0px 100px, lightgray 0px 0px 00px;
+  box-shadow: rgb(255, 184, 157, 0.6) 0px 0px 100px;
 }
 /* .animated-hr-coral {
   border-bottom: dashed coral thick;
@@ -364,12 +370,25 @@ nav {
   background: linear-gradient(to left, white, rgba(233, 179, 255, 0.4));
   border-top-left-radius: 0rem;
   border-top-right-radius: 200rem;
-  border-bottom-left-radius: 3rem;
-  border-bottom-right-radius: 3rem;
-  margin-top: 5rem;
+  margin-top: 1rem;
 }
-#carouselExampleAutoplaying {
-  height: 70vh;
+.carouselExampleAutoplaying {
+  height: 30rem;
+  width: 50rem !important;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(34, 0, 39, 0.3);
+  overflow: hidden;
+  .carousel-inner {
+    height: 100%;
+  }
+  .carousel-item {
+    height: 100%;
+    img {
+      height: 100%;
+      object-fit: cover;
+      transform: translate3d(0, 0, 0);
+    }
+  }
 }
 
 .home-third h1 {
@@ -476,11 +495,11 @@ nav {
 }
 #tags-twocards-cyber {
   color: blue;
-  text-shadow: 2px 1px teal;
+  text-shadow: 2px 1px 2px rgb(128, 0, 128, 0.4);
 }
 #tags-twocards-digital {
   color: orangered;
-  text-shadow: 1px 1px #199dcd;
+  text-shadow: 1px 1px 2px rgba(128, 0, 51, 0.5);
 }
 .two-cards-card img {
   width: 100%;
@@ -1127,7 +1146,7 @@ h6 {
   width: 100%;
 }
 .resources-student-big-div .content-div {
-  background-color: #7ea1ff;
+  background-color: #ffffff;
 }
 .content-div {
   background-color: powderblue;
@@ -1189,11 +1208,6 @@ h6 {
 .beyond-placement {
   padding-bottom: 6rem;
 }
-/* .beyond-placement img {
-  /* box-shadow: 0 0 20px rgba(107, 35, 163, 0.3);
-} */
-
-/* faq */
 
 .content-cards .cardfaq {
   min-width: 100%;
@@ -1220,147 +1234,59 @@ h6 {
 img.no-style {
   all: initial;
 }
-.no-style {
-  width: 50rem !important ;
-}
-#make-radius {
-  border-radius: 2rem;
-}
-/*
-@media screen and (max-width: 1470px) {
-  .container-info img {
-    transform: translateX(30rem);
-    opacity: 0;
-  }
+
+/* student dashboard  */
+
+.registerFirstHereDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80vh;
+  background-color: #f6ebe5;
 }
 
-@media screen and (max-width: 1000px) {
-  .btns-connect {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .btns-connect button {
-    justify-content: center;
-    overflow: scroll;
-    position: relative;
-    right: 0.51rem;
-  }
-}
-@media screen and (max-width: 920px) {
-  .navbar {
-    height: fit-content;
-    padding-top: 5px;
-  }
-  .home-first {
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start;
-    padding-bottom: 4rem;
-  }
-
-  .navbar-brand p {
-    position: relative;
-    top: 9px;
-  }
-  .home-first .title-name {
-    font-size: clamp(0.5rem, 2rem, 3rem);
-    margin-left: 2rem;
-    margin-top: 10vh;
-    height: 40vh;
-    transform: translateX(100%);
-  }
-  .home-first img {
-    transform: translateX(0) scale(0.85);
-    border-radius: 0.5rem;
-  }
-}
-
-@media screen and (max-width: 990px) {
-  .social-feeds {
-    flex-direction: column;
-    align-items: center;
-  }
-  .twitter-card {
-    max-width: 30rem;
-    margin: 0;
-    margin-bottom: 3rem;
-  }
-  .insta-card {
-    margin: 0;
-  }
-}
-@media screen and (max-width: 983px) {
-  .footer-card {
-    height: 35rem;
-  }
-  .bottom-stuff {
-    margin-top: 10rem;
-  }
-}
-@media screen and (max-width: 900px) {
-  .container-info img {
-    transform: translateX(20rem);
-    opacity: 0;
-  }
-}
-
-@media screen and (max-width: 585px) {
-  .navbar-brand {
-    margin-left: 0;
-  }
-  .navbar-brand p {
-    display: none;
-  }
-  .nav-img {
-    transform: scale(0.7);
-  }
-}
-
-@media screen and (max-width: 566px) {
-  .btns-connect button {
-    width: 18rem;
-  }
-}
-
-@media screen and (min-width: 450px) and (max-width: 920px) {
-  .home-first .title-name {
-    margin-left: 4rem;
-  }
-}
-
-@media screen and (max-width: 593px) {
-  .container-info img {
-    transform: translateX(10rem);
-    opacity: 0;
-  }
-}
-
-@media screen and (max-width: 766px) {
-  .bottom-stuff {
+.studentDashboard {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1),
+    rgba(18, 0, 135, 0.8)
+  );
+  color: white;
+  width: 100%;
+  height: 100vh;
+  .studentHeadBanner {
     width: 100%;
-    position: static;
-    justify-content: center;
-
-    margin-bottom: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
   }
-  .bottom-stuff div {
-    margin-bottom: 2rem;
-    width: 100%;
+  .studentAvailableListings {
+    display: flex;
+    justify-content: center;
+  }
+  .studenttable1 {
+    width: 95%;
+    border-radius: 2rem;
+    box-shadow: 0 0 100px rgba(4, 0, 33, 0.4);
+    overflow: hidden;
+    thead {
+      box-shadow: 0 0 10px rgba(4, 0, 16, 0.469);
+    }
+    td,
+    th {
+      padding: 1.5rem;
+
+      /* backdrop-filter: blur(100vmax); */
+
+      color: white;
+      background-color: rgb(255, 255, 255, 0.1);
+    }
   }
 }
-
-@media screen and (max-width: 530px) {
-  .twitter-card {
-    max-width: 17rem;
-    max-height: 30rem;
-  }
-  .insta-card {
-    max-height: 30rem;
-    transform: scale(0.8);
-  }
-} */
 
 @media (max-width: 500px) {
   .navbar-brand img {
@@ -1456,7 +1382,7 @@ img.no-style {
 
     padding-bottom: 2rem;
   }
-  #carouselExampleAutoplaying {
+  .carouselExampleAutoplaying {
     width: 100% !important;
     height: fit-content;
   }
@@ -1464,7 +1390,7 @@ img.no-style {
     width: 100%;
     height: 15rem;
   }
-  #carouselExampleAutoplaying img {
+  .carouselExampleAutoplaying img {
     height: 15rem;
     width: 20rem !important;
   }
@@ -1544,6 +1470,9 @@ img.no-style {
   .btns-container a {
     margin: 1rem;
   }
+  .resources-student-big-div {
+    padding: 1rem;
+  }
   .resources-student-big-div .banner h1 {
     font-size: 3.3rem;
     width: 100%;
@@ -1612,5 +1541,10 @@ img.no-style {
   }
   .contactus .person {
     margin-bottom: 3rem;
+  }
+
+  .registerFirstHereDiv {
+    padding: 2rem;
+    text-align: center;
   }
 }
