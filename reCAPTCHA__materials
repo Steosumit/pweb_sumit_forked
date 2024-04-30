@@ -1,0 +1,56 @@
+Register: https://www.google.com/recaptcha/intro/v3.html
+
+Create the site key and the server key we need in the future
+
+
+Create the CDN in script:
+<script src="https://www.google.com/recaptcha/api.js?render=<SITE_KEY>"></script>
+ **Enter <SITE_KEY> made after registration.
+
+
+Add a hidden element: 
+<input type="hidden" id="recaptcha-token" name="recaptcha-token">
+
+const recaptcha = new RecaptchaV3('YOUR_SITE_KEY');
+On submit front end task:
+function submitForm() {
+  recaptcha.execute('submit') // Replace 'submit' with your action name
+    .then(token => {
+      document.getElementById('recaptcha-token').value = token;
+      // Submit the form using your preferred method like fetch
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}
+
+
+Backend tasks:
+
+Request object will have the response in the node server as :
+const recaptchaToken = req.body['recaptcha-token']
+
+**this is the text containing the token that was sent to node server in the cyclic request object
+
+# import library to simpliify
+const recaptcha = require('recaptcha-v3');
+
+Through the node server send a request to google server to verify the captcha:
+const url = `https://www.google.com/recaptcha/api/siteverify?secret=${secret_key}&response=${token}`;
+const secretKey = 'YOUR_SECRET_KEY';
+
+The following logic should go into the form submit path in the app.post method
+try {
+    const verificationResult = await recaptcha.verify(secretKey, recaptchaToken);
+    const score = verificationResult.score; // score is returned
+
+    if (score >= 0.5) {
+      
+      // do if reCAPTCHA passed
+    } else {
+      // do if reCAPTCHA failed
+    }
+  } catch (error) {
+    console.error('Error verifying reCAPTCHA:', error);
+    res.status(500).send('Error');
+  }
